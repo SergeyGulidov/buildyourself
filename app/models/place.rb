@@ -15,6 +15,6 @@ class Place < ActiveRecord::Base
    :presence => true, :uniqueness => true
 
 
-  validates :city, :country, :name, :presence => true, :length => { :in => 6..249 }
+  validates :city, :country, :name, :presence => true, :length => { :in => 4..249 }
   validates :website, :phone, :name, :uniqueness => true
 end

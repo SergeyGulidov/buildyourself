@@ -21,6 +21,16 @@ body {
 	font-size: 14px;
 }
 
-.margin_top{
-	margin-top: 6px;
+
+.check_box_hightlight{
+	background-color: #b7dd67;
+	padding: 6px;
+}
+
+.check_box_hightlight label{
+	margin-top: -6px; 
+}
+
+form #new_place{
+	padding-top: 40px;
 }
