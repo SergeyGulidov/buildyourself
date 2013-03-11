@@ -1,0 +1,16 @@
+<li class="has-dropdown">
+  <a href="#">
+  	<%= t('current_lang')%>
+  	<% @current_language =  params[:locale] || I18n.default_locale %>
+  	<%= image_tag("#{@current_language.to_s}.png", class: "lang_image")%>
+  	
+  </a> 
+  <ul class="dropdown">
+    <li class=<%= current_lang_or_not('en')%> >
+    	<%= link_to_unless_current "English", locale: "en" %></li>
+    <li class=<%= current_lang_or_not('ru')%> >
+    	<%= link_to_unless_current "Русский", locale: "ru" %></li>
+    <li class=<%= current_lang_or_not('lv')%> >
+    	<%= link_to_unless_current "Latviešu", locale: "lv" %></li>
+  </ul>
+</li>

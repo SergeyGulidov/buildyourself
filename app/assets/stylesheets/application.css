@@ -9,5 +9,53 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation_and_overrides
  *= require_tree .
  */
+
+html, body { height: 100%; margin: 0; }
+
+#container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+}
+
+#footer{
+  height: 60px;
+  background-image:url('grey.png')
+
+
+}
+
+#footer p, #footer li{
+	font-size: 12px;
+}
+
+.nav_bar_border_bottom{
+	border-bottom: 2px solid #91cbe6;
+	margin-bottom: 30px;
+}
+
+fieldset{
+	background-color: #fff;
+}
+
+#logo_row{
+	margin-bottom: 10px;
+}
+
+.alert_header{
+	color: #fff;
+}
+
+.lang_image{
+	padding-left: 8px;
+	margin-bottom: -2px;
+	display: inline;
+}
+
+.hide{
+	display: none;
+}

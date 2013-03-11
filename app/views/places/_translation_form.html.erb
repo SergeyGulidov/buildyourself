@@ -1,0 +1,42 @@
+
+
+  <%= form_for(@place) do |f| %>
+
+    <% field_set_tag do %>
+    
+      <% if @place.errors.any? %>
+      <div class="alert-box alert margin-left" id="errorExplanation">
+        <h4 class="alert_header"><%= pluralize(@place.errors.count, "error") %> prohibited
+            this post from being saved:</h4>
+        <ul>
+        <% @place.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+        <a href="#" class="close">&times;</a>
+      </div>
+      <% end %>
+
+    <h2>Latvian (default locale)</h2>
+      <%= f.text_field :name %>
+      <%= f.text_field :message %>
+
+    <hr/>
+
+    <h2>Russian translation</h2>
+    <%= f.globalize_fields_for :ru do |g| %>
+      <%= g.text_field :name %>
+      <%= g.text_field :message %>
+    <% end %>
+
+    <hr/>
+
+    <h2>English translation</h2>
+    <%= f.globalize_fields_for :en do |g| %>
+      <%= g.text_field :name %>
+      <%= g.text_field :message %>
+    <% end %>
+
+    <%= f.submit class: 'small button'  %>
+  <% end %>
+<% end  %>

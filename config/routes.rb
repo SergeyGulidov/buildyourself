@@ -1,4 +1,18 @@
 BuildYourSelf::Application.routes.draw do
+
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
+    resources :places
+
+    get "places/home"
+
+    get "places/new"
+    post "places/create"
+
+    get "places/contact"
+
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

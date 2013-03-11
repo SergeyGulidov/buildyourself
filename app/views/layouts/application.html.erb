@@ -1,14 +1,89 @@
 <!DOCTYPE html>
-<html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-  <title>BuildYourSelf</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+	<meta charset="utf-8" />
+	
+	<!-- Uncomment to make IE8 render like IE7 -->
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+	
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "vendor/custom.modernizr" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- Top Bar -->
+	<div id="container">
+	  <nav class="top-bar">
+	    <ul class="title-area">
 
-<%= yield %>
+	      <!-- Title Area -->
+	      <li class="name">
+	        <h1>
+	          <a href="#">
+	            Build Yourself
+	          </a>
+	        </h1>
+	      </li>
+	      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+	    </ul>
+	 
+	    <section class="top-bar-section">
+	      
+	      <!-- Right Nav Section -->
+	      <ul class="right">
+	        
 
+	        <li class="divider"></li>
+	        <li><a href="#">Main Item 2</a></li>
+	        
+	        <li class="divider"></li>
+	        <li><a href="#">Contacts</a></li>
+
+
+	        <li class="divider"></li>
+	        <%= render 'shared/language_selector'  %>
+	      </ul>
+	    </section>
+	  </nav>
+	<div class="nav_bar_border_bottom"></div>
+
+	  <!-- End Top Bar -->
+
+  <%= yield %>
+
+
+	<!-- Footer -->
+
+	<footer id="footer">
+	  <hr>
+	    <div class="row">
+
+	      <div class="large-6 columns">
+	          <p>&copy; Build Yourself. 2013.</p>
+	      </div>
+
+	      <div class="large-6 small-12 columns">
+	          <ul class="inline-list right">
+	            <li><a href="#">Link 1</a></li>
+	            <li><a href="#">Link 2</a></li>
+	            <li><a href="#">Link 3</a></li>
+	            <li><a href="#">Link 4</a></li>
+	          </ul>
+	      </div>
+	    </div>
+	</footer>
+
+	<!-- End Footer -->
+  
+  <%= javascript_include_tag "application" %>
 </body>
 </html>

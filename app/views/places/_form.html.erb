@@ -1,0 +1,36 @@
+<%= form_for(@post) do |f| %>
+
+  <% field_set_tag do %>
+    
+
+
+    <% if @post.errors.any? %>
+    <div class="alert-box alert margin-left" id="errorExplanation">
+      <h4 class="alert_header"><%= pluralize(@post.errors.count, "error") %> prohibited
+          this post from being saved:</h4>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <% end %>
+   
+
+
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: 'small button' %>
+    </div>
+    <% end %>
+<% end %>
