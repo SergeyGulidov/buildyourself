@@ -17,25 +17,82 @@
       </div>
       <% end %>
 
-    <h2>Latvian (default locale)</h2>
-      <%= f.text_field :name %>
-      <%= f.text_field :message %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :country, "Country" %>
+          <%= f.text_field :country %>
+        </div>
 
-    <hr/>
+        <div class="large-6 columns">
+          <%= f.label :city, "City" %>
+          <%= f.text_field :city %>
+        </div>
+      </div>
 
-    <h2>Russian translation</h2>
-    <%= f.globalize_fields_for :ru do |g| %>
-      <%= g.text_field :name %>
-      <%= g.text_field :message %>
-    <% end %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :street, "Street" %>
+          <%= f.text_field :street %>
+        </div>
 
-    <hr/>
+        <div class="large-6 columns">
+          <%= f.label :name, "Name for place" %>
+          <%= f.text_field :name %>
+        </div>
+      </div>
 
-    <h2>English translation</h2>
-    <%= f.globalize_fields_for :en do |g| %>
-      <%= g.text_field :name %>
-      <%= g.text_field :message %>
-    <% end %>
+      <div class="row">
+        <div class="large-4 columns">
+          <%= f.label :email, "Email" %>
+          <%= f.text_field :email %>
+        </div>
+
+        <div class="large-3 columns">
+          <%= f.label :phone, "Phone number" %>
+          <%= f.text_field :phone %>
+        </div>
+
+
+
+        <div class="large-5 columns">
+          <%= f.label :website, "Website" %>
+          <%= f.text_field :website %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :manytypes,
+               "If you have many types or club, please check this box in.",
+               class: "right inline" %>
+            <%= f.check_box :manytypes, id: "right-label" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :message, "Message for Russian speakers" %>
+          <%= f.text_area :message %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.globalize_fields_for :lv do |g| %>
+            <%= f.label :message, "Message for Latvian speakers" %>
+            <%= f.text_area :message %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.globalize_fields_for :en do |g| %>
+            <%= f.label :message, "Message for English speakers" %>
+            <%= f.text_area :message %>
+          <% end %>
+        </div>
+      </div>
 
     <%= f.submit class: 'small button'  %>
   <% end %>

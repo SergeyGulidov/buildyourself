@@ -1,6 +1,20 @@
 class Place < ActiveRecord::Base
-  attr_accessible :aproved, :city, :country, :email, :manytypes, :message, :name, :phone, :street, :type, :website
+
+  before_save{|place| place.email = place.downcase.email}
+
+  attr_accessible :aproved, :city, :country, :email, :manytypes,
+  	 :message, :name, :phone, :street, :type, :website, :translations_attributes
+
   translates :message, :name, :type
-  attr_accessible :translations_attributes
+
+  
   accepts_nested_attributes_for :translations
+
+  validates :email,
+   :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
+   :presence => true, :uniqueness => true
+
+
+  validates :city, :country, :name, :presence => true, :length => { :in => 6..249 }
+  validates :website, :phone, :name, :uniqueness => true
 end
