@@ -13,20 +13,29 @@
  *= require_tree .
  */
 
-html, body { height: 100%; margin: 0; }
+html, body { height: 100%; margin: 0; padding: 0; }
+
 
 #container {
+  background-image:url('clean_textile.png');
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -60px;
+  position: relative;
 }
 
 #footer{
-  height: 60px;
+  height: 50px; /* Define height of the footer */
+  position: absolute;
+  bottom: 0; /* Sit it on the bottom */
+  left: 0;
+  width: 100%; /* As wide as it's allowed */
   background-image:url('grey.png')
 
+}
 
+#push{
+	padding-bottom: 50px;
 }
 
 #footer p, #footer li{

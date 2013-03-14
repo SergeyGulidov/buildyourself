@@ -20,68 +20,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- Top Bar -->
 	<div id="container">
-	  <nav class="top-bar">
-	    <ul class="title-area">
+		<%= render 'shared/topbar'  %>
 
-	      <!-- Title Area -->
-	      <li class="name">
-	        <h1>
-	          <a href="#">
-	            Build Yourself
-	          </a>
-	        </h1>
-	      </li>
-	      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-	    </ul>
-	 
-	    <section class="top-bar-section">
-	      
-	      <!-- Right Nav Section -->
-	      <ul class="right">
-	        
+		<%= yield %>
 
-	        <li class="divider"></li>
-	        <li><a href="#">Home</a></li>
-	        
-	        <li class="divider"></li>
-	        <li><a href="#">Contact with us</a></li>
-
-
-	        <li class="divider"></li>
-	        <%= render 'shared/language_selector'  %>
-	      </ul>
-	    </section>
-	  </nav>
-	<div class="nav_bar_border_bottom"></div>
-
-	  <!-- End Top Bar -->
-
-  <%= yield %>
-
-
-	<!-- Footer -->
-
-	<footer id="footer">
-	  <hr>
-	    <div class="row">
-
-	      <div class="large-6 columns">
-	          <p>&copy; Build Yourself. 2013.</p>
-	      </div>
-
-	      <div class="large-6 small-12 columns">
-	          <ul class="inline-list right">
-	            <li><a href="#">Home</a></li>
-	            <li><a href="#">Contact with us</a></li>
-	          </ul>
-	      </div>
-	    </div>
-	</footer>
-
-	<!-- End Footer -->
-  
+		<div id="push"></div>
+		<%= render 'shared/footer'  %>
+	</div>
   <%= javascript_include_tag "application" %>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<footer id="footer">
+  <hr>
+    <div class="row">
+
+      <div class="large-6 columns">
+          <p>&copy; Build Yourself. 2013.</p>
+      </div>
+
+      <div class="large-6 small-12 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Home</a></li>
+
+            <li>
+              <%= link_to "Add new place", :controller => :places, :action => :new %>
+            </li>
+            
+            <li>
+              <%= link_to "Contact with us", :controller => :contacts, :action => :new %>
+            </li>
+          </ul>
+      </div>
+    </div>
+</footer>
