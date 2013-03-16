@@ -2,6 +2,8 @@ class Place < ActiveRecord::Base
   has_many :assignments
   has_many :types, through: :assignments
 
+  acts_as_gmappable
+
   before_save{|place| place.email = place.email.downcase}
 
   attr_accessible :aproved, :city, :country, :email, :manytypes,
@@ -21,4 +23,10 @@ class Place < ActiveRecord::Base
 
 
    scope :recent, order("created_at desc").limit(10)
+
+   def gmaps4rails_address
+    "#{self.street}, #{self.city}, #{self.country}" 
+   end
+
+
 end

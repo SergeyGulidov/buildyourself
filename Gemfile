@@ -8,7 +8,7 @@ gem 'rails', '~> 3.2.11'
 
 gem 'globalize3'
 gem 'simple_form'
-
+gem 'gmaps4rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

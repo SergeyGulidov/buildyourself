@@ -1,4 +1,6 @@
 
+<%= render 'shared/gmap' %>
+
 
 <% if @place.blank? %>
     <div class="row">
@@ -9,27 +11,10 @@
         </div>
     </div>
 <% else %>
-	<div class="row" >
-        <div class="large-12 columns">
-              <% if flash[:notice] %>
-                <div class="alert-box success">
-                  <h5><%= flash[:notice] %></h5>
-                </div>
-              <% end  %>
-
-
                 <div class="row">
-
                     <div class="large-8 columns white_bg">
 
-
-
-
-
                         <h4 class="border_bottom"><%= @place.name %></h4>
-
-                        
-
 
                         <table class="contacts">
                           <tbody><tr>
@@ -61,10 +46,6 @@
                         </tbody></table>
 
                         <p class="owners_text"><%= @place.message %></p>
-
-                        
-                        
-
                     </div>
 
 
@@ -81,6 +62,5 @@
                   </div>
                   <!-- End Right column -->
                 </div>
-            </div>
-	   </div>
+ 
 <% end %>

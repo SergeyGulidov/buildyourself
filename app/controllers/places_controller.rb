@@ -1,4 +1,10 @@
 class PlacesController < ApplicationController
+
+	def index
+	  @places = Place.all
+	  @json = Place.all.to_gmaps4rails
+	end
+
   def home
   	@place = Place.find(params[:id])
  
@@ -38,5 +44,20 @@ class PlacesController < ApplicationController
 
   def show
 	@place = Place.find(params[:id])
+	@json = Place.find(params[:id]).to_gmaps4rails
   end
+
+  def edit
+      @place = Place.find(params[:id])
+   end
+
+      def update
+      	@place = Place.find(params[:id])
+	      if @place.update_attributes(params[:place])
+	         redirect_to :action => 'show', :id => @place
+	      else
+	         @place = Place.find(params[:id])
+	         render :action => 'edit'
+      end
+   end
 end
