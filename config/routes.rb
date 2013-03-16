@@ -5,16 +5,20 @@ BuildYourSelf::Application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     resources :places
-
     get "places/home"
-
     get "places/new"
     post "places/create"
+    get "places/show"
 
     resources :contacts
     get "contacts/new"
     get "contacts/show"
     get "contacts/destroy"
+
+    resources :types
+    get "types/new"
+    post "types/create"
+    
 
   end
 

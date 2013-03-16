@@ -1,0 +1,27 @@
+<%= simple_form_for @type, html: { class: 'custom' } do |f| %>
+    <% field_set_tag "Add new type" do %>
+
+
+      <div class="row">
+        <div class="large-4 columns">
+          <%= f.globalize_fields_for(:ru) do |g| %>
+            <%= g.input :title, label: "Russian"%>
+          <% end %>
+        </div>
+
+        <div class="large-4 columns">
+          <%= f.globalize_fields_for(:lv) do |g| %>
+            <%= g.input :title, label: "Latvian" %>
+          <% end %>
+        </div>
+
+        <div class="large-4 columns">
+          <%= f.globalize_fields_for(:en) do |g| %>
+            <%= g.input :title, label: "English" %>
+          <% end %>
+        </div>
+      </div>
+
+    <%= f.button :submit, class: 'small button'  %>
+  <% end %>
+<% end  %>

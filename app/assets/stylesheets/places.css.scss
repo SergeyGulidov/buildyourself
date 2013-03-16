@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .margin-left li {
 	margin-left: 40px;
 }
@@ -22,11 +21,12 @@
 
 .check_box_hightlight{
 	background-color: #b7dd67;
-	padding: 6px;
+	padding: 7px;
+	margin-top: 16px;
 }
 
-.check_box_hightlight label{
-	margin-top: -6px; 
+.check_box_hightlight .checkbox{
+	margin-right:7px;
 }
 
 form #new_place{
@@ -34,3 +34,30 @@ form #new_place{
 }
 
 
+.white_bg{
+	background-color: white;
+}
+
+.small_margin_left{
+	margin-left:10px;
+}
+
+.border_bottom{
+	border_bottom:2px solid #d0e9f4!important;
+}
+
+.td-title{
+	background-color: #f4f4f4;
+	color: #888;
+}
+
+
+.contacts{
+	float: left;
+	margin-right: 20px;
+}
+
+.general{
+	margin-right: 5px;
+	padding-bottom: -5px!important;
+}

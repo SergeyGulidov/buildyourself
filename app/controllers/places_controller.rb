@@ -19,7 +19,6 @@ class PlacesController < ApplicationController
 
   def create
 	  @place = Place.new(params[:place])
-	 
 	  respond_to do |format|
 	    if @place.save
 	      format.html  { redirect_to(@place,
@@ -35,5 +34,9 @@ class PlacesController < ApplicationController
   end
 
   def contact
+  end
+
+  def show
+	@place = Place.find(params[:id])
   end
 end

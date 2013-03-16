@@ -21,10 +21,23 @@
 </head>
 <body>
 	<div id="container">
+
 		<%= render 'shared/topbar'  %>
+
+<div class="row" >
+  <div class="large-12 columns">
+
+		<% if flash[:notice] %>
+			<div class="alert-box success">
+			  <h5><%= flash[:notice] %></h5>
+			</div>
+		<% end  %>
+
 
 		<%= yield %>
 
+		</div>
+		</div>
 		<div id="push"></div>
 		<%= render 'shared/footer'  %>
 	</div>

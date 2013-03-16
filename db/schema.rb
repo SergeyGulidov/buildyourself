@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312162935) do
+ActiveRecord::Schema.define(:version => 20130316100507) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer "place_id"
+    t.integer "type_id"
+  end
+
+  add_index "assignments", ["place_id"], :name => "index_assignments_on_place_id"
+  add_index "assignments", ["type_id"], :name => "index_assignments_on_type_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -42,11 +50,26 @@ ActiveRecord::Schema.define(:version => 20130312162935) do
     t.string   "email"
     t.string   "name"
     t.boolean  "manytypes"
-    t.string   "type"
     t.boolean  "approved"
     t.text     "message"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.boolean  "different_type"
+  end
+
+  create_table "type_translations", :force => true do |t|
+    t.integer  "type_id"
+    t.string   "locale"
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  add_index "type_translations", ["locale"], :name => "index_type_translations_on_locale"
+  add_index "type_translations", ["type_id"], :name => "index_type_translations_on_type_id"
+
+  create_table "types", :force => true do |t|
+    t.string "title"
   end
 
 end

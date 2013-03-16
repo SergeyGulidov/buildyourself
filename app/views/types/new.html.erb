@@ -1,5 +1,4 @@
-<div class="row" >
-  <div class="large-12 columns">
+
  
     <!-- Logo -->
 
@@ -23,7 +22,7 @@
           <!-- Form -->
 
           <div class="large-8 columns">
-              <%= render 'translation_form'  %>
+              <%= render 'new_form'  %>
           </div>
 
           <!-- End Form -->
@@ -33,12 +32,23 @@
           <!-- Right column -->
 
           <div class="large-4 columns">
-    				<h4>How To:</h4>
-    	      <ul class="disc margin-left panel">
-    					  <p class="how_to">Jau sen ir noskaidrots fakts, ka aplūkojot maketa dizainu un kompozīciju teksta saturs novērš uzmanību. Lorem Ipsum izmanto tāpēc, kas tas nodrošina vairāk vai mazāk vienmērīgu burtu izvietojumu un padara to līdzīgu lasāmam tekstam angļu valodā, kas neizdodas, ja vienu un to pašu tekstu 'Šeit ir teksts, šeit ir teksts' atkārto.</p>
-    				</ul>
+    				<h4>Already Added:</h4>
+    	      <ul class="disc margin-left panel recent">
+            <% Type.all.each do |type| %>
+              <li>
+                <%= type.title %>
+              </li>
+            <% end %>
+            </ul>
                 
-            <%= render 'shared/recent_added' %>
+
+            <h4>Recent added:</h4>
+            <ul class="disc margin-left panel recent">
+    				  <li>Izglītības centrs “Latvikon” Latvijā</li>
+    				  <li>International House Riga-Satva</li>
+    				  <li>Transport and Telecommunication Institute</li>
+    				  <li>Rīgas Valsts tehnikums</li>
+    			  </ul>
     			</div>
 
           <!-- End Right column -->
@@ -48,6 +58,7 @@
     </div>
  
     <!-- End Content -->
- 
-  </div>
-</div>
+
+
+
+

@@ -1,99 +1,82 @@
-<%= form_for(@place) do |f| %>
-  
+<%= simple_form_for @place, html: { class: 'custom' } do |f| %>
     <% field_set_tag "Check in your place " do %>
-    
-      <% if @place.errors.any? %>
-      <div class="alert-box alert margin-left" id="errorExplanation">
-        <h4 class="alert_header"><%= pluralize(@place.errors.count, "error") %> prohibited
-            this post from being saved:</h4>
-        <ul>
-        <% @place.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-        <a href="#" class="close">&times;</a>
-      </div>
-      <% end %>
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.label :country, "Country" %>
-          <%= f.text_field :country %>
+          <%= f.input :country, label: "Country", selected: [ "Latvia" ], 
+            collection: [ "Latvia", "Brazil", "New Zealand"] %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.label :city, "City" %>
-          <%= f.text_field :city %>
+          <%= f.input :city, label: "City", selected: [ "Riga" ], 
+            collection: [ "Riga", "Ogre"] %>
         </div>
       </div>
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.label :street, "Street" %>
-          <%= f.text_field :street %>
+          <%= f.input :street, label: "Street address" %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.label :name, "Name for place" %>
-          <%= f.text_field :name %>
+          <%= f.input :name, label: "Name for place" %>
         </div>
       </div>
 
       <div class="row">
         <div class="large-4 columns">
-          <%= f.label :email, "Email" %>
-          <%= f.text_field :email %>
+          <%= f.input :email, label: "Email" %>
         </div>
 
         <div class="large-3 columns">
-          <%= f.label :phone, "Phone number" %>
-          <%= f.text_field :phone %>
+          <%= f.input :phone, label: "Phone number" %>
         </div>
-
-
 
         <div class="large-5 columns">
-          <%= f.label :website, "Website" %>
-          <%= f.text_field :website %>
+          <%= f.input :website, label: "Website" %>
         </div>
       </div>
 
       <div class="row">
-        <div class="large-12 columns">
+        
+        <div class="large-6 columns">
+          <%= f.association :types, label: "Change type of your place",
+            selected: ["Другой"] %>
+        </div>
+        <div class="large-6 columns">
           <div class="check_box_hightlight">
-            <%= f.label :manytypes,
-                 "If you have many types or club, please check this box in.",
-                 class: "right inline" %>
-              <%= f.check_box :manytypes, id: "right-label" %>
+            <%= f.input :manytypes,
+              label: "I have many types of places" %>
           </div>
         </div>
+
       </div>
+
 
       <div class="row">
         <div class="large-12 columns">
-          <%= f.label :message, "Message for Russian speakers" %>
-          <%= f.text_area :message %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.globalize_fields_for :lv do |g| %>
-            <%= f.label :message, "Message for Latvian speakers" %>
-            <%= f.text_area :message %>
+          <%= f.globalize_fields_for(:ru) do |g| %>
+            <%= g.input :message, label: "Message for Russian speakers", as: :text %>
           <% end %>
         </div>
       </div>
 
       <div class="row">
         <div class="large-12 columns">
-          <%= f.globalize_fields_for :en do |g| %>
-            <%= f.label :message, "Message for English speakers" %>
-            <%= f.text_area :message %>
+          <%= f.globalize_fields_for(:lv) do |g| %>
+            <%= g.input :message, label: "Message for Latvian speakers", as: :text %>
           <% end %>
         </div>
       </div>
 
-    <%= f.submit class: 'small button'  %>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.globalize_fields_for(:en) do |g| %>
+            <%= g.input :message, label: "Message for English speakers", as: :text %>
+          <% end %>
+        </div>
+      </div>
+
+    <%= f.button :submit, class: 'small button'  %>
   <% end %>
 <% end  %>
