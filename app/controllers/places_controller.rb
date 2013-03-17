@@ -2,7 +2,13 @@ class PlacesController < ApplicationController
 
 	def index
 	  @places = Place.all
-	  @json = Place.all.to_gmaps4rails
+	  @json = @places.to_gmaps4rails do |place, marker|
+	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+	    marker.title "#{place.name}"
+	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+	                    :width => 32,
+	                    :height => 32})
+  		end
 	end
 
   def home
@@ -44,7 +50,7 @@ class PlacesController < ApplicationController
 
   def show
 	@place = Place.find(params[:id])
-	@json = Place.find(params[:id]).to_gmaps4rails
+	@json = @place.to_gmaps4rails
   end
 
   def edit

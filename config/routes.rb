@@ -2,7 +2,11 @@ BuildYourSelf::Application.routes.draw do
 
 
 
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
+    resources :photos
 
     resources :places
       put "places/update"

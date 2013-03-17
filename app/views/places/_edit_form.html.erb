@@ -1,0 +1,123 @@
+<%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
+    <% field_set_tag "Check in your place " do %>
+
+<% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% end %>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.input :country, label: "Country", selected: [ "Latvia" ], 
+            collection: [ "Latvia", "Brazil", "New Zealand"] %>
+        </div>
+
+        <div class="large-6 columns">
+          <%= f.input :city, label: "City", selected: [ "Riga" ], 
+            collection: [ "Riga", "Ogre"] %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.input :street, label: "Street address" %>
+        </div>
+
+        <div class="large-6 columns">
+          <%= f.input :name, label: "Name for place" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-4 columns">
+          <%= f.input :email, label: "Email" %>
+        </div>
+
+        <div class="large-3 columns">
+          <%= f.input :phone, label: "Phone number" %>
+        </div>
+
+        <div class="large-5 columns">
+          <%= f.input :website, label: "Website" %>
+        </div>
+      </div>
+
+      <div class="row ">
+        
+        <div class="large-6 columns">
+          <%= f.association :types, label: "Change type of your place",
+            selected: ["Другой"] %>
+        </div>
+
+        <div class="large-6 columns">
+          <div class="check_box_hightlight">
+            <%= f.input :manytypes,
+              label: "I have many types of places" %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row add_margin">
+        <div class="large-12 columns add_photo">
+			<ul class="small-block-grid-6">
+              <% for photo in @place.photos %>
+                  <li>
+                  	
+                  	<div class="photo">
+                  		<%= image_tag photo.photo_url(:thumb) if photo.photo? %>
+                  	</div>
+                  	<div class="remove_photo_icon">&nbsp&nbsp&nbsp
+	                  	<%= link_to "", photo, :method => :delete, 
+	                  		class: "general-enclosed foundicon-remove " %>
+                  	</div>
+                  	
+                  </li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+
+      <div class="row photos">
+      	<div class="large-12 columns add_photo">
+
+            <% f.fields_for :photos do |photo|  %>
+              <%= photo.file_field :photo %>
+            <% end %>
+        
+            <%= f.link_to_add "Add photos", :photos, class: "small button" %>
+        </div>
+    </div>
+
+
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.globalize_fields_for(:ru) do |g| %>
+            <%= g.input :message, label: "Message for Russian speakers", as: :text %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.globalize_fields_for(:lv) do |g| %>
+            <%= g.input :message, label: "Message for Latvian speakers", as: :text %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.globalize_fields_for(:en) do |g| %>
+            <%= g.input :message, label: "Message for English speakers", as: :text %>
+          <% end %>
+        </div>
+      </div>
+
+
+
+
+
+    <%= f.button :submit, class: 'small button'  %>
+  <% end %>
+<% end  %>

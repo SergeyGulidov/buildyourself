@@ -1,6 +1,8 @@
-<%= simple_form_for @place, html: { class: 'custom' } do |f| %>
+<%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
     <% field_set_tag "Check in your place " do %>
 
+      
+      
       <div class="row">
         <div class="large-6 columns">
           <%= f.input :country, label: "Country", selected: [ "Latvia" ], 
@@ -51,6 +53,17 @@
         </div>
 
       </div>
+
+      <div class="row photos">
+        <div class="large-12 columns add_photo">
+
+            <% f.fields_for :photos do |photo|  %>
+              <%= photo.file_field :photo %>
+            <% end %>
+        
+            <%= f.link_to_add "Add photos", :photos, class: "small button" %>
+        </div>
+    </div>
 
 
       <div class="row">

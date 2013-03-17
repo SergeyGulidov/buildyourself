@@ -20,12 +20,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="container">
 
-		<%= render 'shared/topbar'  %>
+	<div id="topbar"><%= render 'shared/topbar'  %></div>
+	
+<div id="container">
+
+		
 
 <div class="row" >
   <div class="large-12 columns">
+  	<div class="row" >
 
 		<% if flash[:notice] %>
 			<div class="alert-box success">
@@ -35,13 +39,14 @@
 
 
 		<%= yield %>
-
-		</div>
-		</div>
+	</div>
+  </div>
+</div>
 		<div id="push"></div>
 		<%= render 'shared/footer'  %>
 	</div>
   <%= javascript_include_tag "application" %>
   <%= yield :scripts %>
+
 </body>
 </html>

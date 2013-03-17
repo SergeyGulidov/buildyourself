@@ -15,8 +15,8 @@
 // $em-base: 16px;
 
 // We use these to control various global styles
-// $body-bg: #fff;
-// $body-font-color: #222;
+ $body-bg: #fff;
+ $body-font-color: #464A4C;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
@@ -50,8 +50,9 @@
 // Grid Variables
 //
 
-// $row-width: 62.5em;
+ $row-width: 70em;
 // $column-gutter: 1.875em;
+$column-gutter: 1.8em;
 // $total-columns: 12;
 
 //
@@ -73,7 +74,7 @@
 // $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color: #222;
+ $header-font-color: #464A4C;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -953,7 +954,7 @@
 //
 
 // Background color for the top bar
-$topbar-bg: #67b7dd;
+$topbar-bg: #fff;
 
 // Height and margin
 // $topbar-height: 45px;
@@ -967,25 +968,25 @@ $topbar-bg: #67b7dd;
 // $topbar-title-font-size: emCalc(17px);
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #fff;
+ $topbar-link-color: #444;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: emCalc(13px);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: #67b7dd;
-// $topbar-dropdown-link-color: #fff;
+$topbar-dropdown-bg: #fff;
+ $topbar-dropdown-link-color: #464A4C;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
 // $topbar-dropdown-toggle-alpha: 0.5;
- $dropdown-label-color: #67b7dd;
+ $dropdown-label-color: #fff;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: emCalc(13px);
 // $topbar-menu-link-weight: bold;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
-// $topbar-menu-link-color-toggled: #888;
+ $topbar-menu-link-color: #464A4C;
+ $topbar-menu-icon-color: #464A4C;
+$topbar-menu-link-color-toggled: #fff;
 // $topbar-menu-icon-color-toggled: #888;
 
 // Transitions and breakpoint styles

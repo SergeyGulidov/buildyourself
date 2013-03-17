@@ -9,6 +9,9 @@ gem 'rails', '~> 3.2.11'
 gem 'globalize3'
 gem 'simple_form'
 gem 'gmaps4rails'
+gem "rmagick"
+gem "carrierwave"
+gem 'nested_form', github: 'ryanb/nested_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
