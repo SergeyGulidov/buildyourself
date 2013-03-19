@@ -1,5 +1,47 @@
+
+
+
+
+
+
+
 <%= gmaps({
 	"map_options" => {"auto_zoom" => false, "zoom" => 8 },
 	"markers" => {"data" => @json }
 	})
 %>
+
+<form class="custom stick_to_map">
+
+
+
+
+			<div class="section-container horizontal-nav" data-section="" style="height: 50px;">
+              <section class="section" style="">
+                <p class="title" style="left: 0px;"><a href="#">Section 1</a></p>
+                <div class="content" style="left: -1px; top: 48px;">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+              <section class="section" style="">
+                <p class="title" style="left: 86px;"><a href="#">Section 2</a></p>
+                <div class="content" style="left: 85px; top: 48px;">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+            </div>			
+
+
+</form>

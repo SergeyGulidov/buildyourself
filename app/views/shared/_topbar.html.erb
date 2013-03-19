@@ -1,4 +1,4 @@
-<nav class="top-bar" id="top-bar">
+<nav class="top-bar" >
 	<ul class="title-area">
 	  <li class="name"><h1><a href="#">Build Yourself</a></h1></li>
 	  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
@@ -10,10 +10,10 @@
 
 			<li class="divider"></li>
 			<li>
-              <%= link_to "Add new place", :controller => :places, :action => :new %>
+              <%= link_to "Add new place", :controller => :places, :action => :new %> 
             </li>
-
-			<li class="divider"></li>
+            
+			<li class="divider">/</li>
 			<li>
               <%= link_to "Contact with us", :controller => :contacts, :action => :new %>
             </li>
@@ -23,6 +23,5 @@
 		</ul>
 	</section>
 </nav>
-
 
 

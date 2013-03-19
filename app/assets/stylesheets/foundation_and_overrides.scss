@@ -374,7 +374,7 @@ $column-gutter: 1.8em;
 
 // We use these to control border styles.
 // $crumb-function-factor: 10%;
-// $crumb-border-size: 1px;
+ $crumb-border-size: 0;
 // $crumb-border-style: solid;
 // $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
 // $crumb-radius: $button-radius;
@@ -783,9 +783,9 @@ $column-gutter: 1.8em;
 // $section-function-factor: 10%;
 
 // These style the titles
-// $section-title-color: #333;
-// $section-title-bg: #efefef;
-// $section-title-bg-active: darken($section-title-bg, $section-function-factor);
+ $section-title-color: #464A4C;
+ $section-title-bg: #fff;
+ $section-title-bg-active: #FFFF88;
 // $section-title-bg-active-tabs: #fff;
 
 // Want to control border size, here ya go!
