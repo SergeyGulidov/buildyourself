@@ -6,22 +6,28 @@
   });
 </script>
 
-<%= render 'shared/gmap' %>
-
-
-<% if @place.blank? %>
     <div class="row">
-        <div class="large-12 columns">
-            <div class="row">
-	           <p> There is some error at this place.</p>
-            </div>
-        </div>
-    </div>
-<% else %>
-                <div class="row">
-                    <div class="large-8 columns white_bg">
+      <div class="large-12 columns">
+      <%= render 'shared/gmap' %>
+        <div class="row">
+
+                    <div class="large-8 columns">
                       
-                        <h4 class="border_bottom"><%= @place.name %></h4>
+                        <h4><%= @place.name %></h4>
+
+                        <dl class="sub-nav">
+                          <dd class="active"><a href="#">With review</a></dd>
+                          <dd class="yellow active"><a href="#">4 comments</a></dd>
+                          <dd class="stars"> <i class="general foundicon-star">
+                              <i class="general foundicon-star">
+                                <i class="general foundicon-star">
+                                  <i class="general foundicon-star">
+                                    <i class="general foundicon-star">
+                                    </i></i></i></i></i>
+                            </dd>
+                        </dl>
+
+
 
                         <table class="contacts">
                           <tbody><tr>
@@ -57,11 +63,21 @@
 
 
 
-                  <!-- Right column -->
+
                   <div class="large-4 columns">
+                    <ul class="breadcrumbs">
+                        <% @place.types.each do |type| %>
+                              <li><a href="#"><%= type.title %></a></li>
+                            <% end  %>
+
+
+                      <li><a href="#">Home</a></li>
+                      <li class="unavailable"><a href="#">Gene Splicing</a></li>
+                    </ul>
+
                     <ul class="small-block-grid-3 photo_block">
                       <% for photo in @place.photos %>
-                          <li><%= image_tag photo.photo_url(:thumb).to_s %></li>
+                          <li><%= image_tag photo.photo_url(:thumb).to_s, class: "th" %></li>
                       <% end %>
                     </ul>
                         
@@ -69,6 +85,8 @@
 
                   </div>
                   <!-- End Right column -->
-                </div>
- 
-<% end %>
+
+
+        </div>
+      </div>
+    </div>

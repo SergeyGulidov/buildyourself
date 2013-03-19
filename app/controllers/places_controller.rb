@@ -9,6 +9,8 @@ class PlacesController < ApplicationController
 	                    :width => 32,
 	                    :height => 32})
   		end
+
+
 	end
 
   def home

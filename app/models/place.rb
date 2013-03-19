@@ -2,7 +2,7 @@ class Place < ActiveRecord::Base
   has_many :assignments
   has_many :types, through: :assignments
 
-  has_many :photos
+  has_many :photos, :dependent => :destroy
 
   acts_as_gmappable
 
@@ -27,6 +27,7 @@ class Place < ActiveRecord::Base
 
 
    scope :recent, order("created_at desc").limit(10)
+   scope :recent5, order("created_at desc").limit(5)
 
    def gmaps4rails_address
     "#{street}, #{city}, #{country}" 

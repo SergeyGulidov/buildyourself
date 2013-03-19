@@ -20,29 +20,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<div id="topbar"><%= render 'shared/topbar'  %></div>
+<%= render 'shared/topbar'  %>
 	
+
+
 <div id="container">
+	<div class="row" >
+	  <div class="large-12 columns">
+	  	<div class="row" >
 
-		
-
-<div class="row" >
-  <div class="large-12 columns">
-  	<div class="row" >
-
-		<% if flash[:notice] %>
-			<div class="alert-box success">
-			  <h5><%= flash[:notice] %></h5>
-			</div>
-		<% end  %>
+			<% if flash[:notice] %>
+				<div class="alert-box success">
+				  <h5><%= flash[:notice] %></h5>
+				</div>
+			<% end  %>
 
 
-		<%= yield %>
+			<%= yield %>
+		</div>
+	  </div>
 	</div>
-  </div>
-</div>
-		<div id="push"></div>
+	<div id="push"></div>
 		<%= render 'shared/footer'  %>
 	</div>
   <%= javascript_include_tag "application" %>

@@ -47,15 +47,14 @@ form #new_place{
 }
 
 .td-title{
-	background-color: #FFFF88;
-	color: #464A4C;
+	background-color: #BCC8CC;
+	color: #fff;
 }
 
 
 .contacts{
 	float: left;
 	margin-right: 20px;
-	color: #464A4C;
 }
 
 .general{
@@ -67,8 +66,8 @@ form #new_place{
 
 .map_container {
 	width: 100%;
-	margin-top: -25px;
-	margin-bottom: 20px;
+	margin-top: 0px;
+	margin-bottom: 50px;
 
 
 }
@@ -79,8 +78,7 @@ form #new_place{
 }
 
 .photo_block{
-	background-color: #fff;
-	padding: 20px 0 20px 0;
+	padding: 5px 0 20px 0;
 }
 
 .add_photo input{
@@ -106,4 +104,13 @@ form #new_place{
 
 .remove_photo_icon a:hover{
 	color: #dd677c;
+}
+
+.stars{
+	padding-left:20px;
+}
+
+
+.place_box {
+	margin-bottom: 20px;
 }
