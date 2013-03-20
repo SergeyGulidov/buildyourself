@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  load_and_authorize_resource
+  
   def new
   	@contact = Contact.new
 	 
@@ -20,10 +22,13 @@ class ContactsController < ApplicationController
 
   def show
   	@contacts = Contact.find(:all)
+    authorize! :show, @contacts
   end
 
   def destroy
+    #authorize! :destroy, @contacts
     Contact.find(params[:id]).destroy
     redirect_to :action => 'show'
+
   end
 end

@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
+	
+ 
+
   attr_accessible :body, :email
 
   before_save{|contact| contact.email = contact.email.downcase}

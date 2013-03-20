@@ -36,6 +36,13 @@
 				  <h5><%= flash[:notice] %></h5>
 				</div>
 			<% end  %>
+			<% if flash[:error] %>
+				<div class="alert-box alert-box">
+				  <h5><%= flash[:error] %></h5>
+				</div>
+			<% end  %>
+
+
 			<%= yield %>
 		</div>
 	  </div>

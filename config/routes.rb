@@ -21,7 +21,6 @@ BuildYourSelf::Application.routes.draw do
 
 
     resources :contacts
-      get "contacts/destroy"
 
     resources :types
 

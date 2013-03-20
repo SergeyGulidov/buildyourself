@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
-
+load_and_authorize_resource
+	
 	def index
 	  @places = Place.all
 	  @json = @places.to_gmaps4rails do |place, marker|
@@ -23,8 +24,7 @@ class PlacesController < ApplicationController
   end
 
   def new
-  	@place = Place.new
-	 
+  	@place = Place.new 
 	respond_to do |format|
 		format.html  # new.html.erb
 		format.json  { render :json => @place }
@@ -33,6 +33,8 @@ class PlacesController < ApplicationController
 
   def create
 	  @place = Place.new(params[:place])
+	  @place.user_id = current_user.id
+
 	  respond_to do |format|
 	    if @place.save
 	      format.html  { redirect_to(@place,
@@ -46,10 +48,7 @@ class PlacesController < ApplicationController
 	    end
 	  end
   end
-
-  def contact
-  end
-
+  
   def show
 	@place = Place.find(params[:id])
 	@json = @place.to_gmaps4rails

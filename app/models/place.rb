@@ -1,8 +1,8 @@
 class Place < ActiveRecord::Base
   has_many :assignments
   has_many :types, through: :assignments
-
   has_many :photos, :dependent => :destroy
+  belongs_to :user
 
   acts_as_gmappable
 
@@ -23,7 +23,7 @@ class Place < ActiveRecord::Base
 
 
    validates :city, :country, :name, :presence => true, :length => { :in => 4..249 }
-   validates :phone, :name, :uniqueness => true
+   validates :name, :uniqueness => true
 
 
    scope :recent, order("created_at desc").limit(10)
