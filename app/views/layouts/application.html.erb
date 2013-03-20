@@ -36,8 +36,6 @@
 				  <h5><%= flash[:notice] %></h5>
 				</div>
 			<% end  %>
-
-
 			<%= yield %>
 		</div>
 	  </div>
@@ -45,6 +43,13 @@
 	<div id="push"></div>
 		<%= render 'shared/footer'  %>
 	</div>
+
+
+
+
+
+
+
   <%= javascript_include_tag "application" %>
   <%= yield :scripts %>
 

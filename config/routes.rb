@@ -1,32 +1,31 @@
 BuildYourSelf::Application.routes.draw do
-
-
-
-
-
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
+
+
+    devise_for :users, :controllers => {
+      :registrations => "registrations", 
+      :passwords => "passwords", 
+      :sessions => "sessions"
+    }
+
+
+    
+    root :to => 'static_pages#index'
     resources :photos
 
+
+
+
     resources :places
-      put "places/update"
-      get "places/edit"
-      get "places/index"
-      get "places/home"
-      get "places/new"
-      post "places/create"
-      get "places/show"
 
 
     resources :contacts
-      get "contacts/new"
-      get "contacts/show"
       get "contacts/destroy"
 
     resources :types
-      get "types/new"
-      post "types/create"
-    
+
+
 
   end
 
@@ -79,7 +78,7 @@ BuildYourSelf::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'places#index'
 
   # See how all your routes lay out with "rake routes"
 
