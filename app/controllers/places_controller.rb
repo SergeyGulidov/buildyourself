@@ -2,8 +2,9 @@ class PlacesController < ApplicationController
 load_and_authorize_resource
 	
 	def index
-		@places = Place.by_votes
-	  @json = @places.to_gmaps4rails do |place, marker|
+		@places = Place.by_votes.page(params[:page]).per(5)
+
+	    @json = Place.find(:all).to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"
 	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",

@@ -1,4 +1,4 @@
-<% Place.recent.each do |place| %>
+<% @places.each do |place| %>
 	  <div class="large-5 columns place_box">
 	  	<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
 
@@ -65,3 +65,5 @@
 	  </div>
 	<hr>
 <% end %>
+
+<%= paginate @places %>

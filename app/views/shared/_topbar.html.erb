@@ -1,6 +1,6 @@
 <nav class="top-bar" >
 	<ul class="title-area">
-	  <li class="name"><h1><a href="#">Build Yourself</a></h1></li>
+	  <li class="name"><h1><%= link_to "Build Yourself", root_path %></h1></li>
 	  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 	</ul>
 
@@ -25,6 +25,10 @@
 	        <li class="divider"></li>
 			
 			<li><%= link_to "Home", root_path %></li>
+
+			<li class="divider"></li>
+			<li><%= link_to "Places", places_path %></li>
+
 
 			<li class="divider"></li>
 			<li>

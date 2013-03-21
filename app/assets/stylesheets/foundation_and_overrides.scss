@@ -630,14 +630,14 @@ $column-gutter: 1.8em;
 // We use these to set the list-item properties
 // $pagination-li-float: $default-float;
 // $pagination-li-height: emCalc(24px);
-// $pagination-li-font-color: #222;
-// $pagination-li-font-size: emCalc(14px);
+ $pagination-li-font-color: #464A4C;
+ $pagination-li-font-size: emCalc(16px);
 // $pagination-li-margin: emCalc(5px);
 
 // We use these for the pagination anchor links
 // $pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px);
-// $pagination-link-font-color: #999;
-// $pagination-link-active-bg: darken(#fff, 10%);
+ $pagination-link-font-color: #464A4C;
+ $pagination-link-active-bg: #FFFF88;
 
 // We use these for disabled anchor links
 // $pagination-link-unavailable-cursor: default;
@@ -645,9 +645,9 @@ $column-gutter: 1.8em;
 // $pagination-link-unavailable-bg-active: transparent;
 
 // We use these for currently selected anchor links
-// $pagination-link-current-background: $primary-color;
+ $pagination-link-current-background: #BCC8CC;
 // $pagination-link-current-font-color: #fff;
-// $pagination-link-current-font-weight: bold;
+ $pagination-link-current-font-weight: normal;
 // $pagination-link-current-cursor: default;
 // $pagination-link-current-active-bg: $primary-color;
 
