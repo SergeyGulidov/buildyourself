@@ -64,7 +64,8 @@
                   <li>
                   	
                   	<div class="photo">
-                  		<%= image_tag photo.photo_url(:thumb) if photo.photo? %>
+                  		                <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
+                   photo.photo_url(:full).to_s, rel: "facebox" %>
                   	</div>
                   	<div class="remove_photo_icon">&nbsp&nbsp&nbsp
 	                  	<%= link_to "", photo, :method => :delete, 

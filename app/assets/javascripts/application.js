@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.facebox
 //= require_tree .
 //= require jquery_nested_form
 

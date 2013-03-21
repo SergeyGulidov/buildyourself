@@ -45,4 +45,8 @@ class Place < ActiveRecord::Base
   def votes
     read_attribute(:votes) || place_votes.sum(:value)
   end
+
+  def to_param
+    "#{id}-#{name}".parameterize
+  end
 end

@@ -49,8 +49,14 @@
             <ul class="large-block-grid-3 photo_block">
             	<% place.photos = place.photos.take(3) %>
             	<% place.photos.each do |photo| %>
-            		<li><%= image_tag photo.photo_url(:thumb).to_s, class: "th" %></li>
-            	<% end  %>
+            		<li>
+            			<%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
+            			 photo.photo_url(:full).to_s, rel: "facebox" %>
+            		</li>
+            		<% end %>
+
+            		
+         
             </ul>
 
 

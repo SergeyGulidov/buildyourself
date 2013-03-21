@@ -14,6 +14,7 @@ gem "carrierwave"
 gem 'nested_form', github: 'ryanb/nested_form'
 gem 'devise'
 gem "cancan"
+gem 'facebox-rails'
 
 
 # Gems used only for assets and not required

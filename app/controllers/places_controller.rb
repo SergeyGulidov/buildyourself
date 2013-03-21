@@ -73,7 +73,7 @@ load_and_authorize_resource
    end
 
   def vote
-    vote = current_user.place_votes.new(value: params[:value], place_id: params[:id])
+    vote = current_user.place_votes.new(value: params[:value], place_id: params[:id].to_i)
     if vote.save
       redirect_to :back, notice: "Thank you for voting."
     else

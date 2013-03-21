@@ -21,7 +21,10 @@ BuildYourSelf::Application.routes.draw do
 
 
 
-    resources :places do
+    resources :places, only: [:index, :new, :create] do
+      member { post :vote }
+    end
+    resources :places, path: "", except: [:index, :new, :create] do
       member { post :vote }
     end
 
