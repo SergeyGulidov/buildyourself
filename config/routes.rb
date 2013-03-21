@@ -1,4 +1,8 @@
 BuildYourSelf::Application.routes.draw do
+
+  root :to => 'static_pages#index'
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
 
@@ -11,16 +15,23 @@ BuildYourSelf::Application.routes.draw do
 
 
     
-    root :to => 'static_pages#index'
+    
     resources :photos
 
 
 
 
-    resources :places
+    resources :places do
+      member { post :vote }
+    end
 
+    
+    match 'contacts/show' => 'contacts#show'
 
     resources :contacts
+     
+
+
 
     resources :types
 

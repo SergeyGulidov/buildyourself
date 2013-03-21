@@ -1,14 +1,11 @@
 class Ability
   include CanCan::Ability
 
-
-
-  
   def initialize(user)
 
     alias_action :index, :show, :to => :read
     alias_action :new, :to => :create
-    alias_action :edit, :update, :to => :update
+    #alias_action :edit, :update, :to => :update
 
     user ||= User.new # guest user
 
@@ -17,16 +14,24 @@ class Ability
     # elsif user.role? :operator
     #   can :manage, Post
     else 
+
+      #place controller
       can :read, Place
       can :create, Place
+      can :update, Place, :user_id => user.id
 
+      #contact controller
       can :create, Contact
+
+
+      #photo controller
 
       can :create, Photo
       can :read, Photo
       can :edit, Photo
       can :destroy, Photo
 
+      # type controller
 
     end
   end

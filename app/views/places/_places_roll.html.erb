@@ -1,9 +1,24 @@
-<% Place.recent5.each do |place| %>
+<% Place.recent.each do |place| %>
 	  <div class="large-5 columns place_box">
 	  	<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
 
-	  	<%= render "shared/subnav"  %>
-		
+		<dl class="sub-nav">
+		  <dd class="active"><a href="#">With review</a></dd>
+		  <dd class="active"><a href="#">4 comments</a></dd>
+		  
+
+		    <dd class="active"><a href="#"><%= pluralize place.votes, "vote" %></a></dd>
+		    <% if current_user && current_user.can_vote_for?(place) %>
+		      <dd>
+		      	<%= link_to "", vote_place_path(place, value: 1), method: "post",
+		      		class: "general foundicon-up-arrow" %>
+		      	<%= link_to "", vote_place_path(place, value: -1), method: "post",
+		      		class: "general foundicon-down-arrow"  %>
+		      </dd>
+		    <% end %>
+
+		</dl>
+				
 
 
 	  	<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>

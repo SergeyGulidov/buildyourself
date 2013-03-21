@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
 	has_one :role
   has_many :places
+  has_many :place_votes
+
 	
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -16,14 +18,17 @@ class User < ActiveRecord::Base
 
  
 
-  def role?(role)
-    if defined? self.role.name
-      self.role.name == role.to_s 
-    else
-      false
+  def role?(r)
+    unless self.role.nil?
+      return self.role.name.to_s == r.to_s
     end
-
   end
 
+  def total_votes
+    PlaceVote.joins(:place).where(places: {user_id: self.id}).sum('value')
+  end
 
+  def can_vote_for?(place)
+    place_votes.build(value: 1, place: place).valid?
+  end
 end

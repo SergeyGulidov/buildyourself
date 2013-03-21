@@ -1,4 +1,6 @@
 class TypesController < ApplicationController
+	load_and_authorize_resource
+	
   def new
   	@type = Type.new
 	 

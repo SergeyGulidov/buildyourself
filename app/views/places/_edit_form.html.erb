@@ -106,18 +106,6 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.globalize_fields_for(:en) do |g| %>
-            <%= g.input :message, label: "Message for English speakers", as: :text %>
-          <% end %>
-        </div>
-      </div>
-
-
-
-
-
     <%= f.button :submit, class: 'small button'  %>
   <% end %>
 <% end  %>

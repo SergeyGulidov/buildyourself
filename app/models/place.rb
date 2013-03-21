@@ -4,7 +4,10 @@ class Place < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   belongs_to :user
 
+  has_many :place_votes
+
   acts_as_gmappable
+
 
   before_save{|place| place.email = place.email.downcase}
 
@@ -33,5 +36,13 @@ class Place < ActiveRecord::Base
     "#{street}, #{city}, #{country}" 
    end
 
+  def self.by_votes
+    select('places.*, coalesce(value, 0) as votes').
+    joins('left join place_votes on place_id=places.id').
+    order('votes desc')
+  end
 
+  def votes
+    read_attribute(:votes) || place_votes.sum(:value)
+  end
 end

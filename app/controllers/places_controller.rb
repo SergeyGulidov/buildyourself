@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
 load_and_authorize_resource
 	
 	def index
-	  @places = Place.all
+		@places = Place.by_votes
 	  @json = @places.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"
@@ -33,7 +33,11 @@ load_and_authorize_resource
 
   def create
 	  @place = Place.new(params[:place])
-	  @place.user_id = current_user.id
+	  if current_user
+	  	@place.user_id = current_user.id 
+	  else
+	  	@place.user_id = 7  # admin id by default
+	  end
 
 	  respond_to do |format|
 	    if @place.save
@@ -67,4 +71,14 @@ load_and_authorize_resource
 	         render :action => 'edit'
       end
    end
+
+  def vote
+    vote = current_user.place_votes.new(value: params[:value], place_id: params[:id])
+    if vote.save
+      redirect_to :back, notice: "Thank you for voting."
+    else
+      redirect_to :back, alert: "Unablet to vote, perhaps you already did."
+    end
+  end
+
 end
