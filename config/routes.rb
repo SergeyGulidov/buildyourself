@@ -39,7 +39,6 @@ BuildYourSelf::Application.routes.draw do
     resources :types
 
 
-
   end
 
   # The priority is based upon order of creation:

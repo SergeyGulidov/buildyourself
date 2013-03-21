@@ -33,6 +33,8 @@ class Ability
 
       # type controller
 
+      can :read, Type
+
     end
   end
 end
