@@ -1,18 +1,18 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
+
 	
 	def index
-		@places = Place.by_votes.page(params[:page]).per(5)
+		places = Place.where(approved: 1)
+		@places = places.by_votes.page(params[:page]).per(5)
 
-	    @json = Place.find(:all).to_gmaps4rails do |place, marker|
+	    @json = places.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"
 	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
 	                    :width => 32,
 	                    :height => 32})
   		end
-
-
 	end
 
   def home
@@ -61,6 +61,13 @@ load_and_authorize_resource
 
   def edit
       @place = Place.find(params[:id])
+      @json = @place.to_gmaps4rails do |place, marker|
+	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+	    marker.title "#{place.name}"
+	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+	                    :width => 32,
+	                    :height => 32})
+  		end
    end
 
       def update
@@ -80,6 +87,30 @@ load_and_authorize_resource
     else
       redirect_to :back, alert: "Unablet to vote, perhaps you already did."
     end
+  end
+
+  def approve
+  	places = Place.where(approved: 0)
+  	@places = places.page(params[:page]).per(5)
+
+  	@json = places.to_gmaps4rails do |place, marker|
+	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+	    marker.title "#{place.name}"
+	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+	                    :width => 32,
+	                    :height => 32})
+  	end
+  end
+
+  def make_approve
+  	@place = Place.find(params[:id])
+      @json = @place.to_gmaps4rails do |place, marker|
+	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+	    marker.title "#{place.name}"
+	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+	                    :width => 32,
+	                    :height => 32})
+  		end
   end
 
 end

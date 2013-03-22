@@ -35,13 +35,13 @@
 	  	<div class="row" >
 
 			<% if flash[:notice] %>
-				<div class="alert-box success">
-				  <h5><%= flash[:notice] %></h5>
+				<div id="flash-notice" class="alert-box success">
+				  <%= flash[:notice] %>
 				</div>
 			<% end  %>
 			<% if flash[:error] %>
 				<div class="alert-box alert-box">
-				  <h5><%= flash[:error] %></h5>
+				  <%= flash[:error] %>
 				</div>
 			<% end  %>
 

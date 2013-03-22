@@ -1,9 +1,9 @@
 class Type < ActiveRecord::Base
-  attr_accessible :translations_attributes
+  attr_accessible :translations_attributes, :category, :slug
   has_many :assignments
   has_many :places, through: :assignments
 
-  acts_as_gmappable
+  #acts_as_gmappable
 
   translates :title
   accepts_nested_attributes_for :translations
@@ -13,10 +13,8 @@ class Type < ActiveRecord::Base
   scope :all, order("title desc")
 
   def to_param
-    "#{id}-#{title}".parameterize
+    "#{id}-#{slug}".parameterize
   end
-
-
 
 
 end

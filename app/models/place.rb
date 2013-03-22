@@ -2,6 +2,7 @@ class Place < ActiveRecord::Base
   has_many :assignments
   has_many :types, through: :assignments
   has_many :photos, :dependent => :destroy
+
   belongs_to :user
 
   has_many :place_votes
@@ -11,7 +12,7 @@ class Place < ActiveRecord::Base
 
   before_save{|place| place.email = place.email.downcase}
 
-  attr_accessible :aproved, :city, :country, :email, :manytypes,
+  attr_accessible :approved, :city, :country, :email, :manytypes,
   	 :message, :name, :phone, :street, :website, :translations_attributes,
      :type_ids, :photos_attributes, :photo
 

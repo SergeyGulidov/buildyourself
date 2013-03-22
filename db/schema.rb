@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321083626) do
+ActiveRecord::Schema.define(:version => 20130322161856) do
 
   create_table "assignments", :force => true do |t|
     t.integer "place_id"
@@ -50,12 +50,11 @@ ActiveRecord::Schema.define(:version => 20130321083626) do
   add_index "place_translations", ["place_id"], :name => "index_place_translations_on_place_id"
 
   create_table "place_votes", :force => true do |t|
-    t.integer "place_id"
     t.integer "user_id"
     t.integer "value"
+    t.string  "place_id"
   end
 
-  add_index "place_votes", ["place_id"], :name => "index_place_votes_on_place_id"
   add_index "place_votes", ["user_id"], :name => "index_place_votes_on_user_id"
 
   create_table "places", :force => true do |t|
@@ -76,7 +75,10 @@ ActiveRecord::Schema.define(:version => 20130321083626) do
     t.boolean  "gmaps"
     t.integer  "approved",       :default => 0
     t.integer  "user_id"
+    t.string   "slug"
   end
+
+  add_index "places", ["slug"], :name => "index_places_on_slug"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -144,6 +146,8 @@ ActiveRecord::Schema.define(:version => 20130321083626) do
 
   create_table "types", :force => true do |t|
     t.string "title"
+    t.string "category"
+    t.string "slug"
   end
 
   create_table "users", :force => true do |t|

@@ -1,11 +1,11 @@
 BuildYourSelf::Application.routes.draw do
 
-  root :to => 'static_pages#index'
+
 
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-
+  root :to => 'static_pages#index'
 
     devise_for :users, :controllers => {
       :registrations => "registrations", 
@@ -24,8 +24,12 @@ BuildYourSelf::Application.routes.draw do
     resources :places, only: [:index, :new, :create] do
       member { post :vote }
     end
+
     resources :places, path: "", except: [:index, :new, :create] do
       member { post :vote }
+      get "approve"
+      get "make_approve"
+      
     end
 
     
@@ -35,8 +39,9 @@ BuildYourSelf::Application.routes.draw do
      
 
 
-
+    match 'types/analize' => 'types#analize'
     resources :types
+
 
 
   end

@@ -1,15 +1,29 @@
-<% provide(:title, 'Places to approve') %>
+<% provide(:title, @place.name) %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  Gmaps.map.callback = function() {
+  console.log(Gmaps.map.markers)
+  }
+  });
+</script>
+ 
+ 
     <div class="row">
       <div class="large-12 columns">
-      <%= render 'shared/gmap' %>
+        <%= render 'shared/gmap' %>
         <div class="row">
 
+          <!-- Form -->
 
           <div class="large-8 columns">
-            <%= render 'places_roll_to_approve'  %>
+              <%= render 'approve_form'  %>
           </div>
 
+          <!-- End Form -->
+     
 
+     
           <!-- Right column -->
 
           <div class="large-4 columns">
@@ -19,7 +33,9 @@
             </ul>
                 
             <%= render 'shared/recent_added' %>
-            </div>
+
+          </div>
+
           <!-- End Right column -->
 
         </div>
