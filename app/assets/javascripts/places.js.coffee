@@ -4,3 +4,4 @@
 
 jQuery(document).ready ($) ->
   $("a[rel*=facebox]").facebox()
+

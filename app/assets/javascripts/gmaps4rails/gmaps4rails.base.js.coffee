@@ -27,7 +27,7 @@ class @Gmaps4Rails
     @geolocationSuccess = -> false  #triggered when geolocation succeeds. Can be customized.
     @geolocationFailure = -> false  #triggered when geolocation fails. If customized, must be like= function(navigator_handles_geolocation){} where 'navigator_handles_geolocation' is a boolean
     @callback           = -> false  #to let user set a custom callback function
-    @customClusterer    = -> false  #to let user set custom clusterer pictures
+    @customClusterer    = -> true  #to let user set custom clusterer pictures
     @infobox            = -> false  #to let user use custom infoboxes
     @jsTemplate         = false     #to let user create infowindows client side
 
@@ -38,7 +38,7 @@ class @Gmaps4Rails
       center_on_user: false   # centers map on the location detected through the browser
       center_latitude: 0
       center_longitude: 0
-      zoom: 7
+      zoom: 12
       maxZoom: null
       minZoom: null
       auto_adjust : true      # adjust the map to the markers if set to true

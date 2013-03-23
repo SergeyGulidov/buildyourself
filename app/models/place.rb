@@ -31,7 +31,7 @@ class Place < ActiveRecord::Base
 
 
    scope :recent, order("created_at desc").limit(10)
-   scope :recent5, order("created_at desc").limit(5)
+   scope :recent5, where(approved: 1).order("created_at desc").limit(5)
 
    def gmaps4rails_address
     "#{street}, #{city}, #{country}" 
@@ -50,4 +50,8 @@ class Place < ActiveRecord::Base
   def to_param
     "#{id}-#{name}".parameterize
   end
+
+
+
+
 end

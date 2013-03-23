@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322161856) do
+ActiveRecord::Schema.define(:version => 20130323174225) do
 
   create_table "assignments", :force => true do |t|
     t.integer "place_id"
@@ -133,12 +133,22 @@ ActiveRecord::Schema.define(:version => 20130322161856) do
   add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
 
+  create_table "searches", :force => true do |t|
+    t.string   "city"
+    t.string   "age"
+    t.string   "type"
+    t.string   "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "type_translations", :force => true do |t|
     t.integer  "type_id"
     t.string   "locale"
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "category"
   end
 
   add_index "type_translations", ["locale"], :name => "index_type_translations_on_locale"

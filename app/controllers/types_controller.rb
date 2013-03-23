@@ -27,9 +27,6 @@ class TypesController < ApplicationController
 	@json = places.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"
-	    marker.picture({:picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
-	                    :width => 32,
-	                    :height => 32})
   		end
 
   end
@@ -58,5 +55,15 @@ class TypesController < ApplicationController
   def find_type
   	@type = Type.find(params[:id].to_i)
   end
+
+
+def gmaps4rails_marker_picture
+    {
+    "picture" => "http://maps.google.com/mapfiles/ms/micons/blue.png",
+    "width" => 32,
+    "height" => 32
+    }
+end
+
 
 end

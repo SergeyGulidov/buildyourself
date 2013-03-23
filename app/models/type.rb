@@ -5,7 +5,7 @@ class Type < ActiveRecord::Base
 
   #acts_as_gmappable
 
-  translates :title
+  translates :title, :category
   accepts_nested_attributes_for :translations
 
   validates :title, :presence => true, :length => { :in => 3..200 }
@@ -15,6 +15,4 @@ class Type < ActiveRecord::Base
   def to_param
     "#{id}-#{slug}".parameterize
   end
-
-
 end

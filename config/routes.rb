@@ -40,7 +40,9 @@ BuildYourSelf::Application.routes.draw do
 
 
     match 'types/analize' => 'types#analize'
+
     resources :types
+
 
 
 

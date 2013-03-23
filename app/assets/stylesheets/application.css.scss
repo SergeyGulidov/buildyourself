@@ -16,6 +16,7 @@
 
 @import 'foundation-icons';
 
+
 html, body { height: 100%; margin: 0; padding: 0; }
 
 
@@ -96,3 +97,4 @@ h5 #title a:active {
 .pagination-centered{
   margin: 50px 0 50px 0;
 }
+.yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }

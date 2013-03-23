@@ -8,7 +8,7 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
     super
     #Map settings
     @map_options =
-      disableDefaultUI:       false
+      disableDefaultUI:       true
       disableDoubleClickZoom: false
       type:                   "ROADMAP" # HYBRID, ROADMAP, SATELLITE, TERRAIN
 
@@ -337,3 +337,5 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
       @serviceObject.setCenter(map_center)
     else
       @fitBounds()
+
+
