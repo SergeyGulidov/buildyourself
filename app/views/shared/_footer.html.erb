@@ -1,28 +1,21 @@
-<footer id="footer">
-    <div class="row">
+<div class="row">
+  <div class="large-4 columns">
+      <p>&copy; Build Yourself. 2013.</p>
+  </div>
 
-      <div class="large-4 columns">
-          <p>&copy; Build Yourself. 2013.</p>
-      </div>
+  <div class="large-4 small-12 columns">
+      <ul class="inline-list right">
+        <li><a href="#">Home</a></li>
+        <li>
+          <%= link_to "Add new place", :controller => :places, :action => :new %>
+        </li>
+        <li>
+          <%= link_to "Contact with us", :controller => :contacts, :action => :new %>
+        </li>
+      </ul>
+  </div>
 
-      <div class="large-4 small-12 columns">
-          <ul class="inline-list right">
-            <li><a href="#">Home</a></li>
-
-            <li>
-              <%= link_to "Add new place", :controller => :places, :action => :new %>
-            </li>
-            
-            <li>
-              <%= link_to "Contact with us", :controller => :contacts, :action => :new %>
-            </li>
-          </ul>
-      </div>
-
-      <div class="large-4 columns">
-          
-      </div>
-
-    </div>
-    <%= image_tag("logo_small.png") %>
-</footer>
+  <div class="large-4 columns"> 
+  </div>
+</div>
+<%= image_tag("logo_small.png") %>

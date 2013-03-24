@@ -1,17 +1,10 @@
 <% provide(:title, @place.name) %>
-<script type="text/javascript">
-  $(document).ready(function() {
-  Gmaps.map.callback = function() {
-  console.log(Gmaps.map.markers)
-  }
-  });
-</script>
 
-    <div class="row">
-      <div class="large-12 columns">
+<div class="large-12 columns">
+
       <%= render 'shared/gmap' %>
-        <div class="row">
 
+        <div class="row">
                     <div class="large-8 columns">
                       
 
@@ -104,14 +97,17 @@
 
         </div>
       </div>
-    </div>
 
-    <script type="text/javascript">
-        var disqus_shortname = 'buildyourself';
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the.</noscript>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'buildyourself';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the.</noscript>

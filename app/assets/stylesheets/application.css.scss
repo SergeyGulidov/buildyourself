@@ -19,13 +19,35 @@
 
 html, body { height: 100%; margin: 0; padding: 0; }
 
-
-#container {
+#wrap {
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  position: relative;
 }
+#main {
+  overflow:auto;
+  padding-bottom: 150px;
+}
+#footer {
+  position: relative;
+  margin-top: -150px;
+  height: 150px;
+  clear:both;} 
+
+body:before {
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;
+}
+
+
+
+
+/* Foundation image fix */
+.gmaps4rails_map img, .popup img, .map_container img{max-width: none;} 
+
+
+
 
 .top-bar-hr{
   margin-top: -30px;
@@ -34,11 +56,6 @@ html, body { height: 100%; margin: 0; padding: 0; }
 #footer{
   border-top: 1px solid #d0e9f4 !important;
   padding-top: 20px;
-  height: 150px; /* Define height of the footer */
-  position: absolute;
-  bottom: 0; /* Sit it on the bottom */
-  left: 0;
-  width: 100%; /* As wide as it's allowed */ 
   background-color: #BCC8CC;
   color: white;
 }
@@ -99,11 +116,8 @@ h5 #title a:active {
 }
 .yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }
 
-.yield-area{
-
-  margin: 10px 0 40px 0;
-}
 
 .content-area{
-  padding-top: 30px;
+  padding-top: 20px;
 }
+

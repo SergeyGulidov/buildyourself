@@ -1,14 +1,5 @@
 <% provide(:title, @place.name) %>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-  Gmaps.map.callback = function() {
-  console.log(Gmaps.map.markers)
-  }
-  });
-</script>
- 
- 
     <div class="row">
       <div class="large-12 columns">
         <%= render 'shared/gmap' %>

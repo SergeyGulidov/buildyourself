@@ -102,7 +102,7 @@ load_and_authorize_resource
   end
 
   def make_approve
-  	@city = Place.find()
+
   	@places = super
   	@place = Place.find(params[:id])
       @json = @place.to_gmaps4rails do |place, marker|

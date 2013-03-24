@@ -4,56 +4,54 @@
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
 <head>
 	<meta charset="utf-8" />
 	
 	<!-- Uncomment to make IE8 render like IE7 -->
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
-	
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
 	<title><%= full_title(yield(:title)) %></title>
-
 	<%= stylesheet_link_tag    "application" %>
 	<%= javascript_include_tag "vendor/custom.modernizr" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="wrap">
+	<%= render 'shared/topbar'  %>
+	<hr class="top-bar-hr">
 
+		
+		<div class="row" >
+		  <div class="large-12 columns">
 
+				<% if flash[:notice] %>
+					<div id="flash-notice" class="alert-box success">
+					  <%= flash[:notice] %>
+					</div>
+				<% end  %>
+				<% if flash[:error] %>
+					<div class="alert-box alert-box">
+					  <%= flash[:error] %>
+					</div>
+				<% end  %>
 
-<%= render 'shared/topbar'  %>
-<hr class="top-bar-hr">
+			</div>
+		</div>
 
-	
-
-
-<div id="container">
-	<div class="row" >
-	  <div class="large-12 columns">
-	  	<div class="row" >
-
-			<% if flash[:notice] %>
-				<div id="flash-notice" class="alert-box success">
-				  <%= flash[:notice] %>
-				</div>
-			<% end  %>
-			<% if flash[:error] %>
-				<div class="alert-box alert-box">
-				  <%= flash[:error] %>
-				</div>
-			<% end  %>
-
-			<div class="yield-area">
+		<div class="row" id="main" >
+		  <div class="large-12 columns">
 				<%= yield %>
 			</div>
-
-
 		</div>
-	  </div>
-	</div>
-	<div id="push"></div>
+
+</div>
+	<div id="footer">
 		<%= render 'shared/footer'  %>
 	</div>
 

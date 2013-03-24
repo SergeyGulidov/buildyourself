@@ -77,10 +77,11 @@ form #new_place{
   height: 250px;
 }
 
-.gmaps4rails_map img{max-width: none;}
-.map_container img{max-width: none;}
+
+
 
 .photo_block{
+	margin-top: -20px;
 	padding: 5px 0 20px 0;
 }
 
@@ -123,5 +124,3 @@ form #new_place{
 .stick_to_map{
 	margin-top: -92px;
 }
-
-

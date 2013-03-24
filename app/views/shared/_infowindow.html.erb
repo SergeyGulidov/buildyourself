@@ -1,26 +1,32 @@
-<div><h5><small><%= link_to place.name, place %><small></h5> 
 
-<% registred = current_user && current_user.can_vote_for?(place) %>
+
+<h4><small><%= link_to place.name, place %></small></h4> 
+
+
 
 
 <span class="right">
-	
+
+<h6 class="subheader">
+	<% registred = current_user && current_user.can_vote_for?(place) %>
+
 	<% if registred %>
 		<%= link_to "", vote_place_path(place, value: -1), method: "post",
 	      class: "general foundicon-down-arrow"  %>
 	<% end %>
 
-		<% if place.votes > -1 %>
-			 <span class="success label">+ <%= place.votes %></span>
-		<% else %>
-			<span class="alert label"><%= place.votes %></span>
-		<% end  %>
+	<% if place.votes > -1 %>
+		 <span class="success label">+ <%= place.votes %></span>
+	<% else %>
+		<span class="alert label"><%= place.votes %></span>
+	<% end  %>
 	
 	<% if registred %>
     <%= link_to "", vote_place_path(place, value: 1), method: "post",
       class: "general foundicon-up-arrow" %>
 	<% end %>
+
+</h6>
 </span>
-</div>
 
 <h6><small><%= place.street %>,  <%= place.city %>,  <%= place.country %></small></h6>
