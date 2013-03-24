@@ -4,10 +4,43 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
 
-rescue_from CanCan::AccessDenied do |exception|
-  flash[:error] = "Access denied."
-  redirect_to root_url
-end
+
+ def index
+    set_search_place
+ end
+
+ def show
+    set_search_place
+ end
+
+ def edit
+    set_search_place
+ end
+
+ def approve
+    set_search_place
+  end
+
+  def make_approve
+    set_search_place
+  end
+
+
+
+
+
+
+
+  def set_search_place
+    places = Place.where(approved: 1)
+    @search = places.with_translations(I18n.locale).search(params[:q])
+    @places = @search.result
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    redirect_to root_url
+  end
 
 
   private

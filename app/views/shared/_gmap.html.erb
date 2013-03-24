@@ -2,50 +2,45 @@
 <div class="large-12 columns">
   <%= gmaps("markers" => {"data" => @json}) %> 
 
-</div>
-</div>
+
+    <div class="map-nav stick_to_map">
+    <div class="row collapse">
 
 
-<div class="row">
-<div class="large-12 columns">
-  <form class="custom stick_to_map">
+      <%= search_form_for @search, html: { class: 'custom'} do |f| %>
 
+        <div class="large-2 large-offset-3 columns">
+          <%= f.text_field :translations_message_cont, :placeholder => "Message contains" %>
+        </div>
 
+        <div class="large-2 columns">
+          <%= f.select :types_translations_title_eq, 
+            Type.all.collect {|x| [x.title, x.title]}, {:include_blank => 'Select Type'}
+             %>
+        </div>
 
+        <div class="large-2 columns">
+          <%= f.select :city_eq,
+             options_from_collection_for_select(@places, 'city', 'city') %>
+        </div>
 
+        <div class="large-2 columns">
+          <%= f.select :country_eq, [ 'Latvia', 'Other' ], selected: 'Latvia'  %>
+        </div>
 
+        <div class="large-1 columns">
+          <%= f.submit "Search", class: 'button postfix' %>
+        </div>
 
-<div class="section-container horizontal-nav" data-section="horizontal-nav">
-  <section class="section">
-    <p class="title"><a href="#">Section 1</a></p>
-    <div class="content">
-      <ul class="side-nav">
-        <li><%= link_to "Football", controller: "types", action: "show", id: "2-football" %></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Link 1</a></li>
-      </ul>
+      <% end %>
+
     </div>
-  </section>
-  <section class="section">
-    <p class="title"><a href="#">Section 2</a></p>
-    <div class="content">
-      <ul class="side-nav">
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Link 1</a></li>
-      </ul>
-    </div>
-
-
-
-</section>
-</div>
-
-
-</form>
   </div>
+
+
+
+
 </div>
+</div>
+
+

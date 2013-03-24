@@ -21,8 +21,10 @@ class TypesController < ApplicationController
   end
 
   def show
+  places = super
 	places = @type.places.where(approved: 1)
-	#@places = @type.places.page(params[:page]).per(5)
+
+
 	@places = places.page(params[:page]).per(5)
 	@json = places.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})

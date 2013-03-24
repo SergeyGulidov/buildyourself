@@ -1,12 +1,9 @@
 <% @places.each do |place| %>
-	  <div class="large-5 columns place_box">
+	  <div class="large-5 columns">
 	  	<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
-
 		<dl class="sub-nav">
 		  <dd class="active"><a href="#">With review</a></dd>
 		  <dd class="active"><a href="#">4 comments</a></dd>
-		  
-
 		    <dd class="active"><a href="#"><%= pluralize place.votes, "vote" %></a></dd>
 		    <% if current_user && current_user.can_vote_for?(place) %>
 		      <dd>
@@ -16,20 +13,14 @@
 		      		class: "general foundicon-down-arrow"  %>
 		      </dd>
 		    <% end %>
-
 		</dl>
-				
-
-
 	  	<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>
 	  			<%= link_to "...", place_path(place)%></p>
 
 	  	<h6><small><%= link_to "read more...", place_path(place)%></small></h6>
-
-
-
-
 	  </div>
+
+
 	  <div class="large-7 columns ">
 
 	  		<ul class="breadcrumbs bread-right">
@@ -64,6 +55,7 @@
 	  	
 	  </div>
 	<hr>
+
 <% end %>
 
 <%= paginate @places %>

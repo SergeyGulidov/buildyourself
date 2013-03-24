@@ -15,7 +15,7 @@ gem 'nested_form', github: 'ryanb/nested_form'
 gem 'devise'
 gem "cancan"
 gem 'facebox-rails'
-
+gem "ransack"
 gem 'kaminari'
 
 
