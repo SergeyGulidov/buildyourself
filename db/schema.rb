@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325171324) do
+ActiveRecord::Schema.define(:version => 20130325202718) do
 
   create_table "assignments", :force => true do |t|
     t.integer "place_id"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(:version => 20130325171324) do
 
   create_table "places", :force => true do |t|
     t.string   "country"
-    t.string   "city"
     t.string   "street"
     t.string   "phone"
     t.string   "website"
@@ -69,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130325171324) do
     t.boolean  "gmaps"
     t.integer  "approved",       :default => 0
     t.integer  "user_id"
+    t.string   "city"
   end
 
   create_table "roles", :force => true do |t|
