@@ -24,9 +24,16 @@
 <body>
 <div id="wrap">
 	<%= render 'shared/topbar'  %>
-	<hr class="top-bar-hr">
+	
 
 		
+
+
+		<div id="main" >
+
+				<%= yield %>
+
+
 		<div class="row" >
 		  <div class="large-12 columns">
 
@@ -40,15 +47,16 @@
 					  <%= flash[:error] %>
 					</div>
 				<% end  %>
-
 			</div>
 		</div>
 
-		<div class="row" id="main" >
-		  <div class="large-12 columns">
-				<%= yield %>
-			</div>
+
+
 		</div>
+
+
+
+
 
 </div>
 	<div id="footer">

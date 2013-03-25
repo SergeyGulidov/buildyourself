@@ -21,22 +21,18 @@ BuildYourSelf::Application.routes.draw do
 
 
 
-    resources :places, only: [:index, :new, :create] do
-      member { post :vote }
-    end
-
-    resources :places, path: "", except: [:index, :new, :create] do
+    resources :places do
       member { post :vote }
       get "approve"
       get "make_approve"
-      
     end
 
-    
-    match 'contacts/show' => 'contacts#show'
 
+
+    
     resources :contacts
-     
+    
+
 
 
     match 'types/analize' => 'types#analize'

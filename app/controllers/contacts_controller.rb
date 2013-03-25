@@ -20,15 +20,12 @@ class ContactsController < ApplicationController
       end
    end
 
-  def show
+  def index
   	@contacts = Contact.find(:all)
-    authorize! :show, @contacts
   end
 
   def destroy
-    #authorize! :destroy, @contacts
     Contact.find(params[:id]).destroy
-    redirect_to :action => 'show'
-
+    redirect_to :action => 'index'
   end
 end

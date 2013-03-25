@@ -17,7 +17,7 @@ class Place < ActiveRecord::Base
      :type_ids, :photos_attributes, :photo
 
 
-  translates :message
+  translates :message, :city
 
   accepts_nested_attributes_for :translations, :photos
 

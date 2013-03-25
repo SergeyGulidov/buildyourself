@@ -1,0 +1,32 @@
+<% if @contacts.blank? %>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row">
+	           <p> We don't have any contact invoices</p>
+            </div>
+        </div>
+    </div>
+<% else %>
+	<div class="row contact_show" >
+        <div class="large-12 columns">
+            <hr>
+			<% @contacts.each do |c| %>
+
+				<div class="row ">
+            		<div class="large-3 columns">
+                            <h6><%= c.email %></h6>
+                            <h5><small><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></small></h5>
+            		</div>
+            		<div class="large-7 columns">
+                		<p><%= c.body %></p>
+            		</div>
+            		<div class="large-2 columns centered " >
+                		<%= link_to "", c, :method => :delete,
+                            class: "general-enclosed foundicon-remove"%>
+            		</div>
+				</div>
+                <hr>
+			<% end %>
+		</div>
+	</div>
+<% end %>

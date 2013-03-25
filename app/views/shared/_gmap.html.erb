@@ -1,7 +1,8 @@
 
       <%= gmaps("markers" => {"data" => @json}) %> 
 
-
+    <div class="row">
+        <div class="large-12 columns">
       <div class="map-nav stick_to_map">
         <div class="row collapse">
           <%= search_form_for @search, html: { class: 'custom'} do |f| %>
@@ -9,19 +10,24 @@
               <%= f.text_field :translations_message_cont, :placeholder => "Message contains" %>
             </div>
 
+            <% types = Type.all.collect %>
+
+
             <div class="large-2 columns">
-              <%= f.select :types_translations_title_eq, 
-                Type.all.collect {|x| [x.title, x.title]}, {:include_blank => 'Select Type'}
+              <%= f.select :types_translations_category_eq, 
+                types.each {|x| [x.category, x.category]}.uniq, {:include_blank => 'Select category'}
                  %>
             </div>
 
             <div class="large-2 columns">
-              <%= f.select :city_eq,
-                 options_from_collection_for_select(@places, 'city', 'city') %>
+              <%= f.select :types_translations_title_eq, 
+                types.each {|x| [x.title, x.title]}.uniq, {:include_blank => 'Select Type'}
+                 %>
             </div>
 
             <div class="large-2 columns">
-              <%= f.select :country_eq, [ 'Latvia', 'Other' ], selected: 'Latvia'  %>
+              <%= f.select :translations_city_eq,
+                 Place.all.collect {|x| [x.city, x.city]}.uniq, {:include_blank => 'All cities'} %>
             </div>
 
             <div class="large-1 columns">
@@ -30,5 +36,6 @@
           <% end %>
         </div>
       </div>
-
+  </div>
+      </div>
 
