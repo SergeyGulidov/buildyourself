@@ -2,10 +2,14 @@ class Place < ActiveRecord::Base
   has_many :assignments
   has_many :types, through: :assignments
   has_many :photos, :dependent => :destroy
+  has_many :categorizations
+  has_many :categories, through: :categorizations
+
+
+
 
   belongs_to :user
   belongs_to :location
-
   has_many :place_votes
 
 

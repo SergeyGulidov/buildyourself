@@ -11,15 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326184138) do
+ActiveRecord::Schema.define(:version => 20130326204801) do
 
-  create_table "assignments", :force => true do |t|
+  create_table "assignments", :id => false, :force => true do |t|
     t.integer "place_id"
     t.integer "type_id"
   end
 
   add_index "assignments", ["place_id"], :name => "index_assignments_on_place_id"
   add_index "assignments", ["type_id"], :name => "index_assignments_on_type_id"
+
+  create_table "categories", :force => true do |t|
+    t.string "slug"
+    t.string "category_name"
+  end
+
+  create_table "categorizations", :id => false, :force => true do |t|
+    t.integer "type_id"
+    t.integer "category_id"
+    t.integer "place_id"
+  end
+
+  add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
+  add_index "categorizations", ["place_id"], :name => "index_categorizations_on_place_id"
+  add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
+
+  create_table "category_translations", :force => true do |t|
+    t.integer "category_id"
+    t.string  "locale"
+    t.string  "category_name"
+  end
+
+  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -71,6 +95,14 @@ ActiveRecord::Schema.define(:version => 20130326184138) do
     t.string   "city"
   end
 
+  create_table "places_category", :force => true do |t|
+    t.integer "place_id"
+    t.integer "category_id"
+  end
+
+  add_index "places_category", ["category_id"], :name => "index_places_category_on_category_id"
+  add_index "places_category", ["place_id"], :name => "index_places_category_on_place_id"
+
   create_table "roles", :force => true do |t|
     t.string  "name"
     t.integer "user_id"
@@ -88,7 +120,6 @@ ActiveRecord::Schema.define(:version => 20130326184138) do
 
   create_table "types", :force => true do |t|
     t.string "title"
-    t.string "category"
     t.string "slug"
   end
 

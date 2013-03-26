@@ -11,14 +11,17 @@
             </div>
 
             <% types = Type.all.collect %>
+
             <div class="large-2 columns">
               <%= f.select :types_translations_category_eq, 
-                types.each {|x| [x.category, x.category]}.uniq, {:include_blank => 'Select category'}
+                types.each {|x| [x.title, x.title]}.uniq, {:include_blank => 'Select type'}
                  %>
             </div>
+
+
             <div class="large-2 columns">
-              <%= f.select :types_translations_title_eq, 
-                types.each {|x| [x.title, x.title]}.uniq, {:include_blank => 'Select Type'}
+              <%= f.select :categories_translations_category_name_eq, 
+                Category.all.collect {|x| [x.category_name, x.category_name]}.uniq, {:include_blank => 'Select category'}
                  %>
             </div>
 
