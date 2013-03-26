@@ -12,8 +12,7 @@
         </div>
 
         <div class="large-6 columns">
-          <%= f.input :city, label: "City", selected: [ "Riga" ], 
-            collection: [ "Riga", "Ogre"] %>
+          <%= f.input :city, label: "City"%>
         </div>
       </div>
 
@@ -45,7 +44,7 @@
         
         <div class="large-6 columns">
           <%= f.association :types, label: "Change type of your place",
-            selected: ["Другой"] %>
+            selected: ["Другой"], :label_method => :title %>
         </div>
 
         <div class="large-6 columns">
@@ -53,6 +52,15 @@
             <%= f.input :manytypes,
               label: "I have many types of places" %>
           </div>
+        </div>
+      </div>
+
+
+      <div class="row ">
+        
+        <div class="large-6 columns">
+          <%= f.association :types, label: "Change type category",
+            selected: ["Другой"], :label_method => :category %>
         </div>
       </div>
 

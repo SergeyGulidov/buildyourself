@@ -3,9 +3,12 @@ load_and_authorize_resource
 
 	
 	def index
-		
-		@places = super
-		#@places = @places.by_votes
+		if params[:q].present?
+			@places = super
+		else
+			@places = @places.by_votes
+			@search = @places.with_translations(I18n.locale).search(params[:q])
+		end
 		@places = @places.page(params[:page]).per(5)
 
 	    @json = @places.to_gmaps4rails do |place, marker|

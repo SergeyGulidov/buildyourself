@@ -11,24 +11,18 @@
             </div>
 
             <% types = Type.all.collect %>
-
-
             <div class="large-2 columns">
               <%= f.select :types_translations_category_eq, 
                 types.each {|x| [x.category, x.category]}.uniq, {:include_blank => 'Select category'}
                  %>
             </div>
-
             <div class="large-2 columns">
               <%= f.select :types_translations_title_eq, 
                 types.each {|x| [x.title, x.title]}.uniq, {:include_blank => 'Select Type'}
                  %>
             </div>
 
-            <div class="large-2 columns">
-              <%= f.select :translations_city_eq,
-                 Place.all.collect {|x| [x.city, x.city]}.uniq, {:include_blank => 'All cities'} %>
-            </div>
+
 
             <div class="large-1 columns">
               <%= f.submit "Search", class: 'button postfix' %>

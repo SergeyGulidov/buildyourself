@@ -1,5 +1,5 @@
 class Type < ActiveRecord::Base
-  attr_accessible :translations_attributes, :category, :slug
+  attr_accessible :translations_attributes, :category, :slug, :title
   has_many :assignments
   has_many :places, through: :assignments
 

@@ -4,8 +4,10 @@ class Place < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
   belongs_to :user
+  belongs_to :location
 
   has_many :place_votes
+
 
   acts_as_gmappable
 
