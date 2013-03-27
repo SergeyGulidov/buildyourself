@@ -50,7 +50,9 @@ body:before {
 
 
 .top-bar-hr{
-  margin-top: -30px;
+  margin-top: -60px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 #footer{
@@ -129,4 +131,9 @@ h5 #title a:active {
 
 .menu li {
   list-style: none;
+}
+
+
+#featured img{
+  margin-top: 40px;
 }

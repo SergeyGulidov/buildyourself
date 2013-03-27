@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327162653) do
+ActiveRecord::Schema.define(:version => 20130327175531) do
 
   create_table "assignments", :id => false, :force => true do |t|
     t.integer "place_id"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(:version => 20130327162653) do
   add_index "assignments", ["type_id"], :name => "index_assignments_on_type_id"
 
   create_table "categories", :force => true do |t|
-    t.string "category_name"
+    t.string "category_name_ru"
     t.string "category_slug"
+    t.string "category_name_lv"
   end
 
   create_table "categorizations", :id => false, :force => true do |t|
@@ -37,35 +38,16 @@ ActiveRecord::Schema.define(:version => 20130327162653) do
   add_index "categorizations", ["place_id"], :name => "index_categorizations_on_place_id"
   add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
 
-  create_table "category_translations", :force => true do |t|
-    t.integer "category_id"
-    t.string  "locale"
-    t.string  "category_name"
-  end
-
-  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
-  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
-
   create_table "contacts", :force => true do |t|
     t.string   "email"
     t.text     "body"
     t.datetime "created_at", :null => false
   end
 
-  create_table "interval_translations", :force => true do |t|
-    t.integer  "interval_id"
-    t.string   "locale"
-    t.string   "interval_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "interval_translations", ["interval_id"], :name => "index_interval_translations_on_interval_id"
-  add_index "interval_translations", ["locale"], :name => "index_interval_translations_on_locale"
-
   create_table "intervals", :force => true do |t|
-    t.string "interval_name"
+    t.string "interval_name_ru"
     t.string "interval_slug"
+    t.string "interval_name_lv"
   end
 
   create_table "photos", :force => true do |t|
@@ -73,16 +55,6 @@ ActiveRecord::Schema.define(:version => 20130327162653) do
     t.string  "name"
     t.string  "photo"
   end
-
-  create_table "place_translations", :force => true do |t|
-    t.integer "place_id"
-    t.string  "locale"
-    t.text    "message"
-    t.string  "city"
-  end
-
-  add_index "place_translations", ["locale"], :name => "index_place_translations_on_locale"
-  add_index "place_translations", ["place_id"], :name => "index_place_translations_on_place_id"
 
   create_table "place_votes", :force => true do |t|
     t.integer "user_id"
@@ -93,22 +65,28 @@ ActiveRecord::Schema.define(:version => 20130327162653) do
   add_index "place_votes", ["user_id"], :name => "index_place_votes_on_user_id"
 
   create_table "places", :force => true do |t|
-    t.string   "country"
+    t.string   "country_lv"
     t.string   "street"
     t.string   "phone"
     t.string   "website"
     t.string   "email"
     t.string   "name"
-    t.text     "message"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.text     "message_ru"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.integer  "user_id"
-    t.string   "city"
+    t.string   "city_ru"
     t.integer  "manytypes"
-    t.integer  "approved",   :default => 0
+    t.integer  "approved",    :default => 0
+    t.string   "city_lv"
+    t.string   "country_ru"
+    t.text     "message_lv"
+    t.text     "review_ru"
+    t.text     "review_lv"
+    t.integer  "with_review", :default => 0
   end
 
   create_table "places_category", :force => true do |t|
@@ -124,18 +102,10 @@ ActiveRecord::Schema.define(:version => 20130327162653) do
     t.integer "user_id"
   end
 
-  create_table "type_translations", :force => true do |t|
-    t.integer "type_id"
-    t.string  "locale"
-    t.string  "title"
-  end
-
-  add_index "type_translations", ["locale"], :name => "index_type_translations_on_locale"
-  add_index "type_translations", ["type_id"], :name => "index_type_translations_on_type_id"
-
   create_table "types", :force => true do |t|
-    t.string "title"
+    t.string "type_name_ru"
     t.string "type_slug"
+    t.string "type_name_lv"
   end
 
   create_table "users", :force => true do |t|

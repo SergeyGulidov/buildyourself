@@ -3,31 +3,16 @@
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.globalize_fields_for(:ru) do |g| %>
-            <%= f.input :title, label: "Russian title"%>
-          <% end %>
+            <%= f.input :type_name_ru, label: "Russian title"%>
         </div>
 
         <div class="large-6 columns">
-          <%= f.globalize_fields_for(:lv) do |g| %>
-            <%= g.input :title, label: "Latvian title" %>
-          <% end %>
+            <%= f.input :type_name_lv, label: "Latvian title" %>
         </div>
       </div>
       <div class="row">
         <div class="large-6 columns">
-            <%= f.input :category, label: "Russian category"%>
-        </div>
-
-        <div class="large-6 columns">
-          <%= f.globalize_fields_for(:lv) do |g| %>
-            <%= g.input :category, label: "Latvian category" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-6 columns">
-            <%= f.input :slug, label: "Slug" %>
+            <%= f.input :type_slug, label: "Slug" %>
         </div>
       </div>
     <%= f.button :submit, class: 'small button'  %>

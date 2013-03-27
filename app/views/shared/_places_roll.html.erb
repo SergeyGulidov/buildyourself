@@ -22,7 +22,7 @@
 			  <div class="large-7 columns ">
 					<ul class="breadcrumbs bread-right">
 						<% place.types.each do |type| %>
-								<li><%= link_to type.title, type_path(type) %></li>
+								<li><%= link_to type.type_name, type_path(type) %></li>
 							<% end  %>
 					  <li><a href="#">Home</a></li>
 					  <li class="unavailable"><a href="#">Gene Splicing</a></li>

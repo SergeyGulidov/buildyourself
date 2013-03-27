@@ -14,16 +14,16 @@ class Place < ActiveRecord::Base
 
   acts_as_gmappable
 
+
   before_save{|place| place.email = place.email.downcase}
 
   attr_accessible :approved, :city, :country, :email, :manytypes,
-  	 :message, :name, :phone, :street, :website, :translations_attributes,
-     :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids
+  	 :message, :name, :phone, :street, :website,
+     :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids, :message_ru, :message_lv
 
 
-  translates :message, :city
-
-  accepts_nested_attributes_for :translations, :photos
+  translates :message, :city, :country
+  accepts_nested_attributes_for :photos
 
    validates :email,
     :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
@@ -56,8 +56,8 @@ class Place < ActiveRecord::Base
   end
 
   def self.search(search)
-    @places = Place.with_translations(I18n.locale)
-    @places = @places.where(approved: 1)
+
+    @places = Place.where(approved: 1)
 
     @places = @places.joins(:types).where('types.title' => "#{search[:type]}") unless search[:type].blank?
     @places = @places.joins(:categories).where('categories.category_name' => "#{search[:category]}") unless search[:category].blank?

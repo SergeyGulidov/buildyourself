@@ -98,17 +98,13 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <%= f.globalize_fields_for(:ru) do |g| %>
-            <%= g.input :message, label: "Message for Russian speakers", as: :text %>
-          <% end %>
+            <%= f.input :message_ru, label: "Message for Russian speakers", as: :text %>
         </div>
       </div>
 
       <div class="row">
         <div class="large-12 columns">
-          <%= f.globalize_fields_for(:lv) do |g| %>
-            <%= g.input :message, label: "Message for Latvian speakers", as: :text %>
-          <% end %>
+            <%= f.input :message_lv, label: "Message for Latvian speakers", as: :text %>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 class Type < ActiveRecord::Base
-  attr_accessible :translations_attributes, :slug, :title
+  attr_accessible :type_slug, :type_name, :type_name_ru, :type_name_lv
   has_many :assignments
   has_many :places, through: :assignments
 
@@ -8,12 +8,10 @@ class Type < ActiveRecord::Base
 
   #acts_as_gmappable
 
-  translates :title
-  accepts_nested_attributes_for :translations
+  translates :type_name
 
-  validates :title, :presence => true, :length => { :in => 3..200 }
+  validates :type_name, :presence => true, :length => { :in => 3..200 }
 
-  scope :all, order("title desc")
 
   def to_param
     "#{id}-#{type_slug}".parameterize

@@ -6,7 +6,7 @@
 		<% type.places.each do |place| %>
 			<% count += 1 %>
 		<% end %>
-		<h6 class="subheader"><%= link_to "#{type.title}  ( #{count} )", type %></h6>
+		<h6 class="subheader"><%= link_to "#{type.type_name}  ( #{count} )", type %></h6>
 	<% end  %>
 
 	</div>

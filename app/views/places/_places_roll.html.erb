@@ -19,13 +19,11 @@
 
 	  		<ul class="breadcrumbs bread-right">
 	  			<% place.types.each do |type| %>
-            		<li><%= link_to type.title, type%></li>
+            		<li><%= link_to type.type_name, type%></li>
             	<% end  %>
-
 
 			  <li><a href="#">Home</a></li>
 			  <li class="unavailable"><a href="#">Gene Splicing</a></li>
-			  <li class="current"><a href="#">Cloning</a></li>
 			</ul>
 
 
