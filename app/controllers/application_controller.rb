@@ -32,10 +32,7 @@ class ApplicationController < ActionController::Base
 
 
   def set_search_place
-      puts @city_for_filter
-      places = Place.where(approved: 1)
-      @search = places.with_translations(I18n.locale).search(params[:q])
-      @places = @search.result
+
   end
 
   rescue_from CanCan::AccessDenied do |exception|

@@ -1,26 +1,24 @@
 class Place < ActiveRecord::Base
   has_many :assignments
   has_many :types, through: :assignments
+
   has_many :photos, :dependent => :destroy
+
   has_many :categorizations
   has_many :categories, through: :categorizations
-
-
+  has_many :intervals, through: :categorizations
 
 
   belongs_to :user
-  belongs_to :location
   has_many :place_votes
 
-
   acts_as_gmappable
-
 
   before_save{|place| place.email = place.email.downcase}
 
   attr_accessible :approved, :city, :country, :email, :manytypes,
   	 :message, :name, :phone, :street, :website, :translations_attributes,
-     :type_ids, :photos_attributes, :photo
+     :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids
 
 
   translates :message, :city
@@ -31,8 +29,8 @@ class Place < ActiveRecord::Base
     :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
     :presence => true, :uniqueness => true
 
-
-   validates :city, :country, :name, :presence => true, :length => { :in => 4..249 }
+    #TODO: validates :city
+   validates  :country, :name, :presence => true, :length => { :in => 4..249 }
    validates :name, :uniqueness => true
 
 
@@ -44,7 +42,7 @@ class Place < ActiveRecord::Base
    end
 
   def self.by_votes
-    select('places.*, coalesce(value, 0) as votes').
+    where(approved: 1).select('places.*, coalesce(value, 0) as votes').
     joins('left join place_votes on place_id=places.id').
     order('votes desc')
   end
@@ -57,7 +55,15 @@ class Place < ActiveRecord::Base
     "#{id}-#{name}".parameterize
   end
 
+  def self.search(search)
+    @places = Place.with_translations(I18n.locale)
+    @places = @places.where(approved: 1)
 
+    @places = @places.joins(:types).where('types.title' => "#{search[:type]}") unless search[:type].blank?
+    @places = @places.joins(:categories).where('categories.category_name' => "#{search[:category]}") unless search[:category].blank?
+
+    return @places
+  end
 
 
 end

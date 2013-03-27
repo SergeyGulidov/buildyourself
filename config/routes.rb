@@ -9,6 +9,12 @@ BuildYourSelf::Application.routes.draw do
   
 
 
+  
+
+
+  
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
   root :to => 'static_pages#index'
@@ -19,25 +25,27 @@ BuildYourSelf::Application.routes.draw do
       :sessions => "sessions"
     }
 
+    match 'places/approve' => 'places#approve'
 
-    
+    match 'places/make_approve' => 'places#make_approve'
     
     resources :photos
 
     resources :places do
       member { post :vote }
-      get "approve"
-      get "make_approve"
+      #get "approve"
+      
+      collection { post :q, to: 'products#index' }
     end
 
 
     resources :categories
     
     resources :contacts
+    resources :intervals
+
+
     
-
-
-
     match 'types/analize' => 'types#analize'
 
     resources :types

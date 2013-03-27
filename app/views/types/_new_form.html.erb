@@ -3,7 +3,9 @@
 
       <div class="row">
         <div class="large-6 columns">
+          <%= f.globalize_fields_for(:ru) do |g| %>
             <%= f.input :title, label: "Russian title"%>
+          <% end %>
         </div>
 
         <div class="large-6 columns">

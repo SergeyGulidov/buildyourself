@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326204801) do
+ActiveRecord::Schema.define(:version => 20130327162653) do
 
   create_table "assignments", :id => false, :force => true do |t|
     t.integer "place_id"
@@ -22,14 +22,15 @@ ActiveRecord::Schema.define(:version => 20130326204801) do
   add_index "assignments", ["type_id"], :name => "index_assignments_on_type_id"
 
   create_table "categories", :force => true do |t|
-    t.string "slug"
     t.string "category_name"
+    t.string "category_slug"
   end
 
   create_table "categorizations", :id => false, :force => true do |t|
     t.integer "type_id"
     t.integer "category_id"
     t.integer "place_id"
+    t.integer "interval_id"
   end
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
@@ -49,6 +50,22 @@ ActiveRecord::Schema.define(:version => 20130326204801) do
     t.string   "email"
     t.text     "body"
     t.datetime "created_at", :null => false
+  end
+
+  create_table "interval_translations", :force => true do |t|
+    t.integer  "interval_id"
+    t.string   "locale"
+    t.string   "interval_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "interval_translations", ["interval_id"], :name => "index_interval_translations_on_interval_id"
+  add_index "interval_translations", ["locale"], :name => "index_interval_translations_on_locale"
+
+  create_table "intervals", :force => true do |t|
+    t.string "interval_name"
+    t.string "interval_slug"
   end
 
   create_table "photos", :force => true do |t|
@@ -82,17 +99,16 @@ ActiveRecord::Schema.define(:version => 20130326204801) do
     t.string   "website"
     t.string   "email"
     t.string   "name"
-    t.boolean  "manytypes"
     t.text     "message"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "different_type"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.integer  "approved",       :default => 0
     t.integer  "user_id"
     t.string   "city"
+    t.integer  "manytypes"
+    t.integer  "approved",   :default => 0
   end
 
   create_table "places_category", :force => true do |t|
@@ -112,7 +128,6 @@ ActiveRecord::Schema.define(:version => 20130326204801) do
     t.integer "type_id"
     t.string  "locale"
     t.string  "title"
-    t.string  "category"
   end
 
   add_index "type_translations", ["locale"], :name => "index_type_translations_on_locale"
@@ -120,7 +135,7 @@ ActiveRecord::Schema.define(:version => 20130326204801) do
 
   create_table "types", :force => true do |t|
     t.string "title"
-    t.string "slug"
+    t.string "type_slug"
   end
 
   create_table "users", :force => true do |t|

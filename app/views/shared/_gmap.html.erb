@@ -1,38 +1,17 @@
 
       <%= gmaps("markers" => {"data" => @json}) %> 
-
-    <div class="row">
-        <div class="large-12 columns">
-      <div class="map-nav stick_to_map">
-        <div class="row collapse">
-          <%= search_form_for @search, html: { class: 'custom'} do |f| %>
-            <div class="large-2 large-offset-3 columns">
-              <%= f.text_field :translations_message_cont, :placeholder => "Message contains" %>
-            </div>
-
-            <% types = Type.all.collect %>
-
-            <div class="large-2 columns">
-              <%= f.select :types_translations_category_eq, 
-                types.each {|x| [x.title, x.title]}.uniq, {:include_blank => 'Select type'}
-                 %>
-            </div>
-
-
-            <div class="large-2 columns">
-              <%= f.select :categories_translations_category_name_eq, 
-                Category.all.collect {|x| [x.category_name, x.category_name]}.uniq, {:include_blank => 'Select category'}
-                 %>
-            </div>
+      
 
 
 
-            <div class="large-1 columns">
-              <%= f.submit "Search", class: 'button postfix' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-  </div>
-      </div>
+
+
+
+
+
+
+
+
+
+
 

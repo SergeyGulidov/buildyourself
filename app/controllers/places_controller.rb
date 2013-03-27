@@ -3,18 +3,16 @@ load_and_authorize_resource
 
 	
 	def index
-		if params[:q].present?
-			@places = super
-		else
-			@places = @places.by_votes
-			@search = @places.with_translations(I18n.locale).search(params[:q])
-		end
+		
+		@places = Place.search(params)
+
+		@json = @places.to_gmaps4rails do |place, marker|
+			    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+			    marker.title "#{place.name}"
+	  	end
+
 		@places = @places.page(params[:page]).per(5)
 
-	    @json = @places.to_gmaps4rails do |place, marker|
-		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-		    marker.title "#{place.name}"
-  		end
 	end
 
   def home
@@ -94,10 +92,10 @@ load_and_authorize_resource
   end
 
   def approve
-  	@places = super
 
   	places = Place.where(approved: 0)
   	@places = places.page(params[:page]).per(5)
+
   	@json = places.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"

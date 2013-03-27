@@ -4,6 +4,7 @@ class Type < ActiveRecord::Base
   has_many :places, through: :assignments
 
   has_many :categories, through: :categorizations
+  has_many :intervals, through: :categorizations
 
   #acts_as_gmappable
 
@@ -15,6 +16,6 @@ class Type < ActiveRecord::Base
   scope :all, order("title desc")
 
   def to_param
-    "#{id}-#{slug}".parameterize
+    "#{id}-#{type_slug}".parameterize
   end
 end
