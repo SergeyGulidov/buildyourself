@@ -34,6 +34,6 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @photo.destroy
     flash[:notice] = "Successfully destroyed photo."
-    redirect_to @photo.place
+    redirect_to :back
   end
 end

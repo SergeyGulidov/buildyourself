@@ -1,6 +1,14 @@
 <h4><%= t :recent_added_places  %></h4>
-<ul class="disc margin-left panel recent">
+<ul class="square margin-left panel recent">
   <% Place.recent5.each do |place| %>
-    <li><%= link_to place.name, place %></li>
+    <li><%= link_to place.name, place %> 
+
+    	<% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
+			<%= link_to type.type_name, type: type.type_slug %> </li>
+
+			<% if counter > 1 %>
+				&nbsp&raquo;&nbsp  
+			<% end %>
+		<% end %></li>
   <% end %>
 </ul>

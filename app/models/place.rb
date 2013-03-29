@@ -65,13 +65,15 @@ class Place < ActiveRecord::Base
   def self.search(search)
 
     @places = approved
-
+    unless search[:type].blank?
+      @places = @places.joins(:types).where('types.type_slug' => "#{search[:type]}")
+      @type_vip = @places.where('vip' => 1)
+    end
     @places = @places.joins(:locations).where('locations.location_slug' => "#{search[:city]}") unless search[:city].blank?
-    @places = @places.joins(:types).where('types.type_slug' => "#{search[:type]}") unless search[:type].blank?
     @places = @places.joins(:categories).where('categories.category_slug' => "#{search[:category]}") unless search[:category].blank?
     @places = @places.joins(:intervals).where('intervals.interval_slug' => "#{search[:interval]}") unless search[:interval].blank?
 
-    return @places
+    return @places, @type_vip
   end
 
 

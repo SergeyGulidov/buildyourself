@@ -98,9 +98,7 @@ h5 #title a:active {
   color: #464A4C!important;
 }
 
-.breadcrumbs li{
-  text-align: right!important;
-}
+
 
 
 #footer img{
@@ -115,7 +113,7 @@ h5 #title a:active {
 
 
 .content{
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 40px;
 }
 
@@ -136,4 +134,9 @@ h5 #title a:active {
 .section .breadcrumbs{
   background-color: #fef8ff;
   padding-top:6px!important;
+}
+
+
+#bread{
+  margin-bottom: 0!important;
 }

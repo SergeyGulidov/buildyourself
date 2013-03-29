@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329131041) do
+ActiveRecord::Schema.define(:version => 20130329182508) do
 
   create_table "assignments", :id => false, :force => true do |t|
     t.integer "place_id"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(:version => 20130329131041) do
 
   add_index "assignments", ["place_id"], :name => "index_assignments_on_place_id"
   add_index "assignments", ["type_id"], :name => "index_assignments_on_type_id"
+
+  create_table "brains", :force => true do |t|
+  end
 
   create_table "categories", :force => true do |t|
     t.string "category_name_ru"
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130329131041) do
     t.text     "review_lv"
     t.integer  "with_review", :default => 0
     t.integer  "sponsor",     :default => 0
+    t.integer  "vip",         :default => 0
   end
 
   create_table "places_category", :force => true do |t|

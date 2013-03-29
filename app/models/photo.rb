@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-	require 'file_size_validator' 
+  require 'file_size_validator' 
 
   attr_accessible :image, :name, :place_id, :photo
   belongs_to :place

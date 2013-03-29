@@ -1,0 +1,21 @@
+<div class="large-6 columns ">
+	<dl class="sub-nav">
+		<dd class="active">
+			<% @place.categories.each do |category| %>
+	           <%= link_to category.category_name, 
+							category: category.category_slug %>
+			<% end %>
+		</dd>
+		<dd class="active">
+			<% @place.intervals.each do |interval| %>
+				<%= link_to interval.interval_name, 
+							interval: interval.interval_slug %>
+			<% end  %>
+		</dd>
+	</dl>
+	<ul class="breadcrumbs">
+		<% @place.types.each do |type| %>
+			<li><%= link_to type.type_name, type: type.type_slug %></li>
+		<% end  %>
+	</ul>
+</div>

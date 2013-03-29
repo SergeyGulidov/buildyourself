@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .margin-left li {
-	margin-left: 40px;
+	margin-left: 20px;
 }
 
 .margin-left h4{
@@ -124,4 +124,14 @@ form #new_place{
 
 .content hr{
 	margin-top: 5px!important;
+}
+
+.vip_zone{
+	background-color: #fffef8;
+	padding-top:20px;
+	margin-top: -20px;
+
+	.breadcrumbs{
+		background-color: #fffef8!important;
+	}
 }
