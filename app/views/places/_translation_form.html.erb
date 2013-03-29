@@ -5,13 +5,11 @@
       
       <div class="row">
         <div class="large-6 columns">
-          <%= f.input :country, label: "Country", selected: [ "Latvia" ], 
-            collection: [ "Latvia", "Brazil", "New Zealand"] %>
+          <%= f.association :locations, label: "Country", :label_method => :country %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.input :city, label: "City",
-            collection: [ "Riga", "Ogre"] %>
+          <%= f.association :locations, label: "City", :label_method => :city %>
         </div>
       </div>
 
@@ -39,29 +37,46 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row ">
         
         <div class="large-6 columns">
           <%= f.association :types, label: "Change type of your place",
-            selected: ["Другой"] %>
-        </div>
-        <div class="large-6 columns">
-          <div class="check_box_hightlight">
-            <%= f.input :manytypes,
-              label: t(:many_types) %>
-          </div>
+            selected: ["Другой"], :label_method => :type_name %>
         </div>
 
+        <div class="large-6 columns">
+            <%= f.input :manytypes,
+              label: "I have many types of places" %>
+        </div>
+      </div>
+
+
+      <div class="row ">
+
+        <div class="large-6 columns">
+          <%= f.association :categories, label: "Change place category",
+            selected: ["Другой"], :label_method => :category_name %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.association :intervals, label: "Change age category",
+            selected: ["Другой"], :label_method => :interval_name %>
+        </div>
       </div>
 
       <div class="row photos">
-        <div class="large-12 columns add_photo">
+        <div class="large-7 columns add_photo">
 
             <% f.fields_for :photos do |photo|  %>
               <%= photo.file_field :photo %>
+              <%= photo.link_to_remove "", 
+                class: "general-enclosed foundicon-remove " %>
             <% end %>
-        
+  
+            
+
             <%= f.link_to_add "Add photos", :photos, class: "small button" %>
+            <h6><small>Only 3 photo per place. Max size per foto 2 MB. Need more? Contact with us.</small></h6>
+
         </div>
     </div>
 

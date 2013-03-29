@@ -2,10 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-jQuery(document).ready ($) ->
+$(document).ready ($) ->
   $("a[rel*=facebox]").facebox()
-$(document).ready ->
-	$('#accordion').click();
+
+
+
 
 
 

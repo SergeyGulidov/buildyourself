@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>City lv:</b>
+  <%= @location.city_lv %>
+</p>
+
+<p>
+  <b>City ru:</b>
+  <%= @location.city_ru %>
+</p>
+
+<p>
+  <b>Country lv:</b>
+  <%= @location.country_lv %>
+</p>
+
+<p>
+  <b>Country ru:</b>
+  <%= @location.country_ru %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @location.location_slug %>
+</p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

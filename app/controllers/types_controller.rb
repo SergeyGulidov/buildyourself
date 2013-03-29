@@ -21,7 +21,6 @@ class TypesController < ApplicationController
   end
 
   def show
-  places = super
 	places = @type.places.where(approved: 1)
 
 

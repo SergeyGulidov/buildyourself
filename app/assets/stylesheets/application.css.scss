@@ -64,7 +64,7 @@ body:before {
 
 
 
-#footer p, #footer li{
+#footer p, #footer li, #footer i{
 	font-size: 12px;
 }
 
@@ -102,13 +102,10 @@ h5 #title a:active {
   text-align: right!important;
 }
 
-.thumb_block{
-  height: 140px!important;
-}
 
 #footer img{
   float:right;
-  margin-top: -107px;
+  margin-top: -139px;
 }
 
 .pagination-centered{
@@ -117,16 +114,14 @@ h5 #title a:active {
 .yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }
 
 
-.content-area{
-  padding-top: 20px;
+.content{
+  padding-top: 30px;
+  padding-bottom: 40px;
 }
 
 .menu{
   font-size: 12px;
-
-
   margin-bottom: 30px;
-
 }
 
 .menu li {
@@ -136,4 +131,9 @@ h5 #title a:active {
 
 #featured img{
   margin-top: 40px;
+}
+
+.section .breadcrumbs{
+  background-color: #fef8ff;
+  padding-top:6px!important;
 }

@@ -12,7 +12,6 @@ load_and_authorize_resource
 	  	end
 
 		@places = @places.page(params[:page]).per(5)
-
 	end
 
   def home
@@ -55,7 +54,7 @@ load_and_authorize_resource
   end
   
   def show
-  	@places = super
+
 	@place = Place.find(params[:id])
 	@json = @place.to_gmaps4rails do |place, marker|
 		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
@@ -64,7 +63,6 @@ load_and_authorize_resource
   end
 
   def edit
-  		@places = super
       @place = Place.find(params[:id])
       @json = @place.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
@@ -103,16 +101,12 @@ load_and_authorize_resource
   end
 
   def make_approve
-
-  	@places = super
   	@place = Place.find(params[:id])
       @json = @place.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"
   		end
   end
-
-
 
 
 end

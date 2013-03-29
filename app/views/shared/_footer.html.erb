@@ -1,11 +1,19 @@
 <div class="row">
   <div class="large-4 columns">
       <p>&copy; Build Yourself. 2013.</p>
+      <% if user_signed_in?  %>
+        <p><%= current_user.email %>   <%= link_to raw("&raquo;"), destroy_user_session_path, method: :delete %></p>
+      <% else %>
+         <p>Do we know each other? &raquo; <%= link_to "Then login !", new_user_session_path %></p>
+      <% end  %>
+
+      
   </div>
+
 
   <div class="large-4 small-12 columns">
       <ul class="inline-list right">
-        <li><a href="#">Home</a></li>
+        <li><%= link_to "Home", root_path %></li>
         <li>
           <%= link_to "Add new place", :controller => :places, :action => :new %>
         </li>

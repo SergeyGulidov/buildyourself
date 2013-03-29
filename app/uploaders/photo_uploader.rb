@@ -37,7 +37,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :resize_and_pad => [120, 120, "white", Magick::CenterGravity]
+     process :resize_and_pad => [100, 70, "white", Magick::CenterGravity]
    end
 
   version :full do

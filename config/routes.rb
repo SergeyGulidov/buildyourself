@@ -15,9 +15,14 @@ BuildYourSelf::Application.routes.draw do
   
 
 
+  
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-  root :to => 'static_pages#index'
+
+
+  root :to => 'places#index'
 
     devise_for :users, :controllers => {
       :registrations => "registrations", 
@@ -28,14 +33,19 @@ BuildYourSelf::Application.routes.draw do
     match 'places/approve' => 'places#approve'
 
     match 'places/make_approve' => 'places#make_approve'
+
+
+
     
+
+
+
     resources :photos
 
     resources :places do
       member { post :vote }
-      #get "approve"
       
-      collection { post :q, to: 'products#index' }
+      #collection { post :q, to: 'products#index' }
     end
 
 
@@ -43,7 +53,7 @@ BuildYourSelf::Application.routes.draw do
     
     resources :contacts
     resources :intervals
-
+    resources :locations
 
     
     match 'types/analize' => 'types#analize'

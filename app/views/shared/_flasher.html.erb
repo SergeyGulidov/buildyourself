@@ -1,0 +1,12 @@
+<div class="large-12 columns">
+	<% if flash[:notice] %>
+		<div id="flash-notice" class="alert-box success">
+		  <%= flash[:notice] %>
+		</div>
+	<% end  %>
+	<% if flash[:error] %>
+		<div class="alert-box alert-box">
+		  <%= flash[:error] %>
+		</div>
+	<% end  %>
+</div>

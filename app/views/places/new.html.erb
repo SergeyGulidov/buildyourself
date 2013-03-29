@@ -4,8 +4,6 @@
 
 <div class="row" >
   <div class="large-12 columns">
- 
-    <!-- Logo -->
 
     <div class="row">
       <div class="small-4 small-centered columns">
@@ -17,41 +15,25 @@
 
     <div id="logo_row" ></div>
  
-    <!-- End Logo -->
- 
- 
-    <div class="row content-area">
+    <div class="row content">
       <div class="large-12 columns">
         <div class="row">
-
-          <!-- Form -->
+        
+        <%= render 'shared/flasher' %>
 
           <div class="large-8 columns">
               <%= render 'translation_form'  %>
           </div>
 
-          <!-- End Form -->
-     
-
-     
-          <!-- Right column -->
-
           <div class="large-4 columns">
     				
             <%= raw t(:how_to) %>
-                
             <%= render 'shared/recent_added' %>
 
     			</div>
-
-          <!-- End Right column -->
-
         </div>
       </div>
     </div>
- 
-    <!-- End Content -->
- 
   </div>
 </div>
 

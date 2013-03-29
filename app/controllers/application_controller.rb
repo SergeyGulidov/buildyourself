@@ -3,38 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale
 
-
-
- def index
-    set_search_place
- end
-
- def show
-    set_search_place
- end
-
- def edit
-    set_search_place
- end
-
- def approve
-    set_search_place
-  end
-
-  def make_approve
-    set_search_place
-  end
-
-
-
-
-
-
-
-  def set_search_place
-
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
     redirect_to root_url

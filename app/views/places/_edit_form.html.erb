@@ -1,5 +1,5 @@
 <%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
-    <% field_set_tag "Check in your place " do %>
+    <% field_set_tag "Edit your place" do %>
 
 <% if flash[:error] %>
     <div class="error"><%= flash[:error] %></div>
@@ -7,14 +7,11 @@
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.input :country, label: "Country", selected: [ "Latvia" ], 
-            collection: [ "Latvia", "Other"] %>
+          <%= f.association :locations, label: "Country", :label_method => :country %>
         </div>
 
         <div class="large-6 columns">
-
-          <%= f.input :city, 
-            collection: Place.all.collect {|x| x.city }.uniq,  label: "City" %>
+          <%= f.association :locations, label: "City", :label_method => :city %>
         </div>
       </div>
 
@@ -40,6 +37,7 @@
         <div class="large-5 columns">
           <%= f.input :website, label: "Website" %>
         </div>
+
       </div>
 
       <div class="row ">
@@ -50,10 +48,8 @@
         </div>
 
         <div class="large-6 columns">
-
             <%= f.input :manytypes,
               label: "I have many types of places" %>
-
         </div>
       </div>
 
@@ -61,11 +57,11 @@
       <div class="row ">
 
         <div class="large-6 columns">
-          <%= f.association :categories, label: "Change category",
+          <%= f.association :categories, label: "Change place category",
             selected: ["Другой"], :label_method => :category_name %>
         </div>
         <div class="large-6 columns">
-          <%= f.association :intervals, label: "Change age interval",
+          <%= f.association :intervals, label: "Change age category",
             selected: ["Другой"], :label_method => :interval_name %>
         </div>
       </div>
@@ -78,7 +74,7 @@
                   <li>
                   	
                   	<div class="photo">
-                  		                <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
+                  <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
                    photo.photo_url(:full).to_s, rel: "facebox" %>
                   	</div>
                   	<div class="remove_photo_icon">&nbsp&nbsp&nbsp
@@ -93,21 +89,27 @@
       </div>
 
       <div class="row photos">
-      	<div class="large-12 columns add_photo">
+        <div class="large-7 columns add_photo">
 
             <% f.fields_for :photos do |photo|  %>
               <%= photo.file_field :photo %>
+              <%= photo.link_to_remove "", 
+                class: "general-enclosed foundicon-remove " %>
             <% end %>
-        
+  
+            
+
             <%= f.link_to_add "Add photos", :photos, class: "small button" %>
-        </div>
-    </div>
+            <h6><small>Only 3 photo per place. Max size per foto 2 MB. Need more? Contact with us.</small></h6>
+
+          </div>
+      </div>
 
 
 
       <div class="row">
         <div class="large-12 columns">
-            <%= f.input :message_ru, label: "Message for Russian speakers", as: :text %>
+            <%= f.input :message_ru, label: "Message for Russian speakers", :as => :text %>
         </div>
       </div>
 

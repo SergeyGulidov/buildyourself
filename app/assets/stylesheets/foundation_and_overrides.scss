@@ -123,7 +123,7 @@
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #FFFF88;
- $hr-margin: emCalc(30px);
+ $hr-margin: emCalc(20px);
 
 // We use these to style lists
 // $list-style-position: outside;
@@ -447,7 +447,7 @@
 // $custom-dropdown-border-width: 1px;
 // $custom-dropdown-border-style: solid;
 // $custom-dropdown-font-color: #555;
-// $custom-dropdown-font-size: emCalc(14px);
+// $custom-dropdown-font-size: emCalc(12px);
 // $custom-dropdown-color-selected: #eeeeee;
 // $custom-dropdown-font-color-selected: #000;
 // $custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
@@ -784,8 +784,8 @@
 
 // These style the titles
 $section-title-color: #464A4C;
-$section-title-bg: #D0EFFC;
-$section-title-bg-active: #FFFF88;
+$section-title-bg: #defffb;
+$section-title-bg-active: #fffef8;
 
 //$section-title-bg-active-tabs: none;
 

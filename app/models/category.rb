@@ -4,7 +4,8 @@ class Category < ActiveRecord::Base
   has_many :categorizations
   has_many :types, through: :categorizations
   has_many :places, through: :categorizations
-  has_many :age_categories, through: :categorizations
+  has_many :intervals, through: :categorizations
+  has_many :locations, through: :categorizations
 
   translates :category_name
 
