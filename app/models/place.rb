@@ -1,9 +1,4 @@
 class Place < ActiveRecord::Base
-  # has_many :assignments
- 
-
-  
-
   has_many :categorizations
 
   has_many :categories, through: :categorizations
@@ -12,9 +7,7 @@ class Place < ActiveRecord::Base
   has_many :locations,  through: :categorizations
   has_many :photos, :dependent => :destroy
   has_many :place_votes
-
   belongs_to :user
-  
 
   acts_as_gmappable
 
@@ -48,11 +41,14 @@ class Place < ActiveRecord::Base
 
 
    def gmaps4rails_address
-    "#{street}, #{city}, #{country}" 
+    addresses = Location.where('locations.id' => location_ids[1])
+    addresses.each do |address|
+      return "#{street}, #{address.city}, #{address.country}" 
+    end
    end
 
   def self.by_votes
-    where(approved: 1).select('places.*, coalesce(value, 0) as votes').
+    approved.select('places.*, coalesce(value, 0) as votes').
     joins('left join place_votes on place_id=places.id').
     order('votes desc')
   end
