@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328095036) do
+ActiveRecord::Schema.define(:version => 20130329131041) do
 
   create_table "assignments", :id => false, :force => true do |t|
     t.integer "place_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20130328095036) do
     t.text     "review_ru"
     t.text     "review_lv"
     t.integer  "with_review", :default => 0
+    t.integer  "sponsor",     :default => 0
   end
 
   create_table "places_category", :force => true do |t|

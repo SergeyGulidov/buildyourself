@@ -1,63 +1,8 @@
-
- 
-    <!-- Logo -->
-
-    <div class="row">
-      <div class="small-4 small-centered columns">
-        <div id="featured">
-          <%= image_tag("logo.png") %>
-        </div>
-      </div>
-    </div>
-
-    <div id="logo_row" ></div>
- 
-    <!-- End Logo -->
- 
- 
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="row">
-
-          <!-- Form -->
-
-          <div class="large-8 columns">
-              <%= render 'new_form'  %>
-          </div>
-
-          <!-- End Form -->
-     
-
-     
-          <!-- Right column -->
-
-          <div class="large-4 columns">
-    				<h4>Already Added:</h4>
-    	      <ul class="disc margin-left panel recent">
-            <% Type.all.each do |type| %>
-              <li>
-                <%= type.title %>
-              </li>
-            <% end %>
-            </ul>
-                
-
-            <h4>Recent added:</h4>
-            <ul class="disc margin-left panel recent">
-    				  <li>Izglītības centrs “Latvikon” Latvijā</li>
-    				  <li>International House Riga-Satva</li>
-    				  <li>Transport and Telecommunication Institute</li>
-    				  <li>Rīgas Valsts tehnikums</li>
-    			  </ul>
-    			</div>
-
-          <!-- End Right column -->
-
-        </div>
-      </div>
-    </div>
- 
-    <!-- End Content -->
+<div class="row">
+  <div class="small-8 small-centered columns">
+  <%= render "form"  %>
+  </div>
+</div>
 
 
 

@@ -3,126 +3,124 @@
 <%= render 'shared/gmap' %>
 
 <div class="row">
-<div class="large-12 columns">
-  
+  <div class="large-12 columns">
+    <%= render 'shared/filter' %>
+    <%= render 'shared/flasher' %>
+    <div class="row content">
+      <div class="large-8 columns">
 
-          <%= render 'shared/filter' %>
-          <%= render 'shared/flasher' %>
+        <h4><%= @place.name %></h4>
 
+            
+          <div class="row">
+            <div class="large-4 columns">
+              <dl class="sub-nav">
+                <dd class="active">
+                  <%= link_to "With review", 
+                      place_path(@place, :anchor => "review") if @place.with_review == 1 %>
+                <dd class="active">           
+                <%= link_to '', place_path(@place, :anchor => "disqus_thread"),
+                  :"data-disqus-identifer" => @place.id %></dd>
 
-                <div class="row content">
-                    <div class="large-8 columns">
+                  <dd class="active"><a href="#"><%= @place.votes%></a></dd>
+                  <% if current_user && current_user.can_vote_for?(@place) %>
+                    <dd>
+                      <%= link_to "", vote_place_path(@place, value: 1), method: "post",
+                        class: "general foundicon-up-arrow" %>
+                      <%= link_to "", vote_place_path(@place, value: -1), method: "post",
+                        class: "general foundicon-down-arrow"  %>
+                    </dd>
+                  <% end %>
+                </dl>
+            </div>
+
+            <div class="large-4 columns">
+              <ul class="breadcrumbs bread-right"> 
+                <li class="current"><a>We have</a></li>
+                <% @place.types.each do |type| %>
+                  <li><%= link_to type.type_name, places_path,  id: type.id%></li>
+                <% end  %>
+              </ul>
+            </div>
+          </div>
+
+          <table class="contacts">
+            <tbody>
+              <tr>
+                <td class="td-title">
+                    <i class="general foundicon-globe"></i>City, Country</td>
+                <td>
+                  <%= get_location(@place) %>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-title">
+                    <i class="general foundicon-location"></i>Street address</td>
+                <td><%= @place.street.titleize %></td>
+              </tr>
+              <tr>
+                <td class="td-title">
+                    <i class="general foundicon-mail"></i>Email</td>
+                <td><%= @place.email.titleize %></td>
+              </tr>
+
+              <% unless @place.phone.blank? %>
+                <tr>
+                  <td class="td-title">
+                      <i class="general foundicon-phone"></i>Phone number</td>
+                  <td><%= @place.phone %></td>
+                </tr>
+              <% end %>
               
-                        <h4><%= @place.name %></h4>
+              <% unless @place.website.blank? %>
+                <tr>
+                  <td class="td-title">
+                      <i class="general foundicon-website"></i>Web address</td>
+                  <td><%= @place.website %></td>
+                </tr>
+              <% end  %>
 
-                        
-                      <div class="row">
-                        <div class="large-4 columns">
-                        <dl class="sub-nav">
-                          <dd class="active">
-                            <%= link_to "With review", 
-                                place_path(@place, :anchor => "review") if @place.with_review == 1 %>
-                          <dd class="active">           
-                          <%= link_to '', place_path(@place, :anchor => "disqus_thread"),
-                            :"data-disqus-identifer" => @place.id %></dd>
-
-                            <dd class="active"><a href="#"><%= @place.votes%></a></dd>
-                            <% if current_user && current_user.can_vote_for?(@place) %>
-                              <dd>
-                                <%= link_to "", vote_place_path(@place, value: 1), method: "post",
-                                  class: "general foundicon-up-arrow" %>
-                                <%= link_to "", vote_place_path(@place, value: -1), method: "post",
-                                  class: "general foundicon-down-arrow"  %>
-                              </dd>
-                            <% end %>
-                          </dl>
-                        </div>
-
-                        <div class="large-4 columns">
-                            <ul class="breadcrumbs bread-right"> 
-
-                            <li class="current"><a>We have</a></li>
-                        <% @place.types.each do |type| %>
-                              <li><%= link_to type.type_name, places_path,  id: type.id%></li>
-                        <% end  %>
-                        </ul>
-
-                        </div>
-                      </div>
+              <tr>
+                <td class="td-title">
+                  <i class="general foundicon-add-doc"></i>Published at
+                </td>
+                <td><%= @place.created_at.strftime("%d.%m.%Y") %></td>
+              </tr>
 
 
+              <% unless @place.created_at.to_i == @place.updated_at.to_i %>
+                <tr>
+                  <td class="td-title">
+                    <i class="general foundicon-edit"></i>Updated at
+                  </td>
+                  <td><%= @place.updated_at.strftime("%d.%m.%Y") %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
+          <p class="owners_text"><%= @place.message %></p>
+          <hr>
 
-
-                        <table class="contacts">
-                          <tbody><tr>
-                            <td class="td-title">
-                                <i class="general foundicon-globe"></i>City, Country</td>
-                            <td>
-                              <%= get_location(@place) %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="td-title">
-                                <i class="general foundicon-location"></i>Street address</td>
-                            <td><%= @place.street.titleize %></td>
-                          </tr>
-                          <tr>
-                            <td class="td-title">
-                                <i class="general foundicon-mail"></i>Email</td>
-                            <td><%= @place.email.titleize %></td>
-                          </tr>
-                          <tr>
-                            <td class="td-title">
-                                <i class="general foundicon-phone"></i>Phone number</td>
-                            <td><%= @place.phone %></td>
-                          </tr>
-                          <tr>
-                            <td class="td-title">
-                                <i class="general foundicon-website"></i>Web address</td>
-                            <td><%= @place.website %></td>
-                          </tr>
-                          <tr>
-                            <td class="td-title">
-                              <i class="general foundicon-add-doc"></i>Published at
-                            </td>
-                            <td><%= @place.created_at.strftime("%d.%m.%Y") %></td>
-                          </tr>
-                          <tr>
-                            <td class="td-title">
-                              <i class="general foundicon-edit"></i>Updated at
-                            </td>
-                            <td><%= @place.updated_at.strftime("%d.%m.%Y") %></td>
-                          </tr>
-                        </tbody></table>
-
-                        <p class="owners_text"><%= @place.message %></p>
-
-                        <hr>
-
-                        <div id="disqus_thread"></div>
-                    </div>
-                  
-
-                  <div class="large-4 columns">
-
-
-                    <ul class="small-block-grid-3 photo_block">
-                      <% for photo in @place.photos %>
-                          <li>
-                            <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th radius"),
-                                photo.photo_url(:full).to_s, rel: "facebox" %>
-                          </li>
-                      <% end %>
-                    </ul>
-                        
-                    <%= render 'shared/recent_added' %>
-
-                  </div>
-
-                  </div>
-        </div>
+          <div id="disqus_thread"></div>
       </div>
+
+      <div class="large-4 columns">
+        <ul class="small-block-grid-3 photo_block">
+          <% for photo in @place.photos %>
+              <li>
+                <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th radius"),
+                    photo.photo_url(:full).to_s, rel: "facebox" %>
+              </li>
+          <% end %>
+        </ul>
+        
+        <%= render 'like_this' %>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script type="text/javascript">
@@ -144,4 +142,5 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the.</noscript>
+
+<noscript>Please enable JavaScript to view comments.</noscript>

@@ -1,25 +1,28 @@
-
 <%= simple_form_for @category, html: { class: 'custom' } do |f| %>
-    <% field_set_tag "Add new category" do %>
+    <% field_set_tag "Category" do %>
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.globalize_fields_for(:ru) do |g| %>
-            <%= f.input :category_name, label: "Russian category"%>
-          <% end %>
+            <%= f.input :category_name_ru, label: "Russian category" %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.globalize_fields_for(:lv) do |g| %>
-            <%= g.input :category_name, label: "Latvian category" %>
-          <% end %>
+            <%= f.input :category_name_lv, label: "Latvian category" %>
         </div>
       </div>
+
       <div class="row">
         <div class="large-6 columns">
-            <%= f.input :slug, label: "Slug" %>
+            <%= f.input :category_slug, label: "Slug" %>
         </div>
       </div>
     <%= f.button :submit, class: 'small button'  %>
   <% end %>
 <% end  %>
+
+
+
+
+
+
+

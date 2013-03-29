@@ -14,8 +14,4 @@ class Type < ActiveRecord::Base
 
   validates :type_name, :presence => true, :length => { :in => 3..200 }
 
-
-  def to_param
-    "#{id}-#{type_slug}".parameterize
-  end
 end

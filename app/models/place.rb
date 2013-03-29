@@ -36,6 +36,7 @@ class Place < ActiveRecord::Base
    scope :approved, where(approved: 1)
    scope :recent, approved.order("created_at desc").limit(10)
    scope :recent5, approved.order("created_at desc").limit(5)
+   scope :sponsor, approved.where(sponsor: 1)
 
 
 

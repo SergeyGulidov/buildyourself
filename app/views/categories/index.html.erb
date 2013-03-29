@@ -1,25 +1,45 @@
-<h1>Listing categories</h1>
+<div class="row">
+  <div class="small-8 small-centered columns">
+      <h1>Listing categories</h1>
 
-<table>
-  <tr>
-    <th>Class</th>
-    <th>Slug</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      <table>
+          <thead>
 
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= category.class %></td>
-    <td><%= category.slug %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+        <tr>
+          <th>Id</th>
+          <th>Name lv</th>
+          <th>Name ru</th>
+          <th>Slug</th>
+          <th>#</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
 
-<br />
+      <% @categories.each do |category| %>
 
-<%= link_to 'New Category', new_category_path %>
+      <tbody>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.category_name_lv %></td>
+          <td><%= category.category_name_ru %></td>
+          <td><%= category.category_slug %></td>
+          <td>
+                <% count = 0 %>
+                <% category.places.each do |place| %>
+                  <% count += 1 %>
+                <% end %>
+
+                <%= count %>
+
+          </td>
+          <td><%= link_to 'Edit', edit_location_path(category) %></td>
+          <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        </tbody>
+      <% end %>
+      </table>
+    <%= link_to 'New Category', new_category_path, class: "small button" %>
+  </div>
+</div>
+

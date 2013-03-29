@@ -658,7 +658,7 @@
 // We use these to control the background and border styles
  $panel-bg: darken(#fff, 0%);
 // $panel-border-style: solid;
-// $panel-border-size: 1px;
+ $panel-border-size: 0px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: 10%;

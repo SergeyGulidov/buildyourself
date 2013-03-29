@@ -1,6 +1,6 @@
 <div class="row">
   <div class="small-8 small-centered columns">
-                <h1>Listing intervals</h1>
+                <h1>Listing types</h1>
 
                 <table>
                     <thead>
@@ -16,30 +16,29 @@
                   </tr>
                   </thead>
 
-                <% @intervals.each do |interval| %>
+                <% @types.each do |type| %>
 
                 <tbody>
                   <tr>
-                    <td><%= interval.id %></td>
-                    <td><%= interval.interval_name_lv %></td>
-                    <td><%= interval.interval_name_ru %></td>
-                    <td><%= interval.interval_slug %></td>
+                    <td><%= type.id %></td>
+                    <td><%= type.type_name_lv %></td>
+                    <td><%= type.type_name_ru %></td>
+                    <td><%= type.type_slug %></td>
                     <td>
                           <% count = 0 %>
-                          <% interval.places.each do |place| %>
+                          <% type.places.each do |place| %>
                             <% count += 1 %>
                           <% end %>
 
                           <%= count %>
 
                     </td>
-                    <td><%= link_to 'Edit', edit_location_path(interval) %></td>
-                    <td><%= link_to 'Destroy', interval, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to 'Edit', edit_type_path(type) %></td>
+                    <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
                   </tbody>
                 <% end %>
                 </table>
-        <%= link_to 'New interval', new_category_path, class: "small button" %>
+        <%= link_to 'New type', new_type_path, class: "small button" %>
     </div>
 </div>
-

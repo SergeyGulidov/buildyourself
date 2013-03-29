@@ -1,31 +1,50 @@
-<h1>Listing locations</h1>
+<div class="row">
+  <div class="small-8 small-centered columns">
+        <h1>Listing locations</h1>
 
-<table>
-  <tr>
-    <th>City lv</th>
-    <th>City ru</th>
-    <th>Country lv</th>
-    <th>Country ru</th>
-    <th>Slug</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+        <table>
+            <thead>
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= location.city_lv %></td>
-    <td><%= location.city_ru %></td>
-    <td><%= location.country_lv %></td>
-    <td><%= location.country_ru %></td>
-    <td><%= location.slug %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+          <tr>
+            <th>Id</th>
+            <th>City lv</th>
+            <th>City ru</th>
+            <th>Country lv</th>
+            <th>Country ru</th>
+            <th>Slug</th>
+            <th>#</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
 
-<br />
+        <% @locations.each do |location| %>
 
-<%= link_to 'New Location', new_location_path %>
+        <tbody>
+          <tr>
+            <td><%= location.id %></td>
+            <td><%= location.city_lv %></td>
+            <td><%= location.city_ru %></td>
+            <td><%= location.country_lv %></td>
+            <td><%= location.country_ru %></td>
+            <td><%= location.location_slug %></td>
+            <td>
+                  <% count = 0 %>
+                  <% location.places.each do |place| %>
+                    <% count += 1 %>
+                  <% end %>
+                  
+                  <%= count %>
+            </td>
+
+            <td><%= link_to 'Edit', edit_location_path(location) %></td>
+            <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          </tbody>
+        <% end %>
+        </table>
+        <%= link_to 'New Location', new_location_path, class: "small button" %>
+    </div>
+</div>
+        

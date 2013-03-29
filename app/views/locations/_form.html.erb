@@ -1,15 +1,35 @@
-<%= simple_form_for(@location) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @location, html: { class: 'custom' } do |f| %>
+    <% field_set_tag "Location" do %>
 
-  <div class="form-inputs">
-    <%= f.input :city_lv %>
-    <%= f.input :city_ru %>
-    <%= f.input :country_lv, as: :text %>
-    <%= f.input :country_ru, as: :text %>
-    <%= f.input :location_slug %>
-  </div>
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.input :city_ru, label: "Russian city"%>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+        <div class="large-6 columns">
+            <%= f.input :city_lv, label: "Latvian city" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.text_field :country_ru, label: "Russian city"%>
+        </div>
+        <div class="large-6 columns">
+            <%= f.text_field :country_lv, label: "Latvian city" %>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.input :location_slug, label: "Slug" %>
+        </div>
+      </div>
+
+    <%= f.button :submit, class: 'small button'  %>
+  <% end %>
+<% end  %>
+
+
+

@@ -1,13 +1,22 @@
 class TypesController < ApplicationController
 	load_and_authorize_resource
-	before_filter :find_type, :only => [:show, :edit, :update, :destroy]
+	before_filter :find_type, :only => [:edit, :update, :destroy]
 	
+  def index
+    @types = Type.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @types }
+    end
+  end
+
   def new
   	@type = Type.new
-	respond_to do |format|
-		format.html  # new.html.erb
-		format.json  { render :json => @type }
-	end
+  	respond_to do |format|
+  		format.html  # new.html.erb
+  		format.json  { render :json => @type }
+  	end
   end
 
   def create
@@ -20,51 +29,27 @@ class TypesController < ApplicationController
 	  end
   end
 
-  def show
-	places = @type.places.where(approved: 1)
-
-
-	@places = places.page(params[:page]).per(5)
-	@json = places.to_gmaps4rails do |place, marker|
-	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-	    marker.title "#{place.name}"
-  		end
-
-  end
-
   def edit
   end
 
-  def analize
-  	@types = Type.all
-  end
-
   def update
-	      if @type.update_attributes(params[:type])
-	         redirect_to :action => 'analize'
-	      else
-	         @type = type.find(params[:id])
-	         render :action => 'edit'
-      		end
+    respond_to do |format|
+      if @type.update_attributes(params[:type])
+        format.html { redirect_to action: "index", notice: 'Type was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @type.errors, status: :unprocessable_entity }
+      end
+    end
    end	
 
   def destroy
     @type.destroy
-    redirect_to :action => 'analize'
+    redirect_to action: "index"
   end
 
   def find_type
   	@type = Type.find(params[:id].to_i)
   end
-
-
-def gmaps4rails_marker_picture
-    {
-    "picture" => "http://maps.google.com/mapfiles/ms/micons/blue.png",
-    "width" => 32,
-    "height" => 32
-    }
-end
-
-
 end

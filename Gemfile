@@ -13,7 +13,7 @@ gem 'simple_form'
 gem 'gmaps4rails'
 gem "rmagick"
 gem "carrierwave"
-gem 'nested_form', github: 'ryanb/nested_form'
+gem 'nested_form'#, github: 'ryanb/nested_form'
 gem 'devise'
 gem "cancan"
 gem 'facebox-rails'

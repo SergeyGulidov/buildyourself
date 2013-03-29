@@ -6,4 +6,15 @@ module PlacesHelper
 		end
 	end
 
+	def get_like_this(place)
+
+		places = Place.approved
+		same_type = {}
+
+		place.types.each do |type|
+            places = places.joins(:types).where('types.type_slug' => 'type.type_slug')
+        end
+
+        return places
+	end
 end

@@ -27,13 +27,15 @@ class Ability
       #photo controller
 
       can :create, Photo
-      can :read, Photo
-      can :edit, Photo
-      can :destroy, Photo
+      #can :read, Photo
+      #can :edit, Photo
+      #can :destroy, Photo
 
       # type controller
 
-      can :read, Type
+      # can :read, Type
+
+
 
     end
   end
