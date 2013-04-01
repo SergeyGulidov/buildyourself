@@ -34,7 +34,7 @@ BuildYourSelf::Application.routes.draw do
     resources :contacts
     resources :intervals
     resources :locations
-
+    resources :users
     
     match 'types/analize' => 'types#analize'
 

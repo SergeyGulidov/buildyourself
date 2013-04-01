@@ -9,39 +9,16 @@
     <div class="row content">
       <div class="large-8 columns">
 
-        <h4><%= @place.name %></h4>
+        
 
             
           <div class="row">
-            <div class="large-4 columns">
-              <dl class="sub-nav">
-                <dd class="active">
-                  <%= link_to "With review", 
-                      place_path(@place, :anchor => "review") if @place.with_review == 1 %>
-                <dd class="active">           
-                <%= link_to '', place_path(@place, :anchor => "disqus_thread"),
-                  :"data-disqus-identifer" => @place.id %></dd>
-
-                  <dd class="active"><a href="#"><%= @place.votes%></a></dd>
-                  <% if current_user && current_user.can_vote_for?(@place) %>
-                    <dd>
-                      <%= link_to "", vote_place_path(@place, value: 1), method: "post",
-                        class: "general foundicon-up-arrow" %>
-                      <%= link_to "", vote_place_path(@place, value: -1), method: "post",
-                        class: "general foundicon-down-arrow"  %>
-                    </dd>
-                  <% end %>
-                </dl>
+            <div class="large-6 columns">
+              <h4><%= @place.name %></h4>
+              <%= render 'subnav', object: @place %>
             </div>
 
-            <div class="large-4 columns">
-              <ul class="breadcrumbs bread-right"> 
-                <li class="current"><a>We have</a></li>
-                <% @place.types.each do |type| %>
-                  <li><%= link_to type.type_name, places_path,  id: type.id%></li>
-                <% end  %>
-              </ul>
-            </div>
+            <%= render 'breadcrumbs', object: @place %>
           </div>
 
           <table class="contacts">
@@ -99,6 +76,7 @@
             </tbody>
           </table>
 
+
           <p class="owners_text"><%= @place.message %></p>
           <hr>
 
@@ -110,7 +88,7 @@
           <% for photo in @place.photos %>
               <li>
                 <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th radius"),
-                    photo.photo_url(:full).to_s, rel: "facebox" %>
+                    photo.photo_url.to_s, rel: "facebox" %>
               </li>
           <% end %>
         </ul>

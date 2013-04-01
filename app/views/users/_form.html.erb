@@ -1,0 +1,15 @@
+<%= simple_form_for @user, html: { class: 'custom' } do |f| %>
+    <% field_set_tag "User" do %>
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.input :role, label: "User role"%>
+        </div>
+
+        <div class="large-6 columns">
+            <%= f.input :email, label: "User email" %>
+        </div>
+      </div>
+    <%= f.button :submit, class: 'small button'  %>
+  <% end %>
+<% end  %>

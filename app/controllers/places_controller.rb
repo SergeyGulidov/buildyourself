@@ -1,27 +1,22 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
 
-	
 	def index
-		
+
 		@places, @type_vip = Place.search(params)
 
-
-		if @places.empty?
-			flash[:error] = "Nothing is found. Please try again." 
-		else
-			flash[:error] = nil
-		end
-
+			if @places.empty?
+				flash[:error] = "Nothing is found. Please try again." 
+			else
+				flash[:error] = nil
+			end
+		
 		@json = @places.to_gmaps4rails do |place, marker|
 			    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 			    marker.title "#{place.name}"
 	  	end
 
 		@places = @places.page(params[:page]).per(5)
-
-
-
 	end
 
   def home

@@ -8,14 +8,19 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require foundation_and_overrides
+ *= require_self
  *= require_tree .
  *= require jquery.facebox
  */
-
 @import 'foundation-icons';
 
+
+
+
+optgroup{
+  background-color: white;
+}
 
 html, body { height: 100%; margin: 0; padding: 0; }
 
@@ -44,16 +49,13 @@ body:before {
 
 
 /* Foundation image fix */
-.gmaps4rails_map img, .popup img, .map_container img{max-width: none;} 
+.gmaps4rails_map img, .popup img, .map_container img {max-width: none;} 
 
-
-
-
-.top-bar-hr{
-  margin-top: -60px;
-  margin-bottom: 0;
-  padding-bottom: 0;
+.search form{
+  width: 68px!important;
+  height: 32px!important;
 }
+
 
 #footer{
   border-top: 1px solid #d0e9f4 !important;
@@ -91,7 +93,11 @@ fieldset{
 }
 
 .top-bar .right li a:hover{
-  background-color: #fff!important;
+  background-color: #fef8f6;
+}
+
+.top-bar-border{
+  border-bottom: 1px solid #D2E0D5;
 }
 
 h5 #title a:active {
@@ -103,7 +109,7 @@ h5 #title a:active {
 
 #footer img{
   float:right;
-  margin-top: -139px;
+  margin-top: -108px;
 }
 
 .pagination-centered{
@@ -136,7 +142,3 @@ h5 #title a:active {
   padding-top:6px!important;
 }
 
-
-#bread{
-  margin-bottom: 0!important;
-}

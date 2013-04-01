@@ -6,8 +6,8 @@ class Photo < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
   validates :photo, 
-    :presence => true, 
+    #:presence => false, 
     :file_size => { 
-      :maximum => 2.megabytes.to_i 
+      :maximum => 3.megabytes.to_i 
     } 
 end

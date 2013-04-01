@@ -6,5 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user=User.create!(:email=>'s.gulidov@gmail.com',:password=>'459185468816')
-user.create_role(name: 'administrator')
+
+user=User.create!(email:'s.gulidov@gmail.com',
+	password: '459185468816', role: 1)

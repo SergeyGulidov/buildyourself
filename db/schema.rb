@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329182508) do
-
-  create_table "assignments", :id => false, :force => true do |t|
-    t.integer "place_id"
-    t.integer "type_id"
-  end
-
-  add_index "assignments", ["place_id"], :name => "index_assignments_on_place_id"
-  add_index "assignments", ["type_id"], :name => "index_assignments_on_type_id"
+ActiveRecord::Schema.define(:version => 20130331153944) do
 
   create_table "brains", :force => true do |t|
   end
@@ -30,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.string "category_name_lv"
   end
 
+  add_index "categories", ["category_slug"], :name => "index_categories_on_category_slug"
+
   create_table "categorizations", :id => false, :force => true do |t|
     t.integer "type_id"
     t.integer "category_id"
@@ -39,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
   end
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
+  add_index "categorizations", ["interval_id"], :name => "index_categorizations_on_interval_id"
+  add_index "categorizations", ["location_id"], :name => "index_categorizations_on_location_id"
   add_index "categorizations", ["place_id"], :name => "index_categorizations_on_place_id"
   add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
 
@@ -54,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.string "interval_name_lv"
   end
 
+  add_index "intervals", ["interval_slug"], :name => "index_intervals_on_interval_slug"
+
   create_table "locations", :force => true do |t|
     t.string "city_lv"
     t.string "city_ru"
@@ -61,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.string "country_ru"
     t.string "location_slug"
   end
+
+  add_index "locations", ["location_slug"], :name => "index_locations_on_location_slug"
 
   create_table "photos", :force => true do |t|
     t.integer "place_id"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.float    "longitude"
     t.boolean  "gmaps"
     t.integer  "user_id"
-    t.integer  "manytypes"
     t.integer  "approved",    :default => 0
     t.text     "message_lv"
     t.text     "review_ru"
@@ -97,15 +96,8 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.integer  "with_review", :default => 0
     t.integer  "sponsor",     :default => 0
     t.integer  "vip",         :default => 0
+    t.text     "comment"
   end
-
-  create_table "places_category", :force => true do |t|
-    t.integer "place_id"
-    t.integer "category_id"
-  end
-
-  add_index "places_category", ["category_id"], :name => "index_places_category_on_category_id"
-  add_index "places_category", ["place_id"], :name => "index_places_category_on_place_id"
 
   create_table "roles", :force => true do |t|
     t.string  "name"
@@ -117,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.string "type_slug"
     t.string "type_name_lv"
   end
+
+  add_index "types", ["type_slug"], :name => "index_types_on_type_slug"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -131,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20130329182508) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "role",                   :default => 2
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

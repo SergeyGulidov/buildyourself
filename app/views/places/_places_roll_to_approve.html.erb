@@ -1,62 +1,36 @@
 <% @places.each do |place| %>
-	  <div class="large-5 columns place_box">
-	  	<h5 id="title"><%= link_to place.name, controller: 'places', action: 'make_approve', id: place.id %></h5>
+	<% @place = place %>
 
-	  	    <dl class="sub-nav">
-		      <dd class="active"><a href="#">With review</a></dd>
-		      <dd class="active"><a href="#">4 comments</a></dd>
-		      
-
-		        <dd class="active"><a href="#"><%= pluralize place.votes, "vote" %></a></dd>
-		        <% if current_user && current_user.can_vote_for?(place) %>
-		          <dd>
-		            <%= link_to "", vote_place_path(place, value: 1), method: "post",
-		              class: "general foundicon-up-arrow" %>
-		            <%= link_to "", vote_place_path(place, value: -1), method: "post",
-		              class: "general foundicon-down-arrow"  %>
-		          </dd>
-		        <% end %>
-
-		    </dl>
-		
+		<div class="row">
+			  <div class="large-6 columns">
+				<h5 id="title">
+					<%= link_to place.name, controller: 'places', action: 'make_approve', id: place.id %>
+				</h5>
+				<%= render 'subnav', object: @place %>
+			  </div>   
+		</div>
 
 
-	  	<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>
-	  			<%= link_to "...", place_path(place)%></p>
+		<div class="row">
+			<div class="large-6 columns">
+				<p><%= truncate(place.message, :length => 250, :separator => '. ', :omission => '') %>
+						<%= link_to "...", place_path(place)%></p>
 
-	  	<h6><small><%= link_to "read more...", place_path(place)%></small></h6>
+				<h6><small><%= link_to "read more...", place_path(place)%></small></h6>		
+			</div>
 
-
-
-
-	  </div>
-	  <div class="large-7 columns ">
-
-	  		<ul class="breadcrumbs bread-right">
-	  			<% place.types.each do |type| %>
-            		<li><a href="#"><%= type.type_name %></a></li>
-            	<% end  %>
-
-
-			  <li><a href="#">Home</a></li>
-			  <li class="unavailable"><a href="#">Gene Splicing</a></li>
-			  <li class="current"><a href="#">Cloning</a></li>
-			</ul>
-
-
-
-
-            <ul class="large-block-grid-3 photo_block">
-            	<% place.photos = place.photos.take(3) %>
-            	<% place.photos.each do |photo| %>
-            		<li><%= image_tag photo.photo_url(:thumb).to_s, class: "th" %></li>
-            	<% end  %>
-            </ul>
-
-
-
-	  	
-	  </div>
+			<div class="large-6 columns ">
+				<ul class="large-block-grid-3 ">
+					<% place.photos = place.photos.take(3) %>
+					<% place.photos.each do |photo| %>
+						<li>
+							<%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th radius"),
+							 photo.photo_url.to_s, rel: "facebox" %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
 	<hr>
 <% end %>
 

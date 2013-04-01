@@ -40,9 +40,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
      process :resize_and_pad => [100, 70, "white", Magick::CenterGravity]
    end
 
-  version :full do
-     process :resize_to_fit => [600, 600]
-   end
+
+     process :resize_to_limit => [700, 700]
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

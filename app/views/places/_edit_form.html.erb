@@ -1,9 +1,7 @@
 <%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
     <% field_set_tag "Edit your place" do %>
 
-<% if flash[:error] %>
-    <div class="error"><%= flash[:error] %></div>
-  <% end %>
+    <%= render 'shared/errors', object: @place%>
 
       <div class="row">
         <div class="large-6 columns">
@@ -40,31 +38,30 @@
 
       </div>
 
-      <div class="row ">
-        
-        <div class="large-6 columns">
-          <%= f.association :types, label: "Change type of your place",
-            selected: ["Другой"], :label_method => :type_name %>
-        </div>
-
-        <div class="large-6 columns">
-            <%= f.input :manytypes,
-              label: "I have many types of places" %>
-        </div>
-      </div>
-
 
       <div class="row ">
-
-        <div class="large-6 columns">
-          <%= f.association :categories, label: "Change place category",
-            selected: ["Другой"], :label_method => :category_name %>
-        </div>
-        <div class="large-6 columns">
+        <div class="large-4 columns">
           <%= f.association :intervals, label: "Change age category",
             selected: ["Другой"], :label_method => :interval_name %>
         </div>
+        <div class="large-4 columns">
+          <%= f.association :categories, label: "Change place category",
+            selected: ["Другой"], :label_method => :category_name %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.association :types, label: "Change type of your place",
+            selected: ["Другой"], :label_method => :type_name %>
+        </div>
       </div>
+
+      <div class="row ">
+        <div class="large-12 columns">
+          <p class="important_text">Вашей категории, города или страны нет в списке? 
+          Оставьте эти поля пустыми. Мы с вами свяжемся по e-mail для уточнения деталей и 
+          заполним их за вас.</p>
+        </div>
+      </div>
+
 
 
       <div class="row add_margin">
@@ -75,7 +72,7 @@
                   	
                   	<div class="photo">
                   <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
-                   photo.photo_url(:full).to_s, rel: "facebox" %>
+                   photo.photo_url.to_s, rel: "facebox" %>
                   	</div>
                   	<div class="remove_photo_icon">&nbsp&nbsp&nbsp
 	                  	<%= link_to "", photo, :method => :delete, 
@@ -100,7 +97,9 @@
             
 
             <%= f.link_to_add "Add photos", :photos, class: "small button" %>
-            <h6><small>Only 3 photo per place. Max size per foto 2 MB. Need more? Contact with us.</small></h6>
+            <h6 id="text_for_photo_button"><small>
+            Only .jpg .jpeg .gif .png formats. Max size per foto 2 MB. Need more?
+            <%= link_to "Contact with us", new_contact_path %>.</small></h6>
 
           </div>
       </div>

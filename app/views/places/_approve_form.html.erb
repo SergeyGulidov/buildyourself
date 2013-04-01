@@ -1,19 +1,17 @@
-<%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
-    <% field_set_tag "Check in your place " do %>
+<%= simple_nested_form_for @place, html: { multipart: true  } do |f| %>
+    <% field_set_tag "Edit this place" do %>
 
-<% if flash[:error] %>
-    <div class="error"><%= flash[:error] %></div>
-  <% end %>
-
+    <%= render 'shared/errors', object: @place%>
+ 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.input :country, label: "Country", selected: [ "Latvia" ], 
-            collection: [ "Latvia", "Brazil", "New Zealand"] %>
+          <%= f.association :locations, label: "Country", 
+            label_method: :country, value_method: :id %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.input :city, label: "City", selected: [ "Riga" ], 
-            collection: [ "Riga", "Ogre"] %>
+         <%= f.association :locations, label: "City",
+          :label_method => :city, value_method: :id %>
         </div>
       </div>
 
@@ -29,6 +27,21 @@
 
       <div class="row">
         <div class="large-4 columns">
+          <%= f.input :latitude, label: "Latitude" %>
+        </div>
+
+        <div class="large-4 columns">
+          <%= f.input :longitude, label: "Longitude" %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.input :user_id, label: "User id" %>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="large-4 columns">
           <%= f.input :email, label: "Email" %>
         </div>
 
@@ -41,42 +54,54 @@
         </div>
       </div>
 
+
       <div class="row ">
+        <div class="large-6 columns">
+          <%= f.association :intervals, label: "Change age category",
+            :label_method => :interval_name, value_method: :id %>
+        </div>
+
 
         <div class="large-6 columns">
-          <div class="check_box_hightlight">
-            <%= f.input :manytypes,
-              label: "I have many types of places" %>
-          </div>
+          <%= f.input :approved, label: "Do you approve this place?" %>
+          <%= f.input :with_review, label: "Place with review?" %>
+          <%= f.input :sponsor, label: "Our week sponsor?" %>
+          <%= f.input :vip, label: "Vip place?" %>
         </div>
       </div>
 
 
+
+
       <div class="row ">
         <div class="large-6 columns">
-          <div class="check_box_hightlight">
-            <%= f.input :approved,
-              label: "Post this place" %>
-          </div>
+          <%= f.association :types, label: "Change place type", 
+          label_method: :type_name, value_method: :id  %>
+        </div>
+ 
+
+        <div class="large-6 columns">
+          <%= f.association :categories, label: "Change place category",
+            :label_method => :category_name, value_method: :id %>
         </div>
       </div>
 
 
       <div class="row add_margin">
         <div class="large-12 columns add_photo">
-			<ul class="small-block-grid-6">
+      <ul class="small-block-grid-6">
               <% for photo in @place.photos %>
                   <li>
-                  	
-                  	<div class="photo">
-                  		                <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
-                   photo.photo_url(:full).to_s, rel: "facebox" %>
-                  	</div>
-                  	<div class="remove_photo_icon">&nbsp&nbsp&nbsp
-	                  	<%= link_to "", photo, :method => :delete, 
-	                  		class: "general-enclosed foundicon-remove " %>
-                  	</div>
-                  	
+                    
+                    <div class="photo">
+                  <%= link_to (image_tag photo.photo_url(:thumb).to_s, class: "th"),
+                   photo.photo_url.to_s, rel: "facebox" %>
+                    </div>
+                    <div class="remove_photo_icon">&nbsp&nbsp&nbsp
+                      <%= link_to "", photo, :method => :delete, 
+                        class: "general-enclosed foundicon-remove " %>
+                    </div>
+                    
                   </li>
               <% end %>
             </ul>
@@ -84,21 +109,26 @@
       </div>
 
       <div class="row photos">
-      	<div class="large-12 columns add_photo">
+        <div class="large-7 columns add_photo">
 
             <% f.fields_for :photos do |photo|  %>
               <%= photo.file_field :photo %>
+              <%= photo.link_to_remove "", 
+                class: "general-enclosed foundicon-remove " %>
             <% end %>
-        
-            <%= f.link_to_add "Add photos", :photos, class: "small button" %>
-        </div>
-    </div>
+  
+            
 
+            <%= f.link_to_add "Add photos", :photos, class: "small button" %>
+            <h6><small>Only 3 photo per place. Max size per foto 2 MB. Need more? Contact with us.</small></h6>
+
+          </div>
+      </div>
 
 
       <div class="row">
         <div class="large-12 columns">
-            <%= f.input :message_ru, label: "Message for Russian speakers", as: :text %>
+            <%= f.input :message_ru, label: "Message for Russian speakers", :as => :text %>
         </div>
       </div>
 
@@ -107,6 +137,18 @@
             <%= f.input :message_lv, label: "Message for Latvian speakers", as: :text %>
         </div>
       </div>
+      <div class="row">
+        <div class="large-12 columns">
+            <%= f.input :review_ru, label: "Review for Latvian speakers", as: :text %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+            <%= f.input :review_lv, label: "Review for Latvian speakers", as: :text %>
+        </div>
+      </div>
+
+
 
     <%= f.button :submit, class: 'small button'  %>
   <% end %>

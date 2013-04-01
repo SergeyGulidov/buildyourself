@@ -22,9 +22,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render 'shared/topbar'  %>
 <div id="wrap">
 
-	<%= render 'shared/topbar'  %>
+	
 
 		<div id="main" >
 			<%= yield %>
@@ -39,8 +40,8 @@
 
 
 
+    <%= javascript_include_tag "application" %>
 
-  <%= javascript_include_tag "application" %>
   <%= yield :scripts %>
 </body>
 </html>

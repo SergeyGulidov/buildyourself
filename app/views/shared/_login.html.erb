@@ -1,0 +1,29 @@
+<div class="row panel ">
+	<div class="large-12 small-12 columns user_area">
+		<dl class="sub-nav must_read">
+			<% if user_signed_in?  %>
+		  		<dt> Logged as : <b><%= current_user.email %></b></dt>
+		  		<dd class="active"><%= link_to raw(" Logout"), 
+		  				destroy_user_session_path, method: :delete %></dd>
+		  	<% else %>
+		  <dd class="active">Do we know each other? Yes? <%= link_to "Then login !", new_user_session_path %></dd>
+		  <dd class="active">No? Please <%= link_to "SignUp.", new_user_registration_path %></dd>
+		  <dd data-reveal-id="for_what"><%= link_to "For what?", new_user_registration_path %></dd>
+
+		  <% end  %>
+		</dl>
+      </div>
+</div>
+
+<div id="for_what" class="reveal-modal">
+  <h2>What you get?</h2>
+
+
+
+	  <h6>Вы сможете принимать участие в рейтинге.</small></h6>
+	  <h6>Добавлять или изменять информацию о своем месте.</h6>
+	</br>
+	  <p class="important_text">В переди у нас долгий путь и мы обязательно будем добалять новые функции для зарегистрированных пользователей.</p>
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>

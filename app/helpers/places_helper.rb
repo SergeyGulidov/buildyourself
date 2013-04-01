@@ -12,7 +12,7 @@ module PlacesHelper
 		same_type = {}
 
 		place.types.each do |type|
-            places = places.joins(:types).where('types.type_slug' => 'type.type_slug')
+            places = Place.joins(:types).where('types.type_slug' => 'type.type_slug')
         end
 
         return places

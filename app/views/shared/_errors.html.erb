@@ -1,0 +1,11 @@
+<% if @place.errors.any? %>
+  <div class="row">
+    <div class="large-12 small-12 columns">
+        <p class="must_read">
+        <% @place.errors.full_messages.each do |msg| %>
+          <%= msg %></br>
+        <% end %>
+        </p>
+    </div>
+  </div>
+<% end %>

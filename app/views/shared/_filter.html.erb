@@ -1,33 +1,36 @@
 <div class="row collapse stick_to_map">
       <%= form_tag(places_path, :class => 'custom', :method => 'get') do %>
 
-        <div class="large-1 columns large-offset-5">
+        <div class="large-1 small-2 columns large-offset-5">
           <%= select_tag :city,
              options_from_collection_for_select(Location.find(:all), 'location_slug', 'city'),
              :include_blank => true, :prompt => "City ..." %>
         </div>
 
 
-        <div class="large-2 columns">
+        <div class="large-2 small-3 columns">
           <%= select_tag :category,
              options_from_collection_for_select(Category.find(:all), 'category_slug', 'category_name'),
              :include_blank => true, :prompt => "Category ..." %>
         </div>
 
-        <div class="large-1 columns">
+        <div class="large-1 small-3 columns">
           <%= select_tag :type, 
             options_from_collection_for_select(Type.find(:all), 'type_slug', 'type_name'),
              :include_blank => true, :prompt => "Type ..." %>
         </div>
 
-        <div class="large-2 columns">
+        <div class="large-2 small-2 columns">
           <%= select_tag :interval, 
             options_from_collection_for_select(Interval.find(:all), 'interval_slug', 'interval_name'),
              :include_blank => true, :prompt => "Interval ..." %>
         </div>
 
-        <div class="large-1 columns">
-          <%= submit_tag "Search", class: 'button postfix radius' %>
+        <div class="large-1 small-2 columns">
+          <div class="large-12 columns search">
+            <%= image_submit_tag("search.png")  %>
+          </div>
         </div>
     <% end %>
 </div>
+
