@@ -1,6 +1,6 @@
 class Place < ActiveRecord::Base
-  has_many :categorizations
 
+  has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :intervals,  through: :categorizations
   has_many :types,      through: :categorizations
@@ -11,15 +11,12 @@ class Place < ActiveRecord::Base
 
   acts_as_gmappable
 
-
-
   before_save{|place| place.email = place.email.downcase}
 
-  attr_accessible :approved, :email, :comment, :vip, :sponsor, :with_review,
-  	 :message, :name, :phone, :street, :website,
+  attr_accessible :approved, :email, :vip, :sponsor, :with_review,
+  	 :name, :phone, :street, :website,
      :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids,
      :message_ru, :message_lv, :location_ids, :latitude, :longitude, :review_lv, :review_ru, :user_id
-
 
   translates :message, :review
 
@@ -34,13 +31,10 @@ class Place < ActiveRecord::Base
    validates :name, :uniqueness => true, :presence => true
    validates :name, :presence => true
 
-
-
    scope :approved, where(approved: 1)
    scope :recent, approved.order("created_at desc").limit(10)
    scope :recent5, approved.order("created_at desc").limit(5)
    scope :sponsor, approved.where(sponsor: 1)
-
 
 
 
@@ -66,30 +60,48 @@ class Place < ActiveRecord::Base
     "#{id}-#{name}".parameterize
   end
 
-  def self.search(search)
 
-    unless search.empty?
-      @places = approved
+
+  searchable do
+    text :name, :boost => 10
+    text :message_ru
+    text :message_lv
+  end
+
+
+  def self.search(params)
+
+    unless params.empty?
       @type_vip = nil
 
-      unless search[:type].blank?
-        @places = @places.joins(:types).where('types.type_slug' => "#{search[:type]}")
-        @type_vip = @places.where(vip: 1)
-      end
+        @places = approved
 
-      unless search[:city].blank?
-        @places = @places.joins(:locations).where('locations.location_slug' => "#{search[:city]}")
-      end
+        unless params[:type].blank?
+          @places = @places.joins(:types).where('types.type_slug' => "#{params[:type]}")
+          @type_vip = @places.where(vip: 1)
+        end
 
-      unless search[:category].blank?
-        @places = @places.joins(:categories).where('categories.category_slug' => "#{search[:category]}") 
-      end
+        unless params[:city].blank?
+          @places = @places.joins(:locations).where('locations.location_slug' => "#{params[:city]}")
+        end
 
-      unless search[:interval].blank?
-        @places = @places.joins(:intervals).where('intervals.interval_slug' => "#{search[:interval]}") 
-      end
+        unless params[:category].blank?
+          @places = @places.joins(:categories).where('categories.category_slug' => "#{params[:category]}") 
+        end
 
-      return @places, @type_vip
+        unless params[:interval].blank?
+          @places = @places.joins(:intervals).where('intervals.interval_slug' => "#{params[:interval]}") 
+        end
+        
+        @places = @places.page(params[:page]).per(5)
+
+        return @places, @type_vip
     end
   end
+
+
+
+
+
+
 end

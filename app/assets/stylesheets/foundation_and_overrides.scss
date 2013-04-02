@@ -930,16 +930,16 @@ $section-bottom-margin: 0;
 //
 // Tooltip Variables
 //
-// $has-tip-border-bottom: dotted 1px #ccc;
+ $has-tip-border-bottom: dotted 0 #ccc;
 // $has-tip-font-weight: bold;
 // $has-tip-font-color: #333;
-// $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
+ $has-tip-border-bottom-hover: dotted 0 darken($primary-color, 20%);
 // $has-tip-font-color-hover: $primary-color;
 // $has-tip-cursor-type: help;
 
 // $tooltip-padding: emCalc(8px);
-// $tooltip-bg: #000;
-// $tooltip-font-size: emCalc(15px);
+ $tooltip-bg: #b3e4f4;
+ $tooltip-font-size: emCalc(14px);
 // $tooltip-font-weight: bold;
 // $tooltip-font-color: #fff;
 // $tooltip-line-height: 1.3;

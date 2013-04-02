@@ -1,27 +1,36 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
+	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit]
+	
 
 	def index
-
-		@places, @type_vip = Place.search(params)
-
-			if @places.empty?
-				flash[:error] = "Nothing is found. Please try again." 
-			else
-				flash[:error] = nil
+		if !params[:search].blank?
+			@search = Place.search do
+			    fulltext params[:search]
+				paginate :page => params[:page], :per_page => 1
 			end
-		
+			@places = @search.results
+		else
+			@places, @type_vip = Place.search(params)
+		end
+
+		if @places.empty?
+			flash[:alert] = "Nothing is found. Please try again." 
+		else
+			flash[:alert] = nil
+		end
+	
 		@json = @places.to_gmaps4rails do |place, marker|
 			    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 			    marker.title "#{place.name}"
 	  	end
 
-		@places = @places.page(params[:page]).per(5)
+	  	#
 	end
 
   def home
   	@place = Place.find(params[:id])
- 
+
 	  respond_to do |format|
 	    format.html  # show.html.erb
 	    format.json  { render :json => @place }
@@ -30,6 +39,7 @@ load_and_authorize_resource
 
   def new
   	@place = Place.new 
+
 	respond_to do |format|
 		format.html  # new.html.erb
 		format.json  { render :json => @place }
@@ -38,10 +48,11 @@ load_and_authorize_resource
 
   def create
 	  @place = Place.new(params[:place])
+
 	  if current_user
 	  	@place.user_id = current_user.id 
 	  else
-	  	@place.user_id = 7  # admin id by default
+	  	@place.user_id = 1  # admin id by default
 	  end
 
 	  respond_to do |format|
@@ -68,6 +79,7 @@ load_and_authorize_resource
   end
 
   def edit
+
       @place = Place.find(params[:id])
       @json = @place.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
@@ -111,6 +123,11 @@ load_and_authorize_resource
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 	    marker.title "#{place.name}"
   		end
+  end
+
+
+  def get_current_user_places
+	@current_user_places = Place.where("user_id = '#{current_user.id}'") if current_user
   end
 
 

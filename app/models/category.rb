@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-	attr_accessible :category_name, :category_slug
+	attr_accessible :category_name_lv, :category_name_ru , :category_slug
 
   has_many :categorizations
   has_many :types, through: :categorizations

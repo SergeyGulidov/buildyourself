@@ -17,7 +17,14 @@ gem 'nested_form'#, github: 'ryanb/nested_form'
 gem 'devise'
 gem "cancan"
 gem 'facebox-rails'
-gem "ransack"
+
+
+gem 'sunspot_rails'
+#gem 'sunspot_solr'
+
+
+gem 'progress_bar'
+
 gem 'kaminari'
 
 

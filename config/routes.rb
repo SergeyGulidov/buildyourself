@@ -18,7 +18,7 @@ BuildYourSelf::Application.routes.draw do
     match 'admin' => 'brains#admin'
     
 
-
+    match ':id/places/make_approve' => 'places#make_approve'
 
     resources :photos
 
