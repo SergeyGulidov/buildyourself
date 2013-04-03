@@ -7,7 +7,8 @@
 					<%= link_to place.name, controller: 'places', action: 'make_approve', id: place.id %>
 				</h5>
 				<%= render 'subnav', object: @place %>
-			  </div>   
+			  </div> 
+			  <%= render 'breadcrumbs', object: @place %>  
 		</div>
 
 

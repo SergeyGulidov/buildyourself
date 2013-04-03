@@ -5,13 +5,13 @@
  
       <div class="row">
         <div class="large-6 columns">
-          <%= f.association :locations, label: "Country", 
-            label_method: :country, value_method: :id %>
+          <%= f.association :country, label: "Country", 
+            label_method: :country_name, value_method: :id %>
         </div>
 
         <div class="large-6 columns">
-         <%= f.association :locations, label: "City",
-          :label_method => :city, value_method: :id %>
+         <%= f.association :city, label: "City",
+          :label_method => :city_name, value_method: :id %>
         </div>
       </div>
 

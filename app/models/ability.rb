@@ -26,6 +26,7 @@ class Ability
       can :read, Place
       can :create, Place
       can :create, Contact
+      can :index, Brain
     end
 
   end

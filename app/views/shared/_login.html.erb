@@ -1,4 +1,4 @@
-<div class="row panel ">
+<div class="row panel login">
 	<div class="large-12 small-12 columns user_area">
 		
 			<% if user_signed_in?  %>
@@ -31,6 +31,19 @@
 				  <dd class="active">No? Please <%= link_to "SignUp.", new_user_registration_path %></dd>
 				  <dd data-reveal-id="for_what"><%= link_to "For what?", new_user_registration_path %></dd>
 			  </dl>
+
+			  <ul class="must_read">
+				  <li> &raquo;
+				  	<%= link_to "Sign in with Twitter account", user_omniauth_authorize_path(:twitter)  %>
+				  </li>
+				  <li> &raquo;
+				  	<%= link_to "Sign in with Google account", user_omniauth_authorize_path(:google_oauth2)  %>
+				  </li> 
+				  <li> &raquo;
+				  <%= link_to "Sign in with Facebook account", user_omniauth_authorize_path(:facebook)  %>
+				</li>
+			   </ul>
+			  
 		  <% end  %>
       </div>
 </div>

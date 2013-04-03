@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331153944) do
+ActiveRecord::Schema.define(:version => 20130403171428) do
 
   create_table "brains", :force => true do |t|
   end
@@ -29,19 +29,29 @@ ActiveRecord::Schema.define(:version => 20130331153944) do
     t.integer "category_id"
     t.integer "place_id"
     t.integer "interval_id"
-    t.integer "location_id"
   end
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
   add_index "categorizations", ["interval_id"], :name => "index_categorizations_on_interval_id"
-  add_index "categorizations", ["location_id"], :name => "index_categorizations_on_location_id"
   add_index "categorizations", ["place_id"], :name => "index_categorizations_on_place_id"
   add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
+
+  create_table "cities", :force => true do |t|
+    t.string "city_name_lv"
+    t.string "city_name_ru"
+    t.string "city_slug"
+  end
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
     t.text     "body"
     t.datetime "created_at", :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string "country_name_lv"
+    t.string "country_name_ru"
+    t.string "country_slug"
   end
 
   create_table "intervals", :force => true do |t|
@@ -51,16 +61,6 @@ ActiveRecord::Schema.define(:version => 20130331153944) do
   end
 
   add_index "intervals", ["interval_slug"], :name => "index_intervals_on_interval_slug"
-
-  create_table "locations", :force => true do |t|
-    t.string "city_lv"
-    t.string "city_ru"
-    t.string "country_lv"
-    t.string "country_ru"
-    t.string "location_slug"
-  end
-
-  add_index "locations", ["location_slug"], :name => "index_locations_on_location_slug"
 
   create_table "photos", :force => true do |t|
     t.integer "place_id"
@@ -97,11 +97,8 @@ ActiveRecord::Schema.define(:version => 20130331153944) do
     t.integer  "sponsor",     :default => 0
     t.integer  "vip",         :default => 0
     t.text     "comment"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string  "name"
-    t.integer "user_id"
+    t.integer  "city_id"
+    t.integer  "country_id"
   end
 
   create_table "types", :force => true do |t|
@@ -126,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20130331153944) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "role",                   :default => 2
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

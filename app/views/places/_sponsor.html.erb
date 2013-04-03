@@ -1,6 +1,6 @@
 <% @place = Place.sponsor.first %>
 <% unless @place.blank? %>
-    <h5 id="title"><%= link_to @place.name, place_path(@place)%></h5>
+    <h5><%= link_to @place.name, place_path(@place)%></h5>
     <%= render 'subnav', object: @place %>
  
 

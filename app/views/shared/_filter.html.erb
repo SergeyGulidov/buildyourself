@@ -1,41 +1,39 @@
 <div class="row collapse stick_to_map">
+
+
+
+
       <%= form_tag(places_path, :class => 'custom', :method => 'get') do %>
 
-        <div class="large-2 small-3 columns large-offset-3">
-          <%= text_field_tag :search, params[:search], :placeholder => 'Enter search term...' %>
-        </div>
-
-
-        <div class="large-1 small-2 columns">
+        <div class="large-1 small-2 columns large-offset-4">
           <%= select_tag :city,
-             options_from_collection_for_select(Location.find(:all), 'location_slug', 'city'),
+             options_from_collection_for_select(City.find(:all), 'id', 'city_name'),
              :include_blank => true, :prompt => "City ..." %>
         </div>
 
 
         <div class="large-2 small-3 columns">
           <%= select_tag :category,
-             options_from_collection_for_select(Category.find(:all), 'category_slug', 'category_name'),
+             options_from_collection_for_select(Category.find(:all).uniq, 'category_slug', 'category_name'),
              :include_blank => true, :prompt => "Category ..." %>
         </div>
 
-        <div class="large-1 small-3 columns">
+        <div class="large-2 small-3 columns">
           <%= select_tag :type, 
-            options_from_collection_for_select(Type.find(:all), 'type_slug', 'type_name'),
+            options_from_collection_for_select(Type.find(:all).uniq, 'type_slug', 'type_name'),
              :include_blank => true, :prompt => "Type ..." %>
         </div>
 
-        <div class="large-2 small-2 columns">
+        <div class="large-2 small-3 columns">
           <%= select_tag :interval, 
-            options_from_collection_for_select(Interval.find(:all), 'interval_slug', 'interval_name'),
+            options_from_collection_for_select(Interval.find(:all).uniq, 'interval_slug', 'interval_name'),
              :include_blank => true, :prompt => "Interval ..." %>
         </div>
 
-        <div class="large-1 small-2 columns">
+        <div class="large-1 small-1 columns">
           <div class="large-12 columns search">
             <%= image_submit_tag("search.png") %>
           </div>
         </div>
     <% end %>
 </div>
-

@@ -7,7 +7,8 @@ BuildYourSelf::Application.routes.draw do
     devise_for :users, :controllers => {
       :registrations => "registrations", 
       :passwords => "passwords", 
-      :sessions => "sessions"
+      :sessions => "sessions",
+      omniauth_callbacks: "omniauth_callbacks"
     }
 
     match 'places/approve' => 'places#approve'
@@ -30,16 +31,17 @@ BuildYourSelf::Application.routes.draw do
 
 
     resources :categories
-    
+    resources :cities
+    resources :countries
     resources :contacts
     resources :intervals
-    resources :locations
+    #resources :locations
     resources :users
     
     match 'types/analize' => 'types#analize'
 
     resources :types
-
+    resources :brains
 
 
 

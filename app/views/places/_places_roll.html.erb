@@ -16,7 +16,7 @@
 
 			<div class="row">
 				<div class="large-6 small-12 columns">
-					<p><%= truncate(place.message, :length => 250, :separator => '. ', :omission => '') %>
+					<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>
 							<%= link_to "...", place_path(place)%></p>
 
 					<h6><small><%= link_to "read more...", place_path(place)%></small></h6>		
@@ -49,12 +49,14 @@
 				<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
 				<%= render 'subnav', object: @place %>
 			  </div>   
+
+			  <%= render 'breadcrumbs', object: @place %>
 		</div>
 
 
 		<div class="row">
 			<div class="large-6 small-12 columns">
-				<p><%= truncate(place.message, :length => 250, :separator => '. ', :omission => '') %>
+				<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>
 						<%= link_to "...", place_path(place)%></p>
 
 				<h6><small><%= link_to "read more...", place_path(place)%></small></h6>		

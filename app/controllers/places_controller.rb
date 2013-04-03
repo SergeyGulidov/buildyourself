@@ -4,17 +4,20 @@ load_and_authorize_resource
 	
 
 	def index
-		if !params[:search].blank?
-			@search = Place.search do
+
+		unless params[:search].blank?
+			search = Place.search do
 			    fulltext params[:search]
-				paginate :page => params[:page], :per_page => 1
+				paginate :page => params[:page], :per_page => 10
 			end
-			@places = @search.results
+			@places = search.results
 		else
-			@places, @type_vip = Place.search(params)
+			@places, @type_vip = Place.first_step_search(params)
 		end
 
-		if @places.empty?
+
+
+		if @places.blank?
 			flash[:alert] = "Nothing is found. Please try again." 
 		else
 			flash[:alert] = nil
@@ -24,8 +27,6 @@ load_and_authorize_resource
 			    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 			    marker.title "#{place.name}"
 	  	end
-
-	  	#
 	end
 
   def home

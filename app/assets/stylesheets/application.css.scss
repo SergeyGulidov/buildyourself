@@ -107,10 +107,15 @@ h5 #title a:active {
 
 
 
-#footer img{
+#footer_logo img{
   float:right;
-  margin-top: -108px;
+  margin-top: -74px;
 }
+
+
+
+
+
 
 .pagination-centered{
   margin: 50px 0 50px 0;
@@ -142,3 +147,20 @@ h5 #title a:active {
   padding-top:6px!important;
 }
 
+
+
+.login{
+  padding-left: 30px!important;
+}
+
+.must_read{
+  border-left: 5px solid #F4A5AA;
+  padding-left: 20px;
+  margin: 0;
+
+  li{
+    list-style: none;
+    font-size: 12px;
+    padding-left: 20px;
+  }
+}

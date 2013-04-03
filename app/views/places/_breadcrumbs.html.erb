@@ -5,13 +5,15 @@
 				<li>
 					<% @place.categories.each do |category| %>
 			           <%= link_to category.category_name, 
-									{category: category.category_slug}, {class: "crumbs"} %>
+			           		{ controller: :places, action: :index, category: category.category_slug}, 
+							class: "crumbs" %>
 					<% end %>
 				</li>
 				<li>
 					<% @place.intervals.each do |interval| %>
-						<%= link_to interval.interval_name, 
-									{ interval: interval.interval_slug }, {class: "crumbs"} %>
+						<%= link_to interval.interval_name,
+							{ controller: :places, action: :index, interval: interval.interval_slug}, 
+							class: "crumbs" %>
 					<% end  %>
 				</li>
 			</ul>
@@ -20,7 +22,9 @@
 			<ul id="second" class="right ">
 				<li>
 					<% @place.types.each do |type| %>
-						<%= link_to type.type_name, { type: type.type_slug}, { class: "crumbs" } %>
+						<%= link_to type.type_name, 
+							{ controller: :places, action: :index, type: type.type_slug}, 
+							class: "crumbs" %>
 					<% end  %>
 				</li>
 			</ul>

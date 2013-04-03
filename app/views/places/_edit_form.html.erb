@@ -1,15 +1,15 @@
 <%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
     <% field_set_tag "Edit your place" do %>
 
-    <%= render 'shared/errors', object: @place%>
+    <%= render 'shared/errors', object: @place %>
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.association :locations, label: "Country", :label_method => :country %>
+          <%= f.association :country, label: "Country", :label_method => :country_name %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.association :locations, label: "City", :label_method => :city %>
+          <%= f.association :city, label: "City", :label_method => :city_name %>
         </div>
       </div>
 

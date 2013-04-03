@@ -18,9 +18,13 @@ gem 'devise'
 gem "cancan"
 gem 'facebox-rails'
 
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+
 
 gem 'sunspot_rails'
-#gem 'sunspot_solr'
+gem 'sunspot_solr'
 
 
 gem 'progress_bar'

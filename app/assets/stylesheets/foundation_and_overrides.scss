@@ -1,6 +1,9 @@
 // Required global settings and mixins for Foundation
 @import "foundation/foundation-global";
 
+
+
+
 // Settings file to override Foundation variables
 
 // You can find the variables for each component at the bottom of their
@@ -51,7 +54,7 @@
 //
 
  $row-width: 75em;
-// $column-gutter: 1.875em;
+ $column-gutter: 3em;
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
