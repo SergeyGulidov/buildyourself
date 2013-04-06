@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-	attr_accessible :category_name_lv, :category_name_ru , :category_slug
+  attr_accessible :category_name_lv, :category_name_ru , :category_slug
 
   has_many :categorizations
   has_many :types, through: :categorizations
@@ -8,5 +8,7 @@ class Category < ActiveRecord::Base
   has_many :locations, through: :categorizations
 
   translates :category_name
+
+  scope :categories_all, find(:all).uniq
 
 end

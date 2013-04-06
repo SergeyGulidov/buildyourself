@@ -11,4 +11,6 @@ class Interval < ActiveRecord::Base
 
   translates :interval_name
 
+  scope :all_intervals, find(:all).uniq
+
 end

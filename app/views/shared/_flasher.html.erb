@@ -1,10 +1,14 @@
-<% if flash[:notice] %>
-	<div id="flash-notice" class="alert-box success">
-	  <%= flash[:notice] %>
-	</div>
-<% end  %>
-<% if flash[:alert] %>
-	<div id="flash-alert" class="alert-box alert-box">
-	  <%= flash[:alert] %>
-	</div>
-<% end  %>
+<span id="flash">
+	<% if flash[:notice] %>
+		<div id="flash-notice" class="alert-box success">
+		  <%= flash[:notice] %>
+		  <a href="#" id="close" class="close">&times;</a>
+		</div>
+	<% end  %>
+	<% if flash[:alert] %>
+		<div id="flash-alert" class="alert-box alert-box">
+		  <%= flash[:alert] %>
+		  <a href="#" id="close" class="close">&times;</a>
+		</div>
+	<% end  %>
+</span>

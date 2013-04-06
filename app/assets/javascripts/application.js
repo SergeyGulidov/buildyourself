@@ -10,12 +10,15 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+
 //= require jquery
 //= require jquery_ujs
-//= require jquery.facebox
-//= require_tree .
+//= require select2
+//= require "foundation"
 //= require jquery_nested_form
-//= require foundation
+//= require_tree .
+//= require jquery.facebox
+
 $(document).foundation();
 
 

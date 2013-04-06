@@ -1,28 +1,27 @@
 <%= simple_nested_form_for @place, html: { class: 'custom', multipart: true  } do |f| %>
 
-    <% field_set_tag "Check in your place " do %>
+    <% field_set_tag t(:check_in_your_place) do %>
 
       <%= render 'shared/errors', object: @place%>
       
       <div class="row">
         <div class="large-6 columns">
-          <%= f.association :country, label: "Country", :label_method => :country_name,
-            :selected => 1 %>
+          <%= f.association :country, collection: Country.countries_all, label: t(:country), 
+          label_method: :country_name, selected: 1, include_blank: true  %>
         </div>
-
         <div class="large-6 columns">
-          <%= f.association :city, label: "City", :label_method => :city_name, 
-            :selected => 1 %>
+          <%= f.association :city, collection: City.cities_all, label: t(:city), 
+          label_method: :city_name, selected: 1, include_blank: true  %>
         </div>
       </div>
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.input :street, label: "Street address" %>
+          <%= f.input :street, label: t(:street_address)%>
         </div>
 
         <div class="large-6 columns">
-          <%= f.input :name, label: "Name for place" %>
+          <%= f.input :name, label: t(:name_for_place) %>
         </div>
       </div>
 
@@ -32,11 +31,11 @@
         </div>
 
         <div class="large-3 columns">
-          <%= f.input :phone, label: "Phone number" %>
+          <%= f.input :phone, label: t(:phone_number) %>
         </div>
 
         <div class="large-5 columns">
-          <%= f.input :website, label: "Website" %>
+          <%= f.input :website, label: t(:website) %>
         </div>
       </div>
 
@@ -45,24 +44,22 @@
 
       <div class="row ">
         <div class="large-4 columns">
-          <%= f.association :intervals, label: "Change age category",
-            :label_method => :interval_name %>
+          <%= f.association :categories, collection: Category.categories_all, label: t(:place_category), 
+          label_method: :category_name, include_blank: true %>
         </div>
         <div class="large-4 columns">
-          <%= f.association :categories, label: "Change place category",
-            :label_method => :category_name %>
+          <%= f.association :intervals, collection: Interval.all_intervals, label: t(:age_category),
+            label_method: :interval_name, include_blank: true %>
         </div>
         <div class="large-4 columns">
-          <%= f.association :types, label: "Change type of your place",
-            :label_method => :type_name %>
+          <%= f.association :types, collection: Type.types_all, label: t(:type_category),
+            label_method: :type_name, include_blank: true %>
         </div>
       </div>
 
       <div class="row ">
         <div class="large-12 columns">
-          <p class="important_text">Вашей категории, города или страны нет в списке? 
-          Оставьте эти поля пустыми. Мы с вами свяжемся по e-mail для уточнения деталей и 
-          заполним их за вас.</p>
+          <p class="important_text"><%= t :forbidden_category %></p>
         </div>
       </div>
 
@@ -78,8 +75,10 @@
   
             
 
-            <%= f.link_to_add "Add photos", :photos, class: "small button" %>
-            <h6 id="text_for_photo_button"><small>Only .jpg .jpeg .gif .png formats. Max size per foto 2 MB. Need more? Contact with us.</small></h6>
+            <%= f.link_to_add t(:add_photos), :photos, class: "small button" %>
+            <p class="important_text">
+              <%= t :photo_how_to %> <%= link_to t(:contact_with_us), new_contact_path %>
+            </p>
 
         </div>
     </div>
@@ -87,16 +86,16 @@
 
       <div class="row">
         <div class="large-12 columns">
-            <%= f.input :message_ru, label: "Message for Russian speakers", as: :text %>
+            <%= f.input :message_ru, label: t(:message_for_ru), as: :text %>
         </div>
       </div>
 
       <div class="row">
         <div class="large-12 columns">
-            <%= f.input :message_lv, label: "Message for Latvian speakers", as: :text  %>
+            <%= f.input :message_lv, label: t(:message_for_lv), as: :text  %>
         </div>
       </div>
 
-    <%= f.button :submit, class: 'small button'  %>
+    <%= f.button :submit, t(:add_place), class: 'small button'  %>
   <% end %>
 <% end %>

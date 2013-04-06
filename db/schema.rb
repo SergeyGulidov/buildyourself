@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403171428) do
+ActiveRecord::Schema.define(:version => 20130406114932) do
 
   create_table "brains", :force => true do |t|
   end
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20130403171428) do
     t.text     "comment"
     t.integer  "city_id"
     t.integer  "country_id"
+    t.integer  "hits",        :default => 0
   end
 
   create_table "types", :force => true do |t|

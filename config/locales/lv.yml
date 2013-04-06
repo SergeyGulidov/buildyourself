@@ -130,6 +130,11 @@ lv:
       odd: ir jābūt nepāra skaitlim
       record_invalid: ! 'Pārbaude neizdevās: %{errors}'
       taken: ir jau aizņemts
+
+      extension_white_list_error: 'Недопустимый формат изображения.'
+      extension_white_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{allowed_types}"
+
+
       too_long:
         zero: ir par garu (maksimums ir %{count} simboli)
         one: ir par garu (maksimums ir %{count} simbols)

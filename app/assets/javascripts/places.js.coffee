@@ -7,6 +7,31 @@ $(document).ready ($) ->
 
 
 
+$("#close").click ->
+  $("#flash").hide()
+
+jQuery ->
+
+	$("#type_name").select2()
+	$("#city").select2()
+	$("#category").select2()
+	$("#interval").select2()
+
+
+	types = $('#type_name').html()
+
+	$('#category').change ->
+		category = $('#category :selected').text()
+		console.log(category)
+		options = $(types).filter("optgroup[label='#{category}']").html()
+		console.log(options)
+		if options
+			$('#type_name').html(options)
+		else
+			$('#type_name').empty()
+
+
+
 
 
 

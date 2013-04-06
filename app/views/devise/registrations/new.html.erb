@@ -10,14 +10,14 @@
 <h2 class="subheader">Sign up</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), class: 'custom') do |f| %>
-
+  
 
     <%= f.input :email, :required => true, :autofocus => true %>
 
     <% if f.object.password_required? %>
 	    <%= f.input :password, :required => true %>
 	    <%= f.input :password_confirmation, :required => true %>
-	<% end %>
+    <% end %>
 
 
     <%= f.button :submit, "Sign up", class: 'small button' %>

@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :place_votes
 
-	
+	before_create :set_user_role
+
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -10,7 +12,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :sign_in_count, :created_at
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :sign_in_count, :created_at, :role
   # attr_accessible :title, :body
 
 
@@ -36,7 +38,7 @@ class User < ActiveRecord::Base
         user.valid?
       end
     else
-
+      super
     end    
   end
 
@@ -51,6 +53,11 @@ class User < ActiveRecord::Base
       super
     end
     
+  end
+
+
+  def set_user_role
+    self.role = 2   
   end
 
 end

@@ -11,7 +11,7 @@ class Place < ActiveRecord::Base
   has_many :types,      through: :categorizations
 
   has_many :photos, :dependent => :destroy
-  has_many :place_votes
+  has_many :place_votes, :dependent => :destroy
   
 
   acts_as_gmappable
@@ -19,6 +19,14 @@ class Place < ActiveRecord::Base
   before_save{|place| place.email = place.email.downcase}
   before_save{|place| place.name = place.name.titleize}
 
+
+  after_save do
+    update_index if approved == 1
+  end
+
+  after_update do
+    update_index if approved == 1
+  end
 
   attr_accessible :approved, :email, :vip, :sponsor, :with_review,
   	 :name, :phone, :street, :website, :country_id, :city_id,
@@ -36,13 +44,26 @@ class Place < ActiveRecord::Base
    validates :name, :uniqueness => true, :presence => true
 
 
+  include Tire::Model::Search
+
+  mapping do
+        indexes :id,         :index    => :not_analyzed
+        indexes :name,       :analyzer => 'snowball', :boost => 100
+        indexes :message_lv, :analyzer => 'snowball'
+        indexes :message_ru, :analyzer => 'snowball'
+        indexes :review_ru,  :analyzer => 'snowball', :boost => 10
+        indexes :review_lv,  :analyzer => 'snowball', :boost => 20
+  end
 
 
+  def to_indexed_json
+    to_json(:include => [:types, :categories, :intervals, :city])
+  end
 
 
-   scope :approved, where(approved: 1)
-   scope :recent, approved.order("created_at desc").limit(10)
-   scope :recent5, approved.order("created_at desc").limit(5)
+   scope :approved, where(approved: 1).order("created_at desc")
+   scope :recent, approved.limit(10)
+   scope :recent5, approved.limit(5)
    scope :sponsor, approved.where(sponsor: 1)
 
 
@@ -68,10 +89,10 @@ class Place < ActiveRecord::Base
 
 
 
-  searchable do
-    text :name, :boost => 10
-    text :message_ru
-    text :message_lv
+  def self.search(params)
+    tire.search(load: true, page: params[:page], per_page: 10 ) do
+      query { string params[:search], default_operator: "AND"}
+    end
   end
 
 
@@ -81,24 +102,23 @@ class Place < ActiveRecord::Base
       places = Place.approved
 
 
-      unless params[:type].blank?
-        places = places.joins(:types).where('types.type_slug' => "#{params[:type]}")
+      unless params[:type].blank? || params[:type][:name].blank?
+        places = places.joins(:types).where( "types.type_slug = ?", params[:type][:name].to_s )
         type_vip = places.where(vip: 1)
       end
 
       unless params[:city].blank?
-        places = places.where(city_id = params[:city].to_i)
+        places = places.joins(:city).where( "cities.city_slug = ?", params[:city] )
+        #places = places.where(city_id = params[:city].to_i)
       end
 
       unless params[:category].blank?
-        places = places.joins(:categories).where('categories.category_slug' => "#{params[:category]}") 
+        places = places.joins(:categories).where( "categories.category_slug = ?", params[:category] ) 
       end
 
       unless params[:interval].blank?
-        places = places.joins(:intervals).where('intervals.interval_slug' => "#{params[:interval]}") 
+        places = places.joins(:intervals).where( "intervals.interval_slug = ?", params[:interval] ) 
       end
-      
-      places = places.page(params[:page]).per(5)
 
       return places, type_vip
 

@@ -54,7 +54,7 @@
 //
 
  $row-width: 75em;
- $column-gutter: 3em;
+ $column-gutter: 2.5em;
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
@@ -354,9 +354,9 @@
 // $alert-bottom-margin: emCalc(20px);
 
 // We use these to style the close buttons
-// $alert-close-color: #333;
+ $alert-close-color: #111;
 // $alert-close-position: emCalc(5px);
-// $alert-close-font-size: emCalc(22px);
+ $alert-close-font-size: emCalc(30px);
 // $alert-close-opacity: 0.3;
 // $alert-close-opacity-hover: 0.5;
 // $alert-close-padding: 5px 4px 4px;

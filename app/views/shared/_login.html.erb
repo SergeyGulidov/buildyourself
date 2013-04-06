@@ -1,10 +1,10 @@
-<div class="row panel login">
+<div class="row login">
 	<div class="large-12 small-12 columns user_area">
 		
 			<% if user_signed_in?  %>
 			  <dl class="sub-nav must_read">
-		  		<dt> Logged as : <b><%= current_user.email %></b></dt>
-			  		<dd class="active"><%= link_to raw(" Logout"), 
+		  		<dt><%= t :logged_as %> <b><%= current_user.email %></b></dt>
+			  		<dd class="active"><%= link_to t(:logout), 
 			  				destroy_user_session_path, method: :delete %></dd>
 				</dl>
 		  		
@@ -13,12 +13,15 @@
 		  		<% unless @current_user_places.blank? %>
 		  			<ul class="your_place_list">
 				  		<% @current_user_places.each do |place| %>
-						    <li><%= raw('<b id="approved" data-tooltip class="has-tip" title="Place have published!">A</b>') if place.approved == 1 %>
-						    	<%= raw('<b id="waiting" data-tooltip class="has-tip" title="Place waiting for approve!">W</b>') if place.approved == 0 %>
-						    	<%= raw('<b id="noapprove" data-tooltip class="has-tip" title="Place waiting for more information. We will email you!" >N</b>') if place.approved == 2 %>
-						    	 <%= link_to place.name, place %>
-						    &nbsp&raquo;&nbsp 
-						    	<%= link_to "edit", edit_place_path(place) %></li>
+						    <li>
+
+						    <%= raw (t(:published)) if place.approved == 1 %>
+						    <%= raw (t(:waiting)) if place.approved == 0 %>
+						    <%= raw (t(:need_info)) if place.approved == 2 %>
+						    <%= link_to place.name, place %>&nbsp&raquo;&nbsp 
+						    	<%= link_to t(:edit), edit_place_path(place) %>
+						    </li>
+
 						<% end %>
 					</ul>
 				<% end %>
@@ -27,20 +30,20 @@
 
 		  	<% else %>
 			  <dl class="sub-nav must_read">
-				  <dd class="active">Do we know each other? Yes? <%= link_to "Then login !", new_user_session_path %></dd>
-				  <dd class="active">No? Please <%= link_to "SignUp.", new_user_registration_path %></dd>
-				  <dd data-reveal-id="for_what"><%= link_to "For what?", new_user_registration_path %></dd>
+				  <dd class="active"><%= t(:do_we_know_each_other_yes) %> <%= link_to t(:when_login), new_user_session_path %></dd>
+				  <dd class="active"><%= t(:no_please)%> <%= link_to t(:sign_up), new_user_registration_path %></dd>
+				  <dd data-reveal-id="for_what"> <%= link_to t(:for_what), new_user_registration_path %></dd>
 			  </dl>
 
 			  <ul class="must_read">
 				  <li> &raquo;
-				  	<%= link_to "Sign in with Twitter account", user_omniauth_authorize_path(:twitter)  %>
+				  	<%= link_to t(:sign_in_with_twitter), user_omniauth_authorize_path(:twitter)  %>
 				  </li>
 				  <li> &raquo;
-				  	<%= link_to "Sign in with Google account", user_omniauth_authorize_path(:google_oauth2)  %>
+				  	<%= link_to t(:sign_in_with_google), user_omniauth_authorize_path(:google_oauth2)  %>
 				  </li> 
 				  <li> &raquo;
-				  <%= link_to "Sign in with Facebook account", user_omniauth_authorize_path(:facebook)  %>
+				  <%= link_to t(:sign_in_with_facebook), user_omniauth_authorize_path(:facebook)  %>
 				</li>
 			   </ul>
 			  
@@ -49,14 +52,14 @@
 </div>
 
 <div id="for_what" class="reveal-modal">
-  <h2>What you get?</h2>
+  <h2><%= t(:what_you_get) %></h2>
 
 
 
-	  <h6>Вы сможете принимать участие в рейтинге.</small></h6>
-	  <h6>Добавлять или изменять информацию о своем месте.</h6>
+	  <h6><%= t :get_rating %></small></h6>
+	  <h6><%= t :edit_info %></h6>
 	</br>
-	  <p class="important_text">В переди у нас долгий путь и мы обязательно будем добалять новые функции для зарегистрированных пользователей.</p>
+	  <p class="important_text"><%= t(:our_mission) %></p>
 
   <a class="close-reveal-modal">&#215;</a>
 </div>

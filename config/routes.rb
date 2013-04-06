@@ -12,13 +12,7 @@ BuildYourSelf::Application.routes.draw do
     }
 
     match 'places/approve' => 'places#approve'
-
     match 'places/make_approve' => 'places#make_approve'
-
-
-    match 'admin' => 'brains#admin'
-    
-
     match ':id/places/make_approve' => 'places#make_approve'
 
     resources :photos
@@ -35,16 +29,10 @@ BuildYourSelf::Application.routes.draw do
     resources :countries
     resources :contacts
     resources :intervals
-    #resources :locations
     resources :users
-    
-    match 'types/analize' => 'types#analize'
-
     resources :types
     resources :brains
-
-
-
+    
   end
 
   # The priority is based upon order of creation:

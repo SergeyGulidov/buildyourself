@@ -3,6 +3,12 @@
 		<div class="row">
 			<ul class="right">
 				<li>
+				<%= link_to @place.city.city_name, 
+			           		{ controller: :places, action: :index, city: @place.city.city_slug}, 
+							class: "crumbs" %>
+				</li>
+				<li>
+					
 					<% @place.categories.each do |category| %>
 			           <%= link_to category.category_name, 
 			           		{ controller: :places, action: :index, category: category.category_slug}, 
