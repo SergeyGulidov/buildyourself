@@ -25,14 +25,14 @@
             <tbody>
               <tr>
                 <td class="td-title">
-                    <i class="general foundicon-globe"></i>City, Country</td>
+                    <i class="general foundicon-globe"></i><%= t(:city_country) %></td>
                 <td>
                   <%= get_location(@place) %>
                 </td>
               </tr>
               <tr>
                 <td class="td-title">
-                    <i class="general foundicon-location"></i>Street address</td>
+                    <i class="general foundicon-location"></i><%= t(:street_address) %></td>
                 <td><%= @place.street.titleize %></td>
               </tr>
               <tr>
@@ -44,7 +44,7 @@
               <% unless @place.phone.blank? %>
                 <tr>
                   <td class="td-title">
-                      <i class="general foundicon-phone"></i>Phone number</td>
+                      <i class="general foundicon-phone"></i><%= t(:phone_number) %></td>
                   <td><%= @place.phone %></td>
                 </tr>
               <% end %>
@@ -52,14 +52,14 @@
               <% unless @place.website.blank? %>
                 <tr>
                   <td class="td-title">
-                      <i class="general foundicon-website"></i>Web address</td>
+                      <i class="general foundicon-website"></i><%= t(:website) %></td>
                   <td><%= @place.website %></td>
                 </tr>
               <% end  %>
 
               <tr>
                 <td class="td-title">
-                  <i class="general foundicon-add-doc"></i>Published at
+                  <i class="general foundicon-add-doc"></i><%= t(:published_at) %>
                 </td>
                 <td><%= @place.created_at.strftime("%d.%m.%Y") %></td>
               </tr>
@@ -68,7 +68,7 @@
               <% unless @place.created_at.to_i == @place.updated_at.to_i %>
                 <tr>
                   <td class="td-title">
-                    <i class="general foundicon-edit"></i>Updated at
+                    <i class="general foundicon-edit"></i><%= t(:updated_at) %>
                   </td>
                   <td><%= @place.updated_at.strftime("%d.%m.%Y") %></td>
                 </tr>
@@ -94,7 +94,7 @@
             <% end %>
         </ul>
         
-        <%= render 'like_this' %>
+        <%# render 'like_this' %>
 
       </div>
     </div>
@@ -122,4 +122,4 @@
     })();
 </script>
 
-<noscript>Please enable JavaScript to view comments.</noscript>
+<noscript><%= t(:enable_js) %></noscript>

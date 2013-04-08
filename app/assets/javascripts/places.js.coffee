@@ -12,27 +12,37 @@ $("#close").click ->
 
 jQuery ->
 
-	$("#type_name").select2()
+	$("#f_type").select2()
 	$("#city").select2()
 	$("#category").select2()
 	$("#interval").select2()
+	$("#place_type_ids").select2()
+	$("#place_country_id").select2()
+	$("#place_city_id").select2()
+	$("#place_category_ids").select2()
+	$("#place_interval_ids").select2()
 
 
-	types = $('#type_name').html()
-
+	types = $('#f_type').html()
 	$('#category').change ->
 		category = $('#category :selected').text()
-		console.log(category)
 		options = $(types).filter("optgroup[label='#{category}']").html()
-		console.log(options)
 		if options
-			$('#type_name').html(options)
+			$('#f_type').html(options)
 		else
-			$('#type_name').empty()
+			$('#f_type').empty()
 
 
 
 
+	types_for_new = $('#place_type_ids').html()
+	$('#place_category_ids').change ->
+		place_category_ids = $('#place_category_ids :selected').text()
+		options = $(types_for_new).filter("optgroup[label='#{place_category_ids}']").html()
+		if options
+			$('#place_type_ids').html(options)
+		else
+			$('#place_type_ids').empty()
 
 
 

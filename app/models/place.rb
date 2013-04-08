@@ -20,6 +20,8 @@ class Place < ActiveRecord::Base
   before_save{|place| place.name = place.name.titleize}
 
 
+
+
   after_save do
     update_index if approved == 1
   end
@@ -41,7 +43,8 @@ class Place < ActiveRecord::Base
     :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
     :presence => true, :uniqueness => true
 
-   validates :name, :uniqueness => true, :presence => true
+   validates :name, uniqueness: true, presence: true
+   validates :street, presence: true
 
 
   include Tire::Model::Search
@@ -61,7 +64,7 @@ class Place < ActiveRecord::Base
   end
 
 
-   scope :approved, where(approved: 1).order("created_at desc")
+   scope :approved, where(approved: 1).order("updated_at desc")
    scope :recent, approved.limit(10)
    scope :recent5, approved.limit(5)
    scope :sponsor, approved.where(sponsor: 1)
@@ -101,9 +104,17 @@ class Place < ActiveRecord::Base
       type_vip = nil
       places = Place.approved
 
+      unless params[:category].blank?
+        places = places.joins(:categories).where( "categories.category_slug = ?", params[:category] ) 
+      end
 
-      unless params[:type].blank? || params[:type][:name].blank?
-        places = places.joins(:types).where( "types.type_slug = ?", params[:type][:name].to_s )
+      unless params[:f].blank?
+        places = places.joins(:types).where( "types.type_slug = ?", params[:f][:type] )
+        type_vip = places.where(vip: 1)
+      end
+
+      unless params[:type].blank?
+        places = places.joins(:types).where( "types.type_slug = ?", params[:type] )
         type_vip = places.where(vip: 1)
       end
 
@@ -111,16 +122,10 @@ class Place < ActiveRecord::Base
         places = places.joins(:city).where( "cities.city_slug = ?", params[:city] )
         #places = places.where(city_id = params[:city].to_i)
       end
-
-      unless params[:category].blank?
-        places = places.joins(:categories).where( "categories.category_slug = ?", params[:category] ) 
-      end
-
       unless params[:interval].blank?
         places = places.joins(:intervals).where( "intervals.interval_slug = ?", params[:interval] ) 
       end
 
       return places, type_vip
-
   end
 end

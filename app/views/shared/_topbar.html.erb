@@ -1,6 +1,6 @@
 <nav class="top-bar" >
 	<ul class="title-area">
-	  <li class="name"><h1><%= link_to "Build Yourself", root_path %></h1></li>
+	  <li class="name"><h1><%= link_to "Yoda.lv", root_path %></h1></li>
 	  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 	</ul>
 
@@ -10,12 +10,12 @@
 			
 			<li class="divider"></li>
 			<li>
-              <%= link_to "Add new place", :controller => :places, :action => :new %> 
+              <%= link_to t(:add_new_place), :controller => :places, :action => :new %> 
             </li>
             
 			<li class="divider"></li>
 			<li>
-              <%= link_to "Contact with us", :controller => :contacts, :action => :new %>
+              <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
             </li>
 
 			<li class="divider"></li>

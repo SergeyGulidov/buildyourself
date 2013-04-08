@@ -1,23 +1,17 @@
 <div id="bread">
-
-	<ul class="left">
-
-
-		
+	<ul class="left">	
 	  <li>
-		    <%= link_to "With review", 
+		    <%= link_to t(:with_review), 
 		         place_path(@place, :anchor => "review"), 
 		         {class: "rewiev"} if @place.with_review == 1 %>
 	  </li>
 	  <li>
-	    <%= link_to "Sponsor", 
+	    <%= link_to t(:sponsor), 
 	        place_path(@place, :anchor => "review"),
 	         {class: "gold"} if @place.sponsor == 1%>
 	  </li>
-
-
 	  <li>
-	  		<%= link_to 'Comments:', place_path(@place),
+	  		<%= link_to t(:comments), place_path(@place),
 	  		{ class: "comments" },
 	  		:"data-disqus-identifer" => @place.id  %>
 

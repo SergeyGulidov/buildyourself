@@ -2,18 +2,18 @@
   <div class="large-4 small-4 columns">
       
               <%= render 'shared/search' %>
-              <p>&copy; Build Yourself. 2013. All rights reserved.</p>
+              <p>&copy; Yoda.lv. 2013. All rights reserved.</p>
   </div>
 
 
   <div class="large-4 small-4 columns">
       <ul class="inline-list right">
-        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to t(:home), root_path %></li>
         <li>
-          <%= link_to "Add new place", :controller => :places, :action => :new %>
+          <%= link_to t(:add_new_place), :controller => :places, :action => :new %>
         </li>
         <li>
-          <%= link_to "Contact with us", :controller => :contacts, :action => :new %>
+          <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
         </li>
       </ul>
   </div>

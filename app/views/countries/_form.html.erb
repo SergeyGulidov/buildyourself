@@ -1,0 +1,31 @@
+<%= simple_form_for @country, html: { class: 'custom' } do |f| %>
+    <% field_set_tag "Country" do %>
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.label "Russian country" %>
+            <%= f.text_field :country_name_ru, label: "Russian country" %>
+        </div>
+
+        <div class="large-6 columns">
+            <%= f.label "Latvian country" %>
+            <%= f.text_field :country_name_lv %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.label "Slug" %>
+            <%= f.text_field :country_slug %>
+        </div>
+      </div>
+    <%= f.button :submit, class: 'small button'  %>
+  <% end %>
+<% end  %>
+
+
+
+
+
+
+

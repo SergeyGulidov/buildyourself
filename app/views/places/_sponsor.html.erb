@@ -1,9 +1,6 @@
 <% @place = Place.sponsor.first %>
 <% unless @place.blank? %>
 
- 
-
-
 <div class="panel">
       <h5><%= link_to @place.name, place_path(@place)%></h5>
     <%= render 'subnav', object: @place %>
@@ -20,6 +17,6 @@
         </ul>
         <p><%= truncate(@place.message, :length => 250, :separator => '. ', :omission => '') %>
 						<%= link_to "...", place_path(@place)%></p>
-		<h6 class="right"><small><%= link_to "read more...", place_path(@place)%></small></h6>
+		<h6 class="right"><small><%= link_to t(:read_more), place_path(@place)%></small></h6>
  </div>
 <% end %>

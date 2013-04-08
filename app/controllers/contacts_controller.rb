@@ -3,7 +3,9 @@ load_and_authorize_resource
   
   def new
   	@contact = Contact.new
-	 
+	   
+
+    @contact.email = current_user.email if current_user
   	respond_to do |format|
   		format.html  # new.html.erb
   		format.json  { render :json => @contact }

@@ -1,0 +1,48 @@
+
+<% if can? :make_approve, @place %>
+<div class="row">
+	<div class="large-12 small-12 columns">
+
+<ul class="button-group radius">
+          <li><a href="#" class="small button dropdown " data-dropdown="drop1" >Cities</a></li>
+          <li><a href="#" class="small button dropdown " data-dropdown="drop2">Countries</a></li>
+          <li><a href="#" class="small button dropdown " data-dropdown="drop5">Categories</a></li>
+          <li><a href="#" class="small button dropdown " data-dropdown="drop3">Types</a></li>
+          <li><a href="#" class="small button dropdown " data-dropdown="drop4">Intervals</a></li>
+
+          <% counter = Contact.find(:all).count %>
+          <li><%= link_to "Contacts - #{counter}", contacts_path, class: "small button " %></li>
+
+          <% counter = User.find(:all).count  %>
+          <li><%= link_to "Users - #{counter}", users_path, class: "small button " %></li>
+
+          <% counter = Place.where(approved: 0).count  %>
+          <li><%= link_to "Places to approve - #{counter}", places_approve_path, class: "small button " %></li>
+</ul>
+
+
+<ul id="drop1" class="f-dropdown " data-dropdown-content>
+  <li><%= link_to "Cities", cities_path %></li>
+  <li><%= link_to "New City", new_city_path %></li>
+</ul>
+<ul id="drop2" class="f-dropdown " data-dropdown-content>
+  <li><%= link_to "Countries", countries_path %></li>
+  <li><%= link_to "New Country", new_country_path %></li>
+</ul>
+<ul id="drop3" class="f-dropdown " data-dropdown-content>
+  <li><%= link_to "Types", types_path %></li>
+  <li><%= link_to "New type", new_type_path %></li>
+</ul>
+<ul id="drop4" class="f-dropdown " data-dropdown-content>
+  <li><%= link_to "Intervals", intervals_path %></li>
+  <li><%= link_to "New interval", new_interval_path %></li>
+</ul>
+<ul id="drop5" class="f-dropdown " data-dropdown-content>
+  <li><%= link_to "Categories", categories_path %></li>
+  <li><%= link_to "New category", new_category_path %></li>
+</ul>
+
+</div>
+</div>
+
+<% end %>

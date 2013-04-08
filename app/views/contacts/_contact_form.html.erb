@@ -1,10 +1,10 @@
 <%= simple_form_for @contact, html: { class: 'custom' } do |f| %>
-    <% field_set_tag "Contact with us " do %>
+    <% field_set_tag t(:contact_with_us) do %>
 
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.input :email, label: "Your email" %>
+          <%= f.input :email, label: t(:your_email) %>
         </div>
 
       </div>
@@ -12,10 +12,10 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <%= f.input :body, label: "Your message for us", as: :text %>
+          <%= f.input :body, label: t(:contact_message), as: :text %>
         </div>
       </div>
 
-    <%= f.button :submit, class: 'small button'  %>
+    <%= f.button :submit, t(:send), class: 'small button'  %>
   <% end %>
 <% end  %>

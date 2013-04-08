@@ -1,8 +1,8 @@
 
 
-<h4><small><%= link_to place.name, place %></small></h4> 
+<h4 class="nav_for_map"><small><%= link_to place.name, place %></small></h4> 
 <p class="map_text"><%= place.street %>,  <%= get_location(place) %></p>
-<% @place = place %> 
-<%= render 'shared/subnav_for_map', object: @place %>
+
+<%= render 'shared/subnav_for_map', object:(@place = place) %>
 
 

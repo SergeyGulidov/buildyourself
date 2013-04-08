@@ -6,25 +6,25 @@
 
           <%= select_tag :city, 
             options_from_collection_for_select( City.cities_all, 'city_slug', 'city_name'),
-            :include_blank => true, :prompt => "City ..." %>
+            :include_blank => true, :prompt => t(:city) %>
         </div>
 
 
         <div class="large-2 small-3 columns">
           <%= select_tag :category,
              options_from_collection_for_select( Category.find(:all), 'category_slug', 'category_name'),
-             :include_blank => true, :prompt => "Category ..." %>
+             :include_blank => true, :prompt => t(:category) %>
         </div>
 
         <div class="large-2 small-3 columns">
-          <%= grouped_collection_select(:type, :name,  Category.find(:all),
-                :types, :category_name, :type_slug, :type_name, :prompt => "Type ...") %>
+          <%= grouped_collection_select(:f, :type,  Category.find(:all),
+                :types, :category_name, :type_slug, :type_name, :prompt => t(:type)) %>
         </div>
 
         <div class="large-2 small-3 columns">
           <%= select_tag :interval, 
             options_from_collection_for_select( Interval.all_intervals, 'interval_slug', 'interval_name'),
-             :include_blank => true, :prompt => "Interval ..." %>
+             :include_blank => true, :prompt => t(:interval) %>
         </div>
 
         <div class="large-1 small-1 columns">

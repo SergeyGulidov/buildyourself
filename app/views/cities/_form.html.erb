@@ -1,0 +1,28 @@
+<%= simple_form_for @city, html: { class: 'custom' } do |f| %>
+    <% field_set_tag "City" do %>
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.input :city_name_ru, label: "Russian city" %>
+        </div>
+
+        <div class="large-6 columns">
+            <%= f.input :city_name_lv, label: "Latvian city" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+            <%= f.input :city_slug, label: "Slug" %>
+        </div>
+      </div>
+    <%= f.button :submit, class: 'small button'  %>
+  <% end %>
+<% end  %>
+
+
+
+
+
+
+

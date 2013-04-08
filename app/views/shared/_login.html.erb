@@ -30,8 +30,8 @@
 
 		  	<% else %>
 			  <dl class="sub-nav must_read">
-				  <dd class="active"><%= t(:do_we_know_each_other_yes) %> <%= link_to t(:when_login), new_user_session_path %></dd>
-				  <dd class="active"><%= t(:no_please)%> <%= link_to t(:sign_up), new_user_registration_path %></dd>
+				  <dd class="active"><%= link_to t(:login), new_user_session_path %></dd>
+				  <dd class="active"><%= link_to t(:sign_up), new_user_registration_path %></dd>
 				  <dd data-reveal-id="for_what"> <%= link_to t(:for_what), new_user_registration_path %></dd>
 			  </dl>
 

@@ -5,8 +5,6 @@ load_and_authorize_resource
 	respond_to :html, :xml, :json
 
 	def index
-
-
 		unless params[:search].blank?
 			@places = Place.search(params)
 			@json = get_json_for_map(@places)
@@ -23,15 +21,9 @@ load_and_authorize_resource
 		end
 	end
 
-
-
-	# def home
-	# 	@place = Place.find(params[:id])
-	# 	respond_with(@place)
-	# end
-
 	def new
 		@place = Place.new 
+		@place.email = current_user.email if current_user
 		flash.now[:notice] = t(:register_first) unless current_user
 		respond_with(@place)
 	end

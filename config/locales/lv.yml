@@ -1,6 +1,119 @@
 lv:
   current_lang: Latviešu
 
+  many_types: Vairākas kategorijas.
+  forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā? Jums vairākas kategorijas vienā atrašanās vieta? 
+    Atstājiet tukšus šos laukumus. Mēs sazināsimies ar Jums caur e-mail sīkāku detaļu noskaidrošanai un aizpildīsim to Jūsu vietā.'
+
+  how_to: '<ul class="square panel how_to"><h3>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h3>
+    <h6 class="subheader">Publicēšanas noteikumi</h6><li>Email - tiks izmantots sīkāku detaļu noskaidrošanai.</li>
+    <li>Trīs jebkādas fotogrāfijas ar Jūsu vietu</li><li> Īss apraksts (Lv/Ru). Palīdzēsim pārtulkot.</li>
+    <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
+
+  recent_added_places: Nesen pievienoti...
+  photo_how_to: Tikai .jpg, .jpeg, .gif vai .png formāts. Vienas bildes maksimālais izmērs 2 MB. Vajag vairāk?
+  
+  add_photos: Pievienot fotogrāfijas
+  country: Valsts
+  city: Pilsēta
+  street_address: Adrese
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+  name_for_place: Название
+  phone_number: Номер телефона
+  website: Веб адрес
+  age_category: Возрастная категория
+  place_category: Категория
+  type_category: Тип
+  add_place: Зарегистрировать
+  message_for_ru: Сообщение для пользователей на русском
+  message_for_lv: Сообщение для пользователей на латышском
+  check_in_your_place: Зарегистрируй свое место
+  register_first: В дальнейшем вы сможете обновлять информацию о вашем месте, но для этого необходимо зарегистрироваться.
+
+#------------- footer partial
+#------------- top bar partial
+  home: Главная
+  add_new_place: Добавить место
+  contact_with_us: Sazināties ar mums
+  search: Поиск по сайту...
+
+#------------- map filter partial
+  category: Категория...
+  type: Тип...
+  interval: Возраст...
+
+#------------- contact with us
+  contact_message: Твоё послание нам
+  send: Отправить
+  your_email: Твой email
+  comments_text: Jautājumi, novēlējumi, iebildumi? Rakstiet jebkurā gadījumā! Mēs atbildēsim visiem!
+
+#------------- place partial
+  read_more: читать дальше ...
+
+#------------- subnav partial
+  with_review: Проверенно нами
+  sponsor: Спонсор
+  comments: 'Комментарии:'
+
+#------------- place show
+  city_country: Valsts, Pilsēta
+  published_at: Опубликовано
+  updated_at: Обновленно
+  enable_js: Активируйте JavaScript чтобы прочитать комментарии.
+
+
+#------------- DEVISE
+  password: Пароль
+  remember_me: Запомнить меня
+  password_confirmation: Подтверждение пароля.
+  registration: Регистрация
+
+  new_place_success: Ваше место успешно добавлено в наш каталог.
+  nothing_found: Извините. По вашему запросу нечего не найдено.
+  vote_thanks: Ваш голос учтен.
+  vote_already_did: Вы уже проголосовали.
+
+
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'необходимо заполнить'
+      mark: '*'
+    error_notification:
+      default_message: "Не все данные введены корректно:"
+    undefined: Не выбранно
+
+
+#------------login partial 
+
+  login: Войти.
+  sign_up: Зарегистрироваться.
+  for_what: Зачем?
+  sign_in_with: Войти при помощи
+  sign_in_with_twitter: Войти при помощи Twitter
+  sign_in_with_google: Войти при помощи Google
+  sign_in_with_facebook: Войти при помощи Facebook
+  what_you_get: "Вы сможете:"
+  get_rating: Принимать участие в рейтинге.
+  edit_info: Добавлять или изменять информацию о своем месте.
+  our_mission: "Впереди у нас долгий путь и мы обязательно будем добавлять новые 
+    функции для зарегистрированных пользователей."
+  logged_as: "Вы вошли как:"
+  logout: выйти
+  published: '<b id="approved" data-tooltip class="has-tip" title="Опубликованно">A</b>'
+  waiting: '<b id="waiting" data-tooltip class="has-tip" title="Ожидает проверки">W</b>'
+  need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Необходимо дополнить. Мы выслали вам емайл с объяснениями.">N</b>' 
+  edit: изменить
+
+
+  extension_white_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{allowed_types}"
+  extension_black_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{prohibited_types}"
+
+#------------------------------------------------------------------------------------------------------------
 
   date:
     abbr_day_names:
@@ -112,6 +225,11 @@ lv:
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
+
+      extension_white_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{allowed_types}"
+      extension_black_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{prohibited_types}"
+
+
       accepted: ir jāpiekrīt
       blank: ir jābūt aizpildītam
       confirmation: nesakrīt ar apstiprinājumu
@@ -130,11 +248,61 @@ lv:
       odd: ir jābūt nepāra skaitlim
       record_invalid: ! 'Pārbaude neizdevās: %{errors}'
       taken: ir jau aizņemts
-
+      expired: 'derīgums beidzies, lūdzu piesakieties jaunam'
+      not_found: 'netika atrasts'
+      already_confirmed: 'ir jau apstiprināts, lūdzu mēģiniet pieslēgties'
+      not_locked: 'netika nobloķēts'
+      not_saved:
+        one: '%{resource} netika saglabāts 1 kļūdas dēļ:'
+        other: '%{resource} netika saglabāts %{count} kļūdu dēl:'
       extension_white_list_error: 'Недопустимый формат изображения.'
       extension_white_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{allowed_types}"
-
-
+  devise:
+    failure:
+      already_authenticated: 'Jūs jau esat pieslēdzies.'
+      unauthenticated: 'Jums ir jāpieslēdzas vai jāreģistrējas, lai turpinātu.'
+      unconfirmed: 'Jums ir jāapstiprina reģistrācijas e-pasts, lai turpinātu.'
+      locked: 'Jūsu lietotājs ir nobloķēts.'
+      invalid: 'Nepareizs epasts vai parole.'
+      invalid_token: 'Nepareiza autentifikācijas atslēga.'
+      timeout: 'Jūsu sesijas laiks ir beidzies. Lūdzu pieslēdzieties vēlreiz, lai turpinātu.'
+      inactive: 'Jūsu lietotajs vēl nav aktivizēts.'
+    sessions:
+      signed_in: 'Veiksmīgi pieslēdzies.'
+      signed_out: 'Veiksmīgi atslēdzies.'
+    passwords:
+      send_instructions: 'Pāris minūšu laikā uz Jūsu e-pastu tiks nosūtīts apraksts, kā nomainīt Jūsu paroli.'
+      updated: 'Jūsu parole ir veiksmīgi nomainīta. Jūs esat pieslēdzies.'
+      updated_not_active: 'Jūsu parole ir veiksmīgi nomainīta.'
+      send_paranoid_instructions: 'Ja Jūsu parole eksistē mūsu datubāzē, tad jums tiks nosūtīts paroles atjaunošanas apraksts uz e-pastu.'
+      no_token: "Šī lapa ir pieejama tikai no paroles maiņas epasta. Ja Jūs atvērāt šo lapu no epasta, tad pārliecinietis, ka izmantojāt pilno URL adresi."
+    confirmations:
+      send_instructions: 'Pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā apstiprināt Jūsu lietotāju.'
+      send_paranoid_instructions: 'Ja Jūsu parole eksistē mūsu datubāzē, tad pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā apstiprināt Jūsu lietotāju.'
+      confirmed: 'Jūsu lietotājs ir veiksmīgi apstiprināts. Jūs esat pieslēdzies.'
+    registrations:
+      signed_up: 'Laipni lūdzam! Jūs esat veiksmīgi reģistrējies.'
+      signed_up_but_unconfirmed: 'Jums ir nosūtīts e-pasts ar reģistrācijas apstiprinājuma saiti. Lūdzu atveriet šo saiti, lai aktivizētu Jūsu lietotāju.'
+      signed_up_but_inactive: 'Jūs esat veiksmīgi reģistrējies. Tomēr Jūs neesat pieslēdzies, jo Jūsu lietotājs vēl nav aktivizēts.'
+      signed_up_but_locked: 'Jūs esat veiksmīgi reģistrējies. Tomēr Jūs neesat pieslēdzies, jo Jūsu lietotājs ir nobloķēts.'
+      updated: 'Jūsu lietotāja izmaiņas ir veiksmīgi saglabātas.'
+      update_needs_confirmation: 'Jūsu lietotāja izmaiņas ir veiksmīgi saglabātas, bet mums ir jāpārbauda Jūsu jaunā e-pasta adrese. Lūdzu pārbaudiet Jūsu e-pastu un uzklišķiniet uz apstiprinājuma saites, lai pabeigtu Jūsu jaunās e-pasta adreses apstiprināšanu.'
+      destroyed: 'Uz redzēšanos! Jūsu lietotājs ir veiksmīgi dzēsts. Ceram Jūs atkal redzēt drīzumā.'
+    unlocks:
+      send_instructions: 'Pāris minūšu laikā uz Jūsu e-pastu tiks nosūtīts apraksts, kā atbloķēt Jūsu lietotāju.'
+      unlocked: 'Jūsu lietotājs ir veiksmīgi atbloķēts. Jūs esat pieslēdzies.'
+      send_paranoid_instructions: 'Ja Jūsu parole eksistē mūsu datubāzē, tad pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā atbloķēt jūsu lietotāju.'
+    omniauth_callbacks:
+      success: 'Veiksmīgi autorizēts ar %{kind} lietotāju.'
+      failure: 'Neizdevās autorizet ar %{kind} lietotāju dēļ sekojoša iemesla: "%{reason}".'
+      destroyed: 'Veiksmīgi noņemta %{kind} autorizācija.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Apstiprināšanas apraksts'
+      reset_password_instructions:
+        subject: 'Paroles nomainīšanas apraksts'
+      unlock_instructions:
+        subject: 'Atbloķēšanas apraksts'
       too_long:
         zero: ir par garu (maksimums ir %{count} simboli)
         one: ir par garu (maksimums ir %{count} simbols)

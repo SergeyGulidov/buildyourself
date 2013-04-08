@@ -9,25 +9,21 @@
 
   
 
-<h2 class="subheader">Sign in</h2>
+<h2 class="subheader"><%= t(:login) %></h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), class: 'custom') do |f| %>
 
     <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+    <%= f.input :password, :required => false, label: t(:password) %>
+    <%= f.input :remember_me, label: t(:remember_me), :as => :boolean if devise_mapping.rememberable? %>
 
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign in", class: 'small button' %>
+    <%= f.button :submit, t(:login), class: 'small button' %>
   </div>
 <% end %>
 
-<%= 
-
-# render "devise/shared/links" 
-
-%>
+<%= render "devise/shared/links" %>
 
 </div>
 </div>

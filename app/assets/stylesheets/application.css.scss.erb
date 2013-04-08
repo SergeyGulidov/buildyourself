@@ -69,9 +69,6 @@ body:before {
 
 
 
-fieldset{
-	background-color: #fff;
-}
 
 
 
@@ -173,6 +170,7 @@ h5 #title a:active {
 .select2-container{
   width: 100%!important;
   font-size: 14px;
+  margin-bottom: 20px;
 }
 .select2-with-searchbox{
   width: 200px!important;
@@ -245,7 +243,7 @@ h5 #title a:active {
 }
 
 .select2-search input[type="text"]:focus {
-    background: url("images/select2/select2.png") no-repeat scroll 100% -22px transparent;
+    background: url(<%= asset_path('select2.png') %>) no-repeat scroll 100% -22px transparent;
 }
 
 .select2-drop {
