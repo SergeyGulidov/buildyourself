@@ -15,15 +15,19 @@ class Ability
 
 
     if user.role == 2
-      can :read, Place
-      can :create, Place
+      
       can :create, Contact
-      can :update, Place, :user_id => user.id
+      can :create, Place
+      can :show,   Place,   :user_id => user.id
+      can :update, Place,   :user_id => user.id
+      can :edit,   Place,   :user_id => user.id
+      can :read,   Place,   :user_id => user.id
       can :vote, Place
+      can :index, Brain
     end
 
     if user.role == 3
-      can :read, Place
+      #can :read, Place
       can :create, Place
       can :create, Contact
       can :index, Brain

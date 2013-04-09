@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
 
-	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit]
+	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit, :show]
 	respond_to :html, :xml, :json
 
 	def index
@@ -39,10 +39,16 @@ load_and_authorize_resource
 
 	  respond_to do |format|
 	    if @place.save
-	      format.html  { redirect_to(@place,
-	                    :notice => t(:new_place_success)) }
-	      format.json  { render :json => @place,
-	                    :status => :created, :location => @place }
+		  if current_user
+
+		    format.html  { redirect_to(@place,
+            	:notice => t(:new_place_success)) }
+	      	format.json  { render :json => @place,
+	            :status => :created, :location => @place }
+		  else
+		  	flash[:alert] = t(:new_place_success)
+		    format.html  { redirect_to action: 'new' }
+		  end
 	    else
 	      format.html  { render :action => "new" }
 	      format.json  { render :json => @place.errors,
@@ -71,6 +77,7 @@ load_and_authorize_resource
 
 	  def update
 	  	@place = Place.find(params[:id])
+	  	@place.approved = 0
 	      if @place.update_attributes(params[:place])
 	         redirect_to :action => 'show', :id => @place
 	      else

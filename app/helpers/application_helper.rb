@@ -6,7 +6,7 @@ module ApplicationHelper
 	end
 
 	  def full_title(page_title)
-	    base_title = "Build Yourself"
+	    base_title = "Yoda.lv"
 	    if page_title.empty?                             
 	      base_title                                      
 	    else

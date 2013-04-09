@@ -18,103 +18,103 @@ lv:
   city: Pilsēta
   street_address: Adrese
 
-#--------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------
 
-  name_for_place: Название
-  phone_number: Номер телефона
-  website: Веб адрес
-  age_category: Возрастная категория
-  place_category: Категория
-  type_category: Тип
-  add_place: Зарегистрировать
-  message_for_ru: Сообщение для пользователей на русском
-  message_for_lv: Сообщение для пользователей на латышском
-  check_in_your_place: Зарегистрируй свое место
-  register_first: В дальнейшем вы сможете обновлять информацию о вашем месте, но для этого необходимо зарегистрироваться.
+  name_for_place: Nosaukums
+  phone_number: Telefona numurs
+  website: Web adrese
+  age_category: Vecuma kategorija
+  place_category: Kategorija
+  type_category: Tips
+  add_place: Piereģistrēt
+  message_for_ru: Ziņa priekš lietotājiem krievu valodā
+  message_for_lv: Ziņa priekš lietotājiem latviešu valodā
+  check_in_your_place: Piereģistrēt savu vietu
+  register_first: 'Jums ir jāpiereģistrējas, lai varētu atjaunot informāciju par Jūsu vietu.'
 
 #------------- footer partial
 #------------- top bar partial
-  home: Главная
-  add_new_place: Добавить место
+  home: Sākums
+  add_new_place: Pievienot vietu
   contact_with_us: Sazināties ar mums
-  search: Поиск по сайту...
+  search: Meklēt...
 
 #------------- map filter partial
-  category: Категория...
-  type: Тип...
-  interval: Возраст...
+  city: Pilsēta...
+  category: Kategorija...
+  type: Tips...
+  interval: Vecums...
 
 #------------- contact with us
-  contact_message: Твоё послание нам
-  send: Отправить
-  your_email: Твой email
+  contact_message: Tavs ziņojums mums
+  send: Sūtīt
+  your_email: Tavs email
   comments_text: Jautājumi, novēlējumi, iebildumi? Rakstiet jebkurā gadījumā! Mēs atbildēsim visiem!
 
 #------------- place partial
-  read_more: читать дальше ...
+  read_more: Lasīt tālāk...
 
 #------------- subnav partial
-  with_review: Проверенно нами
-  sponsor: Спонсор
-  comments: 'Комментарии:'
+  with_review: Pārbaudīts
+  sponsor: Sponsors
+  comments: 'Komentāri:'
 
 #------------- place show
   city_country: Valsts, Pilsēta
-  published_at: Опубликовано
-  updated_at: Обновленно
-  enable_js: Активируйте JavaScript чтобы прочитать комментарии.
+  published_at: Publicēts
+  updated_at: Atjaunots
+  enable_js: Aktivizējat JavaScript, lai izlasītu komentārus.
 
 
 #------------- DEVISE
-  password: Пароль
-  remember_me: Запомнить меня
-  password_confirmation: Подтверждение пароля.
-  registration: Регистрация
+  password: Parole
+  remember_me: Atcerēties mani
+  password_confirmation: Paroles apstiprināšana.
+  registration: Reģistrācija
 
-  new_place_success: Ваше место успешно добавлено в наш каталог.
-  nothing_found: Извините. По вашему запросу нечего не найдено.
-  vote_thanks: Ваш голос учтен.
-  vote_already_did: Вы уже проголосовали.
+  new_place_success: Jūsu vieta veiksmīgi pievienota katalogam.
+  nothing_found: Atvainojiet, nav atrasts. 
+  vote_thanks: Paldies par vērtējumu.
+  vote_already_did: Jūs jau vērtējāt.
 
 
   simple_form:
-    "yes": 'Да'
-    "no": 'Нет'
+    "yes": 'Jā'
+    "no": 'Nē'
     required:
-      text: 'необходимо заполнить'
+      text: 'Nepieciešams aizpildīt'
       mark: '*'
     error_notification:
-      default_message: "Не все данные введены корректно:"
-    undefined: Не выбранно
+      default_message: "Nav pareizi ievadīti visi dati:"
+    undefined: Nav izvēlēts
 
 
 #------------login partial 
 
-  login: Войти.
-  sign_up: Зарегистрироваться.
-  for_what: Зачем?
-  sign_in_with: Войти при помощи
-  sign_in_with_twitter: Войти при помощи Twitter
-  sign_in_with_google: Войти при помощи Google
-  sign_in_with_facebook: Войти при помощи Facebook
-  what_you_get: "Вы сможете:"
-  get_rating: Принимать участие в рейтинге.
-  edit_info: Добавлять или изменять информацию о своем месте.
-  our_mission: "Впереди у нас долгий путь и мы обязательно будем добавлять новые 
-    функции для зарегистрированных пользователей."
-  logged_as: "Вы вошли как:"
-  logout: выйти
-  published: '<b id="approved" data-tooltip class="has-tip" title="Опубликованно">A</b>'
-  waiting: '<b id="waiting" data-tooltip class="has-tip" title="Ожидает проверки">W</b>'
-  need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Необходимо дополнить. Мы выслали вам емайл с объяснениями.">N</b>' 
-  edit: изменить
+  login: Ieiet.
+  sign_up: Piereģistrēties.
+  for_what: Priekš kam?
+  sign_in_with: Pieslēgties ar
+  sign_in_with_twitter: Pieslēgties ar Twitter
+  sign_in_with_google: Pieslēgties ar Google
+  sign_in_with_facebook: Pieslēgties ar Facebook
+  what_you_get: "Jūs varat:"
+  get_rating: Piedalīties reitingā.
+  edit_info: Pievienot vai izmainīt informāciju par savu vietu.
+  our_mission: "Priekšā mums ilgs ceļš ejams, tāpēc tiks pievienotas jaunas funkcijas priekš reģistrētiem lietotājiem."
+    
+  logged_as: "Jūs esat pieslēdzies kā:"
+  logout: Iziet
+  published: '<b id="approved" data-tooltip class="has-tip" title="Publicēts">A</b>'
+  waiting: '<b id="waiting" data-tooltip class="has-tip" title="Gaida pārbaudi">W</b>'
+  need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Nepieciešams papildināt. Izsūtījām Jums e-pastu ar paskaidrojumu.">N</b>' 
+  edit: Rediģēt
 
 
-  extension_white_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{allowed_types}"
-  extension_black_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{prohibited_types}"
+  extension_white_list_error: "Jūs nevarat augšupielādēt %{extension} failus, atļauti tikai: %{allowed_types}"
+  extension_black_list_error: "Jūs nevarat augšupielādēt %{extension} failus, atļauti tikai: %{prohibited_types}"
 
 #------------------------------------------------------------------------------------------------------------
-
   date:
     abbr_day_names:
     - Sv.
@@ -229,7 +229,7 @@ lv:
       extension_white_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{allowed_types}"
       extension_black_list_error: "Вы не можете загружать %{extension} файлы, разрешенны только: %{prohibited_types}"
 
-
+      street: Adrese
       accepted: ir jāpiekrīt
       blank: ir jābūt aizpildītam
       confirmation: nesakrīt ar apstiprinājumu

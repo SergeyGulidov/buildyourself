@@ -37,5 +37,8 @@
 		 <% if can? :make_approve, @place %>
 			<li><%= link_to "Admin edit", places_make_approve_path(@place), class: "negative_vote" %></li>
 		 <% end %>
+		 <% if can? :update, @place %>
+			<li><%= link_to "Edit", edit_place_path(@place), class: "negative_vote" %></li>
+		 <% end %>
 	</ul>
 </div>

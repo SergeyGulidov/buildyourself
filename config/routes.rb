@@ -2,7 +2,7 @@ BuildYourSelf::Application.routes.draw do
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-    root :to => 'places#index'
+    root :to => 'brains#index'
 
     devise_for :users, :controllers => {
       :registrations => "registrations", 
