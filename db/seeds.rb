@@ -14,4 +14,4 @@ Category.create!(category_name_lv:"Sports", category_name_ru:"riga", category_sl
 Type.create!(type_name_lv:"Boks", type_name_ru:"boks", type_slug:"box")
 Interval.create!(interval_name_lv:"Pusaudziem", interval_name_ru:"podrostkam", interval_slug:"juniors")
 City.create!(city_name_lv:"Riga", city_name_ru:"riga", city_slug:"riga")
-Country.create!(country_name_lv:"Latvija", country_name_ru:"Латвия", country_slug:"latvia")
+Country.create!(country_name_lv:"Latvija", country_name_ru:"latvija", country_slug:"latvia")
