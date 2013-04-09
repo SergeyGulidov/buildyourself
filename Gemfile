@@ -26,6 +26,7 @@ gem 'tire'
 gem 'kaminari'
 gem "select2-rails"
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -47,6 +48,7 @@ end
 
 
 group :production do
+  gem 'newrelic_rpm'
 	gem 'pg'
 end
 
