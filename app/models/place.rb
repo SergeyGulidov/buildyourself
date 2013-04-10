@@ -83,8 +83,7 @@ class Place < ActiveRecord::Base
   end
 
   def votes
-    vote = read_attribute(:votes) || place_votes.sum(:value)
-    return vote || 0
+    self.read_attribute(:votes) || self.place_votes.sum(:value)
   end
 
   def to_param
