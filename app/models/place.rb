@@ -83,7 +83,8 @@ class Place < ActiveRecord::Base
   end
 
   def votes
-    votes ||= place_votes.sum(:value)
+     vote ||= place_votes.sum(:value)
+    return vote
   end
 
   def to_param

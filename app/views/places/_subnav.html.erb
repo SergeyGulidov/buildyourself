@@ -23,7 +23,7 @@
 		 <li>
 
 		 	<a href="#" class="<%= @place.votes >= 0 ? 'positive_vote' : 'negative_vote' %>" >
-		 		<%= "#{ @place.votes >= 0 ? '+' : ''}  #{votes}" %></a>
+		 		<%= "#{ @place.votes >= 0 ? '+' : ''}  #{@place.votes}" %></a>
 		 </li>
 		 <% if current_user && current_user.can_vote_for?(@place) %>
 			<li>
