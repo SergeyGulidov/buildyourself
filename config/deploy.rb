@@ -9,7 +9,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:SergeyGulidov/buildyourself.git"
+set :repository, "https://github.com/SergeyGulidov/buildyourself.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
@@ -21,7 +21,7 @@ namespace :deploy do
   %w[start stop restart].each do |command|
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
-      run "/etc/init.d/unicorn_#{application} #{command}"
+      run "/etc/init.d/unicorn_BuildYourSelf #{command}"
     end
   end
 
