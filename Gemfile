@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+#ruby "1.9.3"
 
 gem 'rails', '~> 3.2.11'
 
@@ -27,7 +27,7 @@ gem 'tire'
 gem 'kaminari'
 gem "select2-rails"
 
-gem "heroku", "~> 2.37.2"
+#gem "heroku", "~> 2.37.2"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
