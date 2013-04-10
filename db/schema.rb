@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406114932) do
+ActiveRecord::Schema.define(:version => 20130410182817) do
 
   create_table "brains", :force => true do |t|
   end
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20130406114932) do
   create_table "place_votes", :force => true do |t|
     t.integer "user_id"
     t.integer "value"
-    t.string  "place_id"
+    t.integer "place_id", :default => 0
   end
 
   add_index "place_votes", ["user_id"], :name => "index_place_votes_on_user_id"
