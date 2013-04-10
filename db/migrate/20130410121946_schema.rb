@@ -96,7 +96,7 @@ class Schema < ActiveRecord::Migration
     t.string :type_name_lv
   end
 
-  add_index :types:, :type_slug, :name => "index_types_on_type_slug"
+  add_index :types, :type_slug, :name => "index_types_on_type_slug"
 
   create_table :users, :force => true do |t|
     t.string   :email,                  :default => "", :null => false
