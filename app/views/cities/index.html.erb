@@ -25,14 +25,10 @@
           <td><%= city.city_name_ru %></td>
           <td><%= city.city_slug %></td>
           <td>
-                
-                <% places = Place.where(city_id = city.id) %>
                 <% count = 0 %>
-                <% unless places.blank? %>
-                  <% places.each do |place| %>
+                  <% city.places.each do |place| %>
                     <% count += 1 %>
                   <% end %>
-                <% end %>
                 <%= count %>
 
           </td>

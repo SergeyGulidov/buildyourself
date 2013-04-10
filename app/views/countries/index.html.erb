@@ -25,16 +25,11 @@
           <td><%= country.country_name_ru %></td>
           <td><%= country.country_slug %></td>
           <td>
-                
-                <% places = Place.where(country_id = country.id) %>
                 <% count = 0 %>
-                <% unless places.blank? %>
-                  <% places.each do |place| %>
+                  <% country.places.each do |place| %>
                     <% count += 1 %>
                   <% end %>
-                <% end %>
                 <%= count %>
-
           </td>
           <td><%= link_to 'Edit', edit_country_path(country) %></td>
           <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>

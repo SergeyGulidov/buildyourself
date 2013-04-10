@@ -29,9 +29,7 @@
                 <% category.places.each do |place| %>
                   <% count += 1 %>
                 <% end %>
-
                 <%= count %>
-
           </td>
           <td><%= link_to 'Edit', edit_category_path(category) %></td>
           <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
