@@ -28,10 +28,11 @@
                 
                 <% places = Place.where(country_id = country.id) %>
                 <% count = 0 %>
-                <% places.each do |place| %>
-                  <% count += 1 %>
+                <% unless places.blank? %>
+                  <% places.each do |place| %>
+                    <% count += 1 %>
+                  <% end %>
                 <% end %>
-
                 <%= count %>
 
           </td>
