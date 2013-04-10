@@ -23,7 +23,7 @@ gem 'omniauth-google-oauth2'
 
 gem 'kaminari'
 gem "select2-rails"
-
+gem 'tire'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
