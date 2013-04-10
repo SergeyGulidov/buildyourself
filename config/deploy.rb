@@ -2,14 +2,14 @@ require "bundler/capistrano"
 
 server "106.187.49.242", :web, :app, :db, primary: true
 
-set :application, "BuildYourSelf"
+set :application, "buildyourself"
 set :user, "deployer"
-set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_to, "/home/#{user}/apps/BuildYourSelf"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:SergeyGulidov/#{application}.git"
+set :repository, "git@github.com:SergeyGulidov/buildyourself.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
