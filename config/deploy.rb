@@ -2,9 +2,9 @@ require "bundler/capistrano"
 
 server "106.187.49.242", :web, :app, :db, primary: true
 
-set :application, "buildyourself"
+set :application, "BuildYourSelf"
 set :user, "deployer"
-set :deploy_to, "/home/#{user}/apps/BuildYourSelf"
+set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
@@ -21,7 +21,7 @@ namespace :deploy do
   %w[start stop restart].each do |command|
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
-      run "/etc/init.d/unicorn_BuildYourSelf #{command}"
+      run "/etc/init.d/unicorn_#{application} #{command}"
     end
   end
 
