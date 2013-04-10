@@ -1,10 +1,10 @@
-<%= simple_form_for @country, html: { class: 'custom' } do |f| %>
+<%= form_for @country, html: { class: 'custom' } do |f| %>
     <% field_set_tag "Country" do %>
 
       <div class="row">
         <div class="large-6 columns">
             <%= f.label "Russian country" %>
-            <%= f.text_field :country_name_ru, label: "Russian country" %>
+            <%= f.text_field :country_name_ru %>
         </div>
 
         <div class="large-6 columns">
@@ -16,7 +16,7 @@
       <div class="row">
         <div class="large-6 columns">
             <%= f.label "Slug" %>
-            <%= f.text_field :country_slug %>
+            <%= f.input :country_slug %>
         </div>
       </div>
     <%= f.button :submit, class: 'small button'  %>
