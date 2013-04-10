@@ -7,8 +7,6 @@ gem 'rails', '~> 3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-#gem 'globalize3'
-
 gem 'traco'
 gem 'simple_form'
 gem 'gmaps4rails'
@@ -23,7 +21,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-gem 'tire'
 gem 'kaminari'
 gem "select2-rails"
 
@@ -45,7 +42,7 @@ end
 
 
 group :production do
-  gem 'newrelic_rpm'
+  #gem 'newrelic_rpm'
 	gem 'pg'
 end
 
