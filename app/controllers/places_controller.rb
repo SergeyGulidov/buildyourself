@@ -128,4 +128,9 @@ load_and_authorize_resource
 	end
 
 
+  def destroy
+  	@place = Place.find(params[:id].to_i)
+    @place.destroy
+    redirect_to action: "approve", notice: 'Place was successfully destroyed.'
+  end
 end

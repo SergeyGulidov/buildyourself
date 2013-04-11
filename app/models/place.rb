@@ -108,24 +108,26 @@ class Place < ActiveRecord::Base
       unless params[:category].blank?
         places = places.joins(:categories).where( "categories.category_slug = ?", params[:category] ) 
       end
+      unless params[:interval].blank?
+        places = places.joins(:intervals).where( "intervals.interval_slug = ?", params[:interval] ) 
+      end
 
-      unless params[:f].blank?
-        places = places.joins(:types).where( "types.type_slug = ?", params[:f][:type] )
+      f_type = params[:f].fetch(:type) unless params[:f].blank?
+      unless f_type.blank?
         type_vip = places.where(vip: 1)
+        places = places.joins(:types).where( "types.type_slug = ? AND vip = ?", params[:f][:type], 0 )
       end
 
       unless params[:type].blank?
-        places = places.joins(:types).where( "types.type_slug = ?", params[:type] )
         type_vip = places.where(vip: 1)
+        places = places.joins(:types).where( "types.type_slug = ? AND vip = ?", params[:type], 0 )
       end
 
       unless params[:city].blank?
         places = places.joins(:city).where( "cities.city_slug = ?", params[:city] )
         #places = places.where(city_id = params[:city].to_i)
       end
-      unless params[:interval].blank?
-        places = places.joins(:intervals).where( "intervals.interval_slug = ?", params[:interval] ) 
-      end
+
 
       return places, type_vip
   end

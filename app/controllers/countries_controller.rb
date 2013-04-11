@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
 load_and_authorize_resource
-	before_filter :find_countries, :only => [:edit, :update, :destroy]
+	before_filter :find_country, :only => [:edit, :update, :destroy]
 	
   def index
     @countries = Country.all

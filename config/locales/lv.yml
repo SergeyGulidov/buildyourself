@@ -410,3 +410,9 @@ lv:
   activerecord:
     errors:
       <<: *errors
+    models:
+      place: Vieta
+    attributes:
+      place:
+        name: Nosaukums
+        street: Adrese

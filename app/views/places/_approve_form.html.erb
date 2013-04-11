@@ -67,6 +67,8 @@
           <%= f.input :with_review, label: "Place with review?" %>
           <%= f.input :sponsor, label: "Our week sponsor?" %>
           <%= f.input :vip, label: "Vip place?" %>
+          <%= link_to "Destroy", @place, :method => :delete,
+                            class: "button alert radius small expand", data: { confirm: 'Are you sure?' }  %>
         </div>
       </div>
 
