@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410182817) do
+ActiveRecord::Schema.define(:version => 20130411150236) do
 
   create_table "brains", :force => true do |t|
   end
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(:version => 20130410182817) do
     t.integer  "role",                   :default => 2
     t.string   "provider"
     t.string   "uid"
+    t.integer  "failed_attempts",        :default => 0
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -38,7 +38,7 @@
               <tr>
                 <td class="td-title">
                     <i class="general foundicon-mail"></i>Email</td>
-                <td><%= @place.email.titleize %></td>
+                <td><%= @place.email %></td>
               </tr>
 
               <% unless @place.phone.blank? %>
@@ -77,7 +77,7 @@
           </table>
 
 
-          <p class="owners_text"><%= @place.message %></p>
+          <p class="owners_text"><%= raw(@place.message) %></p>
           <hr>
 
           <div id="disqus_thread"></div>

@@ -41,9 +41,9 @@ class Place < ActiveRecord::Base
 
    validates :email,
     :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
-    :presence => true, :uniqueness => true
+    :presence => true
 
-   validates :name, uniqueness: true, presence: true
+   validates :name, presence: true
    validates :street, presence: true
 
 

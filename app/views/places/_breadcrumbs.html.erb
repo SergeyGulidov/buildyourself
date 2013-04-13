@@ -15,13 +15,6 @@
 							class: "crumbs" %>
 					<% end %>
 				</li>
-				<li>
-					<% @place.intervals.each do |interval| %>
-						<%= link_to interval.interval_name,
-							{ controller: :places, action: :index, interval: interval.interval_slug}, 
-							class: "crumbs" %>
-					<% end  %>
-				</li>
 			</ul>
 		</div>
 		<div class="row">
@@ -30,6 +23,17 @@
 					<% @place.types.each do |type| %>
 						<%= link_to type.type_name, 
 							{ controller: :places, action: :index, type: type.type_slug}, 
+							class: "crumbs" %>
+					<% end  %>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<ul id="second" class="right ">
+				<li>
+					<% @place.intervals.each do |interval| %>
+						<%= link_to interval.interval_name,
+							{ controller: :places, action: :index, interval: interval.interval_slug}, 
 							class: "crumbs" %>
 					<% end  %>
 				</li>
