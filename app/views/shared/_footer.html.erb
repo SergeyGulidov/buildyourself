@@ -3,16 +3,22 @@
       
               <%= render 'shared/search' %>
               <p>&copy; Yoda.lv. 2013. All rights reserved.</p>
-              <%= render 'shared/add_this' %>
+              <%# render 'shared/add_this' %>
   </div>
 
 
   <div class="large-4 small-4 columns">
       <ul class="inline-list right">
         <li><%= link_to t(:home), root_path %></li>
+      <% if can? :new, Place %>
         <li>
-          <%= link_to t(:add_new_place), :controller => :places, :action => :new %>
-        </li>
+                <%= link_to t(:add_new_place), :controller => :places, :action => :new  %> 
+              </li>
+          <% else  %>
+        <li>
+                <%= link_to t(:sign_up), new_user_registration_path %>
+              </li>
+          <% end  %>
         <li>
           <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
         </li>

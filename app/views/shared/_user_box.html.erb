@@ -1,0 +1,18 @@
+<div class="small-12 columns">
+<ul class="small-block-grid-1 ">
+    <li>
+        <%= image_tag @place.user.avatar_url, height: '200', width: '310', 
+        	class: "th radius" if @place.user.avatar? %>
+    </li>
+
+    <li><h4 style="text-align: center"><%= @place.user.name unless @place.user.name.blank? %></h4></li>
+    <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p></li>
+    <li><p class="contact_info">
+    <%= @place.user.email %><br>
+    <%= @place.user.web_site unless @place.user.web_site.blank? %> <br>
+    <%= "(+371) - #{@place.user.phone}" unless @place.user.phone.blank? %><br>
+
+	</p></li>
+
+</ul>
+</div>

@@ -3,9 +3,15 @@
 		
 			<% if user_signed_in?  %>
 			  <dl class="sub-nav must_read">
-		  		<dt><%= t :logged_as %> <b><%= current_user.email %></b></dt>
+		  		<dt><b><%= current_user.email %></b></dt>
+			  		<dd class="active"><%= link_to t(:edit), 
+			  				edit_user_path(current_user) %></dd>
+
 			  		<dd class="active"><%= link_to t(:logout), 
 			  				destroy_user_session_path, method: :delete %></dd>
+
+			  		<dd class="active"><%= link_to t(:add_new_place), 
+			  				new_place_path %></dd>
 				</dl>
 		  		
 

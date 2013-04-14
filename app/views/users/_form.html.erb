@@ -1,15 +1,43 @@
-<%= simple_form_for @user, html: { class: 'custom' } do |f| %>
-    <% field_set_tag "User" do %>
+    <div class="row">
+      <div class="small-4 small-centered columns">
+        <div id="featured">
+          <%= image_tag("logo.png", width: '250px', height: '250px') %>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<%= simple_form_for @user, html: { :multipart => true } do |f| %>
 
       <div class="row">
         <div class="large-6 columns">
-            <%= f.input :role, label: "User role"%>
+
+            <%= f.input :name, label: "Change your name:" %>
+            <%= f.input :email, label: "Email:" %>
+            <%= f.input :web_site, label: "Web site:" %>
+            <%= f.input :phone, label: "Phone number:" %>
+            <%= f.input :about_ru, label: "About you (ru):" %>
+            <%= f.input :about_lv, label: "About you (lv):" %>
         </div>
 
+
+
         <div class="large-6 columns">
-            <%= f.input :email, label: "User email" %>
+          <ul class="large-block-grid-1 avatar">
+              <li>
+                <%= image_tag @user.avatar_url, height: '350', width: '250', class: "th radius"   if @user.avatar? %>
+              </li>
+          </ul>
+
+            <%= f.input :avatar, label: false %>
+            <%= f.hidden_field :avatar_cache %>
         </div>
+
+
+
       </div>
-    <%= f.button :submit, class: 'small button'  %>
-  <% end %>
-<% end  %>
+    <%= f.button :submit, "Update", class: 'small button'  %>
+
+<% end %>

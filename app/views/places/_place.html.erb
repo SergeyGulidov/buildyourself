@@ -14,7 +14,7 @@
 
 		<div class="row">
 			<div class="large-6 small-12 columns">
-				<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>
+				<p><%= simple_format(truncate( place.message, :length => 200, :separator => '. ', :omission => '') )%>
 						<%= link_to "...", place_path(place)%></p>
 
 				<h6><small><%= link_to t(:read_more), place_path(place)%></small></h6>		

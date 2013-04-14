@@ -2,18 +2,26 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :place_votes
 
-	before_create :set_user_role
+  translates :about
+  
+  mount_uploader :avatar, AvatarUploader
 
+  # :token_authenticatable, :confirmable, :timeoutable
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # , :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :sign_in_count, :created_at, :role
-  # attr_accessible :title, :body
+
+  attr_accessible :email, :password, :password_confirmation, 
+  :remember_me, :sign_in_count, :created_at, :avatar, :avatar_cache,
+  :about_ru, :about_lv, :web_site, :phone, :name
+
+  before_save{|user| user.email = user.email.downcase}
+  
+  validates :email,
+    :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
+    :presence => true,
+    :uniqueness => true
 
 
   def total_votes
@@ -54,10 +62,4 @@ class User < ActiveRecord::Base
     end
     
   end
-
-
-  def set_user_role
-    self.role = 2   
-  end
-
 end

@@ -26,34 +26,20 @@
       </div>
 
       <div class="row">
-        <div class="large-4 columns">
+        <div class="large-3 columns">
+          <%= f.input :month_price, label: "Month price" %>
+        </div>
+        <div class="large-3 columns">
           <%= f.input :latitude, label: "Latitude" %>
         </div>
 
-        <div class="large-4 columns">
+        <div class="large-3 columns">
           <%= f.input :longitude, label: "Longitude" %>
         </div>
-        <div class="large-4 columns">
+        <div class="large-3 columns">
           <%= f.input :user_id, label: "User id" %>
         </div>
       </div>
-
-
-
-      <div class="row">
-        <div class="large-4 columns">
-          <%= f.input :email, label: "Email" %>
-        </div>
-
-        <div class="large-3 columns">
-          <%= f.input :phone, label: "Phone number" %>
-        </div>
-
-        <div class="large-5 columns">
-          <%= f.input :website, label: "Website" %>
-        </div>
-      </div>
-
 
       <div class="row ">
         <div class="large-6 columns">
@@ -64,6 +50,7 @@
 
         <div class="large-6 columns">
           <%= f.input :approved, label: "Do you approve this place?" %>
+          <%= f.input :translated, label: "Do you translate this place?" %>
           <%= f.input :with_review, label: "Place with review?" %>
           <%= f.input :sponsor, label: "Our week sponsor?" %>
           <%= f.input :vip, label: "Vip place?" %>
@@ -137,6 +124,13 @@
             <%= f.input :message_lv, label: "Message for Latvian speakers", as: :text %>
         </div>
       </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+            <%= f.input :training_time, label: "Training times for this place", as: :text %>
+        </div>
+      </div>
+
       <div class="row">
         <div class="large-12 columns">
             <%= f.input :review_ru, label: "Review for Latvian speakers", as: :text %>

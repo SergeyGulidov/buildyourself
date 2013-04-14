@@ -16,7 +16,7 @@ class Place < ActiveRecord::Base
 
   acts_as_gmappable
 
-  before_save{|place| place.email = place.email.downcase}
+  
   before_save{|place| place.name = place.name.titleize}
 
 
@@ -32,16 +32,14 @@ class Place < ActiveRecord::Base
 
   attr_accessible :approved, :email, :vip, :sponsor, :with_review,
   	 :name, :phone, :street, :website, :country_id, :city_id,
-     :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids,
-     :message_ru, :message_lv, :latitude, :longitude, :review_lv, :review_ru, :user_id
+     :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids, :month_price,
+     :message_ru, :message_lv, :latitude, :longitude, :review_lv, :review_ru, :user_id, :translated, :training_time
 
   translates :message, :review
 
   accepts_nested_attributes_for :photos
 
-   validates :email,
-    :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
-    :presence => true
+
 
    validates :name, presence: true
    validates :street, presence: true

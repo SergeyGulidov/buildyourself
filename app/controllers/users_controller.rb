@@ -22,7 +22,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to action: "index", notice: 'user was successfully updated.' }
+        format.html { redirect_to action: "edit", notice: 'user was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

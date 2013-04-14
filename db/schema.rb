@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411150236) do
+ActiveRecord::Schema.define(:version => 20130414084023) do
 
   create_table "brains", :force => true do |t|
   end
@@ -83,23 +83,26 @@ ActiveRecord::Schema.define(:version => 20130411150236) do
     t.string   "email"
     t.string   "name"
     t.text     "message_ru"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.integer  "user_id"
-    t.integer  "approved",    :default => 0
+    t.integer  "approved",      :default => 0
     t.text     "message_lv"
     t.text     "review_ru"
     t.text     "review_lv"
-    t.integer  "with_review", :default => 0
-    t.integer  "sponsor",     :default => 0
-    t.integer  "vip",         :default => 0
+    t.integer  "with_review",   :default => 0
+    t.integer  "sponsor",       :default => 0
+    t.integer  "vip",           :default => 0
     t.text     "comment"
     t.integer  "city_id"
     t.integer  "country_id"
-    t.integer  "hits",        :default => 0
+    t.integer  "hits",          :default => 0
+    t.integer  "translated",    :default => 0
+    t.text     "training_time"
+    t.float    "month_price"
   end
 
   create_table "types", :force => true do |t|
@@ -128,6 +131,12 @@ ActiveRecord::Schema.define(:version => 20130411150236) do
     t.string   "uid"
     t.integer  "failed_attempts",        :default => 0
     t.datetime "locked_at"
+    t.string   "avatar"
+    t.text     "about_ru"
+    t.text     "about_lv"
+    t.string   "web_site"
+    t.string   "phone"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

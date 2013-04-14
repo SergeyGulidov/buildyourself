@@ -6,100 +6,76 @@
   <div class="large-12 columns">
     <%= render 'shared/filter' %>
     <%= render 'shared/flasher' %>
+
     <div class="row content">
-      <div class="large-8 columns">
-
+      <div class="small-8 columns">
         
-
-            
-          <div class="row">
-            <div class="large-6 columns">
+        <div class="row">
+            <div class="small-6 columns">
               <h4><%= @place.name %></h4>
               <%= render 'subnav', object: @place %>
             </div>
 
-            <%= render 'breadcrumbs', object: @place %>
+
+
+              <%= render 'breadcrumbs', object: @place %>
+
+        </div>
+
+        <div class="row content">
+          <div class="small-6 columns">
+            <ul class="small-block-grid-3">
+                <% @place.photos.each do |photo| %>
+                  <li>
+                    <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
+                      height: '60', width: '100', class: "th radius"),
+                     photo.photo_url.to_s, rel: "facebox" %>
+                  </li>
+                <% end %>
+            </ul>
+            <hr>
+            <%= render 'show_contacts', object: @place %>
           </div>
 
-          <table class="contacts">
-            <tbody>
-              <tr>
-                <td class="td-title">
-                    <i class="general foundicon-globe"></i><%= t(:city_country) %></td>
-                <td>
-                  <%= get_location(@place) %>
-                </td>
-              </tr>
-              <tr>
-                <td class="td-title">
-                    <i class="general foundicon-location"></i><%= t(:street_address) %></td>
-                <td><%= @place.street.titleize %></td>
-              </tr>
-              <tr>
-                <td class="td-title">
-                    <i class="general foundicon-mail"></i>Email</td>
-                <td><%= @place.email %></td>
-              </tr>
 
-              <% unless @place.phone.blank? %>
-                <tr>
-                  <td class="td-title">
-                      <i class="general foundicon-phone"></i><%= t(:phone_number) %></td>
-                  <td><%= @place.phone %></td>
-                </tr>
-              <% end %>
-              
-              <% unless @place.website.blank? %>
-                <tr>
-                  <td class="td-title">
-                      <i class="general foundicon-website"></i><%= t(:website) %></td>
-                  <td><%= @place.website %></td>
-                </tr>
-              <% end  %>
-
-              <tr>
-                <td class="td-title">
-                  <i class="general foundicon-add-doc"></i><%= t(:published_at) %>
-                </td>
-                <td><%= @place.created_at.strftime("%d.%m.%Y") %></td>
-              </tr>
+          <div class="small-6 columns">
+            <%= simple_format(@place.message) %>
+            <% if @place.training_time  %>
+              <h4><small><%= t(:training_times) %></small></h4>
+              <div style="padding-left: 20px"><%= simple_format(@place.training_time) %></div>
+            <% end %>
+          </div>
+        </div>
 
 
-              <% unless @place.created_at.to_i == @place.updated_at.to_i %>
-                <tr>
-                  <td class="td-title">
-                    <i class="general foundicon-edit"></i><%= t(:updated_at) %>
-                  </td>
-                  <td><%= @place.updated_at.strftime("%d.%m.%Y") %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-
-          <p class="owners_text"><%= raw(@place.message) %></p>
           <hr>
-
           <div id="disqus_thread"></div>
       </div>
 
-      <div class="large-4 columns">
+      <div class="small-4 columns">
+        <%= render 'shared/user_box', object: @place %>
+
+
+        <% if @place.user.places.count > 1 %>
+            <ul class=" panel recent">
+              <h6><%= t (:more_places_from_user)  %></h6>
+              <% @place.user.places.each do |place| %>
+                <li><%= link_to place.name, place %> 
+
+                  <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
+                  <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
+
+                  <% if counter > 1 %>
+                    &nbsp&raquo;&nbsp  
+                  <% end %>
+                <% end %></li>
+              <% end %>
+            </ul>
+        <% end  %>
         <%= render 'shared/login' %>
-
-
-        <ul class="small-block-grid-3 photo_block">
-            <% @place.photos.each do |photo| %>
-              <li>
-                <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
-                  height: '60', width: '100', class: "th radius"),
-                 photo.photo_url.to_s, rel: "facebox" %>
-              </li>
-            <% end %>
-        </ul>
-        
-        <%# render 'like_this' %>
-
       </div>
+
+
     </div>
   </div>
 </div>
