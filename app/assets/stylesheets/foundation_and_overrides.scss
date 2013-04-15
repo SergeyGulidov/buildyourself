@@ -659,7 +659,7 @@ $crumb-bg: #FFF;
 //
 
 // We use these to control the background and border styles
- $panel-bg: darken(#fff, 0%);
+$panel-bg: darken(#FfFFFF, 0%);
 // $panel-border-style: solid;
  $panel-border-size: 0px;
 
@@ -673,7 +673,7 @@ $crumb-bg: #FFF;
 
 // We use these to set default font colors
 // $panel-font-color: #333;
-// $panel-font-color-alt: #fff;
+ $panel-font-color-alt: #F0FFFF;
 
 //
 // Pricing Table Variables

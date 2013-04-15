@@ -33,7 +33,7 @@ class Place < ActiveRecord::Base
   attr_accessible :approved, :email, :vip, :sponsor, :with_review,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_ids, :photos_attributes, :photo, :category_ids, :interval_ids, :month_price,
-     :message_ru, :message_lv, :latitude, :longitude, :review_lv, :review_ru, :user_id, :translated, :training_time
+     :message_ru, :message_lv, :latitude, :longitude, :review_lv, :review_ru, :user_id, :translated
 
   translates :message, :review
 

@@ -12,6 +12,8 @@ set :scm, "git"
 set :repository, "https://github.com/SergeyGulidov/buildyourself.git"
 set :branch, "master"
 
+set :shared_children, shared_children + %w{public/uploads}
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 

@@ -1,43 +1,41 @@
-<div id="bread" class="large-6 small-4 columns">
+
+<div class="row" id="bread">
 	<div class="row">
-		<div class="row">
-			<ul class="right">
-				<li>
-				<%= link_to @place.city.city_name, 
-			           		{ controller: :places, action: :index, city: @place.city.city_slug}, 
-							class: "crumbs" %>
-				</li>
-				<li>
-					
-					<% @place.categories.each do |category| %>
-			           <%= link_to category.category_name, 
-			           		{ controller: :places, action: :index, category: category.category_slug}, 
-							class: "crumbs" %>
-					<% end %>
-				</li>
-			</ul>
-		</div>
-		<div class="row">
-			<ul id="second" class="right ">
-				<li>
-					<% @place.types.each do |type| %>
-						<%= link_to type.type_name, 
-							{ controller: :places, action: :index, type: type.type_slug}, 
-							class: "crumbs" %>
-					<% end  %>
-				</li>
-			</ul>
-		</div>
-		<div class="row">
-			<ul id="second" class="right ">
-				<li>
-					<% @place.intervals.each do |interval| %>
-						<%= link_to interval.interval_name,
-							{ controller: :places, action: :index, interval: interval.interval_slug}, 
-							class: "crumbs" %>
-					<% end  %>
-				</li>
-			</ul>
-		</div>
+		<ul class="right">
+			<li>
+			<%= link_to @place.city.city_name, 
+		           		{ controller: :places, action: :index, city: @place.city.city_slug}, 
+						class: "crumbs" %>
+			</li>
+			<li>
+				<% @place.categories.each do |category| %>
+		           <%= link_to category.category_name, 
+		           		{ controller: :places, action: :index, category: category.category_slug}, 
+						class: "crumbs" %>
+				<% end %>
+			</li>
+		</ul>
+	</div>
+	<div class="row">
+		<ul id="second" class="right ">
+			<li>
+				<% @place.types.each do |type| %>
+					<%= link_to type.type_name, 
+						{ controller: :places, action: :index, type: type.type_slug}, 
+						class: "crumbs" %>
+				<% end  %>
+			</li>
+		</ul>
+	</div>
+	<div class="row">
+		<ul id="second" class="right ">
+			<li>
+				<% @place.intervals.each do |interval| %>
+					<%= link_to interval.interval_name,
+						{ controller: :places, action: :index, interval: interval.interval_slug}, 
+						class: "crumbs" %>
+				<% end  %>
+			</li>
+		</ul>
 	</div>
 </div>
