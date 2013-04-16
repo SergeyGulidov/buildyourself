@@ -13,13 +13,15 @@
           <i class="general foundicon-location"></i><%= t(:street_address) %></td>
       <td><%= @place.street.titleize %></td>
     </tr>
-    <tr>
-      <td class="td-title">
-        <i class="general foundicon-add-doc"></i><%= t(:month_price) %>
-      </td>
-      <td><%= number_to_currency(@place.month_price, locale: :lv) %></td>
-    </tr>
 
+    <% unless @place.month_price.blank?  %>
+      <tr>
+        <td class="td-title">
+          <i class="general foundicon-cart"></i><%= t(:month_price) %>
+        </td>
+        <td><%= number_to_currency(@place.month_price, locale: :lv) %></td>
+      </tr>
+    <% end %>
 
     <tr>
       <td class="td-title">

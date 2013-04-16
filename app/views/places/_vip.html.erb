@@ -3,28 +3,25 @@
 
 		<% @place = place %>
 		
-		<div class="vip_zone round">	
-			<div class="row ">
-				  <div class="large-6 small-8 columns">
+		<div class="vip_zone">	
+			<div class="row">
+				  <div class="small-6 columns">
 					<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
-					
 					<%= render 'subnav', object: @place %>
-
+				  </div>   
+				  <div class="small-6 columns">
+				 	 <%= render 'breadcrumbs', object: @place %>
 				  </div>
-				  
-		          
-		          <%= render 'breadcrumbs', object: @place %>
 			</div>
 
 			<div class="row">
 				<div class="large-6 small-12 columns">
-					<p><%= truncate(place.message, :length => 200, :separator => '. ', :omission => '') %>
-							<%= link_to "...", place_path(place)%></p>
+					<p><%= simple_format(truncate( place.message, :length => 200, :separator => '. ', :omission => '.') )%></p>
 
-					<h6><small><%= link_to "read more...", place_path(place)%></small></h6>		
+					<h6><small><%= link_to t(:read_more), place_path(place)%></small></h6>		
 				</div>
 
-				<div class="large-6 small-12 columns ">
+				<div class="large-6 small-12 columns photos_for_roll">
 					<ul class="large-block-grid-3">
 
 						<% place.photos.take(3).each do |photo| %>

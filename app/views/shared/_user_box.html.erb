@@ -8,10 +8,39 @@
     <li><h4 style="text-align: center"><%= @place.user.name unless @place.user.name.blank? %></h4></li>
     <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p></li>
     <li><p class="contact_info">
-    <%= @place.user.email %><br>
-    <%= @place.user.web_site unless @place.user.web_site.blank? %> <br>
-    <%= "(+371) - #{@place.user.phone}" unless @place.user.phone.blank? %><br>
 
+    <% unless @place.user.email.blank?  %>
+      <%= @place.user.email %><br>
+    <% end %>
+
+    <% unless @place.user.web_site.blank?  %>
+      <%= @place.user.web_site  %> <br>
+    <% end %>
+
+    <% unless @place.user.phone.blank?  %>
+      <%= "(+371) - #{@place.user.phone}" %><br>
+    <% end %>
+    
 	</p></li>
 
 </ul>
+
+
+<% places = @place.user.places.where("id != ?", @place.id) %>
+
+<% if places.size > 1 %>
+    <ul class="recent">
+      <h6><%= t (:more_places_from_user)  %></h6>
+      <% places.each do |place| %>
+        <li><%= link_to place.name, place %> 
+
+          <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
+          <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
+
+          <% if counter > 1 %>
+            &nbsp&raquo;&nbsp  
+          <% end %>
+        <% end %></li>
+      <% end %>
+    </ul>
+<% end  %> 

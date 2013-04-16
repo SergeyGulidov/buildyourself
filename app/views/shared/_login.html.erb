@@ -1,7 +1,7 @@
 
 		
 			<% if user_signed_in?  %>
-			  <dl class="sub-nav must_read">
+			  <dl class="sub-nav ">
 		  		<dt><b><%= current_user.email %></b></dt>
 			  		<dd class="active"><%= link_to t(:edit), 
 			  				edit_user_path(current_user) %></dd>
@@ -34,13 +34,13 @@
 
 
 		  	<% else %>
-			  <dl class="sub-nav must_read">
+			  <dl class="sub-nav ">
 				  <dd class="active"><%= link_to t(:login), new_user_session_path %></dd>
 				  <dd class="active"><%= link_to t(:sign_up), new_user_registration_path %></dd>
 				  <dd data-reveal-id="for_what"> <%= link_to t(:for_what), new_user_registration_path %></dd>
 			  </dl>
 
-			  <ul class="must_read">
+			  <ul class="">
 				  <li> &raquo;
 				  	<%= link_to t(:sign_in_with_twitter), user_omniauth_authorize_path(:twitter)  %>
 				  </li>

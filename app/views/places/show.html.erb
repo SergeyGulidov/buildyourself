@@ -1,86 +1,53 @@
 <% provide(:title, @place.name) %>
 
 <%= render 'shared/gmap' %>
+<%= render 'shared/filter' %>
+<%= render 'shared/flasher' %>
+
+<div class="row content">
+  <div class="large-12 small-12 columns">
+    
 
 
-    <%= render 'shared/filter' %>
-    <%= render 'shared/flasher' %>
-
-    <div class="row content">
-      <div class="large-9 small-12 columns">
-        
 
 
-        <div class="row">
-            <div class="small-6 columns">
-              <%= render 'subnav', object: @place %>
-            </div>
-            <div class="small-6 columns">
-              <%= render 'breadcrumbs', object: @place %>
-            </div>
-        </div>
+    <div class="row">
+
+      <div class="small-5 large-3 columns about_panel">
+        <h4><%= @place.name %></h4>
+        <%= render 'subnav', object: @place %>
+        <%= render 'shared/user_box', object: @place %>
+      </div>
+
+      
+      <div class="small-7 large-6 columns">
+        <%= render 'breadcrumbs', object: @place %>
+        <%= render 'show_contacts', object: @place %> 
+        <%= simple_format(@place.message) %>
+        <hr>
+        <ul class="small-block-grid-4">
+            <% @place.photos.each do |photo| %>
+              <li>
+                <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
+                  height: '60', width: '100', class: "th radius"),
+                 photo.photo_url.to_s, rel: "facebox" %>
+              </li>
+            <% end %>
+        </ul>
+        <hr>
+        <div id="disqus_thread"></div>
+      </div>
 
 
-        <div class="row content">
-          <div class="small-5 large-5 columns">
+      <div class="large-3 columns hide-for-small border_left">
+          <%= render 'shared/right_navigation' %>
+          <%= render 'shared/login' %>
 
-            <%= render 'shared/user_box', object: @place %>
-
-            <% if @place.user.places.count > 1 %>
-                <ul class="recent">
-                  <h6><%= t (:more_places_from_user)  %></h6>
-                  <% @place.user.places.each do |place| %>
-                    <li><%= link_to place.name, place %> 
-
-                      <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
-                      <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
-
-                      <% if counter > 1 %>
-                        &nbsp&raquo;&nbsp  
-                      <% end %>
-                    <% end %></li>
-                  <% end %>
-                </ul>
-            <% end  %> 
-          </div>
-
-
-          <div class="small-7 large-7 columns">
-            <div class="row">
-              <%= render 'show_contacts', object: @place %> 
-              <%= simple_format(@place.message) %>
-              <hr>
-            </div>
-
-            <div class="row">
-              <ul class="small-block-grid-4">
-                  <% @place.photos.each do |photo| %>
-                    <li>
-                      <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
-                        height: '60', width: '100', class: "th radius"),
-                       photo.photo_url.to_s, rel: "facebox" %>
-                    </li>
-                  <% end %>
-              </ul>
-              <hr>
-              </div>
-          </div>
-        </div>
-
-
-          <hr>
-          <div id="disqus_thread"></div>
-        </div>
-        <div class="row">
-        <div class="large-3 columns hide-for-small panel">
-          
-            <%= render 'shared/login' %>
-          </div>
-        </div>
-
-
+      </div>
     </div>
   </div>
+</div>
+
 
 
 <script type="text/javascript">
