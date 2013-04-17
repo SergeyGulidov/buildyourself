@@ -13,15 +13,22 @@
 
     <div class="row">
 
-      <div class="small-5 large-3 columns about_panel">
-        <h4><%= @place.name %></h4>
-        <%= render 'subnav', object: @place %>
+
+      <div class="small-5 large-3 columns">
         <%= render 'shared/user_box', object: @place %>
       </div>
 
       
       <div class="small-7 large-6 columns">
-        <%= render 'breadcrumbs', object: @place %>
+        <div class="row">
+          <div class="small-6 large-6 columns">
+            <h4><%= @place.name %></h4>
+            <%= render 'subnav', object: @place %>
+          </div>
+          <div class="small-6 large-6 columns">
+            <%= render 'breadcrumbs', object: @place %>
+          </div>
+        </div>
         <%= render 'show_contacts', object: @place %> 
         <%= simple_format(@place.message) %>
         <hr>

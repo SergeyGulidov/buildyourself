@@ -1,21 +1,49 @@
-<% @place = Place.sponsor.first %>
-<% unless @place.blank? %>
+<% @user = User.sponsor.first %>
 
-<div class="panel">
-      <h5><%= link_to @place.name, place_path(@place)%></h5>
-    <%= render 'subnav', object: @place %>
-	  <ul class="small-block-grid-3 ">
-    
-            <% @place.photos.take(3).each do |photo| %>
-              <li>
-                <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
-                  height: '60', width: '100', class: "th radius"),
-                 photo.photo_url.to_s, rel: "facebox" %>
-              </li>
-            <% end %>
+<% unless @user.blank? %>
+
+  	  <ul class="small-block-grid-1">
+        <li><%= image_tag @user.avatar_url, height: '154', width: '254', 
+            class: "th radius" if @place.user.avatar? %></li>
+
+        <li><h4 style="text-align: center"><%= @place.user.name unless @place.user.name.blank? %></h4></li>
+        <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p></li>
+        <li><p class="contact_info">
+
+        <% unless @place.user.email.blank?  %>
+          <%= @place.user.email %><br>
+        <% end %>
+
+        <% unless @place.user.web_site.blank?  %>
+          <%= @place.user.web_site  %> <br>
+        <% end %>
+
+        <% unless @place.user.phone.blank?  %>
+          <%= "(+371) - #{@place.user.phone}" %><br>
+        <% end %>
+        
+      </p></li>
+
+    </ul>
+
+
+    <% places = Place.where("approved = ? AND user_id = ?", 1, @user.id) %>
+
+    <% if places.size >= 1 %>
+        <ul class="recent">
+          <h6><%= t (:all_user_places)  %></h6>
+          <% places.each do |place| %>
+            <li><%= link_to place.name, place %> 
+
+              <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
+              <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
+
+              <% if counter > 1 %>
+                &nbsp&raquo;&nbsp  
+              <% end %>
+            <% end %></li>
+          <% end %>
         </ul>
-        <p><%= truncate(@place.message, :length => 250, :separator => '. ', :omission => '') %>
-						<%= link_to "...", place_path(@place)%></p>
-		<h6 class="right"><small><%= link_to t(:read_more), place_path(@place)%></small></h6>
- </div>
+    <% end  %> 
+   <hr>
 <% end %>

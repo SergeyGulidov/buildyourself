@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414084023) do
+ActiveRecord::Schema.define(:version => 20130417125819) do
 
   create_table "brains", :force => true do |t|
   end
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20130414084023) do
     t.string   "web_site"
     t.string   "phone"
     t.string   "name"
+    t.integer  "sponsor",                :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

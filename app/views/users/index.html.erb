@@ -12,6 +12,7 @@
                     <th>Count</th>
                     <th>created_at</th>
                     <th>#</th>
+                    <th>Sponsor?</th>
                     <th></th>
                     <th></th>
                   </tr>
@@ -35,6 +36,7 @@
                           <%= count %>
 
                     </td>
+                    <td><%= user.sponsor.to_i == 1 ? "yes" : "no" %></td>
                     <td><%= link_to 'Edit', edit_user_path(user) %></td>
                     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>

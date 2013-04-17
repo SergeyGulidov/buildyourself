@@ -12,7 +12,9 @@
     <% field_set_tag t(:edit_your_data) do %>
       <div class="row">
         <div class="large-4 columns">
-
+            <% if can? :make_approve, Place %>
+              <%= f.input :sponsor, label: "This user is sponsor ?" %>
+            <% end %>
             <%= f.input :name, label: t(:change_your_name) %>
             <%= f.input :email, label: t(:your_email) %>
             <%= f.input :web_site, label: t(:website) %>
@@ -45,10 +47,15 @@
               <li>
                 <%= image_tag @user.avatar_url, height: '350', width: '250', class: "th radius"   if @user.avatar? %>
               </li>
+
           </ul>
 
             <%= f.input :avatar, label: false %>
             <%= f.hidden_field :avatar_cache %>
+
+
+
+
         </div>
 
 

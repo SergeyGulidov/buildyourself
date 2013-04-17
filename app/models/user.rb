@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, 
   :remember_me, :sign_in_count, :created_at, :avatar, :avatar_cache,
-  :about_ru, :about_lv, :web_site, :phone, :name
+  :about_ru, :about_lv, :web_site, :phone, :name, :sponsor
 
   before_save{|user| user.email = user.email.downcase}
   
@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
     :presence => true,
     :uniqueness => true
 
+  scope :sponsor, User.where(sponsor: 1)
 
   def total_votes
     PlaceVote.joins(:place).where(places: {user_id: self.id}).sum('value')

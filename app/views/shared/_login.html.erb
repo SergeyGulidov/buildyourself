@@ -5,10 +5,8 @@
 		  		<dt><b><%= current_user.email %></b></dt>
 			  		<dd class="active"><%= link_to t(:edit), 
 			  				edit_user_path(current_user) %></dd>
-
 			  		<dd class="active"><%= link_to t(:logout), 
 			  				destroy_user_session_path, method: :delete %></dd>
-
 			  		<dd class="active"><%= link_to t(:add_new_place), 
 			  				new_place_path %></dd>
 				</dl>
@@ -19,20 +17,15 @@
 		  			<ul class="your_place_list">
 				  		<% @current_user_places.each do |place| %>
 						    <li>
-
-						    <%= raw (t(:published)) if place.approved == 1 %>
-						    <%= raw (t(:waiting)) if place.approved == 0 %>
-						    <%= raw (t(:need_info)) if place.approved == 2 %>
-						    <%= link_to place.name, place %>&nbsp&raquo;&nbsp 
-						    	<%= link_to t(:edit), edit_place_path(place) %>
+							    <%= raw (t(:published)) if place.approved == 1 %>
+							    <%= raw (t(:waiting)) if place.approved == 0 %>
+							    <%= raw (t(:need_info)) if place.approved == 2 %>
+							    <%= link_to place.name, place %>&nbsp&raquo;&nbsp 
+							    <%= link_to t(:edit), edit_place_path(place) %>
 						    </li>
-
 						<% end %>
 					</ul>
 				<% end %>
-				
-
-
 		  	<% else %>
 			  <dl class="sub-nav ">
 				  <dd class="active"><%= link_to t(:login), new_user_session_path %></dd>
@@ -53,17 +46,16 @@
 			   </ul>
 			  
 		  <% end  %>
+<hr>
+
+
 
 
 <div id="for_what" class="reveal-modal">
-  <h2><%= t(:what_you_get) %></h2>
-
-
-
-	  <h6><%= t :get_rating %></small></h6>
-	  <h6><%= t :edit_info %></h6>
+	<h2><%= t(:what_you_get) %></h2>
+	<h6><%= t :get_rating %></small></h6>
+	<h6><%= t :edit_info %></h6>
 	</br>
-	  <p class="important_text"><%= t(:our_mission) %></p>
-
+	<p class="important_text"><%= t(:our_mission) %></p>
   <a class="close-reveal-modal">&#215;</a>
 </div>

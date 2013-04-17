@@ -18,13 +18,13 @@
 
         <div class="large-2 small-3 columns">
           <%= grouped_collection_select(:f, :type,  Category.find(:all).uniq,
-                :types, :category_name, :type_slug, :type_name, :prompt => t(:type)) %>
+                :types, :category_name, :type_slug, :type_name, include_blank: true, :prompt => t(:type)) %>
         </div>
 
         <div class="large-2 small-3 columns">
           <%= select_tag :interval, 
             options_from_collection_for_select( Interval.find(:all).uniq, 'interval_slug', 'interval_name'),
-             :include_blank => true, :prompt => t(:interval) %>
+             include_blank: true, :prompt => t(:interval) %>
         </div>
 
         <div class="large-1 small-1 columns">

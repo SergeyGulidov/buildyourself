@@ -28,7 +28,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_fill => [310, 200]
+  process :resize_to_fill => [254, 154]
 
 
   # Process files as they are uploaded:

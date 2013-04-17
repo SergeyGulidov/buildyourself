@@ -1,7 +1,7 @@
 
 <ul class="small-block-grid-1 ">
     <li>
-        <%= image_tag @place.user.avatar_url, height: '200', width: '310', 
+        <%= image_tag @place.user.avatar_url, height: '154', width: '254', 
         	class: "th radius" if @place.user.avatar? %>
     </li>
 
@@ -28,7 +28,7 @@
 
 <% places = @place.user.places.where("id != ?", @place.id) %>
 
-<% if places.size > 1 %>
+<% if places.size >= 1 %>
     <ul class="recent">
       <h6><%= t (:more_places_from_user)  %></h6>
       <% places.each do |place| %>
