@@ -22,6 +22,22 @@ class Ability
         can :index, Brain
 
       end
+
+      if user.role == 3
+        can :edit,   User
+        can :update, User
+        can :create, Contact
+        can :create, Place
+        can :read,   Place
+        can :translate, Place
+        can :make_translate, Place
+        can :update, Place
+        can :vote,   Place
+        can :index, Brain
+        can :show, User
+        can :index, User
+      end
+
     end
       #can :read, Place
       can :create, Contact

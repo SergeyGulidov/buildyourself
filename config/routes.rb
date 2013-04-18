@@ -15,6 +15,10 @@ BuildYourSelf::Application.routes.draw do
     match 'places/make_approve' => 'places#make_approve'
     match ':id/places/make_approve' => 'places#make_approve'
 
+    match 'places/translate' => 'places#translate'
+    match 'places/make_translate' => 'places#make_translate'
+    match ':id/places/make_translate' => 'places#make_translate'
+
     resources :photos
 
     resources :places do

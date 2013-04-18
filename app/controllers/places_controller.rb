@@ -97,7 +97,7 @@ load_and_authorize_resource
 
 	def approve
 		places = Place.where(approved: 0)
-		@places = places.page(params[:page]).per(5)
+		@places = places.page(params[:page]).per(10)
 
 		@json = places.to_gmaps4rails do |place, marker|
 	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
@@ -107,10 +107,10 @@ load_and_authorize_resource
 
 	def make_approve
 		@place = Place.find(params[:id])
-	  @json = @place.to_gmaps4rails do |place, marker|
-	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-	    marker.title "#{place.name}"
-			end
+		@json = @place.to_gmaps4rails do |place, marker|
+		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+		    marker.title "#{place.name}"
+		end
 	end
 
 
@@ -133,4 +133,26 @@ load_and_authorize_resource
     @place.destroy
     redirect_to action: "approve", notice: 'Place was successfully destroyed.'
   end
+
+
+	def translate
+		places = Place.where(translated: 0)
+		@places = places.page(params[:page]).per(10)
+
+		@json = places.to_gmaps4rails do |place, marker|
+	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+	    marker.title "#{place.name}"
+		end
+	end
+
+	def make_translate
+		@place = Place.find(params[:id])
+		@json = @place.to_gmaps4rails do |place, marker|
+		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
+		    marker.title "#{place.name}"
+		end
+	end
+
+
+
 end

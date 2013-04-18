@@ -1,5 +1,5 @@
 
-<ul class=" panel recent">
+<ul class="recent">
 	<h6><%= t :recent_added_places  %></h6>
   <% Place.recent5.each do |place| %>
     <li><%= link_to place.name, place %> 

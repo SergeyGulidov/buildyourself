@@ -1,5 +1,5 @@
 
-<% if can? :make_approve, @place %>
+<% if can? :make_approve, Place %>
 <div class="row">
 	<div class="large-12 small-12 columns">
 
@@ -44,5 +44,23 @@
 
 </div>
 </div>
+<% elsif can? :make_translate, Place %>
+
+<div class="row">
+  <div class="large-12 small-12 columns">
+  <ul class="button-group radius">
+
+          <% counter = User.find(:all).count  %>
+          <li><%= link_to "Users - #{counter}", users_path, class: "small button " %></li>
+
+          <% counter = Place.where(translated: 0).count  %>
+          <li><%= link_to "Places to translate - #{counter}", places_translate_path, class: "small button " %></li>
+  </ul>
+
+</div>
+</div>
+
 
 <% end %>
+
+

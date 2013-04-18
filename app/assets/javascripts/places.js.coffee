@@ -22,7 +22,6 @@ jQuery ->
 	$("#place_category_ids").select2()
 	$("#place_interval_ids").select2()
 
-
 	types = $('#f_type').html()
 	$('#category').change ->
 		category = $('#category :selected').text()
@@ -32,9 +31,6 @@ jQuery ->
 		else
 			$('#f_type').empty()
 
-
-
-
 	types_for_new = $('#place_type_ids').html()
 	$('#place_category_ids').change ->
 		place_category_ids = $('#place_category_ids :selected').text()
@@ -43,7 +39,3 @@ jQuery ->
 			$('#place_type_ids').html(options)
 		else
 			$('#place_type_ids').empty()
-
-
-
-

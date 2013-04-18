@@ -1,0 +1,20 @@
+<% provide(:title, 'Places to approve') %>
+<%= render 'shared/gmap' %>
+
+<div class="row ">
+  <div class="large-12 columns">
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
+
+    <div class="row content">
+      <div class="large-8 columns">
+        <%= render 'places_roll_to_translate'  %>
+      </div>
+
+      <div class="large-4 columns">
+        <%= render 'shared/recent_added' %>
+      </div>
+
+    </div>
+  </div>
+</div> 

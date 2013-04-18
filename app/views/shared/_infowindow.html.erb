@@ -1,8 +1,11 @@
+<h4 class="nav_for_map">
+	<small>
+		<%= link_to place.name, place %>
+		<a>&nbsp&nbsp&nbsp&nbsp <%= "#{ place.votes >= 0 ? '+' : ''}  #{place.votes}" %></a>
+
+	</small></h4> 
+<p class="map_text"><%= place.street %>,<%= get_location(place) %></p>
 
 
-<h4 class="nav_for_map"><small><%= link_to place.name, place %></small></h4> 
-<p class="map_text"><%= place.street %>,  <%= get_location(place) %></p>
-
-<%= render 'shared/subnav_for_map', object:(@place = place) %>
 
 

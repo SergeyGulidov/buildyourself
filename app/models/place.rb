@@ -23,11 +23,11 @@ class Place < ActiveRecord::Base
 
 
   after_save do
-    update_index if approved == 1
+    update_index if translated == 1 and approved == 1
   end
 
   after_update do
-    update_index if approved == 1
+    update_index if translated == 1 and approved == 1
   end
 
   attr_accessible :approved, :email, :vip, :sponsor, :with_review,
@@ -62,7 +62,7 @@ class Place < ActiveRecord::Base
   end
 
 
-   scope :approved, where(approved: 1).order("updated_at desc")
+   scope :approved, where(approved: 1, translated: 1).order("updated_at desc")
    scope :recent, approved.limit(10)
    scope :recent5, approved.limit(5)
    

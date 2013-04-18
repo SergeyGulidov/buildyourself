@@ -12,3 +12,8 @@ end
 ActiveSupport.on_load(:active_record) do
   self.include_root_in_json = false
 end
+
+if defined? Unicorn
+  ::NewRelic::Agent.manual_start()
+  ::NewRelic::Agent.after_fork(:force_reconnect => true)
+end

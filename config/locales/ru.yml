@@ -98,8 +98,8 @@ ru:
 
 #------------login partial 
 
-  login: Войти.
-  sign_up: Зарегистрироваться.
+  login: Войти
+  sign_up: Регистрация
   for_what: Зачем?
   sign_in_with: Войти при помощи
   sign_in_with_twitter: Войти при помощи Twitter

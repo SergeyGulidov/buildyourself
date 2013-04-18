@@ -1,0 +1,19 @@
+<% provide(:title, @place.name) %>
+
+<%= render 'shared/gmap' %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row content">
+
+      <div class="large-8 columns">
+          <%= render 'translate_form'  %>
+      </div>
+
+      <div class="large-4 columns">
+        <%= render 'shared/recent_added' %>
+      </div>
+      
+    </div>
+  </div>
+</div>
