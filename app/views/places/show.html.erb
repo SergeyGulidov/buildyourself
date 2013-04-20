@@ -29,18 +29,25 @@
             <%= render 'breadcrumbs', object: @place %>
           </div>
         </div>
-        <%= render 'show_contacts', object: @place %> 
-        <%= simple_format(@place.message) %>
+
+
+          <%= render 'show_contacts', object: @place %> 
+          <%= simple_format(@place.message) %>
+
+
         <hr>
-        <ul class="small-block-grid-4">
-            <% @place.photos.each do |photo| %>
-              <li>
-                <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
-                  height: '60', width: '100', class: "th radius"),
-                 photo.photo_url.to_s, rel: "facebox" %>
-              </li>
-            <% end %>
-        </ul>
+
+          <ul class="small-block-grid-4">
+              <% @place.photos.each do |photo| %>
+                <li>
+                  <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
+                    height: '60', width: '100', class: "th radius"),
+                   photo.photo_url.to_s, rel: "facebox" %>
+                </li>
+              <% end %>
+          </ul>
+
+
         <hr>
         <div id="disqus_thread"></div>
       </div>

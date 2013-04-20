@@ -33,16 +33,16 @@
       <div class="row ">
         <div class="large-4 columns">
           <%= f.association :categories, collection: Category.find(:all).uniq, label: t(:place_category), 
-          label_method: :category_name, :input_html => { :multiple => false } %>
+          label_method: :category_name, include_blank: true, :input_html => { :multiple => false } %>
         </div>
         <div class="large-4 columns">
           <%= f.association :types, collection: Category.find(:all).uniq, as: :grouped_select, 
             group_label_method: :category_name, group_method: :types,
-            label_method: :type_name, value_method: :id, label: t(:type_category) %>
+            label_method: :type_name, value_method: :id, label: t(:type_category), include_blank: true %>
         </div>
         <div class="large-4 columns">
           <%= f.association :intervals, collection: Interval.find(:all).uniq, label: t(:age_category),
-            label_method: :interval_name, :input_html => { :multiple => false } %>
+            label_method: :interval_name, include_blank: true, :input_html => { :multiple => false } %>
         </div>
       </div>
 

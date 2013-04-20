@@ -3,14 +3,14 @@ class Interval < ActiveRecord::Base
 
   has_many :categorizations
 
-  has_many :types, through: :categorizations
+  #has_many :types, through: :categorizations
   has_many :places, through: :categorizations
-  has_many :categories, through: :categorizations
-  has_many :locations, through: :categorizations
+  #has_many :categories, through: :categorizations
+  #has_many :locations, through: :categorizations
 
 
   translates :interval_name
 
-  scope :all_intervals, find(:all).uniq
+  scope :intervals_all, find(:all).uniq
 
 end

@@ -5,25 +5,25 @@
         <div class="large-2 small-2 columns large-offset-3">
 
           <%= select_tag :city, 
-            options_from_collection_for_select( City.find(:all).uniq, 'city_slug', 'city_name'),
+            options_from_collection_for_select( City.cities_all, 'city_slug', 'city_name'),
             :include_blank => true, :prompt => t(:city) %>
         </div>
 
 
         <div class="large-2 small-3 columns">
           <%= select_tag :category,
-             options_from_collection_for_select( Category.find(:all).uniq, 'category_slug', 'category_name'),
+             options_from_collection_for_select( Category.categories_all, 'category_slug', 'category_name'),
              :include_blank => true, :prompt => t(:category) %>
         </div>
 
         <div class="large-2 small-3 columns">
-          <%= grouped_collection_select(:f, :type,  Category.find(:all).uniq,
+          <%= grouped_collection_select(:f, :type,  Category.categories_all,
                 :types, :category_name, :type_slug, :type_name, include_blank: true, :prompt => t(:type)) %>
         </div>
 
         <div class="large-2 small-3 columns">
           <%= select_tag :interval, 
-            options_from_collection_for_select( Interval.find(:all).uniq, 'interval_slug', 'interval_name'),
+            options_from_collection_for_select( Interval.intervals_all, 'interval_slug', 'interval_name'),
              include_blank: true, :prompt => t(:interval) %>
         </div>
 

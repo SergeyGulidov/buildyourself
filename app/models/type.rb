@@ -5,8 +5,8 @@ class Type < ActiveRecord::Base
   
   has_many :places,     through: :categorizations
   has_many :categories, through: :categorizations
-  has_many :intervals,  through: :categorizations
-  has_many :locations,  through: :categorizations
+  #has_many :intervals,  through: :categorizations
+  #has_many :locations,  through: :categorizations
 
   #acts_as_gmappable
 

@@ -10,6 +10,7 @@
           <li><a href="#" class="small button dropdown " data-dropdown="drop3">Types</a></li>
           <li><a href="#" class="small button dropdown " data-dropdown="drop4">Intervals</a></li>
 
+
           <% counter = Contact.find(:all).count %>
           <li><%= link_to "Contacts - #{counter}", contacts_path, class: "small button " %></li>
 
@@ -18,6 +19,8 @@
 
           <% counter = Place.where(approved: 0).count  %>
           <li><%= link_to "Places to approve - #{counter}", places_approve_path, class: "small button " %></li>
+          <% counter = Place.where(translated: 0, approved: 1).count  %>
+          <li><%= link_to "Places to translate - #{counter}", places_translate_path, class: "small button " %></li>
 </ul>
 
 

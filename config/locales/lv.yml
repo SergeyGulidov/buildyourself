@@ -2,10 +2,10 @@ lv:
   current_lang: Latviešu
 
   many_types: Vairākas kategorijas.
-  forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā? Jums vairākas kategorijas vienā atrašanās vieta? 
+  forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā?
     Atstājiet tukšus šos laukumus. Mēs sazināsimies ar Jums caur e-mail sīkāku detaļu noskaidrošanai un aizpildīsim to Jūsu vietā.'
 
-  how_to: '<ul class="square panel how_to"><h3>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h3>
+  how_to: '<ul class="square how_to"><h4>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h4>
     <h6 class="subheader">Publicēšanas noteikumi</h6><li>Email - tiks izmantots sīkāku detaļu noskaidrošanai.</li>
     <li>Trīs jebkādas fotogrāfijas ar Jūsu vietu</li><li> Īss apraksts (Lv/Ru). Palīdzēsim pārtulkot.</li>
     <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
@@ -113,6 +113,18 @@ lv:
 
   extension_white_list_error: "Jūs nevarat augšupielādēt %{extension} failus, atļauti tikai: %{allowed_types}"
   extension_black_list_error: "Jūs nevarat augšupielādēt %{extension} failus, atļauti tikai: %{prohibited_types}"
+
+#------------user futures 
+  more_places_from_user: "Citas treniņ vietas"
+  month_price: "Cena par mēnesi"
+  edit_your_place: "Atzīmet atrašanās vietu"
+  return_back: "Atgriezties atpakaļ"
+  user_updated: "Jūsu informācija tika atjaunota"
+  change_your_name: Jūsu vards
+  about_you: Par Jums
+  edit_your_data: Izlabot informāciju
+
+
 
 #------------------------------------------------------------------------------------------------------------
   date:

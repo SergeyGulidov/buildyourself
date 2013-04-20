@@ -37,6 +37,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails', "~> 2.0"
 	gem "mocha", "~> 0.12.8", :require => false
+  gem 'bullet'
 end
 
 
@@ -44,6 +45,7 @@ end
 group :production do
   gem 'newrelic_rpm'
 	gem 'pg'
+  gem 'unicorn'
 end
 
 gem 'jquery-rails'
@@ -55,7 +57,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+
 #gem 'thin'
 
 # Deploy with Capistrano

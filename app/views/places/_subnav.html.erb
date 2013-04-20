@@ -6,13 +6,9 @@
 		         {class: "rewiev"} if @place.with_review == 1 %>
 	  </li>
 	  <li>
-	  		<%= link_to t(:comments), place_path(@place),
-	  		{ class: "comments" },
-	  		:"data-disqus-identifer" => @place.id  %>
-
-
+	  		<i class="general foundicon-mic"></i>
 	  	   <%= link_to '', place_path(@place, :anchor => "disqus_thread"),
-	  		{ class: "comments" },
+	  		{ class: "comments"},
 	  		:"data-disqus-identifer" => @place.id  %>
 	  </li>
 		 <li>
@@ -29,10 +25,10 @@
 			</li>
 		 <% end %>
 		 <% if can? :make_approve, @place %>
-			<li><%= link_to "Admin edit", places_make_approve_path(@place), class: "negative_vote" %></li>
+			<li><%= link_to "", places_make_approve_path(@place), class: "comments general foundicon-add-doc" %></li>
 		 <% end %>
 		 <% if can? :update, @place %>
-			<li><%= link_to "Edit", edit_place_path(@place), class: "negative_vote" %></li>
+			<li><%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %></li>
 		 <% end %>
 	</ul>
 </div>

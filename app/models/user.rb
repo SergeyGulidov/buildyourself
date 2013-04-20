@@ -63,4 +63,10 @@ class User < ActiveRecord::Base
     end
     
   end
+
+  def to_param
+    "#{id}-#{name}".parameterize
+  end
+
+
 end

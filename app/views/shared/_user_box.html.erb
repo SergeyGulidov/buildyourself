@@ -26,21 +26,22 @@
 </ul>
 
 
-<% places = @place.user.places.where("id != ?", @place.id) %>
+<% places = Place.approved.where("id != ? AND user_id = ?", @place.id.to_i, @place.user_id )%>
 
 <% if places.size >= 1 %>
     <ul class="recent">
       <h6><%= t (:more_places_from_user)  %></h6>
       <% places.each do |place| %>
-        <li><%= link_to place.name, place %> 
+        <li>
+          <%= link_to place.name, place %> 
+            <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
+            <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
 
-          <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
-          <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
-
-          <% if counter > 1 %>
-            &nbsp&raquo;&nbsp  
+            <% if counter > 1 %>
+              &nbsp&raquo;&nbsp  
+            <% end %>
           <% end %>
-        <% end %></li>
+        </li>
       <% end %>
     </ul>
 <% end  %> 

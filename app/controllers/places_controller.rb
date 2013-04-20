@@ -58,7 +58,7 @@ load_and_authorize_resource
 	end
 
 	def show
-		@place = Place.find(params[:id])
+		@place = Place.includes(:user).find(params[:id])
 		@json = @place.to_gmaps4rails do |place, marker|
 			    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
 			    marker.title "#{place.name}"
@@ -136,7 +136,7 @@ load_and_authorize_resource
 
 
 	def translate
-		places = Place.where(translated: 0)
+		places = Place.includes(:photos).where(translated: 0)
 		@places = places.page(params[:page]).per(10)
 
 		@json = places.to_gmaps4rails do |place, marker|

@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="small-12 large-10 small-centered columns">
+
+  	<div class="row">
+      <div class="small-4 small-centered columns">
+        <div id="featured">
+          <%= image_tag("logo.png", width: '250px', height: '250px') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+    	<div class="small-3 columns">
+			<ul class="small-block-grid-1 ">
+			    <li>
+			        <%= image_tag @user.avatar_url, height: '154', width: '254', 
+			        	class: "th radius" if @user.avatar? %>
+			    </li>
+
+			    <li><h4 style="text-align: center"><%= @user.name unless @user.name.blank? %></h4></li>
+			    <li class="about_block"><p><%= simple_format(@user.about) unless @user.about.blank? %></p></li>
+			    <li><p class="contact_info">
+
+			    <% unless @user.email.blank?  %>
+			      <%= @user.email %><br>
+			    <% end %>
+
+			    <% unless @user.web_site.blank?  %>
+			      <%= @user.web_site  %> <br>
+			    <% end %>
+
+			    <% unless @user.phone.blank?  %>
+			      <%= "(+371) - #{@user.phone}" %><br>
+			    <% end %>
+			    
+				</p></li>
+			</ul>
+    	</div>
+
+    	<div class="small-5 columns">
+
+
+			<% if @user_places.size >= 1 %>
+
+
+			    <ul class="recent">
+			      <% @user_places.each do |place| %>
+			        <li>
+			          <%= link_to place.name, place %> 
+			            <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
+			            <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
+
+			            <%= raw('&nbsp&raquo;&nbsp') if counter > 1 %>
+
+			          <% end %>
+			        </li>
+			      <% end %>
+			    </ul>
+			<% end  %> 
+
+
+    	</div>
+
+
+    	<div class="small-4 columns">
+
+    	</div>
+
+    </div>
+
+
+
+  </div>
+</div>

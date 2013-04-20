@@ -4,11 +4,11 @@ class Category < ActiveRecord::Base
   has_many :categorizations
   has_many :types, through: :categorizations
   has_many :places, through: :categorizations
-  has_many :intervals, through: :categorizations
-  has_many :locations, through: :categorizations
+  #has_many :intervals, through: :categorizations
+  #has_many :locations, through: :categorizations
 
   translates :category_name
 
-  scope :categories_all, find(:all).uniq
+  scope :categories_all, find(:all)
 
 end
