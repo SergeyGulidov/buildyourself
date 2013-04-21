@@ -5,11 +5,11 @@
 
       <div class="row">
         <div class="large-6 columns">
-          <%= f.association :country, label: t(:country), :label_method => :country_name %>
+          <%= f.association :country, collection: @countries, label: t(:country), :label_method => :country_name %>
         </div>
 
         <div class="large-6 columns">
-          <%= f.association :city, label: t(:city), :label_method => :city_name %>
+          <%= f.association :city, collection: @cities, label: t(:city), :label_method => :city_name %>
         </div>
       </div>
 
@@ -28,16 +28,16 @@
 
       <div class="row ">
         <div class="large-4 columns">
-          <%= f.association :categories, label: t(:place_category),
+          <%= f.association :categories, collection: @categories, label: t(:place_category),
             :label_method => :category_name, include_blank: true, :input_html => { :multiple => false } %>
         </div>
         <div class="large-4 columns">
-          <%= f.association :types, collection: Category.find(:all).uniq, as: :grouped_select, 
+          <%= f.association :types, collection: @categories, as: :grouped_select, 
             group_label_method: :category_name, group_method: :types,
             label_method: :type_name, value_method: :id, label: t(:type_category), include_blank: true%>
         </div>
         <div class="large-4 columns">
-          <%= f.association :intervals, label: t(:age_category),
+          <%= f.association :intervals, collection: @intervals, label: t(:age_category),
             :label_method => :interval_name, include_blank: true, :input_html => { :multiple => false } %>
         </div>
       </div>

@@ -5,12 +5,12 @@
  
       <div class="row">
         <div class="large-6 columns">
-          <%= f.association :country, label: "Country", 
+          <%= f.association :country, collection: @countries, label: "Country", 
             label_method: :country_name, value_method: :id %>
         </div>
 
         <div class="large-6 columns">
-         <%= f.association :city, label: "City",
+         <%= f.association :city, collection: @cities, label: "City",
           :label_method => :city_name, value_method: :id %>
         </div>
       </div>
@@ -43,8 +43,8 @@
 
       <div class="row ">
         <div class="large-6 columns">
-          <%= f.association :intervals, label: "Change age category",
-            :label_method => :interval_name, value_method: :id %>
+          <%= f.association :intervals, collection: @intervals, label: t(:age_category),
+            label_method: :interval_name, include_blank: true %>
         </div>
 
 
@@ -52,7 +52,6 @@
           <%= f.input :approved, label: "Do you approve this place?" %>
           <%= f.input :translated, label: "Do you translate this place?" %>
           <%= f.input :with_review, label: "Place with review?" %>
-          <%= f.input :sponsor, label: "Our week sponsor?" %>
           <%= f.input :vip, label: "Vip place?" %>
           <%= link_to "Destroy", @place, :method => :delete,
                             class: "button alert radius small expand", data: { confirm: 'Are you sure?' }  %>
@@ -64,14 +63,14 @@
 
       <div class="row ">
         <div class="large-6 columns">
-          <%= f.association :types, label: "Change place type", 
-          label_method: :type_name, value_method: :id  %>
+          <%= f.association :categories, collection: @categories, label: t(:place_category), 
+          label_method: :category_name, include_blank: true %>
         </div>
  
 
         <div class="large-6 columns">
-          <%= f.association :categories, label: "Change place category",
-            :label_method => :category_name, value_method: :id %>
+          <%= f.association :types, collection: @types, label: t(:place_type), 
+          label_method: :type_name, include_blank: true %>
         </div>
       </div>
 

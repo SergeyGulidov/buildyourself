@@ -4,5 +4,5 @@ class City < ActiveRecord::Base
   
   translates :city_name
 
-  scope :cities_all, find(:all).uniq
+  scope :cities_all, all
 end

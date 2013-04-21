@@ -2,6 +2,8 @@ class PlacesController < ApplicationController
 load_and_authorize_resource
 
 	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit, :show]
+	before_filter :get_filter_collections,  :only => [:index, :edit, :show, :new, :make_approve]
+	before_filter :get_recent_added,  :only => [:index, :edit, :show, :new]
 	respond_to :html, :xml, :json
 
 	def index
@@ -52,20 +54,14 @@ load_and_authorize_resource
 
 	def show
 		@place = Place.includes(:user).find(params[:id])
-		@json = @place.to_gmaps4rails do |place, marker|
-			    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-			    marker.title "#{place.name}"
-		end
+		@json = get_json_for_map(@place)
 		@place.hits += 1
 		@place.save
 	end
 
 	def edit
 		@place = Place.find(params[:id])
-		@json = @place.to_gmaps4rails do |place, marker|
-		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-		    marker.title "#{place.name}"
-		end
+		@json = get_json_for_map(@place)
 	end
 
 	  def update
@@ -81,7 +77,7 @@ load_and_authorize_resource
 
 	def vote
 		vote = current_user.place_votes.new(value: params[:value], place_id: params[:id].to_i)
-		if vote.save
+		if vote.save 
 		  redirect_to :back, notice: t(:vote_thanks)
 		else
 		  redirect_to :back, alert: t(:vote_already_did)
@@ -89,28 +85,47 @@ load_and_authorize_resource
 	end
 
 	def approve
-		places = Place.where(approved: 0)
-		@places = places.page(params[:page]).per(10)
-
-		@json = places.to_gmaps4rails do |place, marker|
-	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-	    marker.title "#{place.name}"
-		end
+		@places = Place.where(approved: 0)
+		@json = get_json_for_map(@places)
+		@places = @places.page(params[:page]).per(10)
 	end
 
 	def make_approve
 		@place = Place.find(params[:id])
-		@json = @place.to_gmaps4rails do |place, marker|
-		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-		    marker.title "#{place.name}"
-		end
+		@json = get_json_for_map(@place)
+	end
+
+	# get user places for login partial 
+	def get_current_user_places 
+		@current_user_places ||= Place.where("user_id = ?", current_user.id ).all if current_user
 	end
 
 
-	def get_current_user_places
-		@current_user_places ||= Place.where("user_id = ?", current_user.id ) if current_user
+	def destroy
+	  	@place = Place.find(params[:id].to_i)
+	    @place.destroy
+	    redirect_to action: "approve", notice: 'Place was successfully destroyed.'
 	end
 
+
+	def translate
+		@places = Place.includes(:photos).where(translated: 0)
+		@json = get_json_for_map(@places)
+		@places = @places.page(params[:page]).per(10)
+	end
+
+	def make_translate
+		@place = Place.find(params[:id])
+		@json = get_json_for_map(@place)
+	end
+
+	def get_filter_collections
+		@categories ||= Category.categories_all
+		@cities 	||= City.cities_all
+		@intervals  ||= Interval.intervals_all
+		@countries  ||= Country.countries_all
+		@types      ||= Type.types_all
+	end
 
 	def get_json_for_map(places)
 		json = places.to_gmaps4rails do |place, marker|
@@ -120,32 +135,8 @@ load_and_authorize_resource
 		return json
 	end
 
-
-  def destroy
-  	@place = Place.find(params[:id].to_i)
-    @place.destroy
-    redirect_to action: "approve", notice: 'Place was successfully destroyed.'
-  end
-
-
-	def translate
-		places = Place.includes(:photos).where(translated: 0)
-		@places = places.page(params[:page]).per(10)
-
-		@json = places.to_gmaps4rails do |place, marker|
-	    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-	    marker.title "#{place.name}"
-		end
+	def get_recent_added
+		@recent_added ||= Place.recent
 	end
-
-	def make_translate
-		@place = Place.find(params[:id])
-		@json = @place.to_gmaps4rails do |place, marker|
-		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-		    marker.title "#{place.name}"
-		end
-	end
-
-
 
 end

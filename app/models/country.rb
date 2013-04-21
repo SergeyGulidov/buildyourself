@@ -4,5 +4,5 @@ class Country < ActiveRecord::Base
   
   translates :country_name
 
-  scope :countries_all, find(:all).uniq
+  scope :countries_all, all
 end

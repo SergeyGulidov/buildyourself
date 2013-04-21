@@ -1,7 +1,7 @@
 
 <ul class="recent">
 	<h6><%= t :recent_added_places  %></h6>
-  <% Place.recent.each do |place| %>
+  <% @recent_added.each do |place| %>
     <li><%= link_to place.name, place %> 
 
     	<% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  

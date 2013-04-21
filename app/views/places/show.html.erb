@@ -2,11 +2,11 @@
 
 <%= render 'shared/gmap' %>
 <%= render 'shared/filter' %>
-<%= render 'shared/flasher' %>
+
 
 <div class="row content">
   <div class="large-12 small-12 columns">
-    
+    <%= render 'shared/flasher' %>
 
 
 
@@ -21,11 +21,11 @@
       
       <div class="small-7 large-6 columns">
         <div class="row">
-          <div class="small-6 large-6 columns">
+          <div class="small-12 large-6 columns">
             <h4><%= @place.name %></h4>
             <%= render 'subnav', object: @place %>
           </div>
-          <div class="small-6 large-6 columns">
+          <div class="small-12 large-6 columns">
             <%= render 'breadcrumbs', object: @place %>
           </div>
         </div>

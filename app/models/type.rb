@@ -14,6 +14,6 @@ class Type < ActiveRecord::Base
 
   validates :type_name, :presence => true, :length => { :in => 3..200 }
 
-  scope :types_all, find(:all).uniq
+  scope :types_all, all
 
 end

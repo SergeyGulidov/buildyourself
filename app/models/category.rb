@@ -9,6 +9,6 @@ class Category < ActiveRecord::Base
 
   translates :category_name
 
-  scope :categories_all, find(:all)
+  scope :categories_all, includes(:types).all
 
 end

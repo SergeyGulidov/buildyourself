@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
 load_and_authorize_resource
-before_filter :get_current_user_places, :only => [:edit]
-
-
 
   def index
     @users = User.all
@@ -17,11 +14,12 @@ before_filter :get_current_user_places, :only => [:edit]
 
   def edit
     @user = User.find(params[:id])
+    @current_user_places ||= Place.where("user_id = ?", current_user.id ).all if current_user
   end
 
   def show
     @user = User.find(params[:id])
-    @user_places = Place.approved.where(user_id: @user.id)
+    @user_places ||= Place.approved.where("user_id = ?", @user.id).all
   end
 
   def update
@@ -47,10 +45,6 @@ before_filter :get_current_user_places, :only => [:edit]
       format.html { redirect_to action: "index" }
       format.json { head :no_content }
     end
-  end
-
-  def get_current_user_places
-    @current_user_places ||= Place.where("user_id = ?", current_user.id ) if current_user
   end
 
 end
