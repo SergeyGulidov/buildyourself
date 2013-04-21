@@ -23,19 +23,12 @@ load_and_authorize_resource
 
 	def new
 		@place = Place.new 
-		@place.email = current_user.email if current_user
 		flash.now[:notice] = t(:register_first) unless current_user
 		respond_with(@place)
 	end
 
 	def create
 	  @place = Place.new(params[:place])
-
-	  if current_user
-	  	@place.user_id = current_user.id 
-	  else
-	  	@place.user_id = 1  # admin id by default
-	  end
 
 	  respond_to do |format|
 	    if @place.save
@@ -115,7 +108,7 @@ load_and_authorize_resource
 
 
 	def get_current_user_places
-		@current_user_places = Place.where("user_id = '#{current_user.id}'") if current_user
+		@current_user_places ||= Place.where("user_id = ?", current_user.id ) if current_user
 	end
 
 

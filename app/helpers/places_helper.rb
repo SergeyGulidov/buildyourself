@@ -1,7 +1,7 @@
 module PlacesHelper
 
 	def get_location(place)
-		return "#{place.city.city_name}, #{place.country.country_name}"
+		return "#{place.country.country_name}, #{place.city.city_name}"
 	end
 
 	def get_like_this(place)

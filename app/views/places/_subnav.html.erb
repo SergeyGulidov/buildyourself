@@ -6,9 +6,8 @@
 		         {class: "rewiev"} if @place.with_review == 1 %>
 	  </li>
 	  <li>
-	  		<i class="general foundicon-mic"></i>
-	  	   <%= link_to '', place_path(@place, :anchor => "disqus_thread"),
-	  		{ class: "comments"},
+	  	   <%= link_to '#', place_path(@place, :anchor => "disqus_thread"),
+	  		{ class: "comments general foundicon-mic"},
 	  		:"data-disqus-identifer" => @place.id  %>
 	  </li>
 		 <li>

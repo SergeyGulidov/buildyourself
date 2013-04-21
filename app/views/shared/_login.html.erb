@@ -2,7 +2,7 @@
 		
 			<% if user_signed_in?  %>
 			  <dl class="sub-nav ">
-		  		<dt><b><%= current_user.email %></b></dt>
+		  		<dt><b><%= current_user.name.blank? ? current_user.email : current_user.name %></b></dt>
 			  		<dd class="active"><%= link_to t(:edit), 
 			  				edit_user_path(current_user) %></dd>
 			  		<dd class="active"><%= link_to t(:logout), 

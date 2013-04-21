@@ -116,7 +116,7 @@ ru:
   waiting: '<b id="waiting" data-tooltip class="has-tip" title="Ожидает проверки">W</b>'
   need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Необходимо дополнить. Мы выслали вам емайл с объяснениями.">N</b>' 
   edit: изменить
-
+  profile: Настройки
 #------------user futures 
   more_places_from_user: Другие места пользователя
   month_price: Цена в месяц 

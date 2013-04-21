@@ -50,7 +50,7 @@ before_filter :get_current_user_places, :only => [:edit]
   end
 
   def get_current_user_places
-    @current_user_places = Place.where("user_id = '#{current_user.id}'") if current_user
+    @current_user_places ||= Place.where("user_id = ?", current_user.id ) if current_user
   end
 
 end
