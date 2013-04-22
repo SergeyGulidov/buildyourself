@@ -3,7 +3,7 @@ load_and_authorize_resource
 
 	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit, :show]
 	before_filter :get_filter_collections,  :only => [:index, :edit, :show, :new, :make_approve]
-	before_filter :get_recent_added,  :only => [:index, :edit, :show, :new]
+	before_filter :get_recent_added,  :only => [:index, :edit, :show, :new, :approve]
 	respond_to :html, :xml, :json
 
 	def index
