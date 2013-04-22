@@ -1,4 +1,4 @@
-<%= simple_nested_form_for @place, html: { multipart: true  } do |f| %>
+<%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
     <% field_set_tag "Edit this place" do %>
 
     <%= render 'shared/errors', object: @place%>
