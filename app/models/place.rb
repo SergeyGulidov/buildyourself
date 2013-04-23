@@ -63,7 +63,7 @@ class Place < ActiveRecord::Base
 
 
    scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :types, :categories, :intervals, :city)
-   scope :recent, approved.last(5)
+   scope :recent,  where(approved: 1).order("updated_at desc").includes(:types).limit(10)
    
 
 

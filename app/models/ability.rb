@@ -42,6 +42,7 @@ class Ability
       #can :read, Place
       can :create, Contact
       can :index, Brain
+      can :show, User
   end
 end
 

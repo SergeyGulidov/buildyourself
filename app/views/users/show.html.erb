@@ -14,8 +14,12 @@
     	<div class="small-3 columns">
 			<ul class="small-block-grid-1 ">
 			    <li>
-			        <%= image_tag @user.avatar_url, height: '154', width: '254', 
-			        	class: "th radius" if @user.avatar? %>
+			        <% if @user.avatar.blank? %>
+	                  <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
+	                <% else  %>
+	                  <%= image_tag @user.avatar_url, height: '154', width: '254', 
+	                    class: "th radius"  %>
+	                <% end  %>
 			    </li>
 
 			    <li><h4 style="text-align: center"><%= @user.name unless @user.name.blank? %></h4></li>

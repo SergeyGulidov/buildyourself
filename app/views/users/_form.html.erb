@@ -45,7 +45,12 @@
         <div class="large-4 columns">
           <ul class="large-block-grid-1">
               <li>
-                <%= image_tag @user.avatar_url, height: '350', width: '250', class: "th radius"   if @user.avatar? %>
+                <% if @user.avatar.blank? %>
+                  <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
+                <% else  %>
+                  <%= image_tag @user.avatar_url, height: '154', width: '254', 
+                    class: "th radius"  %>
+                <% end  %>
               </li>
 
           </ul>

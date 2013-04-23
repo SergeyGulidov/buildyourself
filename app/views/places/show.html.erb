@@ -23,7 +23,7 @@
         <div class="row">
           <div class="small-12 large-6 columns">
             <h4><%= @place.name %></h4>
-            <%= render 'subnav', object: @place %>
+            <%# render 'subnav', object: @place %>
           </div>
           <div class="small-12 large-6 columns">
             <%= render 'breadcrumbs', object: @place %>
@@ -61,27 +61,3 @@
     </div>
   </div>
 </div>
-
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'buildyourself';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'buildyourself';
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-
-<noscript><%= t(:enable_js) %></noscript>

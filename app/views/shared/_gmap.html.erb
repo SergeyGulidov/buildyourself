@@ -1,9 +1,20 @@
 
-      <%= gmaps("markers" => {"data" => @json,  :options => { :do_clustering => true}}) %> 
-      <div class="top-bar-border"></div>
+<%= gmaps( :map_options => {:raw => "{styles: myStyle}" },
+	      :markers => {"data" => @json,  :options => { :do_clustering => true}}) %> 
+<div class="top-bar-border"></div>
 
 
-
+<script type="text/javascript" charset="utf-8">
+	var myStyle = [ 
+	  { featureType: "all", stylers: [{ 
+	  	"lightness": 20
+	  	 } ]},
+	  	{ featureType: 'administrative.province', elementType: 'all', stylers: [ { visibility: 'off' } ] },
+	  	{ featureType: 'water', elementType: 'all', stylers: [ { visibility: 'simplified' } ] },
+	  	{ featureType: 'transit', elementType: 'all', stylers: [ { visibility: 'simplified' } ] },
+	  	{ featureType: 'administrative.neighborhood', elementType: 'all', stylers: [ { visibility: 'off' } ] }
+	];
+</script>
 
 
 

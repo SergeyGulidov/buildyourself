@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421061033) do
+ActiveRecord::Schema.define(:version => 20130423183226) do
 
   create_table "brains", :force => true do |t|
   end
@@ -97,7 +97,12 @@ ActiveRecord::Schema.define(:version => 20130421061033) do
     t.integer  "hits",        :default => 0
     t.integer  "translated",  :default => 0
     t.float    "month_price"
+    t.integer  "age_min"
+    t.integer  "age_max"
   end
+
+  add_index "places", ["age_max"], :name => "index_places_on_age_max"
+  add_index "places", ["age_min"], :name => "index_places_on_age_min"
 
   create_table "types", :force => true do |t|
     t.string "type_name_ru"
