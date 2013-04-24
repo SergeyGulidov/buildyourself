@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
 
   attr_accessible :email, :password, :password_confirmation, 
-  :remember_me, :sign_in_count, :created_at, :avatar, :avatar_cache,
+  :remember_me, :sign_in_count, :created_at, :avatar, :avatar_cache, :comments,
   :about_ru, :about_lv, :web_site, :phone, :name, :sponsor
 
   before_save{|user| user.email = user.email.downcase}

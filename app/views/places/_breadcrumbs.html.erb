@@ -1,41 +1,24 @@
 
-<div class="row" id="bread">
-	<div class="row">
-		<ul class="right">
-			<li>
+<ul class="right" id="crumbs">
+	<% unless params[:action] == "show" %>
+		<li>
 			<%= link_to @place.city.city_name, 
-		           		{ controller: :places, action: :index, city: @place.city.city_slug}, 
-						class: "crumbs" %>
-			</li>
-			<li>
-				<% @place.categories.each do |category| %>
-		           <%= link_to category.category_name, 
-		           		{ controller: :places, action: :index, category: category.category_slug}, 
-						class: "crumbs" %>
-				<% end %>
-			</li>
-		</ul>
-	</div>
-	<div class="row">
-		<ul id="second" class="right ">
-			<li>
-				<% @place.types.each do |type| %>
-					<%= link_to type.type_name, 
-						{ controller: :places, action: :index, type: type.type_slug}, 
-						class: "crumbs" %>
-				<% end  %>
-			</li>
-		</ul>
-	</div>
-	<div class="row">
-		<ul id="second" class="right ">
-			<li>
-				<% @place.intervals.each do |interval| %>
-					<%= link_to interval.interval_name,
-						{ controller: :places, action: :index, interval: interval.interval_slug}, 
-						class: "crumbs" %>
-				<% end  %>
-			</li>
-		</ul>
-	</div>
-</div>
+		           		{ controller: :places, action: :index, city: @place.city.city_slug} %>
+		</li>
+	<% end %>
+	<li>
+		<% @place.categories.each do |category| %>
+           <%= link_to category.category_name, 
+           		{ controller: :places, action: :index, category: category.category_slug} %>
+		<% end %>
+	</li>
+	<li>
+		<% @place.types.each do |type| %>
+			<%= link_to type.type_name, 
+				{ controller: :places, action: :index, type: type.type_slug} %>
+		<% end  %>
+	</li>
+	<li>
+		<%= "#{ t(:from) } #{ @place.age_min } #{ t(:to) } #{ @place.age_max } #{ t(:age) } " %> &nbsp&nbsp 
+	</li>
+</ul>

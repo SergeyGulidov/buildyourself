@@ -22,14 +22,14 @@
       <div class="small-7 large-6 columns">
         <div class="row">
           <div class="small-12 large-6 columns">
-            <h4><%= @place.name %></h4>
+            <h5><%= @place.name %></h5>
             <%# render 'subnav', object: @place %>
           </div>
           <div class="small-12 large-6 columns">
             <%= render 'breadcrumbs', object: @place %>
           </div>
         </div>
-
+        <hr>
 
           <%= render 'show_contacts', object: @place %> 
           <%= simple_format(@place.message) %>
@@ -38,7 +38,8 @@
         <hr>
 
           <ul class="small-block-grid-4">
-              <% @place.photos.each do |photo| %>
+
+              <% @photos.each do |photo| %>
                 <li>
                   <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
                     height: '60', width: '100', class: "th radius"),

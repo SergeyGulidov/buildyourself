@@ -124,7 +124,10 @@ lv:
   about_you: Par Jums
   edit_your_data: Izlabot informāciju
   profile: iestatījumi
-
+  from: "no"
+  to: "līdz"
+  age: gadiem
+  comments_question:  Vai vēlaties saņemt komentārus ?
 
 
 #------------------------------------------------------------------------------------------------------------

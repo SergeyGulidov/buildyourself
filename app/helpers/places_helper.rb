@@ -15,4 +15,5 @@ module PlacesHelper
 
         return places
 	end
+
 end

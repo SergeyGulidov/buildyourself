@@ -2,7 +2,7 @@
 
       <%= form_tag(places_path, :method => 'get', class: 'chzn-select') do %>
 
-        <div class="large-2 small-2 columns large-offset-3">
+        <div class="large-2 small-3 columns large-offset-4">
 
           <%= select_tag :city, 
             options_from_collection_for_select( @cities, 'city_slug', 'city_name'),
@@ -21,11 +21,11 @@
                 :types, :category_name, :type_slug, :type_name, include_blank: true, :prompt => t(:type)) %>
         </div>
 
-        <div class="large-2 small-3 columns">
-          <%= select_tag :interval, 
-            options_from_collection_for_select( @intervals, 'interval_slug', 'interval_name'),
-             include_blank: true, :prompt => t(:interval) %>
+        <div class="large-1 small-2 columns">
+          <%= text_field_tag :age, nil, :placeholder => t(:interval), :maxlength => 3 %>
         </div>
+
+
 
         <div class="large-1 small-1 columns">
           <div class="large-12 columns search">

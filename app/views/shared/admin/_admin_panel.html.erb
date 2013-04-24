@@ -8,7 +8,7 @@
           <li><a href="#" class="small button dropdown " data-dropdown="drop2">Countries</a></li>
           <li><a href="#" class="small button dropdown " data-dropdown="drop5">Categories</a></li>
           <li><a href="#" class="small button dropdown " data-dropdown="drop3">Types</a></li>
-          <li><a href="#" class="small button dropdown " data-dropdown="drop4">Intervals</a></li>
+
 
 
           <% counter = Contact.find(:all).count %>
@@ -36,10 +36,7 @@
   <li><%= link_to "Types", types_path %></li>
   <li><%= link_to "New type", new_type_path %></li>
 </ul>
-<ul id="drop4" class="f-dropdown " data-dropdown-content>
-  <li><%= link_to "Intervals", intervals_path %></li>
-  <li><%= link_to "New interval", new_interval_path %></li>
-</ul>
+
 <ul id="drop5" class="f-dropdown " data-dropdown-content>
   <li><%= link_to "Categories", categories_path %></li>
   <li><%= link_to "New category", new_category_path %></li>

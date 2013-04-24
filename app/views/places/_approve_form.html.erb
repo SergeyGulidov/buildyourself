@@ -42,9 +42,11 @@
       </div>
 
       <div class="row ">
-        <div class="large-6 columns">
-          <%= f.association :intervals, collection: @intervals, label: t(:age_category),
-            label_method: :interval_name, include_blank: true %>
+        <div class="large-3 columns">
+          <%= f.input :age_min, label: t(:min_age) %>
+        </div>
+        <div class="large-3 columns">
+          <%= f.input :age_max, label: t(:max_age) %>
         </div>
 
 

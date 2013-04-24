@@ -53,6 +53,7 @@ load_and_authorize_resource
 	end
 
 	def show
+		@photos = @place.photos.all
 		@place = Place.includes(:user).find(params[:id])
 		@json = get_json_for_map(@place)
 		@place.hits += 1
@@ -121,7 +122,6 @@ load_and_authorize_resource
 	def get_filter_collections
 		@categories ||= Category.categories_all
 		@cities 	||= City.cities_all
-		@intervals  ||= Interval.intervals_all
 		@countries  ||= Country.countries_all
 		@types      ||= Type.types_all
 	end

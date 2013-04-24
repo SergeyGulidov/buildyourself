@@ -46,7 +46,7 @@ body:before {
 
 
 /* Foundation image fix */
-.gmaps4rails_map img, .popup img, .map_container img, .lang_image {max-width: none!important;} 
+.gmaps4rails_map img, .popup img, .map_container img, .lang_image, #crumbs {max-width: none!important;} 
 
 .search form{
   width: 68px!important;
@@ -267,4 +267,46 @@ h5 #title a:active {
   li a{
     width:91%;
   }
+}
+
+
+
+
+
+
+
+
+
+ul, li {
+list-style-type:none;
+padding:0;
+margin:0;
+}
+
+#crumbs {
+margin-top: 8px;
+font-size: 11px;
+border: 1px solid #dedede;
+}
+
+#crumbs li {
+float:left;
+padding-left:.75em;
+color:#777;
+}
+
+#crumbs li a {
+display:block;
+padding:0 15px 0 0;
+background:url(<%= asset_path('crumbs.gif') %>) no-repeat right center;
+}
+
+#crumbs li a:link, #crumbs li a:visited {
+text-decoration:none;
+color:#777;
+}
+
+
+#crumbs li a:hover, #crumbs li a:focus {
+color:#dd2c0d;
 }

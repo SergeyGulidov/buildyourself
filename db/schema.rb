@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423183226) do
+ActiveRecord::Schema.define(:version => 20130424121517) do
 
   create_table "brains", :force => true do |t|
   end
@@ -28,11 +28,9 @@ ActiveRecord::Schema.define(:version => 20130423183226) do
     t.integer "type_id"
     t.integer "category_id"
     t.integer "place_id"
-    t.integer "interval_id"
   end
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
-  add_index "categorizations", ["interval_id"], :name => "index_categorizations_on_interval_id"
   add_index "categorizations", ["place_id"], :name => "index_categorizations_on_place_id"
   add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
 
@@ -53,14 +51,6 @@ ActiveRecord::Schema.define(:version => 20130423183226) do
     t.string "country_name_ru"
     t.string "country_slug"
   end
-
-  create_table "intervals", :force => true do |t|
-    t.string "interval_name_ru"
-    t.string "interval_slug"
-    t.string "interval_name_lv"
-  end
-
-  add_index "intervals", ["interval_slug"], :name => "index_intervals_on_interval_slug"
 
   create_table "photos", :force => true do |t|
     t.integer "place_id"
@@ -99,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130423183226) do
     t.float    "month_price"
     t.integer  "age_min"
     t.integer  "age_max"
+    t.integer  "not_actual",  :default => 0
   end
 
   add_index "places", ["age_max"], :name => "index_places_on_age_max"
@@ -137,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20130423183226) do
     t.string   "phone"
     t.string   "name"
     t.integer  "sponsor",                :default => 0
+    t.integer  "comments",               :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

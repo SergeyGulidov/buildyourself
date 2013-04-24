@@ -126,6 +126,12 @@ ru:
   change_your_name: Ваше имя 
   about_you: Немного о вас
   edit_your_data: Изменить данные 
+  from: "с"
+  to: "до"
+  age: "лет"
+  comments_question:  "Желаете комментарии к своим публикациям?"
+
+
 
   views:
     pagination:
