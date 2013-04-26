@@ -1,6 +1,12 @@
 lv:
   current_lang: Latviešu
 
+  new_request:   Iesniedziet lūdzu pieteikumu. Mēs ar jums sazināsimies vienosimies par tikšanos (informācijas un fotoattēlu uzņemšanu un ievietošanu jūsu profilā).<br><br> Kad būsim tikušies un mums būs pietiekami daudz informācījas , tad mēs paši izveidosim jums profilu par jūsu nodarbībām.
+  its_free: Mūsu nolūki un darbs ir pilnīgi par baltu velti!
+  request_attention: Uzmanību! Datumu lūdzu norādīt neātrāk, ka nakamo nedēļu. 
+  when: Kad? Datums un Laiks
+  nav_request: Pieteikt vietu
+
   many_types: Vairākas kategorijas.
   forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā?
     Atstājiet tukšus šos laukumus. Mēs sazināsimies ar Jums caur e-mail sīkāku detaļu noskaidrošanai un aizpildīsim to Jūsu vietā.'
@@ -127,7 +133,7 @@ lv:
   from: "no"
   to: "līdz"
   age: gadiem
-  comments_question:  Vai vēlaties saņemt komentārus ?
+  comments_question:  Vēlos saņemt komentārus 
 
 
 #------------------------------------------------------------------------------------------------------------

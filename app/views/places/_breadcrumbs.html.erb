@@ -6,18 +6,17 @@
 		           		{ controller: :places, action: :index, city: @place.city.city_slug} %>
 		</li>
 	<% end %>
-	<li>
-		<% @place.categories.each do |category| %>
-           <%= link_to category.category_name, 
-           		{ controller: :places, action: :index, category: category.category_slug} %>
-		<% end %>
-	</li>
-	<li>
-		<% @place.types.each do |type| %>
-			<%= link_to type.type_name, 
-				{ controller: :places, action: :index, type: type.type_slug} %>
-		<% end  %>
-	</li>
+	
+	<% @place.categories.each do |category| %>
+       <li><%= link_to category.category_name, 
+       		{ controller: :places, action: :index, category: category.category_slug} %></li>
+	<% end %>
+	
+	
+	<% @place.types.each do |type| %>
+		<li><%= link_to type.type_name, 
+			{ controller: :places, action: :index, type: type.type_slug} %></li>
+	<% end  %>
 	<li>
 		<%= "#{ t(:from) } #{ @place.age_min } #{ t(:to) } #{ @place.age_max } #{ t(:age) } " %> &nbsp&nbsp 
 	</li>

@@ -659,9 +659,9 @@ $crumb-bg: #FFF;
 //
 
 // We use these to control the background and border styles
-$panel-bg: darken(#FfFFFF, 0%);
+$panel-bg: #E3E3E3;
 // $panel-border-style: solid;
- $panel-border-size: 0px;
+ $panel-border-size: 1px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: 10%;
@@ -909,7 +909,7 @@ $section-bottom-margin: 0;
 // $table-row-padding: emCalc(9px) emCalc(10px);
  $table-row-font-size: emCalc(12px);
 // $table-row-font-color: #222;
- $table-line-height: emCalc(16px);
+ $table-line-height: emCalc(14px);
 
 // These are for controlling the display and margin of tables
 // $table-display: table-cell;

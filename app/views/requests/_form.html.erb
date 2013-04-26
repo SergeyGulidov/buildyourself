@@ -1,0 +1,8 @@
+<%= simple_form_for @request, html: { class: 'custom panel radius' } do |f| %>
+    <%= f.input :phone, as: :string, label: t(:phone_number), class: 'radius'%>
+    <%= f.input :address, label: t(:street_address)  %>
+    <%= f.input :when, label: t(:when) %>
+    <%= f.button :submit, t(:send), class: 'small button success radius'  %>
+<% end  %>
+
+

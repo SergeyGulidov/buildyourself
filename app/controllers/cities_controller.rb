@@ -52,4 +52,5 @@ load_and_authorize_resource
   def find_city
   	@city = City.find(params[:id].to_i)
   end
+
 end

@@ -14,20 +14,25 @@
 
   <%= render 'shared/flasher' %>
   
-    <div class="row content">
+  <div class="row">
 
-          <div class="small-12 large-9 columns">
+      <div class="large-2 columns hide-for-small">
+      &nbsp;
+          </div>
+          <div class="small-12 large-5 columns">
               <%= render 'contact_form'  %>
           </div>
 
 
-          <div class="large-3 columns hide-for-small" >
-    	      
+          <div class="small-12 large-3 columns" >
             <h4><%= t (:comments_text) %></h4>
-    				<hr>
+            <hr>
             <%= render 'shared/login' %>
-          </div>
 
+          </div>
+          <div class="large-2 columns" >
+            &nbsp;
+          </div>
     </div>
   </div>
 </div>

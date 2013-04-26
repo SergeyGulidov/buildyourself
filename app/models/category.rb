@@ -10,5 +10,17 @@ class Category < ActiveRecord::Base
   translates :category_name
 
   scope :categories_all, includes(:types).all
+  def add_count
+  	self.count_all += 1
+    self.save
+  end
 
+  def minus_count
+  	self.count_all -= 1
+    self.save
+  end
+  
+  def display_name
+    "#{self.category_name} (#{self.places.size}) "
+  end
 end

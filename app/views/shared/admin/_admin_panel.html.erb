@@ -11,16 +11,16 @@
 
 
 
-          <% counter = Contact.find(:all).count %>
+          <% counter = Contact.find(:all).size %>
           <li><%= link_to "Contacts - #{counter}", contacts_path, class: "small button " %></li>
-
-          <% counter = User.find(:all).count  %>
+          <% counter = User.find(:all).size  %>
           <li><%= link_to "Users - #{counter}", users_path, class: "small button " %></li>
-
-          <% counter = Place.where(approved: 0).count  %>
+          <% counter = Place.where(approved: 0).size  %>
           <li><%= link_to "Places to approve - #{counter}", places_approve_path, class: "small button " %></li>
-          <% counter = Place.where(translated: 0, approved: 1).count  %>
+          <% counter = Place.where(translated: 0, approved: 1).size  %>
           <li><%= link_to "Places to translate - #{counter}", places_translate_path, class: "small button " %></li>
+          <% counter = Request.all.size  %>
+          <li><%= link_to "Requests - #{counter}", requests_path, class: "small button " %></li>
 </ul>
 
 
@@ -50,10 +50,10 @@
   <div class="large-12 small-12 columns">
   <ul class="button-group radius">
 
-          <% counter = User.find(:all).count  %>
+          <% counter = User.find(:all).size  %>
           <li><%= link_to "Users - #{counter}", users_path, class: "small button " %></li>
 
-          <% counter = Place.where(translated: 0).count  %>
+          <% counter = Place.where(translated: 0).size  %>
           <li><%= link_to "Places to translate - #{counter}", places_translate_path, class: "small button " %></li>
   </ul>
 

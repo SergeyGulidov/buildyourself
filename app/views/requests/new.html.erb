@@ -1,0 +1,39 @@
+<% provide(:title, 'New request') %>
+<div class="row" >
+  <div class="large-12 columns">
+ 
+
+
+    <div class="row">
+      <div class="small-3 small-centered columns">
+        <div id="featured">
+          <%= image_tag("logo.png", width: '250px', height: '250px') %>
+        </div>
+      </div>
+    </div>
+
+  <%= render 'shared/flasher' %>
+  
+    <div class="row">
+
+		  <div class="large-3 columns hide-for-small">
+			&nbsp;
+          </div>
+          <div class="small-12 large-4 columns">
+              <%= render 'form'  %>
+          </div>
+
+
+          <div class="large-3 columns" >
+    	      <h6><%= raw(t (:new_request)) %></h6>
+    	      <br>
+    	      <p class="important_text"><%= t (:request_attention) %></p>
+    	      <h6 class="right"><small><%= t (:its_free) %></small></h6>
+          </div>
+          <div class="large-2 columns" >
+    	      &nbsp;
+          </div>
+    </div>
+  </div>
+</div>
+

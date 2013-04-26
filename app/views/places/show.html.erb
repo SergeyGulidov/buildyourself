@@ -4,7 +4,7 @@
 <%= render 'shared/filter' %>
 
 
-<div class="row content">
+<div class="row content show">
   <div class="large-12 small-12 columns">
     <%= render 'shared/flasher' %>
 
@@ -20,16 +20,14 @@
 
       
       <div class="small-7 large-6 columns">
-        <div class="row">
-          <div class="small-12 large-6 columns">
-            <h5><%= @place.name %></h5>
-            <%# render 'subnav', object: @place %>
-          </div>
-          <div class="small-12 large-6 columns">
+
+            <h6><%= @place.name %></h6>
+
+
+          <div class="show_page_bread">
             <%= render 'breadcrumbs', object: @place %>
           </div>
-        </div>
-        <hr>
+
 
           <%= render 'show_contacts', object: @place %> 
           <%= simple_format(@place.message) %>

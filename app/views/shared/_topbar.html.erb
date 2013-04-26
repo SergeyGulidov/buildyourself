@@ -7,6 +7,10 @@
 	<section class="top-bar-section">
 		<ul class="right">
 			<li><%= link_to t(:home), root_path %></li>
+			<li class="divider"></li>
+			<li>
+              <%= link_to t(:nav_request), new_request_path %>
+            </li>
 			<% if can? :new, Place %>
 				<li class="divider"></li>
 				<li>
@@ -39,7 +43,3 @@
 	
 </nav>
 <div class="top-bar-border"></div>
-
-
-
-

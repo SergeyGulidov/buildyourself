@@ -5,4 +5,19 @@ class City < ActiveRecord::Base
   translates :city_name
 
   scope :cities_all, all
+
+
+  def add_count
+    self.count_all += 1
+    self.save
+  end
+
+  def minus_count
+    self.count_all -= 1
+    self.save
+  end
+
+  def display_name
+    "#{self.city_name} (#{self.places.size}) "
+  end
 end

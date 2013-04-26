@@ -1,5 +1,8 @@
 BuildYourSelf::Application.routes.draw do
 
+  
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     root :to => 'brains#index'
@@ -12,12 +15,10 @@ BuildYourSelf::Application.routes.draw do
     }
 
     match 'places/approve' => 'places#approve'
-    match 'places/make_approve' => 'places#make_approve'
-    match ':id/places/make_approve' => 'places#make_approve'
+    match '/places/:id/make_approve' => 'places#make_approve'
 
     match 'places/translate' => 'places#translate'
-    match 'places/make_translate' => 'places#make_translate'
-    match ':id/places/make_translate' => 'places#make_translate'
+    match '/places/:id/make_translate/' => 'places#make_translate'
 
     resources :photos
 
@@ -27,7 +28,7 @@ BuildYourSelf::Application.routes.draw do
       #collection { post :q, to: 'products#index' }
     end
 
-
+    resources :requests
     resources :categories
     resources :cities
     resources :countries

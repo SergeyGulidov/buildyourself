@@ -31,11 +31,11 @@ load_and_authorize_resource
 
 	def create
 	  @place = Place.new(params[:place])
+	  @place.user_id = current_user.id
 
 	  respond_to do |format|
 	    if @place.save
 		  if current_user
-
 		    format.html  { redirect_to(@place,
             	:notice => t(:new_place_success)) }
 	      	format.json  { render :json => @place,

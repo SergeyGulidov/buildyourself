@@ -24,13 +24,7 @@
           <td><%= country.country_name_lv %></td>
           <td><%= country.country_name_ru %></td>
           <td><%= country.country_slug %></td>
-          <td>
-                <% count = 0 %>
-                  <% country.places.each do |place| %>
-                    <% count += 1 %>
-                  <% end %>
-                <%= count %>
-          </td>
+          <td><%= country.places.size %></td>
           <td><%= link_to 'Edit', edit_country_path(country) %></td>
           <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

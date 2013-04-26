@@ -20,7 +20,7 @@ class Ability
         can :edit,   Place,   :user_id => user.id
         can :vote,   Place
         can :index, Brain
-
+        can :new, Request
       end
 
       if user.role == 3
@@ -36,6 +36,7 @@ class Ability
         can :index, Brain
         can :show, User
         can :index, User
+        can :new, Request
       end
 
     end
@@ -43,6 +44,7 @@ class Ability
       can :create, Contact
       can :index, Brain
       can :show, User
+      can :new, Request
   end
 end
 

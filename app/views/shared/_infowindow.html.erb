@@ -1,9 +1,8 @@
 <h6>
 	<%= link_to place.name, place %>
-	&nbsp&nbsp&nbsp&nbsp <%= "#{ place.votes >= 0 ? '+' : ''}  #{place.votes}" %>
 </h6> 
-<p class="map_text"><%= place.street %> <%# get_location(place) %></p>
-
-
-
-
+<p class="map_text"><%= place.street %><br>
+	<% place.types.each do |type|  %>
+		<small class="right">&nbsp<%= type.type_name %><small>
+	<% end  %>
+</p>

@@ -1,21 +1,6 @@
-<%= simple_form_for @contact, html: { class: 'custom' } do |f| %>
-    <% field_set_tag t(:contact_with_us) do %>
+<%= simple_form_for @contact, html: { class: 'custom panel radius' } do |f| %>
 
-
-      <div class="row">
-        <div class="large-6 columns">
-          <%= f.input :email, label: t(:your_email) %>
-        </div>
-
-      </div>
-
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.input :body, label: t(:contact_message), as: :text %>
-        </div>
-      </div>
-
-    <%= f.button :submit, t(:send), class: 'small button'  %>
-  <% end %>
+    <%= f.input :email, label: t(:your_email) %>
+    <%= f.input :body, label: t(:contact_message), as: :text %>
+    <%= f.button :submit, t(:send), class: 'small button success radius'  %>
 <% end  %>

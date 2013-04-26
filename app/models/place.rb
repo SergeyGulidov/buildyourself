@@ -127,4 +127,32 @@ class Place < ActiveRecord::Base
 
       return places, type_vip
   end
+
+  def count_all
+    self.category_ids.each do |category|
+      cat = Category.find(category.to_i)
+      cat.add_count
+    end
+
+    self.type_ids.each do |type|
+      type = Type.find(type.to_i)
+      type.add_count
+    end
+
+    City.find(city_id.to_i).add_count
+
+
+
+         self.category_ids.each do |category|
+       cat = Category.find(category.to_i)
+       cat.minus_count
+     end
+     self.type_ids.each do |type|
+       type = Type.find(type.to_i)
+       type.minus_count
+     end
+     City.find(city_id.to_i).minus_count
+  end
+
+
 end

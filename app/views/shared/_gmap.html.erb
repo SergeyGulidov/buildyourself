@@ -1,21 +1,90 @@
 
-<%= gmaps( :map_options => {:raw => "{styles: myStyle}" },
+<%= gmaps( :map_options => {:raw => "{styles: style}" },
 	      :markers => {"data" => @json,  :options => { :do_clustering => true}}) %> 
 <div class="top-bar-border"></div>
 
 
 <script type="text/javascript" charset="utf-8">
-	var myStyle = [ 
-	  { featureType: "all", stylers: [{ 
-	  	"lightness": 20
-	  	 } ]},
-	  	{ featureType: 'administrative.province', elementType: 'all', stylers: [ { visibility: 'off' } ] },
-	  	{ featureType: 'water', elementType: 'all', stylers: [ { visibility: 'simplified' } ] },
-	  	{ featureType: 'transit', elementType: 'all', stylers: [ { visibility: 'simplified' } ] },
-	  	{ featureType: 'administrative.neighborhood', elementType: 'all', stylers: [ { visibility: 'off' } ] }
-	];
+var style = 
+[
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "saturation": -100 },
+      { "color": "#ffffff" }
+    ]
+  },{
+    "featureType": "road.arterial",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "saturation": -100 },
+      { "color": "#ffffff" }
+    ]
+  },{
+    "featureType": "road.local",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "lightness": 100 }
+    ]
+  },{
+    "featureType": "road.highway",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      { "color": "#ffffff" }
+    ]
+  },{
+    "featureType": "road.arterial",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      { "color": "#ffffff" },
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "water",
+    "elementType": "labels",
+    "stylers": [
+      { "color": "#b1bdd6" },
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "transit",
+    "stylers": [
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "landscape.man_made",
+    "stylers": [
+      { "color": "#e7e7e5" }
+    ]
+  },{
+    "featureType": "landscape.natural",
+    "stylers": [
+      { "color": "#d6e7bd" }
+    ]
+  },{
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#c5dea2" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+  },{
+    "featureType": "administrative.province",
+    "elementType": "labels.text",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }
+]
 </script>
-
 
 
 
