@@ -1,6 +1,6 @@
 
 <%= gmaps( :map_options => {:raw => "{styles: style}" },
-	      :markers => {"data" => @json,  :options => { :do_clustering => true}}) %> 
+	      :markers => {"data" => @json,  :options => { :do_clustering => true, :custom_infowindow_class => "infowindow_box"}}) %> 
 <div class="top-bar-border"></div>
 
 
@@ -87,8 +87,29 @@ var style =
 </script>
 
 
-
-
+<% content_for :scripts do %>
+  <script type="text/javascript">
+     Gmaps.map.infobox = function(boxText) {
+      return {
+         content: boxText
+        ,disableAutoPan: false
+        ,maxWidth: 0
+        ,pixelOffset: new google.maps.Size(-140, 0)
+        ,zIndex: null
+        ,boxStyle: { 
+          background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.5/examples/tipbox.gif') no-repeat"
+          ,opacity: 0.95
+          ,width: "250px"
+           }
+        ,closeBoxMargin: "10px 10px 5px 5px"
+        ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+        ,infoBoxClearance: new google.maps.Size(1, 1)
+        ,isHidden: false
+        ,pane: "floatPane"
+        ,enableEventPropagation: false
+     }};
+  </script>
+<% end %>
 
 
 

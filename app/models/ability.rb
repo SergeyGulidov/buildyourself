@@ -19,32 +19,32 @@ class Ability
         can :update, Place,   :user_id => user.id
         can :edit,   Place,   :user_id => user.id
         can :vote,   Place
-        can :index, Brain
-        can :new, Request
+        can :index,  Brain
+        can :create, Request
       end
 
       if user.role == 3
-        can :edit,   User
-        can :update, User
-        can :create, Contact
-        can :create, Place
-        can :read,   Place
-        can :translate, Place
+        can :edit,       User
+        can :update,     User
+        can :create,     Contact
+        can :create,     Place
+        can :read,       Place
+        can :translate,  Place
         can :make_translate, Place
-        can :update, Place
-        can :vote,   Place
-        can :index, Brain
-        can :show, User
-        can :index, User
-        can :new, Request
+        can :update,     Place
+        can :vote,       Place
+        can :index,      Brain
+        can :show,       User
+        can :index,      User
+        can :create,     Request
       end
 
     end
       #can :read, Place
       can :create, Contact
-      can :index, Brain
-      can :show, User
-      can :new, Request
+      can :index,  Brain
+      can :show,   User
+      can :create, Request
   end
 end
 

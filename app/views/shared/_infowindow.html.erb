@@ -1,8 +1,15 @@
 <h6>
 	<%= link_to place.name, place %>
 </h6> 
-<p class="map_text"><%= place.street %><br>
-	<% place.types.each do |type|  %>
-		<small class="right">&nbsp<%= type.type_name %><small>
+
+<p class="map_text"><b><%= place.street %></b><br>
+	<% place.categories.each do |category|  %>
+		<%= link_to category.category_name, { controller: :places, action: :index, category: category.category_slug} %>
 	<% end  %>
+	&nbsp&raquo&nbsp
+	<% place.types.each do |type|  %>
+		<%= link_to type.type_name, { controller: :places, action: :index, type: type.type_slug} %>
+	<% end  %>
+	<br>
+	<%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) } " %> &nbsp&nbsp
 </p>

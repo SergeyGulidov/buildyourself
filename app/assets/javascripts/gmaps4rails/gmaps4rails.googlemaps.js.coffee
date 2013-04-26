@@ -338,4 +338,3 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
     else
       @fitBounds()
 
-
