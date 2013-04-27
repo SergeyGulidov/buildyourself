@@ -109,7 +109,7 @@ load_and_authorize_resource
 
 
 	def translate
-		@places = Place.includes(:photos).where(translated: 0)
+		@places = Place.includes(:photos).where(translated: 0, approved: 1)
 		@json = get_json_for_map(@places)
 		@places = @places.page(params[:page]).per(10)
 	end

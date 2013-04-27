@@ -287,32 +287,35 @@ line-height:18px;
 #crumbs {
 margin-top: 8px;
 font-size: 11px;
-border: 1px solid #dedede;
 }
 
 #crumbs li {
 float:left;
-padding-left:.75em;
-color:#777;
 }
 
 #crumbs li a {
 display:block;
-padding:0 15px 0 0;
-background:url(<%= asset_path('crumbs.gif') %>) no-repeat right center;
+padding: 0 15px 0 10px;
+background:url(<%= asset_path('crumbs.png') %>) no-repeat right center;
+}
+
+#crumbs li .last {
+  background-image:none!important;
+  padding-right: 0!important;
 }
 
 #crumbs li a:link, #crumbs li a:visited {
 text-decoration:none;
-color:#777;
+background-color: #3EA9DE;
+color: white;
+font-weight: bolder;
 }
 
 
-#crumbs li a:hover, #crumbs li a:focus {
-color:#dd2c0d;
-}
+
 
 
 /***** infowindow ************/
 
-.infowindow_box { border: 1px solid #c0c0c0; background: white; padding: 10px; }
+.infowindow_box { background: white; margin-top:10px; padding: 10px; }
+#map-title a{color: #3EA9DE;}
