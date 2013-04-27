@@ -16,4 +16,16 @@ module PlacesHelper
         return places
 	end
 
+	def get_keywords(place)
+		keys = ""
+		place.categories.each do |category|
+			keys += category.category_name.to_s + ", "
+		end
+		place.types.each do |type|
+			keys += type.type_name.to_s + ", "
+		end
+		keys +=  @place.city.city_name.to_s
+		return keys
+	end
+
 end

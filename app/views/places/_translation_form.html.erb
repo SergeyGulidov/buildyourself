@@ -3,16 +3,15 @@
     <% field_set_tag t(:check_in_your_place) do %>
 
         <%= render 'shared/errors', object: @place%>
-        <br><br>
       
       <div class="row">
         <div class="large-6 columns">
           <%= f.association :country, collection: @countries, label: t(:country), 
-          label_method: :country_name, selected: 2, include_blank: true  %>
+          label_method: :country_name, selected: 2 %>
         </div>
         <div class="large-6 columns">
           <%= f.association :city, collection: @cities, label: t(:city), 
-          label_method: :city_name, selected: 1, include_blank: true  %>
+          label_method: :city_name, selected: 1  %>
         </div>
       </div>
 

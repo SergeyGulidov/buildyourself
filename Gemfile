@@ -16,7 +16,7 @@ gem 'nested_form'
 gem 'devise'
 gem "cancan"
 gem 'facebox-rails'
-
+gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
@@ -24,6 +24,7 @@ gem 'omniauth-google-oauth2'
 gem 'kaminari'
 gem "select2-rails"
 gem 'tire'
+gem 'metamagic'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

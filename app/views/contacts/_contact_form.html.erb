@@ -1,6 +1,9 @@
-<%= simple_form_for @contact, html: { class: 'custom panel radius' } do |f| %>
+<%= simple_form_for @contact, html: { class: 'panel radius' } do |f| %>
 
     <%= f.input :email, label: t(:your_email) %>
     <%= f.input :body, label: t(:contact_message), as: :text %>
+
+    <%= recaptcha_tags :display => {:theme => 'clean'} %> 
+
     <%= f.button :submit, t(:send), class: 'small button success radius'  %>
 <% end  %>

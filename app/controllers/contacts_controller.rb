@@ -14,7 +14,7 @@ load_and_authorize_resource
 
    def create
       @contact = Contact.new(params[:contact])
-      if @contact.save
+      if verify_recaptcha() and @contact.save
             redirect_to :action => 'new'
             flash[:notice] = "Your message have successfully sended."
       else

@@ -20,6 +20,7 @@
 	    <%= f.input :password_confirmation, :required => true, label: t(:password_confirmation) %>
     <% end %>
 
+    <%= recaptcha_tags :display => {:theme => 'clean'} %> 
 
     <%= f.button :submit, t(:sign_up), class: 'small button' %>
 

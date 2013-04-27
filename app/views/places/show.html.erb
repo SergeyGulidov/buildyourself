@@ -1,5 +1,10 @@
 <% provide(:title, @place.name) %>
 
+<% meta :description => "#{truncate( @place.message, :length => 150, :separator => '. ', :omission => '.')}",
+        :keywords => get_keywords(@place)
+%>
+
+
 <%= render 'shared/gmap' %>
 <%= render 'shared/filter' %>
 
@@ -39,9 +44,9 @@
 
               <% @photos.each do |photo| %>
                 <li>
-                  <%= link_to (image_tag photo.photo_url(:thumb).to_s, 
+                  <%= link_to (image_tag photo.photo.url(:thumb), 
                     height: '60', width: '100', class: "th radius"),
-                   photo.photo_url.to_s, rel: "facebox" %>
+                   photo.photo.url, rel: "facebox" %>
                 </li>
               <% end %>
           </ul>

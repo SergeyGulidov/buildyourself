@@ -40,10 +40,12 @@ class Place < ActiveRecord::Base
   accepts_nested_attributes_for :photos
 
 
-
-   validates :name, presence: true
+   validates :country, presence: true
+   validates :city,    presence: true
+   validates :name,    presence: true
    validates :street, presence: true
-
+   validates :age_min, :length => { :minimum => 1, :maximum => 3 }
+   validates :age_max, :length => { :minimum => 1, :maximum => 3 }
 
   include Tire::Model::Search
 
@@ -70,7 +72,7 @@ class Place < ActiveRecord::Base
 
 
    def gmaps4rails_address
-      return "#{street}, #{city.city_name}, #{country.country_name}" 
+      return "#{street}, #{city.city_name}, #{country.country_name.to_s}" 
    end
 
   def self.by_votes

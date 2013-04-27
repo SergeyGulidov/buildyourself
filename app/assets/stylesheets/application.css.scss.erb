@@ -46,7 +46,7 @@ body:before {
 
 
 /* Foundation image fix */
-.gmaps4rails_map img, .popup img, .map_container img, .lang_image, #crumbs {max-width: none!important;} 
+.gmaps4rails_map img, .popup img, .map_container img, .lang_image, #crumbs, #featured img {max-width: none!important;} 
 
 .search form{
   width: 68px!important;
@@ -133,10 +133,6 @@ h5 #title a:active {
   margin-bottom: 40px;
 }
 
-.section .breadcrumbs{
-  background-color: #fef8ff;
-  padding-top:6px!important;
-}
 
 .must_read{
   #border-left: 5px solid #F4A5AA;
@@ -151,9 +147,17 @@ h5 #title a:active {
 }
 
 
+  #recaptcha_widget_div{
+  margin-bottom:20px;
+}
 
-
-
+  .recaptchatable tr, .recaptchatable td {
+    background-color:#F7F7F7  !important; // reCAPTCHA widget background color
+  }
+  
+  #recaptcha_response_field {
+    border-color: #E3E3E3 !important; // Text input field border color
+  }
 
 
 
@@ -274,29 +278,29 @@ h5 #title a:active {
 
 
 
-
+/*********** breadcrumbs ************/
 
 
 ul, li {
-list-style-type:none;
-padding:0;
-margin:0;
-line-height:18px;
+  list-style-type:none;
+  padding:0;
+  margin:0;
+  line-height:18px;
 }
 
 #crumbs {
-margin-top: 8px;
-font-size: 11px;
+  margin-top: 8px;
+  font-size: 11px;
 }
 
 #crumbs li {
-float:left;
+  float:left;
 }
 
 #crumbs li a {
-display:block;
-padding: 0 15px 0 10px;
-background:url(<%= asset_path('crumbs.png') %>) no-repeat right center;
+  display:block;
+  padding: 0 15px 0 10px;
+  background:url(<%= asset_path('crumbs.png') %>) no-repeat right center;
 }
 
 #crumbs li .last {
@@ -312,10 +316,7 @@ font-weight: bolder;
 }
 
 
-
-
-
-/***** infowindow ************/
+/*********** infowindow ************/
 
 .infowindow_box { background: white; margin-top:10px; padding: 10px; }
 #map-title a{color: #3EA9DE;}

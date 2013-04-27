@@ -136,6 +136,12 @@ lv:
   comments_question:  Vēlos saņemt komentārus 
 
 
+#-------------- MetaTags
+
+  meta_default_description: defaults
+  meta_default_keywords: defaults
+
+
 #------------------------------------------------------------------------------------------------------------
   date:
     abbr_day_names:
