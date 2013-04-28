@@ -24,7 +24,7 @@ load_and_authorize_resource
     @request = Request.new(params[:request])
 
     respond_to do |format|
-      if verify_recaptcha() and @request.save
+      if @request.save
         format.html { redirect_to root_path, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else

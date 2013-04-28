@@ -65,6 +65,7 @@ body:before {
 
 #footer p, #footer li, #footer i{
 	font-size: 12px;
+  font-weight: bold;
 }
 
 
@@ -78,17 +79,26 @@ body:before {
 
 
 
-.hide{
+.hide , #recaptcha_logo, #recaptcha_tagline {
 	display: none;
 }
 
+.top-bar .right a{
+  text-transform:uppercase;
+  font-size: 10px;
+}
+
+
 .top-bar .right li a:hover{
-  background-color: #fef8f6;
+  background-color: #fef8f6!important;
 }
 
 .top-bar-border{
   border-bottom: 1px solid #D2E0D5;
 }
+
+
+
 
 h5 #title a:active {
   color: #464A4C!important;
@@ -147,8 +157,9 @@ h5 #title a:active {
 }
 
 
-  #recaptcha_widget_div{
-  margin-bottom:20px;
+  #recaptcha_area{
+  max-width: 420px!important;
+  margin-bottom: 20px;
 }
 
   .recaptchatable tr, .recaptchatable td {
@@ -259,33 +270,52 @@ h5 #title a:active {
 .contact_info{
   text-align:left; 
   font-weight: bold;
+  margin-top:-20px;
 }
 
-.border_left{
+/*.border_left{
   margin-right: -10px;
   border-left: 1px solid #E9F2F9;
-}
+}*/
 
 .side_navigation{
   list-style: none;
   li a{
-    width:91%;
+    width:100%;
+    font-size: 11px!important;
+
   }
 }
 
 
+.right_panel{
+  background-color: white!important;
+}
+.your_place_list li, .li_second{
+  border-bottom: 1px dashed #EBEBEB;
+}
 
-
+.panel .first{
+  line-height: 22px;
+  background-color: #3CB5B5;
+  margin: -20px -20px 10px -20px;
+  padding: 15px 10px 8px 20px ;
+  color: white;
+  h5{
+    color: white;
+  }
+}
 
 
 /*********** breadcrumbs ************/
 
 
-ul, li {
+.crumbs ul, .crumbs li, .panel li{
   list-style-type:none;
   padding:0;
   margin:0;
   line-height:18px;
+  margin-bottom: 3px;
 }
 
 #crumbs {

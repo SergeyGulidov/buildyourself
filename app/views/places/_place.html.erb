@@ -2,34 +2,39 @@
 
 <% @place = place %>
 
-	<div class="row">
-		  <div class="small-12 large-6 columns">
-			<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
-			<%# render 'subnav', object: @place %>
-		  </div>   
-		  <div class="small-12 large-6 columns">
-		 	 <%= render 'breadcrumbs', object: @place %>
-		  </div>
-	</div>
-
-
-	<div class="row">
-		<div class="large-6 small-12 columns">
-			<p><%= simple_format(truncate( place.message, :length => 200, :separator => '. ', :omission => '.') )%></p>
-
-			<h6><small><%= link_to t(:read_more), place_path(place)%></small></h6>		
+	<div class="place_simple">
+		<div class="row">
+			  <div class="small-12 large-6 columns">
+				<h5 id="title"><%= link_to place.name, place_path(place)%>
+					<% if can? :make_approve, Place %>
+					<%= link_to ">> edit", controller: 'places', action: 'make_approve', id: place.id %>
+				 	<% end %>
+			 	</h5>
+			  </div>   
+			  <div class="small-12 large-6 columns">
+			 	 <%= render 'breadcrumbs', object: @place %>
+			  </div>
 		</div>
 
-		<div class="large-6 small-12 columns ">
-			<ul class="large-block-grid-3 photos_for_roll">
-				<% place.photos.take(3).each do |photo| %>
-					<li>
-						<%= link_to (image_tag photo.photo.url(:thumb), 
-							height: '60', width: '100', class: "th radius"),
-						 photo.photo.url, rel: "facebox" %>
-					</li>
-				<% end %>
-			</ul>
+
+		<div class="row">
+			<div class="large-6 small-12 columns">
+				<p><%= simple_format(truncate( place.message, :length => 200, :separator => '. ', :omission => '.') )%></p>
+
+				<h6><small><%= link_to t(:read_more), place_path(place)%></small></h6>		
+			</div>
+
+			<div class="large-6 small-12 columns ">
+				<ul class="large-block-grid-3 photos_for_roll">
+					<% place.photos.take(3).each do |photo| %>
+						<li>
+							<%= link_to (image_tag photo.photo.url(:thumb), 
+								height: '60', width: '100', class: "th radius"),
+							 photo.photo.url, rel: "facebox" %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	</div>
 <hr>

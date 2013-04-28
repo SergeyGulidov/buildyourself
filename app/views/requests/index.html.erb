@@ -7,7 +7,7 @@
         <th>Phone</th>
         <th>Address</th>
         <th>When</th>
-        <th></th>
+        <th>Created</th>
         <th></th>
         <th></th>
       </tr>
@@ -17,6 +17,7 @@
         <td><%= request.phone %></td>
         <td><%= request.address %></td>
         <td><%= request.when %></td>
+        <td><%= request.created_at.strftime("%d %b. %Y") %></td>
         <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

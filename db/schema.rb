@@ -11,20 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427143318) do
+ActiveRecord::Schema.define(:version => 20130428085632) do
 
   create_table "brains", :force => true do |t|
   end
 
   create_table "categories", :force => true do |t|
-    t.string  "category_name_ru"
-    t.string  "category_slug"
-    t.string  "category_name_lv"
-    t.integer "count_all",        :default => 0
+    t.string "category_name_ru"
+    t.string "category_slug"
+    t.string "category_name_lv"
   end
 
   add_index "categories", ["category_slug"], :name => "index_categories_on_category_slug"
-  add_index "categories", ["count_all"], :name => "index_categories_on_count_all"
 
   create_table "categorizations", :id => false, :force => true do |t|
     t.integer "type_id"
@@ -37,13 +35,10 @@ ActiveRecord::Schema.define(:version => 20130427143318) do
   add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
 
   create_table "cities", :force => true do |t|
-    t.string  "city_name_lv"
-    t.string  "city_name_ru"
-    t.string  "city_slug"
-    t.integer "count_all",    :default => 0
+    t.string "city_name_lv"
+    t.string "city_name_ru"
+    t.string "city_slug"
   end
-
-  add_index "cities", ["count_all"], :name => "index_cities_on_count_all"
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -59,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20130427143318) do
 
   create_table "photos", :force => true do |t|
     t.integer "place_id"
-    t.string  "name"
     t.string  "photo"
   end
 
@@ -83,9 +77,6 @@ ActiveRecord::Schema.define(:version => 20130427143318) do
     t.integer  "user_id"
     t.integer  "approved",    :default => 0
     t.text     "message_lv"
-    t.text     "review_ru"
-    t.text     "review_lv"
-    t.integer  "with_review", :default => 0
     t.integer  "vip",         :default => 0
     t.integer  "city_id"
     t.integer  "country_id"
@@ -105,17 +96,14 @@ ActiveRecord::Schema.define(:version => 20130427143318) do
     t.string   "address"
     t.string   "when"
     t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "types", :force => true do |t|
-    t.string  "type_name_ru"
-    t.string  "type_slug"
-    t.string  "type_name_lv"
-    t.integer "count_all",    :default => 0
+    t.string "type_name_ru"
+    t.string "type_slug"
+    t.string "type_name_lv"
   end
 
-  add_index "types", ["count_all"], :name => "index_types_on_count_all"
   add_index "types", ["type_slug"], :name => "index_types_on_type_slug"
 
   create_table "users", :force => true do |t|

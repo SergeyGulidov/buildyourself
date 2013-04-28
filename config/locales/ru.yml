@@ -27,7 +27,8 @@ ru:
   city: Город
   street_address: Адрес
   name_for_place: Название
-
+  min_age: Мин. возраст
+  max_age: Макс. возраст
   
   phone_number: Номер телефона
 
@@ -46,7 +47,7 @@ ru:
 #------------- top bar partial
   home: Главная
   add_new_place: Добавить место
-  contact_with_us: Свяжись с нами
+  contact_with_us: Контакты
   search: Поиск по сайту...
 
 #------------- map filter partial
@@ -124,7 +125,7 @@ ru:
   waiting: '<b id="waiting" data-tooltip class="has-tip" title="Ожидает проверки">W</b>'
   need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Необходимо дополнить. Мы выслали вам емайл с объяснениями.">N</b>' 
   edit: изменить
-  profile: Настройки
+  profile: настройки
 #------------user futures 
   more_places_from_user: Другие места пользователя
   month_price: Цена в месяц 

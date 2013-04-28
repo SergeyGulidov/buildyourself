@@ -30,12 +30,12 @@ class Place < ActiveRecord::Base
     update_index if translated == 1 and approved == 1
   end
 
-  attr_accessible :approved, :email, :vip, :sponsor, :with_review, :age_max, :age_min,
+  attr_accessible :approved, :email, :vip, :sponsor, :age_max, :age_min,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_ids, :photos_attributes, :photo, :category_ids, :month_price,
-     :message_ru, :message_lv, :latitude, :longitude, :review_lv, :review_ru, :user_id, :translated
+     :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated
 
-  translates :message, :review
+  translates :message
 
   accepts_nested_attributes_for :photos
 
@@ -54,8 +54,6 @@ class Place < ActiveRecord::Base
         indexes :name,       :analyzer => 'snowball', :boost => 100
         indexes :message_lv, :analyzer => 'snowball'
         indexes :message_ru, :analyzer => 'snowball'
-        indexes :review_ru,  :analyzer => 'snowball', :boost => 10
-        indexes :review_lv,  :analyzer => 'snowball', :boost => 20
   end
 
 

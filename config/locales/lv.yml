@@ -5,7 +5,7 @@ lv:
   its_free: Mūsu nolūki un darbs ir pilnīgi par baltu velti!
   request_attention: Uzmanību! Datumu lūdzu norādīt neātrāk, ka nakamo nedēļu. 
   when: Kad? Datums un Laiks
-  nav_request: Pieteikt vietu
+  nav_request: Pieteikt vietuЛЛл
 
   many_types: Vairākas kategorijas.
   forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā?
@@ -37,12 +37,16 @@ lv:
   message_for_lv: Ziņa priekš lietotājiem latviešu valodā
   check_in_your_place: Piereģistrēt savu vietu
   register_first: 'Jums ir jāpiereģistrējas, lai varētu atjaunot informāciju par Jūsu vietu.'
+  min_age: Min. Vecums
+  max_age: Maks. Vecums
+
+
 
 #------------- footer partial
 #------------- top bar partial
   home: Sākums
   add_new_place: Pievienot vietu
-  contact_with_us: Sazināties ar mums
+  contact_with_us: Kontakti
   search: Meklēt...
 
 #------------- map filter partial
@@ -138,8 +142,8 @@ lv:
 
 #-------------- MetaTags
 
-  meta_default_description: defaults
-  meta_default_keywords: defaults
+  meta_default_description: "Sper soli pretīm izmaiņām. Šinī jautājumā mēs spersim soli pretīm un palīdzēsim. Nav svarīgi, kas tu esi pašlaik svarīgi ir par ko tu kļūsi nakotne."
+  meta_default_keywords: panākumi, pašatīstīšanās, mācības, trenniņi, dzīves jēga, Latvijā
 
 
 #------------------------------------------------------------------------------------------------------------

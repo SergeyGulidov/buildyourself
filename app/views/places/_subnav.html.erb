@@ -23,9 +23,7 @@
 					class: "red general foundicon-down-arrow"  %>
 			</li>
 		 <% end %>
-		 <% if can? :make_approve, @place %>
-			<li><%= link_to "", places_make_approve_path(@place), class: "comments general foundicon-add-doc" %></li>
-		 <% end %>
+
 		 <% if can? :update, @place %>
 			<li><%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %></li>
 		 <% end %>

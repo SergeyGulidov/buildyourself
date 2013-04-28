@@ -1,45 +1,42 @@
 <nav class="top-bar" >
-	<ul class="title-area">
-	  <li class="name"><h1><%= link_to "Yoda.lv", root_path %></h1></li>
-	  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-	</ul>
 
-	<section class="top-bar-section">
-		<ul class="right">
-			<li><%= link_to t(:home), root_path %></li>
-			<li class="divider"></li>
-			<li>
-              <%= link_to t(:nav_request), new_request_path %>
-            </li>
-			<% if can? :new, Place %>
-				<li class="divider"></li>
-				<li>
-	              <%= link_to t(:add_new_place), :controller => :places, :action => :new  %> 
-	            </li>
-	            <li class="divider"></li>
-	            <li>
-	              <%= link_to t(:profile), edit_user_path(current_user) %>
-	            </li>
-	        <% else  %>
-				<li class="divider"></li>
-				<li>
-	              <%= link_to t(:sign_up), new_user_registration_path %>
-	            </li>
-	            <li class="divider"></li>
-	            <li>
-					<%= link_to t(:login), new_user_session_path %>
-	            </li>
-	        <% end  %>
-            
-			<li class="divider"></li>
-			<li>
-              <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
-            </li>
-
-			<li class="divider"></li>
-			<%= render 'shared/language_selector'  %>
+		<ul class="title-area">
+		  <li class="name"><h1><%= link_to "Yoda.lv", root_path %></h1></li>
+		  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 		</ul>
-	</section>
-	
-</nav>
+
+		<section class="top-bar-section">
+			<ul class="right">
+				<li><%= link_to t(:home), root_path %></li>
+				<li class="divider"></li>
+				<li>
+	              <%= link_to t(:nav_request), new_request_path %>
+	            </li>
+				<% if can? :new, Place %>
+					<li class="divider"></li>
+					<li>
+		              <%= link_to t(:add_new_place), :controller => :places, :action => :new  %> 
+		            </li>
+		        <% else  %>
+					<li class="divider"></li>
+					<li>
+		              <%= link_to t(:sign_up), new_user_registration_path %>
+		            </li>
+		            <li class="divider"></li>
+		            <li>
+						<%= link_to t(:login), new_user_session_path %>
+		            </li>
+		        <% end  %>
+	            
+				<li class="divider"></li>
+				<li>
+	              <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
+	            </li>
+
+				<li class="divider"></li>
+				<%= render 'shared/language_selector'  %>
+			</ul>
+		</section>
+		
+	</nav>
 <div class="top-bar-border"></div>

@@ -21,6 +21,7 @@ class Ability
         can :vote,   Place
         can :index,  Brain
         can :create, Request
+        can :read, Place
       end
 
       if user.role == 3
@@ -45,6 +46,7 @@ class Ability
       can :index,  Brain
       can :show,   User
       can :create, Request
+      can :read, Place
   end
 end
 
