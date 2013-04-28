@@ -3,24 +3,40 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    body { background-color: #326270; color: #fff; text-align: center; font-family: arial, sans-serif; }
     div.dialog {
       width: 25em;
       padding: 0 4em;
       margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    h3 { color: #FF3700 }
+
+    div.dialog a{
+      color:white;
+      padding:3px;
+      margin-right: 15px;
+      text-decoration: none;
+      border-bottom: 1px solid white;
+    }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
+
+  <div>
+      <img src="http://www.yoda.lv/error.jpg" alt="Big Fish Error">
+  </div>
   <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
+    <h3>The page you were looking for doesn't exist.</h3>
     <p>You may have mistyped the address or the page may have moved.</p>
+  <div>
+  <div>
+    <br>
+    <p>
+      <a href="http://www.yoda.lv">Home</a>
+      <a href="http://www.yoda.lv/contacts/new">Contact with us</a>
+      <a href="#" onclick="history.go(-1)">Go Back</a></p>
   </div>
 </body>
 </html>

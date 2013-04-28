@@ -10,7 +10,7 @@ ru:
   its_free: Наши услуги совершенно бесплатны!
   request_attention: Внимание дату просим указывать не раньше следующей недели.
   when: Когда? Дата и время
-  nav_request: Подать заявку
+  nav_request: подать заявку
 
   
   many_types: Несколько категорий.
@@ -46,7 +46,7 @@ ru:
 #------------- footer partial
 #------------- top bar partial
   home: Главная
-  add_new_place: Добавить место
+  add_new_place: добавить место
   contact_with_us: Контакты
   search: Поиск по сайту...
 

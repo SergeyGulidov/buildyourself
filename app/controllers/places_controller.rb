@@ -1,9 +1,9 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
 
-	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit, :show, :create ]
-	before_filter :get_filter_collections,  :only => [:index, :edit, :show, :new, :make_approve, :create ]
-	before_filter :get_recent_added,  :only => [:index, :edit, :show, :new, :approve, :translate, :create ]
+	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit, :show, :create, :update ]
+	before_filter :get_filter_collections,  :only => [:index, :edit, :show, :new, :make_approve, :create, :update ]
+	before_filter :get_recent_added,  :only => [:index, :edit, :show, :new, :approve, :translate, :create, :update ]
 	respond_to :html, :xml, :json
 
 	def index
@@ -71,7 +71,7 @@ load_and_authorize_resource
 	         redirect_to :action => 'show', :id => @place
 	      else
 	         @place = Place.find(params[:id])
-	         render :action => 'edit'
+	         redirect_to :back
 	  end
 	end
 

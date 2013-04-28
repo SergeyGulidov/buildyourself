@@ -5,7 +5,7 @@ lv:
   its_free: Mūsu nolūki un darbs ir pilnīgi par baltu velti!
   request_attention: Uzmanību! Datumu lūdzu norādīt neātrāk, ka nakamo nedēļu. 
   when: Kad? Datums un Laiks
-  nav_request: Pieteikt vietu
+  nav_request: iesniegt pieteikumu
 
   many_types: Vairākas kategorijas.
   forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā?
@@ -45,7 +45,7 @@ lv:
 #------------- footer partial
 #------------- top bar partial
   home: Sākums
-  add_new_place: Pievienot vietu
+  add_new_place: pievienot vietu
   contact_with_us: Kontakti
   search: Meklēt...
 
