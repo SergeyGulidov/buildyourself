@@ -5,13 +5,13 @@
         <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
       <% else  %>
         <%= image_tag @place.user.avatar.url, height: '154', width: '254', 
-        	class: "radius"  %>
+        	class: "radius th"  %>
       <% end  %>
     </li>
 
     <li><h4 style="text-align: center"><%= @place.user.name unless @place.user.name.blank? %></h4></li>
     <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr></li>
-    
+
     <li><p class="contact_info">
 
     <% unless @place.user.email.blank?  %>

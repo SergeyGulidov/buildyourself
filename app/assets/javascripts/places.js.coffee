@@ -15,12 +15,11 @@ jQuery ->
 	$("#f_type").select2()
 	$("#city").select2()
 	$("#category").select2()
-	$("#interval").select2()
 	$("#place_type_ids").select2()
 	$("#place_country_id").select2()
 	$("#place_city_id").select2()
 	$("#place_category_ids").select2()
-	$("#place_interval_ids").select2()
+
 
 	types = $('#f_type').html()
 	$('#category').change ->
