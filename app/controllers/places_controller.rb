@@ -15,6 +15,7 @@ load_and_authorize_resource
 			@json = get_json_for_map(@places)
 			@places = @places.page(params[:page]).per(10)
 		end
+		@recent_posts = Post.recent
 
 		if @places.blank?
 			flash[:alert] = t(:nothing_found) 

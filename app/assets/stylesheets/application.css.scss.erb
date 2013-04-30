@@ -12,10 +12,15 @@
  *= require select2
  *= require_self
  *= require_tree .
- *= require jquery.facebox
+ *= #require jquery.facebox
  */
 @import 'foundation-icons';
 
+
+
+.clearing-thumbs li {
+  list-style: none;
+}
 
 
 
@@ -124,7 +129,7 @@ h5 #title a:active {
 
 
 .content{
-  padding-top: 20px;
+  padding-top: 18px;
   padding-bottom: 40px;
 }
 
@@ -291,13 +296,17 @@ h5 #title a:active {
 .right_panel{
   background-color: white!important;
 }
+
+.right_panel h5 a{
+  color: white;
+}
 .your_place_list li, .li_second{
   border-bottom: 1px dashed #EBEBEB;
 }
 
 .panel .first{
   line-height: 22px;
-  background-color: #3CB5B5;
+  background-color: #66CBCC;
   margin: -20px -20px 10px -20px;
   padding: 15px 10px 8px 20px ;
   color: white;
@@ -349,4 +358,8 @@ font-weight: bolder;
 /*********** infowindow ************/
 
 .infowindow_box { background: white; margin-top:10px; padding: 10px; }
-#map-title a{color: #3EA9DE;}
+#map-title a{color: #56B2DF;}
+
+.show h6 {
+  border-bottom: 1px solid #EBEBEB!important;
+}

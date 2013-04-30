@@ -142,10 +142,18 @@ lv:
 
 #-------------- MetaTags
 
-  meta_default_description: "Sper soli pretīm izmaiņām. Šinī jautājumā mēs spersim soli pretīm un palīdzēsim. Nav svarīgi, kas tu esi pašlaik svarīgi ir par ko tu kļūsi nakotne."
+  meta_default_description: "Sper soli pretīm izmaiņām. Šinī jautājumā mēs spersim soli pretīm un palīdzēsim. Nav svarīgi, kas tu esi pašlaik svarīgi ir par ko tu kļūsi nākotne."
   meta_default_keywords: panākumi, pašatīstīšanās, mācības, trenniņi, dzīves jēga, Latvijā
 
 
+
+
+#-------------- Blog
+
+  blog: Blogs
+  blog_search: Meklēt blogā...
+  recent_added_blog_posts: Pēdējie ieraksti blogā
+  
 #------------------------------------------------------------------------------------------------------------
   date:
     abbr_day_names:

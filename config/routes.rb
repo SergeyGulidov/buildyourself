@@ -3,6 +3,9 @@ BuildYourSelf::Application.routes.draw do
   
 
 
+
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     root :to => 'places#index'
@@ -37,7 +40,7 @@ BuildYourSelf::Application.routes.draw do
     resources :users
     resources :types
     resources :brains
-    
+    resources :posts
   end
 
   # The priority is based upon order of creation:

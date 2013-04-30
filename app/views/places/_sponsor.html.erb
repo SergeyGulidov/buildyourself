@@ -1,8 +1,9 @@
 <% @user = User.sponsor.first %>
 
+
 <% unless @user.blank? %>
 
-  	  <ul class="small-block-grid-1">
+  	  <ul class="small-block-grid-1 recent">
         <li><%= image_tag @user.avatar_url, height: '154', width: '254', 
             class: "th radius" if @place.user.avatar? %></li>
 
@@ -30,10 +31,11 @@
     <% places = Place.where("approved = ? AND user_id = ?", 1, @user.id) %>
 
     <% if places.size >= 1 %>
+      <div class="panel radius right_panel">
         <ul class="recent">
-          <h6><%= t (:all_user_places)  %></h6>
+          <li class="first"><h5><%= t (:all_user_places)  %></h5></li>
           <% places.each do |place| %>
-            <li><%= link_to place.name, place %> 
+            <li class="li_second"><%= link_to place.name, place %> 
 
               <% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
               <%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
@@ -45,7 +47,7 @@
           <% end %>
         </ul>
     <% end  %> 
-   <hr>
+   </div>
 <% else %>
   <%= render 'shared/recent_added' %>
 <% end %>

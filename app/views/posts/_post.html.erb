@@ -1,0 +1,24 @@
+<div class="place_simple">
+    <div class="row post">
+
+        <div class="large-5 columns">
+            <ul class="clearing-thumbs" data-clearing >
+                 <li> <%= link_to (image_tag post.image.url(:thumb), class: "th radius"), post.image.url %></li>
+            </ul>
+        </div>
+        <div class="large-7 columns">
+            <h1><%= link_to post.title, post%>
+                <% if can? :edit, Post %>
+                    <%= link_to "Edit", edit_post_path(post) %> 
+                    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'New Post', new_post_path %>
+                <% end %>
+            </h1>
+            <p><%= simple_format(truncate( post.message, :length => 300, :separator => '. ', :omission => '.') )%></p>
+            <h6 class="right"><small><%= link_to t(:read_more), post %></small></h6>      
+        </div>
+
+    </div>
+    <hr>
+</div>
+

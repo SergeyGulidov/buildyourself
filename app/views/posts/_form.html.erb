@@ -1,0 +1,13 @@
+<%= simple_form_for(@post) do |f| %>
+
+    <%= f.input :title_ru %>
+    <%= f.input :title_lv %>
+    <%= f.input :message_lv %>
+    <%= f.input :message_ru %>
+    <%= f.input :author %>
+    <%= f.input :image %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'small button right' %>
+  </div>
+<% end %>

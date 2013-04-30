@@ -1,0 +1,30 @@
+<% provide(:title, "New post" )%>
+
+<div class="row" >
+  <div class="large-12 columns">
+ 
+
+
+    <div class="row">
+      <div class="small-4 small-centered columns">
+        <div id="featured">
+          <%= image_tag("logo.png", width: '250px', height: '250px') %>
+        </div>
+      </div>
+    </div>
+
+  <%= render 'shared/flasher' %>
+  
+  <div class="row">
+
+          <div class="small-12 large-9 columns">
+              <%= render 'form' %>
+          </div>
+
+
+          <div class="hide-for-small large-3 columns" >
+
+          </div>
+    </div>
+  </div>
+</div>

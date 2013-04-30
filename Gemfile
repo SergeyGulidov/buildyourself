@@ -15,7 +15,7 @@ gem "carrierwave"
 gem 'nested_form'
 gem 'devise'
 gem "cancan"
-gem 'facebox-rails'
+
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'

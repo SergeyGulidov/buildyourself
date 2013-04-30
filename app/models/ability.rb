@@ -22,6 +22,7 @@ class Ability
         can :index,  Brain
         can :create, Request
         can :read, Place
+        can :read, Post
       end
 
       if user.role == 3
@@ -38,6 +39,8 @@ class Ability
         can :show,       User
         can :index,      User
         can :create,     Request
+        can :read,       Post
+        can :create,     Post
       end
 
     end
@@ -47,6 +50,7 @@ class Ability
       can :show,   User
       can :create, Request
       can :read, Place
+      can :read, Post
   end
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428085632) do
+ActiveRecord::Schema.define(:version => 20130429180549) do
 
   create_table "brains", :force => true do |t|
   end
@@ -90,6 +90,20 @@ ActiveRecord::Schema.define(:version => 20130428085632) do
 
   add_index "places", ["age_max"], :name => "index_places_on_age_max"
   add_index "places", ["age_min"], :name => "index_places_on_age_min"
+
+  create_table "posts", :force => true do |t|
+    t.string   "title_ru"
+    t.string   "title_lv"
+    t.text     "message_lv"
+    t.text     "message_ru"
+    t.string   "author"
+    t.string   "image"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "hits",       :default => 0
+  end
+
+  add_index "posts", ["id"], :name => "index_posts_on_id"
 
   create_table "requests", :force => true do |t|
     t.string   "phone"

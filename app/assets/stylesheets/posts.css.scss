@@ -1,0 +1,62 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.show_posts h1 {
+	margin: 0 0 20px 0;
+	padding: 0;
+	font-size: 32px;
+	line-height: 38px;
+	font-weight: normal;
+	color: #3CB5B5;
+}
+
+.post img{
+    margin-left: 20px;
+}
+
+
+.show_posts{
+	margin-top: 30px;
+}
+
+.top_margin{
+	margin-top: 8px;
+}
+
+
+.show_posts h2 {
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: normal;
+	color: #999;
+	margin-bottom: 40px;
+}
+
+.post img{
+	margin-top: 13px;
+}
+
+
+.post_content_index{
+	margin-top:45px;
+}
+
+.post  h1 {
+	font-size: 26px;
+	line-height: 32px;
+	font-weight: normal;
+	
+	a{
+		color: #3CB5B5;
+	}
+	a:hover{
+		border-bottom: 1px solid #3CB5B5;
+	}
+}
+
+.place_simple .post h6{
+	margin-right:20px;
+	margin-top: -15px;
+}

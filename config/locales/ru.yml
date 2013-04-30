@@ -146,6 +146,11 @@ ru:
   meta_default_keywords: успех, саморазвитие, учеба, тренировки, смысл жизни, совершенство, достижения, Латвия
 
 
+#-------------- Blog
+
+  blog: Блог
+  blog_search: Поиск по блогу...
+  recent_added_blog_posts: Последние записи в блоге
   views:
     pagination:
       previous: "&lt; Previous"

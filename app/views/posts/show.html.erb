@@ -1,0 +1,60 @@
+<% provide(:title, @post.title) %>
+
+<% meta :description => "#{truncate( @post.message, :length => 150, :separator => '. ', :omission => '.')}",
+        :keywords => ""
+%>
+
+<div class="row content show_posts post">
+  <div class="large-12 small-12 columns">
+    <%= render 'shared/flasher' %>
+
+    <div class="row">
+
+      
+      <div class="small-12 large-9 columns">
+
+          
+
+
+          <div class="row">
+            <div class="large-5 small-5 columns">
+              <h1><%= @post.title %></h1>
+              <h2><%= t(:published_at) + "  " + @post.created_at.strftime(" %d.%m.%Y ") + @post.created_at.strftime(" %H:%M ")  %></h2>
+
+              
+
+              <ul class="clearing-thumbs" data-clearing >
+                  <li><%= link_to (image_tag @post.image.url(:thumb), class: "th radius"), @post.image.url %></li>
+              </ul>
+            </div>
+
+            <div class="large-7 small-7 columns top_margin">
+              <%= simple_format(@post.message) %>
+              <hr>
+              <div id="disqus_thread"></div>
+            </div>
+
+          </div>
+      </div>
+
+
+      <div class="large-3 columns hide-for-small top_margin">
+          <%= render 'shared/right_navigation' %>
+          <%= render 'search' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <script type="text/javascript">
+    var disqus_shortname = 'buildyourself';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <noscript><%= t(:enable_js) %></noscript>

@@ -17,7 +17,7 @@
 //= require "foundation"
 //= require jquery_nested_form
 //= require_tree .
-//= require jquery.facebox
+
 
 $(document).foundation();
 

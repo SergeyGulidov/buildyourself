@@ -1,0 +1,25 @@
+<% provide(:title, 'Blog') %>
+
+<div class="row post_content_index">
+  <div class="large-12 small-12 columns">
+    <%= render 'shared/flasher' %>
+    <%# render 'shared/admin/admin_panel' %>
+    
+
+    <div class="row ">
+        <div  class="large-9 small-12 columns ">
+        <div id="places">
+          <%= render @posts %>
+       </div>
+
+        <div id="paginator">
+          <%= paginate @posts %>
+        </div>
+      </div>
+
+      <div class="large-3 columns hide-for-small content">
+        <%= render 'search' %>
+     </div>
+    </div>
+  </div>
+</div> 
