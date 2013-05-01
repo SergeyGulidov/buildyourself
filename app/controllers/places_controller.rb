@@ -22,7 +22,9 @@ load_and_authorize_resource
 		else
 			flash[:alert] = nil
 		end
-		expires_in 6.hours, :public => true
+		unless current_user
+			expires_in 6.hours, :public => true
+		end
 	end
 
 	def new
