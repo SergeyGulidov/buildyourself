@@ -10,9 +10,10 @@ class Post < ActiveRecord::Base
   validates :title_lv,    presence: true
 
   translates :message, :title
-
+  
+  scope :latest, order("created_at desc").limit(100)
   scope :recent, order("created_at desc").limit(10)
-  scope :latest, order("created_at desc").all
+
 
 
   def to_param

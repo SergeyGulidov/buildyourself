@@ -3,12 +3,11 @@
   	<%= t('current_lang')%>
   	<% @current_language =  params[:locale] || I18n.default_locale %>
   	<%= image_tag("#{@current_language.to_s}.png", height: '11px', width: '16px') %>
-  	
   </a> 
   <ul class="dropdown">
-    <li class=<%= "#{current_lang_or_not('ru')}" %> >
-    	<%= link_to_unless_current "Русский", locale: "ru" %></li>
     <li class=<%= "#{current_lang_or_not('lv')}" %> >
     	<%= link_to_unless_current "Latviešu", locale: "lv" %></li>
+    <li class=<%= "#{current_lang_or_not('ru')}" %> >
+      <%= link_to_unless_current "Русский", locale: "ru" %></li>
   </ul>
 </li>
