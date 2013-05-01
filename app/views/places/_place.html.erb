@@ -1,7 +1,4 @@
-
-
-<% @place = place %>
-
+<% cache(place) do %> 
 	<div class="place_simple">
 		<div class="row">
 			  <div class="small-12 large-6 columns">
@@ -12,7 +9,30 @@
 			 	</h5>
 			  </div>   
 			  <div class="small-12 large-6 columns">
-			 	 <%= render 'breadcrumbs', object: @place %>
+			 	 <span class="crumbs">
+					<ul class="right" id="crumbs">
+						<% unless params[:action] == "show" %>
+							<li>
+								<%= link_to place.city.city_name, 
+							           		{ controller: :places, action: :index, city: place.city.city_slug} %>
+							</li>
+						<% end %>
+						
+						<% place.categories.each do |category| %>
+					       <li><%= link_to category.category_name, 
+					       		{ controller: :places, action: :index, category: category.category_slug} %></li>
+						<% end %>
+						
+						
+						<% place.types.each do |type| %>
+							<li><%= link_to type.type_name, 
+								{ controller: :places, action: :index, type: type.type_slug} %></li>
+						<% end  %>
+						<li>
+							<a href="#" class="last"><%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) } " %> &nbsp&nbsp </a>
+						</li>
+					</ul>
+					</span>
 			  </div>
 		</div>
 
@@ -38,7 +58,5 @@
 		</div>
 	</div>
 <hr>
-
-
-
+<% end %>
 
