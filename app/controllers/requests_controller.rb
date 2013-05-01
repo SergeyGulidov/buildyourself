@@ -17,6 +17,9 @@ load_and_authorize_resource
       format.html 
       format.json { render json: @request }
     end
+
+    expires_in 7.days, :public => true
+
   end
 
 

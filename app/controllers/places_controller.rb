@@ -22,12 +22,15 @@ load_and_authorize_resource
 		else
 			flash[:alert] = nil
 		end
+		expires_in 6.hours, :public => true
 	end
 
 	def new
 		@place = Place.new 
 		flash.now[:notice] = t(:register_first) unless current_user
 		respond_with(@place)
+
+		expires_in 7.days, :public => true
 	end
 
 	def create
@@ -59,6 +62,8 @@ load_and_authorize_resource
 		@json = get_json_for_map(@place)
 		@place.hits += 1
 		@place.save
+
+		expires_in 6.hours, :public => true
 	end
 
 	def edit

@@ -10,7 +10,7 @@ load_and_authorize_resource
     end
 
 
-    
+    expires_in 12.hours, :public => true
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,6 +22,7 @@ load_and_authorize_resource
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    expires_in 24.hours, :public => true
 
     respond_to do |format|
       format.html # show.html.erb
