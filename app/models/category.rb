@@ -9,7 +9,8 @@ class Category < ActiveRecord::Base
 
   translates :category_name
 
-  scope :categories_all, includes(:types).all
+  scope :categories_all, lambda { includes(:types).all }
+
   def add_count
   	self.count_all += 1
     self.save

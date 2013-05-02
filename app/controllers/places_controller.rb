@@ -59,11 +59,14 @@ load_and_authorize_resource
 		@photos = @place.photos.all
 		@place = Place.includes(:user).find(params[:id])
 		@json = get_json_for_map(@place)
-		@place.hits += 1
-		@place.save
-
-		expires_in 6.hours, :public => true
+		@place.hit
+		if params[:state] == "reload"
+			expires_now
+		else
+			expires_in 6.hours, :public => true
+		end
 	end
+
 
 	def edit
 		@place = Place.find(params[:id])
@@ -73,7 +76,7 @@ load_and_authorize_resource
 	  def update
 	  	@place = Place.find(params[:id])
 	      if @place.update_attributes(params[:place])
-	         redirect_to :action => 'show', :id => @place
+	         redirect_to :action => 'show', :id => @place, state: "reload"
 	      else
 	         @place = Place.find(params[:id])
 	         redirect_to :back

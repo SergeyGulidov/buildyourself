@@ -4,7 +4,7 @@ class City < ActiveRecord::Base
   
   translates :city_name
 
-  scope :cities_all, all
+  scope :cities_all, lambda { all }
 
 
   def add_count

@@ -155,4 +155,9 @@ class Place < ActiveRecord::Base
   end
 
 
+  def hit
+    self.hits += 1
+    self.save
+  end
+
 end
