@@ -27,9 +27,11 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        sign_in(@user, :bypass => true)
         flash[:notice] = t(:user_updated)
         format.html { redirect_to action: "edit" }
         format.json { head :no_content }
+
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }

@@ -58,13 +58,22 @@
                 <% end  %>
               </li>
 
+
           </ul>
 
             <%= f.input :avatar, label: false %>
             <%= f.hidden_field :avatar_cache %>
 
-
-
+            <br>
+      <div class="row content show">
+        <div class="large-10 columns  right_panel content">
+           <h2><%= t(:change_password)  %></h2>
+            <br>
+                  <%= f.input :password, label: t(:password) %>
+                  <%= f.input :password_confirmation, label: t(:password_confirmation) %>
+                  <%= f.button :submit, t(:update), class: 'small button right'  %>
+                  </div>
+                  </div>
 
         </div>
 
@@ -72,7 +81,7 @@
 
       </div>
 
-    <%= f.button :submit, "Update", class: 'small button'  %>
+    <%= f.button :submit, t(:update), class: 'small button'  %>
 
     <% end %>
 <% end %>
