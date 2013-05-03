@@ -12,7 +12,7 @@ BuildYourSelf::Application.routes.draw do
     match '/places/:id/make_approve' => 'places#make_approve'
     match 'places/translate' => 'places#translate'
     match '/places/:id/make_translate/' => 'places#make_translate'
-    #resources :photos
+    resources :photos
     resources :places do
       #member { post :vote }
       #collection { post :q, to: 'products#index' }
