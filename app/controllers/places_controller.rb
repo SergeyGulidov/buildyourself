@@ -1,9 +1,10 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
 
-	before_filter :get_current_user_places, :only => [:index, :home, :new, :edit, :show, :create, :update ]
-	before_filter :get_filter_collections,  :only => [:index, :edit, :show, :new, :make_approve, :create, :update ]
-	before_filter :get_recent_added,  :only => [:index, :edit, :show, :new, :approve, :translate, :create, :update ]
+	before_filter :get_current_user_places
+	before_filter :get_filter_collections
+	before_filter :get_recent_added
+	
 	respond_to :html, :xml, :json
 
 	def index

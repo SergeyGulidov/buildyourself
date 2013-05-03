@@ -10,7 +10,11 @@ load_and_authorize_resource
     end
 
 
-    expires_in 12.hours, :public => true
+    if current_user
+      expires_now
+    else
+      expires_in 12.hours, :public => true
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,7 +26,11 @@ load_and_authorize_resource
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    expires_in 24.hours, :public => true
+    if current_user
+      expires_now
+    else
+      expires_in 12.hours, :public => true
+    end
 
     respond_to do |format|
       format.html # show.html.erb

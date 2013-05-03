@@ -32,6 +32,7 @@ group :assets do
   gem 'zurb-foundation', '~> 4.0.0'
   gem 'foundation-icons-sass-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'turbo-sprockets-rails3'
 end
 
 group :development, :test do
