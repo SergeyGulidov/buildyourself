@@ -20,6 +20,6 @@ class Category < ActiveRecord::Base
   end
   
   def display_name
-    "#{self.category_name} (#{self.places.size}) "
+    "#{self.category_name} (#{self.places.where(approved: 1).size}) "
   end
 end

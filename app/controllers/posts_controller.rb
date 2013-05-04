@@ -26,6 +26,7 @@ load_and_authorize_resource
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+   
     if current_user
       expires_now
     else
@@ -38,8 +39,6 @@ load_and_authorize_resource
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.json
   def new
     @post = Post.new
 
@@ -49,7 +48,6 @@ load_and_authorize_resource
     end
   end
 
-  # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
   end
@@ -70,8 +68,6 @@ load_and_authorize_resource
     end
   end
 
-  # PUT /posts/1
-  # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
 

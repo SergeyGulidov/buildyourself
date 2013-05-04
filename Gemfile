@@ -20,6 +20,7 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'carrierwave-imageoptimizer'
 
 gem 'kaminari'
 gem "select2-rails"
