@@ -23,6 +23,7 @@ class Ability
         can :create, Request
         can :read, Place
         can :read, Post
+        can :create, Feed
       end
 
       if user.role == 3

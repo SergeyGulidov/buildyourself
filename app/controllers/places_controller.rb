@@ -48,13 +48,15 @@ load_and_authorize_resource
 	end
 
 	def show
-		@photos = @place.photos.all
 		@place = Place.includes(:user).find(params[:id])
-		@json = get_json_for_map(@place)
-		@place.hits += 1
-		@place.save
+		@photos = @place.photos.all
+		# @feeds = Feed.where(place_id: @place.id).order("created_at desc").limit(10)
 
-		expires_in 6.hours, :public => true
+		# if current_user.id == @place.user_id
+		# 	@feed = Feed.new
+		# end
+
+		@json = get_json_for_map(@place)
 	end
 
 	def edit

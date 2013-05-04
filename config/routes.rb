@@ -1,4 +1,7 @@
 BuildYourSelf::Application.routes.draw do
+  resources :feeds
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     root :to => 'places#index'

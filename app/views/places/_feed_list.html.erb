@@ -1,0 +1,14 @@
+<% if @feeds.blank? %>
+
+<% else  %>
+  <div class="panel radius right_panel">
+    <ul class="recent">
+    <li class="first"><h5><%= t :place_feed  %></h5></li>
+    <% counter = ["one", "two", "three"]  %>
+    <% @feeds.each_with_index do |feed, index| %>
+      <i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+      <li class="feed <%= counter[index] %>"><%= feed.message %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

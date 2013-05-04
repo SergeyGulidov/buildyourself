@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429180549) do
+ActiveRecord::Schema.define(:version => 20130504125003) do
 
   create_table "brains", :force => true do |t|
   end
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20130429180549) do
     t.string "country_name_ru"
     t.string "country_slug"
   end
+
+  create_table "feeds", :force => true do |t|
+    t.string   "message"
+    t.integer  "place_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "feeds", ["place_id"], :name => "index_feeds_on_place_id"
 
   create_table "photos", :force => true do |t|
     t.integer "place_id"
