@@ -9,6 +9,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
+  include CarrierWave::ImageOptimizer
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -29,6 +30,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   process :resize_to_fill => [254, 154]
+  process :optimize
 
 
   # Process files as they are uploaded:

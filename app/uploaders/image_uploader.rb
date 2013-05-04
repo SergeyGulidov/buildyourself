@@ -5,6 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  include CarrierWave::ImageOptimizer
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -28,12 +29,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+   process :resize_to_fill => [700, 700]
+   process :optimize
+
+
    version :thumb do
      process :resize_to_fill => [250, 150]
    end
 
 
-     process :resize_to_fill => [700, 700]
+
 
      #resize_to_fill
   # Add a white list of extensions which are allowed to be uploaded.

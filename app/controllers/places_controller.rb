@@ -29,8 +29,6 @@ load_and_authorize_resource
 		@place = Place.new 
 		flash.now[:notice] = t(:register_first) unless current_user
 		respond_with(@place)
-
-		expires_in 7.days, :public => true
 	end
 
 	def create
@@ -39,15 +37,8 @@ load_and_authorize_resource
 
 	  respond_to do |format|
 	    if @place.save
-		  if current_user
-		    format.html  { redirect_to(@place,
-            	:notice => t(:new_place_success)) }
-	      	format.json  { render :json => @place,
-	            :status => :created, :location => @place }
-		  else
-		  	flash[:alert] = t(:new_place_success)
-		    format.html  { redirect_to action: 'new' }
-		  end
+		    format.html  { redirect_to(@place, :notice => t(:new_place_success)) }
+	      	format.json  { render :json => @place, :status => :created, :location => @place }
 	    else
 	      format.html  { render :action => "new" }
 	      format.json  { render :json => @place.errors,
@@ -91,7 +82,7 @@ load_and_authorize_resource
 	end
 
 	def approve
-		@places = Place.where(approved: 0)
+		@places = Place.where(approved: 0).order("created_at asc")
 		@json = get_json_for_map(@places)
 		@places = @places.page(params[:page]).per(10)
 	end

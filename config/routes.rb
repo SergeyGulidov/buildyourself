@@ -13,10 +13,10 @@ BuildYourSelf::Application.routes.draw do
     match 'places/translate' => 'places#translate'
     match '/places/:id/make_translate/' => 'places#make_translate'
     resources :photos
-    resources :places do
+    resources :places# do
       #member { post :vote }
       #collection { post :q, to: 'products#index' }
-    end
+    #end
     resources :brains,   :only => [:index]
     resources :requests, :only => [:index, :new, :create, :destroy]
     resources :contacts, :only => [:index, :new, :create, :destroy]

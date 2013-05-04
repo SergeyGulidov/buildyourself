@@ -6,18 +6,7 @@ class City < ActiveRecord::Base
 
   scope :cities_all, all
 
-
-  def add_count
-    self.count_all += 1
-    self.save
-  end
-
-  def minus_count
-    self.count_all -= 1
-    self.save
-  end
-
   def display_name
-    "#{self.city_name} (#{self.places.size}) "
+    "#{self.city_name} (#{self.places.where(approved: 1).size})"
   end
 end

@@ -11,18 +11,8 @@ class Type < ActiveRecord::Base
   validates :type_name, :presence => true, :length => { :in => 3..200 }
 
   scope :types_all, all
-
-  def add_count
-    self.count_all += 1
-    self.save
-  end
-
-  def minus_count
-    self.count_all -= 1
-    self.save
-  end
   
   def display_name
-    "#{self.type_name} (#{self.places.size}) "
+    "#{self.type_name} (#{self.places.where(approved: 1).size}) "
   end
 end
