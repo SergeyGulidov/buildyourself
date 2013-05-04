@@ -1,6 +1,4 @@
 class Place < ActiveRecord::Base
-  
-  include Tire::Model::Search
 
   belongs_to :city
   belongs_to :country
@@ -16,7 +14,7 @@ class Place < ActiveRecord::Base
   has_many :place_votes, :dependent => :destroy
   
 
-  acts_as_gmappable :process_geocoding => true
+  acts_as_gmappable
 
   
   before_save{|place| place.name = place.name.titleize}
@@ -49,7 +47,7 @@ class Place < ActiveRecord::Base
    validates :age_min, :length => { :minimum => 1, :maximum => 3 }
    validates :age_max, :length => { :minimum => 1, :maximum => 3 }
 
-  
+  include Tire::Model::Search
 
   mapping do
         indexes :id,         :index    => :not_analyzed
@@ -128,6 +126,32 @@ class Place < ActiveRecord::Base
       end
 
       return places, type_vip
+  end
+
+  def count_all
+    self.category_ids.each do |category|
+      cat = Category.find(category.to_i)
+      cat.add_count
+    end
+
+    self.type_ids.each do |type|
+      type = Type.find(type.to_i)
+      type.add_count
+    end
+
+    City.find(city_id.to_i).add_count
+
+
+
+         self.category_ids.each do |category|
+       cat = Category.find(category.to_i)
+       cat.minus_count
+     end
+     self.type_ids.each do |type|
+       type = Type.find(type.to_i)
+       type.minus_count
+     end
+     City.find(city_id.to_i).minus_count
   end
 
 

@@ -18,6 +18,6 @@ class City < ActiveRecord::Base
   end
 
   def display_name
-    "#{self.city_name} (#{self.places.where(approved: 1).size}) "
+    "#{self.city_name} (#{self.places.size}) "
   end
 end
