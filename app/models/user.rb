@@ -25,9 +25,6 @@ class User < ActiveRecord::Base
 
   scope :sponsor, User.where(sponsor: 1)
 
- 
-
-
   def total_votes
     PlaceVote.joins(:place).where(places: {user_id: self.id}).sum('value')
   end
@@ -70,10 +67,6 @@ class User < ActiveRecord::Base
   def to_param
     "#{id}-#{name}".parameterize
   end
-
-
-
-
 
 
 end

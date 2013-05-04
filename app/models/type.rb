@@ -10,7 +10,7 @@ class Type < ActiveRecord::Base
 
   validates :type_name, :presence => true, :length => { :in => 3..200 }
 
-  scope :types_all, lambda { all }
+  scope :types_all, all
 
   def add_count
     self.count_all += 1
