@@ -1,5 +1,5 @@
 <%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
-    <% field_set_tag "Edit this place" do %>
+    <% field_set_tag "Admin Edit" do %>
 
     <%= render 'shared/errors', object: @place%>
  
@@ -51,9 +51,9 @@
 
 
         <div class="large-6 columns">
-          <%= f.input :approved, label: "Do you approve this place (0 no, 1 yes, 2 need info)?" %>
-          <%= f.input :translated, label: "Do you translate this place?" %>
-          <%= f.input :vip, label: "Vip place?" %>
+          <%= f.input :approved, label: "Approve? 0 - no, 1 - yes, 2 - need info" %>
+          <%= f.input :translated, label: "Translated ? 0 - no, 1 - yes" %>
+          <%= f.input :vip, label: "Vip? 0 - no, 1 - yes" %>
           <%= link_to "Destroy", @place, :method => :delete,
                             class: "button alert radius small expand", data: { confirm: 'Are you sure?' }  %>
         </div>

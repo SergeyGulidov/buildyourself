@@ -33,3 +33,13 @@ jQuery ->
 			$('#place_type_ids').html(options)
 		else
 			$('#place_type_ids').empty()
+
+
+$("#feed_message").keyup ->
+  max = 255
+  len = $(this).val().length
+  if len >= max
+    $("#charNum").text " 0 "
+  else
+    char = max - len
+    $("#charNum").text char 

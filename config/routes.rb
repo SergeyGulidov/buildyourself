@@ -1,5 +1,5 @@
 BuildYourSelf::Application.routes.draw do
-  resources :feeds
+  
 
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
@@ -29,5 +29,6 @@ BuildYourSelf::Application.routes.draw do
     resources :users
     resources :types
     resources :posts
+    resources :feeds, :only => [:index, :create, :destroy]
   end
 end

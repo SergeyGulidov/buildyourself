@@ -1,32 +1,33 @@
 <% if @contacts.blank? %>
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="row">
-	           <p> We don't have any contact invoices</p>
-            </div>
-        </div>
-    </div>
+<div class="row content">
+  <div class="small-8 small-centered columns">
+     <p> We don't have any contact invoices</p>
+  </div>
+</div>
 <% else %>
-	<div class="row contact_show content" >
-        <div class="large-12 columns">
+    <div class="row content">
+      <div class="small-8 small-centered columns">
+        <%= render 'shared/flasher' %>
+        <%= render 'shared/admin/admin_panel' %>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Email</th>
+              <th>Text</th>
+              <th></th>
+            </tr>
+          </thead>
 
-			<% @contacts.each do |c| %>
-
-				<div class="row ">
-            		<div class="large-3 columns">
-                            <h6><%= c.email %></h6>
-                            <h5><small><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></small></h5>
-            		</div>
-            		<div class="large-7 columns">
-                		<p><%= c.body %></p>
-            		</div>
-            		<div class="large-2 columns centered " >
-                		<%= link_to "", c, :method => :delete,
-                            class: "general-enclosed foundicon-remove"%>
-            		</div>
-				</div>
-                <hr>
-			<% end %>
-		</div>
-	</div>
+          <% @contacts.each do |c| %>
+            <tr>
+              <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
+              <td><%= c.email %></td>
+              <td><%= c.body %></td>
+              <td><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
 <% end %>

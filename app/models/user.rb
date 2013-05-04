@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     :presence => true,
     :uniqueness => true
 
-  scope :sponsor, User.where(sponsor: 1)
+  scope :sponsor, User.where(sponsor: 1).first
 
   def total_votes
     PlaceVote.joins(:place).where(places: {user_id: self.id}).sum('value')

@@ -1,26 +1,28 @@
 
 <% if can? :make_approve, Place %>
 <div class="row">
-	<div class="large-12 small-12 columns">
+	<div class="large-12 columns">
 
 <ul class="button-group radius">
-          <li><a href="#" class="small button dropdown " data-dropdown="drop1" >Cities</a></li>
-          <li><a href="#" class="small button dropdown " data-dropdown="drop2">Countries</a></li>
-          <li><a href="#" class="small button dropdown " data-dropdown="drop5">Categories</a></li>
-          <li><a href="#" class="small button dropdown " data-dropdown="drop3">Types</a></li>
+          <li><a href="#" class="tiny button dropdown " data-dropdown="drop1" >Cities</a></li>
+          <li><a href="#" class="tiny  button dropdown " data-dropdown="drop2">Countries</a></li>
+          <li><a href="#" class="tiny  button dropdown " data-dropdown="drop5">Categories</a></li>
+          <li><a href="#" class="tiny  button dropdown " data-dropdown="drop3">Types</a></li>
 
 
 
           <% counter = Contact.find(:all).size %>
-          <li><%= link_to "Contacts - #{counter}", contacts_path, class: "small button " %></li>
+          <li><%= link_to "Contacts - #{counter}", contacts_path, class: "tiny  button " %></li>
           <% counter = User.find(:all).size  %>
-          <li><%= link_to "Users - #{counter}", users_path, class: "small button " %></li>
+          <li><%= link_to "Users - #{counter}", users_path, class: "tiny  button " %></li>
           <% counter = Place.where(approved: 0).size  %>
-          <li><%= link_to "Places to approve - #{counter}", places_approve_path, class: "small button " %></li>
+          <li><%= link_to "To approve - #{counter}", places_approve_path, class: "tiny  button " %></li>
           <% counter = Place.where(translated: 0, approved: 1).size  %>
-          <li><%= link_to "Places to translate - #{counter}", places_translate_path, class: "small button " %></li>
+          <li><%= link_to "To translate - #{counter}", places_translate_path, class: "tiny  button " %></li>
           <% counter = Request.all.size  %>
-          <li><%= link_to "Requests - #{counter}", requests_path, class: "small button " %></li>
+          <li><%= link_to "Requests - #{counter}", requests_path, class: "tiny  button " %></li>
+          <% counter = Feed.all.size  %>
+          <li><%= link_to "Feeds - #{counter}", feeds_path, class: "tiny  button " %></li>
 </ul>
 
 
@@ -47,14 +49,17 @@
 <% elsif can? :make_translate, Place %>
 
 <div class="row">
-  <div class="large-12 small-12 columns">
+  <div class="large-12 columns">
   <ul class="button-group radius">
 
           <% counter = User.find(:all).size  %>
-          <li><%= link_to "Users - #{counter}", users_path, class: "small button " %></li>
+          <li><%= link_to "Users - #{counter}", users_path, class: "tiny  button " %></li>
 
           <% counter = Place.where(translated: 0).size  %>
-          <li><%= link_to "Places to translate - #{counter}", places_translate_path, class: "small button " %></li>
+          <li><%= link_to "To translate - #{counter}", places_translate_path, class: "tiny  button " %></li>
+
+          <% counter = Feed.all.size  %>
+          <li><%= link_to "Feeds - #{counter}", feeds_path, class: "tiny  button " %></li>
   </ul>
 
 </div>

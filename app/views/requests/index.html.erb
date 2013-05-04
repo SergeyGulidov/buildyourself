@@ -1,26 +1,27 @@
 <div class="row content">
   <div class="small-8 small-centered columns">
-    <h5>Listing requests</h5>
-
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
     <table>
-      <tr>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>When</th>
-        <th>Created</th>
-        <th></th>
-        <th></th>
-      </tr>
-
-    <% @requests.each do |request| %>
-      <tr>
-        <td><%= request.phone %></td>
-        <td><%= request.address %></td>
-        <td><%= request.when %></td>
-        <td><%= request.created_at.strftime("%d %b. %Y") %></td>
-        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      <thead>
+        <tr>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>When</th>
+          <th>Created</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= request.phone %></td>
+          <td><%= request.address %></td>
+          <td><%= request.when %></td>
+          <td><%= request.created_at.strftime("%d %b. %Y") %></td>
+          <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

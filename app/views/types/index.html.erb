@@ -1,36 +1,34 @@
-<div class="row">
+<div class="row content">
   <div class="small-8 small-centered columns">
-                <h1>Listing types</h1>
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name lv</th>
+            <th>Name ru</th>
+            <th>Slug</th>
+            <th>#</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
 
-                <table>
-                    <thead>
+      <% @types.each do |type| %>
 
-                  <tr>
-                    <th>Id</th>
-                    <th>Name lv</th>
-                    <th>Name ru</th>
-                    <th>Slug</th>
-                    <th>#</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-
-                <% @types.each do |type| %>
-
-                <tbody>
-                  <tr>
-                    <td><%= type.id %></td>
-                    <td><%= type.type_name_lv %></td>
-                    <td><%= type.type_name_ru %></td>
-                    <td><%= type.type_slug %></td>
-                    <td><%= type.places.size %></td>
-                    <td><%= link_to 'Edit', edit_type_path(type) %></td>
-                    <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                  </tbody>
-                <% end %>
-                </table>
-        <%= link_to 'New type', new_type_path, class: "small button" %>
+      <tbody>
+        <tr>
+          <td><%= type.id %></td>
+          <td><%= type.type_name_lv %></td>
+          <td><%= type.type_name_ru %></td>
+          <td><%= type.type_slug %></td>
+          <td><%= type.places.size %></td>
+          <td><%= link_to 'Edit', edit_type_path(type) %></td>
+          <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
+        </tr>
+        </tbody>
+      <% end %>
+      </table>
     </div>
 </div>

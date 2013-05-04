@@ -1,9 +1,9 @@
 <%= simple_form_for(@feed) do |f| %>
-  <%= f.error_notification %>
 
-  <%= f.input :message, as: :text, label: false, input_html: { maxlength: 255 } %>
+  <%= f.input :message, as: :text, label: false, input_html:{maxlength: 255 }, placeholder: t(:max_255) %>
   <%= f.hidden_field :place_id, :value => @place.id %>
   <div class="form-actions">
+    <div  class="left remaining"><%= t(:remaining) %> <b id="charNum"> 255</b></div>
     <%= f.button :submit, class: "tiny button radius secondary right" %>
   </div>
 <% end %>

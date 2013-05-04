@@ -1,23 +1,20 @@
-<div class="row">
+<div class="row content">
   <div class="small-8 small-centered columns">
-      <h1>Listing countries</h1>
-
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
       <table>
-          <thead>
-
-        <tr>
-          <th>Id</th>
-          <th>Name lv</th>
-          <th>Name ru</th>
-          <th>Slug</th>
-          <th>#</th>
-          <th></th>
-          <th></th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name lv</th>
+            <th>Name ru</th>
+            <th>Slug</th>
+            <th>#</th>
+            <th></th>
+            <th></th>
+          </tr>
         </thead>
-
       <% @countries.each do |country| %>
-
       <tbody>
         <tr>
           <td><%= country.id %></td>
@@ -26,12 +23,11 @@
           <td><%= country.country_slug %></td>
           <td><%= country.places.size %></td>
           <td><%= link_to 'Edit', edit_country_path(country) %></td>
-          <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
         </tr>
         </tbody>
       <% end %>
-      </table>
-    <%= link_to 'New country', new_country_path, class: "small button" %>
+    </table>
   </div>
 </div>
 

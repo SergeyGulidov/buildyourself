@@ -60,9 +60,9 @@
 
       <div class="large-3 columns hide-for-small">
           <%= render 'shared/right_navigation' %>
-          <%# render 'feed_list' %>
-
-          <%# render 'feeds/form' unless @feed.blank? %>
+          <%= render 'feed_list' %>
+          <%= render 'feeds/form' if @feed and current_user.id == @place.user_id %>
+          
       </div>
     </div>
   </div>

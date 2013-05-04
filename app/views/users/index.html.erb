@@ -1,48 +1,35 @@
-<div class="row">
+<div class="row content">
   <div class="small-8 small-centered columns">
-                <h1>Listing users</h1>
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Count</th>
+          <th>Created</th>
+          <th>Places</th>
+          <th>Sponsor</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-                <table>
-                    <thead>
-
-                  <tr>
-                    <th>Id</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Count</th>
-                    <th>created_at</th>
-                    <th>#</th>
-                    <th>Sponsor?</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-
-                <% @users.each do |user| %>
-
-                <tbody>
-                  <tr>
-                    <td><%= user.id %></td>
-                    <td><%= user.email %></td>
-                    <td><%= user.role == 1 ? "admin" : "user" %></td>
-                    <td><%= user.sign_in_count %></td>
-                    <td><%= user.created_at.strftime("%d %b. %Y") %></td>
-                    <td>
-                          <% count = 0 %>
-                          <% user.places.each do |place| %>
-                            <% count += 1 %>
-                          <% end %>
-
-                          <%= count %>
-
-                    </td>
-                    <td><%= user.sponsor.to_i == 1 ? "yes" : "no" %></td>
-                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                  </tbody>
-                <% end %>
-                </table>
-        <%= link_to 'New user', new_user_registration_path, class: "small button" %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role == 1 ? "admin" : "user" %></td>
+          <td><%= user.sign_in_count %></td>
+          <td><%= user.created_at.strftime("%d.%m.%Y  %H:%M") %></td>
+          <td><%= user.places.size %></td>
+          <td><%= user.sponsor.to_i == 1 ? "yes" : "no" %></td>
+          <td><%= link_to 'Edit', edit_user_path(user) if user.role == 2 %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } if user.role == 2 %></td>
+        </tr>
+      <% end %>
+    </table>
     </div>
 </div>

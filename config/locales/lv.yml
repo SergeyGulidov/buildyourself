@@ -155,6 +155,13 @@ lv:
   blog_search: Meklēt blogā...
   recent_added_blog_posts: Pēdējie ieraksti blogā
   
+
+#--------------- Feed
+  max_255: Maksimums 255 simboli
+  no_feeds: Lietotājs vēl nav pievienojis jaunumus.
+  feed_list: Ziņu lente
+  remaining: Atlicis 
+
 #------------------------------------------------------------------------------------------------------------
   date:
     abbr_day_names:
@@ -407,6 +414,7 @@ lv:
       <<: *errors
     models:
       place: Vieta
+      feed:  ziņas
     attributes:
       place:
         name: Nosaukums

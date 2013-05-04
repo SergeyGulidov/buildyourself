@@ -1,9 +1,9 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
 
-	before_filter :get_current_user_places
+	before_filter :get_current_user_places, only: [:index]
 	before_filter :get_filter_collections
-	before_filter :get_recent_added
+	before_filter :get_recent_added, only: [:create, :new]
 	
 	respond_to :html, :xml, :json
 
@@ -50,11 +50,11 @@ load_and_authorize_resource
 	def show
 		@place = Place.includes(:user).find(params[:id])
 		@photos = @place.photos.all
-		# @feeds = Feed.where(place_id: @place.id).order("created_at desc").limit(10)
+		@feeds ||= Feed.where(place_id: @place.id).order("created_at desc").limit(5)
 
-		# if current_user.id == @place.user_id
-		# 	@feed = Feed.new
-		# end
+		if current_user and current_user.id == @place.user_id
+		   @feed = Feed.new
+		end
 
 		@json = get_json_for_map(@place)
 	end
@@ -85,7 +85,6 @@ load_and_authorize_resource
 
 	def approve
 		@places = Place.where(approved: 0).order("created_at asc")
-		@json = get_json_for_map(@places)
 		@places = @places.page(params[:page]).per(10)
 	end
 
@@ -109,7 +108,6 @@ load_and_authorize_resource
 
 	def translate
 		@places = Place.includes(:photos).where(translated: 0, approved: 1)
-		@json = get_json_for_map(@places)
 		@places = @places.page(params[:page]).per(10)
 	end
 

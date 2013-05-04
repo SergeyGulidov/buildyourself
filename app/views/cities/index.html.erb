@@ -1,23 +1,23 @@
-<div class="row">
+<div class="row content">
   <div class="small-8 small-centered columns">
-      <h1>Listing cities</h1>
+      <%= render 'shared/flasher' %>
+      <%= render 'shared/admin/admin_panel' %>
 
       <table>
-          <thead>
+        <thead>
 
-        <tr>
-          <th>Id</th>
-          <th>Name lv</th>
-          <th>Name ru</th>
-          <th>Slug</th>
-          <th>#</th>
-          <th></th>
-          <th></th>
-        </tr>
+          <tr>
+            <th>Id</th>
+            <th>Name lv</th>
+            <th>Name ru</th>
+            <th>Slug</th>
+            <th>#</th>
+            <th></th>
+            <th></th>
+          </tr>
         </thead>
 
       <% @cities.each do |city| %>
-
       <tbody>
         <tr>
           <td><%= city.id %></td>
@@ -26,12 +26,11 @@
           <td><%= city.city_slug %></td>
           <td><%= city.places.size %></td>
           <td><%= link_to 'Edit', edit_city_path(city) %></td>
-          <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
         </tr>
         </tbody>
       <% end %>
-      </table>
-    <%= link_to 'New city', new_city_path, class: "small button" %>
+    </table>
   </div>
 </div>
 
