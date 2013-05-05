@@ -782,25 +782,25 @@ $panel-bg: #E3E3E3;
 //
 
 // We use these to set padding and hover factor
-// $section-padding: emCalc(15px);
-// $section-function-factor: 10%;
+ $section-padding: emCalc(13px);
+ $section-function-factor: 0%;
 
 // These style the titles
-$section-title-color: #464A4C;
-$section-title-bg: #defffb;
-$section-title-bg-active: #fffef8;
+//$section-title-color: #464A4C;
+//$section-title-bg: #bee9e9;
+//$section-title-bg-active: #bee9e9;
 
-//$section-title-bg-active-tabs: none;
+//$section-title-bg-active-tabs: #222;
 
 // Want to control border size, here ya go!
- $section-border-size: 1px 1px 0px 1px ;
+//$section-border-size: 1px 1px 0px 1px ;
 // $section-border-style: solid;
 // $section-border-color: #ccc;
 
 // Control the color of the background and some size options
- $section-content-bg: #fffef8;
+// $section-content-bg: #fffef8;
 // $section-vertical-nav-min-width: emCalc(200px);
-$section-bottom-margin: 0;
+//$section-bottom-margin: 0;
 
 //
 // Side Nav Variables
@@ -974,11 +974,11 @@ $topbar-bg: #FfFFFF;
 
 // Set the link colors and styles for top-level nav
  $topbar-link-color: #444;
-// $topbar-link-weight: bold;
-// $topbar-link-font-size: emCalc(13px);
+ $topbar-link-weight: bolder;
+ $topbar-link-font-size: emCalc(10px);
 
 // Style the top bar dropdown elements
- $topbar-dropdown-bg: #FFFF88;
+ $topbar-dropdown-bg: #f9fdfd;
  $topbar-dropdown-link-color: #464A4C;
 // $topbar-dropdown-toggle-size: 5px;
  $topbar-dropdown-toggle-color: #333;
@@ -986,8 +986,8 @@ $topbar-bg: #FfFFFF;
  $dropdown-label-color: #fff;
 
 // Top menu icon styles
-// $topbar-menu-link-transform: uppercase;
-// $topbar-menu-link-font-size: emCalc(13px);
+ $topbar-menu-link-transform: uppercase;
+ $topbar-menu-link-font-size: emCalc(10px);
 // $topbar-menu-link-weight: bold;
  $topbar-menu-link-color: #464A4C;
  $topbar-menu-icon-color: #464A4C;
