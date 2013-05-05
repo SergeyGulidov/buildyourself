@@ -414,7 +414,7 @@ lv:
       <<: *errors
     models:
       place: Vieta
-      feed:  ziņas
+      feed:  ziņu
     attributes:
       place:
         name: Nosaukums

@@ -23,6 +23,10 @@
 					<li class="<%= 'active' if current_page?(:controller => 'places', :action => 'new') %>">
 		              <%= link_to t(:add_new_place), :controller => :places, :action => :new  %> 
 		            </li>
+					<li class="divider"></li>
+					<li>
+		              <%= link_to t(:profile), edit_user_path(current_user) %>
+		            </li>
 		        <% else  %>
 					<li class="divider"></li>
 					<li>

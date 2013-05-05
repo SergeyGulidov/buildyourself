@@ -14,7 +14,7 @@ load_and_authorize_resource
 
   def edit
     @user = User.find(params[:id])
-    @current_user_places ||= Place.where("user_id = ?", current_user.id ).all if current_user
+    @current_user_places ||= Place.where("user_id = ?", @user.id ).all
   end
 
   def show
@@ -23,6 +23,11 @@ load_and_authorize_resource
   end
 
   def update
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     @user = User.find(params[:id])
 
     respond_to do |format|
