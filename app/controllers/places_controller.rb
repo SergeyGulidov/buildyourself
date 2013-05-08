@@ -50,7 +50,8 @@ load_and_authorize_resource
 	def show
 		@place = Place.includes(:user).find(params[:id])
 		@photos = @place.photos.all
-		@feeds ||= Feed.where(place_id: @place.id).order("created_at desc").limit(5)
+		@feeds ||= Feed.where(place_id: @place.id, user_id: @place.user_id ).order("created_at desc").limit(5)
+		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
 
 		if current_user and current_user.id == @place.user_id
 		   @feed = Feed.new

@@ -23,7 +23,14 @@ class Ability
         can :create, Request
         can :read, Place
         can :read, Post
+        can :create,  Post
+        can :edit, Post,      :user_id => user.id
+        can :update, Post,    :user_id => user.id
+        can :destroy, Post,    :user_id => user.id
+
         can :create, Feed
+        can :destroy, Feed,    :user_id => user.id
+
       end
 
       if user.role == 3
@@ -45,7 +52,6 @@ class Ability
       end
 
     end
-      #can :read, Place
       can :create, Contact
       can :index,  Brain
       can :show,   User

@@ -12,10 +12,12 @@ load_and_authorize_resource
 
   def create
     @feed = Feed.new(params[:feed])
+    @feed.user_id = current_user.id
+    
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to :back, notice: 'Feed was successfully created.' }
+        format.html { redirect_to :back, notice: t(:success) }
         format.json { render json: @feed, status: :created, location: @feed }
       else
         format.html { redirect_to :back, alert: 'Something went wrong.'  }
@@ -29,7 +31,7 @@ load_and_authorize_resource
     @feed.destroy
 
     respond_to do |format|
-      format.html { redirect_to feeds_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

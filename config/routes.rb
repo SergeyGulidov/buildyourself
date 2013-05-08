@@ -1,8 +1,8 @@
 BuildYourSelf::Application.routes.draw do
-  
-
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
+    
 
     root :to => 'places#index'
     devise_for :users, :controllers => {
@@ -15,6 +15,8 @@ BuildYourSelf::Application.routes.draw do
     match '/places/:id/make_approve' => 'places#make_approve'
     match 'places/translate' => 'places#translate'
     match '/places/:id/make_translate/' => 'places#make_translate'
+    match '/posts/unapproved' => 'posts#unapproved'
+    match '/posts/approve' => 'posts#approve'
     resources :photos
     resources :places# do
       #member { post :vote }

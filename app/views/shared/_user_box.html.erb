@@ -9,7 +9,7 @@
       <% end  %>
     </li>
 
-    <li><h4 style="text-align: center"><%= @place.user.name unless @place.user.name.blank? %></h4></li>
+    <li><h4 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h4></li>
     <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr></li>
 
     <li><p class="contact_info">

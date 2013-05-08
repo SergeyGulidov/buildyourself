@@ -1,3 +1,5 @@
+ <%= simple_form_for @user, html: { :multipart => true } do |f| %>
+
     <div class="row">
       <div class="small-4 small-centered columns">
         <div id="featured">
@@ -8,10 +10,17 @@
 
 <%= render 'shared/flasher' %>
 
-<%= simple_form_for @user, html: { :multipart => true } do |f| %>
-    <% field_set_tag t(:edit_your_data) do %>
+<div class="row">
+  <div class="large-10 large-centered columns">
+
+<div class="section-container auto" data-section>
+  <section>
+    <p class="title" data-section-title><a href="#panel1"><%= t(:edit_your_data) %></a></p>
+    <div class="content" data-section-content>
+    <br>
       <div class="row">
-        <div class="large-4 columns">
+
+        <div class="large-5 columns">
             <% if can? :make_approve, Place %>
               <%= f.input :sponsor, label: "This user is sponsor ?" %>
             <% end %>
@@ -27,27 +36,10 @@
             <%= f.input :about_ru, label: t(:about_you) + " (ru):" %>
             <%= f.input :about_lv, label: t(:about_you) + " (lv):" %>
         </div>
-        <div class="large-4 columns">
-          <% unless @current_user_places.blank? %>
-
-              <ul class="your_place_list">
-                <% @current_user_places.each do |place| %>
-                  <li>
-
-                  <%= raw (t(:published)) if place.approved == 1 %>
-                  <%= raw (t(:waiting)) if place.approved == 0 %>
-                  <%= raw (t(:need_info)) if place.approved == 2 %>
-                  <%= link_to place.name, place %>&nbsp&raquo;&nbsp 
-                    <%= link_to t(:edit), edit_place_path(place) %>
-                  </li>
-
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
+        
 
 
-        <div class="large-4 columns">
+        <div class="large-5 columns large-offset-2">
           <ul class="large-block-grid-1">
               <li>
                 <% if @user.avatar.blank? %>
@@ -57,31 +49,72 @@
                     class: "th radius"  %>
                 <% end  %>
               </li>
-
-
           </ul>
 
             <%= f.input :avatar, label: false %>
             <%= f.hidden_field :avatar_cache %>
 
-            <br>
-      <div class="row content show">
-        <div class="large-10 columns  right_panel content">
-           <h2><%= t(:change_password)  %></h2>
-            <br>
-                  <%= f.input :password, label: t(:password) %>
-                  <%= f.input :password_confirmation, label: t(:password_confirmation) %>
-                  <%= f.button :submit, t(:update), class: 'small button right'  %>
-                  </div>
-                  </div>
 
+          <br>
+          <div class="large-10 columns">
+             <h5><%= t(:change_password)  %></h5>
+              <br>
+                    <%= f.input :password, label: t(:password) %>
+                    <%= f.input :password_confirmation, label: t(:password_confirmation) %>
+          </div>
         </div>
 
+    
 
-
+    </div>
+    <div class="row">
+      <div class="large-3 columns right">
+        <%= f.button :submit, t(:update), class: 'tiny button  expand'  %>
       </div>
+    </div>
+    </div>
+  </section>
 
-    <%= f.button :submit, t(:update), class: 'small button'  %>
 
-    <% end %>
+
+
+
+  <section>
+    <p class="title" data-section-title><a href="#panel2"><%= t(:publications) %></a></p>
+    <div class="content" data-section-content>
+
+          <% unless @current_user_places.blank? %>
+
+              <ul class="your_place_list">
+                <% @current_user_places.each do |place| %>
+                  <li>
+
+                  <%= raw (t(:published)) if place.approved == 1 %>
+                  <%= raw (t(:waiting)) if place.approved == 0 %>
+                  <%= raw (t(:need_info)) if place.approved == 2 %>
+                  <%= link_to place.name, place %>
+                    <%= link_to " ", edit_place_path(place), class: "comments general foundicon-edit" %>
+                  </li>
+
+              <% end %>
+            </ul>
+          <% end %>
+          <% unless @current_user_posts.blank? %>
+            <ul class="your_place_list">
+                <% @current_user_posts.each do |post| %>
+                  <li>
+                    <%= link_to post.title, post %> <%= link_to " ", edit_post_path(post), class: "comments general foundicon-edit" %>
+                  </li>
+              <% end %>
+            </ul>
+
+          <% end  %>
+
+  </section>
+</div>
+
+
+
+</div>
+</div>
 <% end %>

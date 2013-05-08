@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :places
   has_many :place_votes
+  has_many :posts
+  has_many :feeds
+  
 
   translates :about
   

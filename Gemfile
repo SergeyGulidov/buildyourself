@@ -16,6 +16,7 @@ gem 'nested_form'
 gem 'devise'
 gem "cancan"
 
+
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'

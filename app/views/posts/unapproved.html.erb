@@ -1,0 +1,25 @@
+<div class="row content">
+  <div class="small-8 small-centered columns">
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Message</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, post %></td>
+          <td><%= simple_format(truncate( post.message, :length => 300, :separator => '. ', :omission => '.') ) %></td>
+          <td><%= link_to 'Approve', :controller => :posts, :action => :approve, id: post.id %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

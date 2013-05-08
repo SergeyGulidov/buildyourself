@@ -148,7 +148,6 @@ ru:
 
   no_feeds: Пользователь пока не добавил новостей
   max_255: Максимум 255 символов.
-  no_feeds: Пользователь еще не добавил новостей
   feed_list: Лента новостей
   remaining: Осталось 
 
@@ -158,6 +157,21 @@ ru:
   blog: Блог
   blog_search: Поиск по блогу...
   recent_added_blog_posts: Последние записи в блоге
+  create_post: Создать
+  no_posts: Записей нет.
+  post_list: Публикации пользователя
+  title_lv: Заголовок на латышском
+  title_ru: Заголовок на русском
+  add_image: Добавить изображение
+  your_posts: Ваши записи в блоге
+  posted_by: Автор
+  sure_question: Вы уверенны?
+  destroy: Удалить запись
+  success: Успешно опубликовано
+  place_list: Все места пользователя
+  publications: Публикации
+
+
   views:
     pagination:
       previous: "&lt; Previous"
@@ -439,8 +453,9 @@ ru:
     errors:
       <<: *errors
     models:
-      place: Место
-      feed:  ziņu
+      place: место
+      feed:  новость
+      post: запись
     attributes:
       place:
         name: Название

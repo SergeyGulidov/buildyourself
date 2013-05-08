@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 load_and_authorize_resource
 
+
+
+
   def index
     if params[:search].blank?
       posts = Post.latest
@@ -11,9 +14,7 @@ load_and_authorize_resource
 
 
     if current_user
-      expires_now
-    else
-      expires_in 12.hours, :public => true
+      @current_user_posts = Post.current_posts(current_user.id)
     end
 
     respond_to do |format|
@@ -23,12 +24,10 @@ load_and_authorize_resource
   end
 
   def show
-    @post = Post.find(params[:id])
-    
+    @post = Post.includes(:user).find(params[:id])
+
     if current_user
-      expires_now
-    else
-      expires_in 12.hours, :public => true
+      @current_user_posts = Post.current_posts(current_user.id)
     end
 
     respond_to do |format|
@@ -52,10 +51,11 @@ load_and_authorize_resource
 
   def create
     @post = Post.new(params[:post])
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: t(:success) }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -69,7 +69,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: t(:success) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -87,4 +87,18 @@ load_and_authorize_resource
       format.json { head :no_content }
     end
   end
+
+  def unapproved
+    @posts = Post.unapproved
+  end
+
+  def approve
+    @post = Post.find(params[:id])
+    if current_user.role == 1
+      @post.approved = 1
+      @post.save
+      redirect_to :back
+    end
+  end
+
 end

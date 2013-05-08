@@ -12,8 +12,13 @@
 	    <ul class="recent">
 	    <li class="first"><h5><%= t :feed_list   %></h5></li>
 	    <% @feeds.each do |feed| %>
-	      <i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
-	      <li class="feed"><%= feed.message %></li>
+	      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i>
+	      	<% if can? :destroy, feed %>
+               <%= link_to "", feed, method: :delete, data: { confirm: t(:sure_question) }, class: "comments general foundicon-remove" %>
+            <% end %>
+
+	       </br>
+	      <%= feed.message %></li>
 	    <% end %>
 	   </ul>
 	</div>

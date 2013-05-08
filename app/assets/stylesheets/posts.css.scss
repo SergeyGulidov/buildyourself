@@ -12,11 +12,6 @@
 	color: #3CB5B5;
 }
 
-.post img{
-    margin-left: 20px;
-}
-
-
 .show_posts{
 	margin-top: 30px;
 }
@@ -31,12 +26,14 @@
 	line-height: 20px;
 	font-weight: normal;
 	color: #999;
-	margin-bottom: 40px;
 }
 
 .post img{
 	margin-top: 13px;
+	margin-left: 20px;
 }
+
+.show_posts img{margin-top:40px;}
 
 
 .post_content_index{
@@ -59,4 +56,11 @@
 .place_simple .post h6{
 	margin-right:20px;
 	margin-top: -15px;
+}
+.image_box{
+	padding-top:30px;
+}
+
+.general {
+	vertical-align: -10%;
 }

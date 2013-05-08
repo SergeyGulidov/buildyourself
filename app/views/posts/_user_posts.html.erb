@@ -1,0 +1,26 @@
+<% if @current_user_posts.blank? %>
+	<div class="panel radius right_panel">
+	    <ul class="recent">
+	    <li class="first"><h5><%= t :your_posts  %></h5></li>
+	    <li><%= t :no_posts  %></li>
+		<%= link_to t(:create_post), new_post_path, class: "button tiny expand radius" %>
+	 	</ul>
+	</div>
+
+
+<% else  %>
+	<div class="panel radius right_panel">
+	    <ul class="recent">
+	    <li class="first"><h5><%= t :your_posts   %></h5></li>
+	    <% @current_user_posts.each do |post| %>
+	      <li class="feed">
+	      	  <i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+		      <%= link_to post.title, post %>
+	          <%= link_to "", edit_post_path(post), class: "comments general foundicon-edit" %>
+	      </li>
+	    <% end %>
+	    <br>
+        <%= link_to t(:create_post), new_post_path, class: "button tiny expand radius" %>
+	   </ul>
+	</div>
+<% end %>

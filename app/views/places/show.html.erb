@@ -26,7 +26,10 @@
       
       <div class="small-7 large-6 columns">
 
-            <h2><%= @place.name %></h2>
+            <h2><%= @place.name %>                    
+            <% if can? :edit, @place %>
+              <%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %>
+            <% end %></h2>
 
 
           <div class="show_page_bread">
@@ -61,7 +64,9 @@
       <div class="large-3 columns hide-for-small">
           <%= render 'shared/right_navigation' %>
           <%= render 'feed_list' %>
-          <%= render 'feeds/form' if @feed and current_user.id == @place.user_id %>
+          <%= render 'feeds/form' if @feed %>
+          <hr>
+          <%= render 'blog_list' %>
       </div>
     </div>
   </div>

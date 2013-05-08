@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504125003) do
+ActiveRecord::Schema.define(:version => 20130508154217) do
 
   create_table "brains", :force => true do |t|
   end
@@ -55,8 +55,9 @@ ActiveRecord::Schema.define(:version => 20130504125003) do
   create_table "feeds", :force => true do |t|
     t.string   "message"
     t.integer  "place_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "user_id",    :default => 1
   end
 
   add_index "feeds", ["place_id"], :name => "index_feeds_on_place_id"
@@ -105,11 +106,13 @@ ActiveRecord::Schema.define(:version => 20130504125003) do
     t.string   "title_lv"
     t.text     "message_lv"
     t.text     "message_ru"
-    t.string   "author"
     t.string   "image"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "hits",       :default => 0
+    t.integer  "user_id"
+    t.string   "file"
+    t.integer  "approved",   :default => 0
   end
 
   add_index "posts", ["id"], :name => "index_posts_on_id"

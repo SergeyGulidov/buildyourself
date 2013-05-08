@@ -1,23 +1,37 @@
 <div class="place_simple">
     <div class="row post">
-
-        <div class="large-5 columns">
-            <ul class="clearing-thumbs" data-clearing >
-                 <li> <%= link_to (image_tag post.image.url(:thumb), class: "th radius"), post.image.url %></li>
-            </ul>
-        </div>
-        <div class="large-7 columns">
-            <h1><%= link_to post.title, post%>
-                <% if can? :edit, Post %>
-                    <%= link_to "Edit", edit_post_path(post) %> 
-                    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    <%= link_to 'New Post', new_post_path %>
-                <% end %>
-            </h1>
-            <p><%= simple_format(truncate( post.message, :length => 300, :separator => '. ', :omission => '.') )%></p>
-            <h6 class="right"><small><%= link_to t(:read_more), post %></small></h6>      
-        </div>
-
+        <% unless post.image.blank? %>
+            <div class="large-7 columns">
+                <h1><%= link_to post.title, post%>
+                    <% if can? :edit, post %>
+                        <%= link_to "", edit_post_path(post), class: "comments general foundicon-edit" %>
+                    <% end %>
+                </h1>
+                <p><%= simple_format(truncate( post.message, :length => 300, :separator => '. ', :omission => '.') )%></p>
+                <h6 class="left"><small><%= t(:posted_by) %>  <%= link_to post.user.name, post.user %></small></h6>
+                <h6 class="right"><small><%= link_to t(:read_more), post %></small></h6>      
+                
+            </div>
+            <div class="large-5 columns">
+                <ul class="clearing-thumbs" data-clearing >
+                     <li> <%= link_to (image_tag post.image.url(:thumb), class: "th radius"), post.image.url %></li>
+                </ul>
+            </div>
+        <% else %>
+            <div class="large-12 columns">
+                <h1><%= link_to post.title, post%>
+                    <% if can? :edit, post %>
+                        <%= link_to "", edit_post_path(post), class: "comments general foundicon-edit" %>
+                    <% end %>
+                </h1>
+                <p><%= simple_format(truncate( post.message, :length => 400, :separator => '. ', :omission => '.') )%></p>
+                <% unless post.user_id.blank? %>
+                    <% user =  User.find_by_id(post.user_id) %>
+                    <h6 class="left"><small><%= t(:posted_by) %>  <%= link_to user.name, user %></small></h6>
+                <% end  %>
+                <h6 class="right"><small><%= link_to t(:read_more), post %></small></h6>      
+            </div>
+        <% end %>
     </div>
     <hr>
 </div>

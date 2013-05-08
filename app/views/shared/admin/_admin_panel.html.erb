@@ -5,7 +5,7 @@
 
 <ul class="button-group radius">
           <li><a href="#" class="tiny button dropdown " data-dropdown="drop1" >Cities</a></li>
-          <li><a href="#" class="tiny  button dropdown " data-dropdown="drop2">Countries</a></li>
+ 
           <li><a href="#" class="tiny  button dropdown " data-dropdown="drop5">Categories</a></li>
           <li><a href="#" class="tiny  button dropdown " data-dropdown="drop3">Types</a></li>
 
@@ -23,6 +23,8 @@
           <li><%= link_to "Requests - #{counter}", requests_path, class: "tiny  button " %></li>
           <% counter = Feed.all.size  %>
           <li><%= link_to "Feeds - #{counter}", feeds_path, class: "tiny  button " %></li>
+          <% counter = Post.unapproved.size  %>
+          <li><%= link_to "Posts - #{counter}", posts_unapproved_path, class: "tiny  button " %></li>
 </ul>
 
 

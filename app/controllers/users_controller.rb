@@ -15,11 +15,11 @@ load_and_authorize_resource
   def edit
     @user = User.find(params[:id])
     @current_user_places ||= Place.where("user_id = ?", @user.id ).all
+    @current_user_posts ||= Post.where(user_id: @user.id).all
   end
 
   def show
-    @user = User.find(params[:id])
-    @user_places ||= Place.approved.where("user_id = ?", @user.id).all
+    @user = User.includes(:places, :posts, :feeds).find(params[:id])
   end
 
   def update

@@ -154,6 +154,20 @@ lv:
   blog: Blogs
   blog_search: Meklēt blogā...
   recent_added_blog_posts: Pēdējie ieraksti blogā
+  create_post: Izveidot
+  no_posts: Ierakstu nav
+  post_list: Lietotāja ieraksti
+  title_lv: Virsraksts latviski
+  title_ru: Virsraksts krieviski
+  add_image: Pievienot aplikāciju
+  your_posts: Jūsu bloga ieraksti
+  posted_by: Autors
+  sure_question: Vai tiešām?
+  destroy: Izdzēst ierakstu
+  success: Veiksmīgi Publicēts
+  #place_list: Все места пользователя
+  #publications: Публикации
+
   
 
 #--------------- Feed
@@ -415,6 +429,7 @@ lv:
     models:
       place: Vieta
       feed:  ziņu
+      post:  ieraksts
     attributes:
       place:
         name: Nosaukums
