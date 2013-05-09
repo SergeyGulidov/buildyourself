@@ -15,7 +15,7 @@
             <%= f.input :type_slug, label: "Slug" %>
         </div>
         <div class="large-6 columns">
-          <%= f.association :categories, collection: Category.find(:all), label: t(:category), 
+          <%= f.association :category, collection: Category.find(:all), label: t(:category), 
           label_method: :category_name, include_blank: true  %>
         </div>
       </div>

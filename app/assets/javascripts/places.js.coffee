@@ -10,10 +10,10 @@ jQuery ->
 	$("#f_type").select2()
 	$("#city").select2()
 	$("#category").select2()
-	$("#place_type_ids").select2()
+	$("#place_type_id").select2()
 	$("#place_country_id").select2()
 	$("#place_city_id").select2()
-	$("#place_category_ids").select2()
+	$("#place_category_id").select2()
 
 
 	types = $('#f_type').html()
@@ -25,14 +25,14 @@ jQuery ->
 		else
 			$('#f_type').empty()
 
-	types_for_new = $('#place_type_ids').html()
-	$('#place_category_ids').change ->
-		place_category_ids = $('#place_category_ids :selected').text()
-		options = $(types_for_new).filter("optgroup[label='#{place_category_ids}']").html()
+	types_for_new = $('#place_type_id').html()
+	$('#place_category_id').change ->
+		place_category_id = $('#place_category_id :selected').text()
+		options = $(types_for_new).filter("optgroup[label='#{place_category_id}']").html()
 		if options
-			$('#place_type_ids').html(options)
+			$('#place_type_id').html(options)
 		else
-			$('#place_type_ids').empty()
+			$('#place_type_id').empty()
 
 
 $("#feed_message").keyup ->

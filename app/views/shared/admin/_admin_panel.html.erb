@@ -17,7 +17,7 @@
           <li><%= link_to "Users - #{counter}", users_path, class: "tiny  button " %></li>
           <% counter = Place.where(approved: 0).size  %>
           <li><%= link_to "To approve - #{counter}", places_approve_path, class: "tiny  button " %></li>
-          <% counter = Place.where(translated: 0, approved: 1).size  %>
+          <% counter = Place.where(translated: 0).size  %>
           <li><%= link_to "To translate - #{counter}", places_translate_path, class: "tiny  button " %></li>
           <% counter = Request.all.size  %>
           <li><%= link_to "Requests - #{counter}", requests_path, class: "tiny  button " %></li>

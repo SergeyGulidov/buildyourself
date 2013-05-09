@@ -46,7 +46,8 @@ load_and_authorize_resource
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+
+    @user.destroy unless @user.role == 1 or @user.role == 3
 
     respond_to do |format|
       format.html { redirect_to action: "index" }

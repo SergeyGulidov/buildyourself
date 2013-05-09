@@ -3,13 +3,13 @@
 </h6> 
 
 <p class="map_text"><b><%= place.street %></b><br>
-	<% place.categories.each do |category|  %>
-		<%= link_to category.category_name, { controller: :places, action: :index, category: category.category_slug} %>
-	<% end  %>
+	
+	<%= link_to place.category.category_name, { controller: :places, action: :index, category: place.category.category_slug} %>
+	
 	&nbsp&raquo&nbsp
-	<% place.types.each do |type|  %>
-		<%= link_to type.type_name, { controller: :places, action: :index, type: type.type_slug} %>
-	<% end  %>
+	
+		<%= link_to place.type.type_name, { controller: :places, action: :index, type: place.type.type_slug} %>
+	
 	<br>
 	<%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) } " %> &nbsp&nbsp
 </p>

@@ -4,9 +4,9 @@ class City < ActiveRecord::Base
   
   translates :city_name
 
-  scope :cities_all, all
+  scope :cities_all, limit(100)
 
   def display_name
-    "#{self.city_name} (#{self.places.where(approved: 1).size})"
+    "#{self.city_name} (#{self.places.where(approved: 1).all.size})"
   end
 end

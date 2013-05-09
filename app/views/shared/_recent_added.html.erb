@@ -4,13 +4,8 @@
   <% @recent_added.each do |place| %>
     <li class="li_second"><%= link_to place.name, place %> 
 
-    	<% place.types.each_with_index do |type, counter| %>&nbsp&raquo;&nbsp  
-			<%= link_to type.type_name,controller: :places, action: :index, type: type.type_slug %> 
-
-			<% if counter > 1 %>
-				&nbsp&raquo;&nbsp  
-			<% end %>
-		<% end %></li>
+    	&nbsp&raquo;&nbsp <%= link_to place.type.type_name,controller: :places, action: :index, type: place.type.type_slug %> 
+		</li>
   <% end %>
 </ul>
 </div>

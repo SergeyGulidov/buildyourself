@@ -32,11 +32,11 @@
  
       <div class="row ">
         <div class="large-3 columns">
-          <%= f.association :categories, collection: @categories, label: t(:place_category), 
+          <%= f.association :category, collection: @categories, label: t(:place_category), 
           label_method: :category_name, include_blank: true, :input_html => { :multiple => false } %>
         </div>
         <div class="large-3 columns">
-          <%= f.association :types, collection: @categories, as: :grouped_select, 
+          <%= f.association :type, collection: @categories, as: :grouped_select, 
             group_label_method: :category_name, group_method: :types,
             label_method: :type_name, value_method: :id, label: t(:type_category), include_blank: true %>
         </div>

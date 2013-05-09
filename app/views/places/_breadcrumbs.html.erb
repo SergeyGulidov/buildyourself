@@ -7,16 +7,16 @@
 		</li>
 	<% end %>
 	
-	<% @place.categories.each do |category| %>
-       <li><%= link_to category.category_name, 
-       		{ controller: :places, action: :index, category: category.category_slug} %></li>
-	<% end %>
+
+       <li><%= link_to @place.category.category_name, 
+       		{ controller: :places, action: :index, category: @place.category.category_slug} %></li>
+
 	
 	
-	<% @place.types.each do |type| %>
-		<li><%= link_to type.type_name, 
-			{ controller: :places, action: :index, type: type.type_slug} %></li>
-	<% end  %>
+
+		<li><%= link_to @place.type.type_name, 
+			{ controller: :places, action: :index, type: @place.type.type_slug} %></li>
+
 	<li>
 		<a href="#" class="last"><%= "#{ t(:from) } #{ @place.age_min } #{ t(:to) } #{ @place.age_max } #{ t(:age) } " %> &nbsp&nbsp </a>
 	</li>

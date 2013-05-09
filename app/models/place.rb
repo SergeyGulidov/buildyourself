@@ -5,11 +5,8 @@ class Place < ActiveRecord::Base
   belongs_to :city
   belongs_to :country
   belongs_to :user
-
-
-  has_many :categorizations
-  has_many :categories, through: :categorizations
-  has_many :types,      through: :categorizations
+  belongs_to :category
+  belongs_to :type
 
 
   has_many :photos, :dependent => :destroy
@@ -34,7 +31,7 @@ class Place < ActiveRecord::Base
 
   attr_accessible :approved, :email, :vip, :sponsor, :age_max, :age_min,
   	 :name, :phone, :street, :website, :country_id, :city_id,
-     :type_ids, :photos_attributes, :photo, :category_ids, :month_price,
+     :type_id, :photos_attributes, :photo, :category_id, :month_price,
      :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated
 
   translates :message
@@ -60,12 +57,12 @@ class Place < ActiveRecord::Base
 
 
   def to_indexed_json
-    to_json(:include => [:types, :categories, :city])
+    to_json(:include => [:type, :category, :city])
   end
 
 
-   scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :types, :categories, :city)
-   scope :recent,  where(approved: 1).order("updated_at desc").includes(:types).limit(10)
+   scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
+   scope :recent,  where(approved: 1).order("updated_at desc").includes(:type).limit(10)
    
 
 
@@ -102,7 +99,7 @@ class Place < ActiveRecord::Base
   def self.first_step_search(params)
 
       type_vip = nil
-      places = Place.approved
+      places ||= Place.approved
 
       unless params[:category].blank?
         places = places.where( "categories.category_slug = ?", params[:category] ) 
@@ -121,7 +118,7 @@ class Place < ActiveRecord::Base
       end
 
       unless params[:city].blank?
-        places = places.where( "city.city_slug = ?", params[:city] )
+        places = places.where( "cities.city_slug = ?", params[:city] )
       end
       unless params[:age].blank?
         places = places.where( "age_min <= ? AND age_max >= ?", params[:age].to_i,  params[:age].to_i ) 
