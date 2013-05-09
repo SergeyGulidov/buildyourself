@@ -8,21 +8,6 @@
 
 
   <div class="large-4 small-6 columns">
-      <ul class="inline-list right">
-        <li><%= link_to t(:home), root_path %></li>
-      <% if can? :new, Place %>
-        <li>
-                <%= link_to t(:add_new_place), :controller => :places, :action => :new  %> 
-              </li>
-          <% else  %>
-        <li>
-                <%= link_to t(:sign_up), new_user_registration_path %>
-              </li>
-          <% end  %>
-        <li>
-          <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
-        </li>
-      </ul>
   </div>
 
   <div class="large-4 small-4 columns  hide-for-small "> 

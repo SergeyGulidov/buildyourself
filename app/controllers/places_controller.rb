@@ -27,8 +27,10 @@ load_and_authorize_resource
 
 	def new
 		@place = Place.new 
-		flash.now[:notice] = t(:register_first) unless current_user
-		respond_with(@place)
+		respond_to do |format|
+	      format.html
+	      format.json { render json: @post }
+	    end
 	end
 
 	def create

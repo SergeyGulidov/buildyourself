@@ -20,11 +20,16 @@
 	<%= javascript_include_tag "vendor/custom.modernizr" %>
 </head>
 <body>
-<%= render 'shared/topbar'  %>
+
 <div id="wrap">
-		<div id="main" >
-			<%= yield %>
-		</div>
+	<div class="row">
+	  <div class="large-12 columns content">
+	    <%= render 'shared/topbar'  %>
+	  </div>
+	</div>
+	<div id="main" >
+		<%= yield %>
+	</div>
 </div>
 <div id="footer">
 	<div id="footer_logo" class=" hide-for-small "><%= image_tag("logo_small.png", width: '198', height: '202') %></div>

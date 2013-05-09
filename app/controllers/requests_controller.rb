@@ -17,12 +17,6 @@ load_and_authorize_resource
       format.html 
       format.json { render json: @request }
     end
-
-    if current_user
-      expires_now
-    else
-      expires_in 12.hours, :public => true
-    end
   end
 
 
