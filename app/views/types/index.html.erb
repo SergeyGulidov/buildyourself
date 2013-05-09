@@ -23,7 +23,7 @@
           <td><%= type.type_name_lv %></td>
           <td><%= type.type_name_ru %></td>
           <td><%= type.type_slug %></td>
-          <td><%= type.places.size %></td>
+          <td><%= type.places.all.size %></td>
           <td><%= link_to 'Edit', edit_type_path(type) %></td>
           <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
         </tr>

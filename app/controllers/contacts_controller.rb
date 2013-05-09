@@ -8,11 +8,6 @@ load_and_authorize_resource
   		format.html  # new.html.erb
   		format.json  { render :json => @contact }
   	end
-    if current_user
-      expires_now
-    else
-      expires_in 7.days, :public => true
-    end
   end
 
    def create
