@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508154217) do
+ActiveRecord::Schema.define(:version => 20130509071704) do
 
   create_table "brains", :force => true do |t|
   end
@@ -96,10 +96,14 @@ ActiveRecord::Schema.define(:version => 20130508154217) do
     t.integer  "age_min"
     t.integer  "age_max"
     t.integer  "not_actual",  :default => 0
+    t.integer  "category_id", :default => 1
+    t.integer  "type_id",     :default => 1
   end
 
   add_index "places", ["age_max"], :name => "index_places_on_age_max"
   add_index "places", ["age_min"], :name => "index_places_on_age_min"
+  add_index "places", ["category_id"], :name => "index_places_on_category_id"
+  add_index "places", ["type_id"], :name => "index_places_on_type_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title_ru"
@@ -125,11 +129,13 @@ ActiveRecord::Schema.define(:version => 20130508154217) do
   end
 
   create_table "types", :force => true do |t|
-    t.string "type_name_ru"
-    t.string "type_slug"
-    t.string "type_name_lv"
+    t.string  "type_name_ru"
+    t.string  "type_slug"
+    t.string  "type_name_lv"
+    t.integer "category_id",  :default => 1
   end
 
+  add_index "types", ["category_id"], :name => "index_types_on_category_id"
   add_index "types", ["type_slug"], :name => "index_types_on_type_slug"
 
   create_table "users", :force => true do |t|

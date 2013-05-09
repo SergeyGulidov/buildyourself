@@ -9,8 +9,8 @@ class Place < ActiveRecord::Base
 
   has_many :categorizations
   has_many :categories, through: :categorizations
-
   has_many :types,      through: :categorizations
+
 
   has_many :photos, :dependent => :destroy
   has_many :place_votes, :dependent => :destroy
@@ -121,7 +121,7 @@ class Place < ActiveRecord::Base
       end
 
       unless params[:city].blank?
-        places = places.where( "cities.city_slug = ?", params[:city] )
+        places = places.where( "city.city_slug = ?", params[:city] )
       end
       unless params[:age].blank?
         places = places.where( "age_min <= ? AND age_max >= ?", params[:age].to_i,  params[:age].to_i ) 

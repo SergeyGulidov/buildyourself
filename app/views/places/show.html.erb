@@ -28,8 +28,12 @@
 
             <h2><%= @place.name %>                    
             <% if can? :edit, @place %>
-              <%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %>
-            <% end %></h2>
+              <%= link_to " ", edit_place_path(@place), class: "comments general foundicon-edit" %>
+            <% end %>
+            <% if can? :make_approve, Place %>
+              <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>
+            <% end %>
+          </h2>
 
 
           <div class="show_page_bread">

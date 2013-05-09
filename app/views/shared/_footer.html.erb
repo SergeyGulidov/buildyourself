@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-4 small-4 columns">
+  <div class="large-4 small-6 columns">
       
               <%= render 'shared/search' %>
               <p>&copy; Yoda.lv. 2013. All rights reserved.</p>
@@ -7,7 +7,7 @@
   </div>
 
 
-  <div class="large-4 columns hide-for-small ">
+  <div class="large-4 small-6 columns">
       <ul class="inline-list right">
         <li><%= link_to t(:home), root_path %></li>
       <% if can? :new, Place %>
@@ -25,7 +25,7 @@
       </ul>
   </div>
 
-  <div class="large-4 small-4 columns"> 
+  <div class="large-4 small-4 columns  hide-for-small "> 
   </div>
 </div>
 
