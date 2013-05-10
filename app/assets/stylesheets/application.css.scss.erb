@@ -353,13 +353,6 @@ font-weight: bolder;
 /************ Top navigation **********/
 
 
-
-
-.top-bar .right a{
-  text-transform:capitalize;
-}
-
-
 .general {
   vertical-align: text-bottom;
 }
@@ -369,24 +362,31 @@ font-weight: bolder;
   color: red;
 }
 
+
+
 .top-bar-section {
-  a{
-    border-right: 1px solid #EBEBEB;
-  }
+    a{
+      text-transform:capitalize;
+    }
+
+    .divider {
+      margin: 0 4px 0 4px;
+    }
 
   .active a, a:hover{
-  background-color: #66CBCC!important;
-  border: 1px solid #66CBCC;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  color: #fff!important;
+    background-color: #66CBCC!important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #fff!important;
   }
-
-
 }
 
 .has-dropdown img{
   margin-left: 5px;
   vertical-align: -10%;
+}
+
+.content_bottom_margin{
+  margin-bottom:80px;
 }

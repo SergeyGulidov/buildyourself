@@ -10,36 +10,38 @@
 				<li class="<%= 'active' if current_page?(:controller => 'places', :action => 'index') %>">
 				<%= link_to t(:home), root_path %>
 				</li>
-
+				<li class="divider"></li>
 				<li class="<%= 'active' if current_page?(:controller => 'posts', :action => 'index') %>">
 				<%= link_to t(:blog), posts_path %></li>
+				<li class="divider"></li>
 				<li class="<%= 'active' if current_page?(:controller => 'requests', :action => 'new') %> radius round">
 	              <%= link_to t(:nav_request), new_request_path %>
 	            </li>
 				<% if can? :new, Place %>
-
+					<li class="divider"></li>
 					<li class="<%= 'active' if current_page?(:controller => 'places', :action => 'new') %>">
 		              <%= link_to t(:add_new_place), :controller => :places, :action => :new  %> 
 		            </li>
-
+		            <li class="divider"></li>
 					<li>
 		              <%= link_to t(:profile), edit_user_path(current_user) %>
 		            </li>
 		        <% else  %>
-
+		        	<li class="divider"></li>
 					<li>
 		              <%= link_to t(:sign_up), new_user_registration_path %>
 		            </li>
-
+		            <li class="divider"></li>
 		            <li>
 						<%= link_to t(:login), new_user_session_path %>
 		            </li>
 		        <% end  %>
-	            
+
+	            <li class="divider"></li>
 				<li class="<%= 'active' if current_page?(:controller => 'contacts', :action => 'new') %>">
 	              <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
 	            </li>
-
+	            <li class="divider"></li>
 				<%= render 'shared/language_selector'  %>
 			</ul>
 		</section>
