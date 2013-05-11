@@ -108,7 +108,8 @@ h5 #title a:active {
 
 
 p a{
-  border-bottom: 1px dashed #66CBCC;
+  color: #3EA9DE;
+  border-bottom: 1px solid #3EA9DE;
 }
 
 section p a{
@@ -370,7 +371,15 @@ font-weight: bolder;
     }
 
     .divider {
-      margin: 0 4px 0 4px;
+      margin: 0 3px 0 3px;
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, transparent), color-stop(40%, rgba(110,91,170,0.2)), color-stop(60%, rgba(110,91,170,0.2)), color-stop(100%, transparent));
+      background-image: -webkit-linear-gradient(top, transparent,rgba(110,91,170,0.2) 40%,rgba(110,91,170,0.2) 60%,transparent);
+      background-image: -moz-linear-gradient(top, transparent,rgba(110,91,170,0.2) 40%,rgba(110,91,170,0.2) 60%,transparent);
+      background-image: -o-linear-gradient(top, transparent,rgba(110,91,170,0.2) 40%,rgba(110,91,170,0.2) 60%,transparent);
+      background-image: linear-gradient(top, transparent,rgba(110,91,170,0.2) 40%,rgba(110,91,170,0.2) 60%,transparent);
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 1px 100%;
     }
 
   .active a, a:hover{
@@ -398,3 +407,4 @@ font-weight: bolder;
   background-position:center; 
   background-color:#FFFFFF;
 }
+
