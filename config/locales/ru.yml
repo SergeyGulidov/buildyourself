@@ -171,6 +171,12 @@ ru:
   place_list: Все места пользователя
   publications: Публикации
 
+#-------------- Subscribes
+  confirmation_email_sended: Благодарим за подписку. Вам выслан емайл с подтверждением.
+  you_are_subscribed: Успешно! Теперь новости проекта будут приходить вам на емайл. 
+  subscribe: Подписаться на новости
+
+
 
   views:
     pagination:

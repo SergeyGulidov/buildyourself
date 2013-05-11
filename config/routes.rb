@@ -23,6 +23,9 @@ BuildYourSelf::Application.routes.draw do
       #collection { post :q, to: 'products#index' }
     #end
     match '/recount' => 'brains#recount_all', as: 'recount'
+    match '/subscribed' => 'requests#subscribed'
+    match '/waitingforactivation' => 'requests#waitingforactivation'
+    match '/subscribe' => 'requests#subscribe', as: 'subscribe'
 
     resources :requests, :only => [:index, :new, :create, :destroy]
     resources :contacts, :only => [:index, :new, :create, :destroy]

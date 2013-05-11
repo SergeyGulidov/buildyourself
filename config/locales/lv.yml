@@ -165,8 +165,8 @@ lv:
   sure_question: Vai tiešām?
   destroy: Izdzēst ierakstu
   success: Veiksmīgi Publicēts
-  #place_list: Все места пользователя
-  #publications: Публикации
+  place_list: Vietu saraksts
+  publications: Publikācijas
 
   
 
@@ -175,6 +175,12 @@ lv:
   no_feeds: Lietotājs vēl nav pievienojis jaunumus.
   feed_list: Ziņas
   remaining: Atlicis 
+
+#-------------- Subscribes
+  confirmation_email_sended:  "Paldies par e-pasta reģistrācīju, jums tika izsūtīta apstiprinājuma vēstule."
+  you_are_subscribed: "Veiksmīgi pabeigts. Par mājaslapas jaunumiem saņemsiet vēstuli e-pasta."
+  subscribe: Parakstīties uz jaunumiem
+
 
 #------------------------------------------------------------------------------------------------------------
   date:

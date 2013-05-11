@@ -23,6 +23,7 @@
 
 <div id="wrap">
 	<div class="row">
+
 	  <div class="large-12 columns content">
 	    <%= render 'shared/topbar'  %>
 	  </div>
@@ -50,6 +51,15 @@
   ga('send', 'pageview');
 </script>
 
+<% if current_page?(subscribe_path) %>
+	<script type="text/javascript">
+  $(window).load(function() {
+    $(function(){
+    $('body').addClass('subscribe');
+  });
+  });
+</script>
+<% end  %>
 
 </body>
 </html>

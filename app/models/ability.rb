@@ -19,7 +19,6 @@ class Ability
         can :update, Place,   :user_id => user.id
         can :edit,   Place,   :user_id => user.id
         can :vote,   Place
-        can :index,  Brain
         can :create, Request
         can :read, Place
         can :read, Post
@@ -43,7 +42,6 @@ class Ability
         can :make_translate, Place
         can :update,     Place
         can :vote,       Place
-        can :index,      Brain
         can :show,       User
         can :index,      User
         can :create,     Request
@@ -53,11 +51,13 @@ class Ability
 
     end
       can :create, Contact
-      can :index,  Brain
       can :show,   User
       can :create, Request
       can :read, Place
       can :read, Post
+      can :subscribe, Request
+      can :subscribed, Request
+      can :waitingforactivation, Request
   end
 end
 

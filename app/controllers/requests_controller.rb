@@ -43,4 +43,22 @@ load_and_authorize_resource
       format.json { head :no_content }
     end
   end
+
+  def subscribe
+    respond_to do |format|
+      format.html 
+      format.json { render json: @request }
+    end
+  end
+
+
+  def waitingforactivation
+    redirect_to subscribe_path, notice: t(:confirmation_email_sended)
+  end
+
+  def subscribed
+    redirect_to subscribe_path, notice: t(:you_are_subscribed)
+  end
+
+
 end
