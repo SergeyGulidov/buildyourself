@@ -11,33 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509071704) do
+ActiveRecord::Schema.define(:version => 20130511051421) do
 
   create_table "brains", :force => true do |t|
   end
 
   create_table "categories", :force => true do |t|
-    t.string "category_name_ru"
-    t.string "category_slug"
-    t.string "category_name_lv"
+    t.string  "category_name_ru"
+    t.string  "category_slug"
+    t.string  "category_name_lv"
+    t.integer "places_count",     :default => 0
   end
 
   add_index "categories", ["category_slug"], :name => "index_categories_on_category_slug"
 
-  create_table "categorizations", :id => false, :force => true do |t|
-    t.integer "type_id"
-    t.integer "category_id"
-    t.integer "place_id"
-  end
-
-  add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
-  add_index "categorizations", ["place_id"], :name => "index_categorizations_on_place_id"
-  add_index "categorizations", ["type_id"], :name => "index_categorizations_on_type_id"
-
   create_table "cities", :force => true do |t|
-    t.string "city_name_lv"
-    t.string "city_name_ru"
-    t.string "city_slug"
+    t.string  "city_name_lv"
+    t.string  "city_name_ru"
+    t.string  "city_slug"
+    t.integer "places_count", :default => 0
   end
 
   create_table "contacts", :force => true do |t|
@@ -47,9 +39,10 @@ ActiveRecord::Schema.define(:version => 20130509071704) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string "country_name_lv"
-    t.string "country_name_ru"
-    t.string "country_slug"
+    t.string  "country_name_lv"
+    t.string  "country_name_ru"
+    t.string  "country_slug"
+    t.integer "places_count",    :default => 0
   end
 
   create_table "feeds", :force => true do |t|
@@ -133,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20130509071704) do
     t.string  "type_slug"
     t.string  "type_name_lv"
     t.integer "category_id",  :default => 1
+    t.integer "places_count", :default => 0
   end
 
   add_index "types", ["category_id"], :name => "index_types_on_category_id"

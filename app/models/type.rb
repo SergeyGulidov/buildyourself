@@ -11,6 +11,18 @@ class Type < ActiveRecord::Base
   scope :types_all, limit(100)
   
   def display_name
-    "#{self.type_name} (#{self.places.where(approved: 1).all.size}) "
+    "#{self.type_name} (#{self.places_count}) "
   end
+
+  def self.recount
+  	types_base = Type.includes(:places).all
+
+  	types_base.each do |type|
+  		c = type.places.where(approved:1).all.size
+  		type.places_count = c
+  		type.save
+  	end 
+  end
+
+
 end

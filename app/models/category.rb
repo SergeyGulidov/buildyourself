@@ -9,6 +9,16 @@ class Category < ActiveRecord::Base
   scope :categories_all, includes(:types).limit(100)
 
   def display_name
-    "#{self.category_name} (#{self.places.where(approved: 1).all.size})"
+    "#{self.category_name} (#{self.places_count})"
+  end
+
+  def self.recount
+  	categories_base = Category.includes(:places).all
+
+  	categories_base.each do |category|
+  		c = category.places.where(approved:1).all.size
+  		category.places_count = c
+  		category.save
+  	end 
   end
 end

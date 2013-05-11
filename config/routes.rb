@@ -22,7 +22,8 @@ BuildYourSelf::Application.routes.draw do
       #member { post :vote }
       #collection { post :q, to: 'products#index' }
     #end
-    resources :brains,   :only => [:index]
+    match '/recount' => 'brains#recount_all', as: 'recount'
+
     resources :requests, :only => [:index, :new, :create, :destroy]
     resources :contacts, :only => [:index, :new, :create, :destroy]
     resources :categories
