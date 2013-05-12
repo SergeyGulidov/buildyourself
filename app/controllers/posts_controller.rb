@@ -12,11 +12,6 @@ load_and_authorize_resource
       @posts = Post.search(params)
     end
 
-
-    if current_user
-      @current_user_posts = Post.current_posts(current_user.id)
-    end
-
     respond_to do |format|
       format.html
       format.json { render json: @posts }
@@ -25,10 +20,6 @@ load_and_authorize_resource
 
   def show
     @post = Post.includes(:user).find(params[:id])
-
-    if current_user
-      @current_user_posts = Post.current_posts(current_user.id)
-    end
 
     respond_to do |format|
       format.html 

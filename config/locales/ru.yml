@@ -41,7 +41,7 @@ ru:
 #------------- footer partial
 #------------- top bar partial
   home: Главная
-  add_new_place: добавить место
+  
   contact_with_us: Контакты
   search: Поиск по сайту...
 
@@ -114,13 +114,19 @@ ru:
   edit_info: Добавлять или изменять информацию о своем месте.
   our_mission: "Впереди у нас долгий путь и мы обязательно будем добавлять новые 
     функции для зарегистрированных пользователей."
-  logged_as: "Вы вошли как:"
   logout: выйти
   published: '<b id="approved" data-tooltip class="has-tip" title="Опубликованно">A</b>'
   waiting: '<b id="waiting" data-tooltip class="has-tip" title="Ожидает проверки">W</b>'
   need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Необходимо дополнить. Мы выслали вам емайл с объяснениями.">N</b>' 
   edit: изменить
-  profile: настройки
+  
+
+  create_post: Создать запись в блоге
+  add_new_place: Добавить место
+  user_status: Статус пользователя
+  profile: Настройки профиля
+  or: или
+
 #------------user futures 
   more_places_from_user: Другие места пользователя
   month_price: Цена в месяц 
@@ -156,7 +162,7 @@ ru:
   blog: Блог
   blog_search: Поиск по блогу...
   recent_added_blog_posts: Последние записи в блоге
-  create_post: Создать
+  
   no_posts: Записей нет.
   post_list: Публикации пользователя
   title_lv: Заголовок на латышском

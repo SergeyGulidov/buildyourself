@@ -106,7 +106,7 @@
 				    <li class="first"><h5><%= t :feed_list   %></h5></li>
 				    <% @user.feeds.each do |feed| %>
 				      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
-				      <%= link_to feed.message, feed %>
+				      <%= link_to feed.message, feed.place %>
 				      </li>
 				    <% end %>
 				    <br>

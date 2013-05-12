@@ -45,7 +45,7 @@ lv:
 #------------- footer partial
 #------------- top bar partial
   home: Sākums
-  add_new_place: pievienot vietu
+  
   contact_with_us: Kontakti
   search: Meklēt...
 
@@ -121,6 +121,12 @@ lv:
   edit: Rediģēt
 
 
+  or: vai
+  add_new_place: Pievienot vietu
+  profile: Iestatījumi
+  create_post: Pievienot bloga ierakstu
+  user_status: Lietotāja statuss
+
   extension_white_list_error: "Jūs nevarat augšupielādēt %{extension} failus, atļauti tikai: %{allowed_types}"
   extension_black_list_error: "Jūs nevarat augšupielādēt %{extension} failus, atļauti tikai: %{prohibited_types}"
 
@@ -133,7 +139,7 @@ lv:
   change_your_name: Jūsu vards
   about_you: Par Jums
   edit_your_data: Izlabot informāciju
-  profile: iestatījumi
+  
   from: "no"
   to: "līdz"
   age: gadiem
@@ -154,7 +160,6 @@ lv:
   blog: Blogs
   blog_search: Meklēt blogā...
   recent_added_blog_posts: Pēdējie ieraksti blogā
-  create_post: Izveidot
   no_posts: Ierakstu nav
   post_list: Lietotāja ieraksti
   title_lv: Virsraksts latviski

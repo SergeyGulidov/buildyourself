@@ -1,5 +1,6 @@
 class Feed < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :place
 
    attr_accessible :message, :place_id
 

@@ -1,7 +1,6 @@
 class PlacesController < ApplicationController
 load_and_authorize_resource
 
-	before_filter :get_current_user_places, only: [:index]
 	before_filter :get_filter_collections
 	before_filter :get_recent_added, only: [:create, :new]
 	
@@ -96,10 +95,7 @@ load_and_authorize_resource
 		@json = get_json_for_map(@place)
 	end
 
-	# get user places for login partial 
-	def get_current_user_places 
-		@current_user_places ||= Place.where("user_id = ?", current_user.id ).all if current_user
-	end
+
 
 
 	def destroy
