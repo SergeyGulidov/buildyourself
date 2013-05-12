@@ -4,10 +4,8 @@ class Post < ActiveRecord::Base
   attr_accessible :image, :message_lv, :message_ru, :title_lv, :title_ru, :approved, :file, :image_cache
 
   include Tire::Model::Search
-  include Tire::Model::Callbacks
 
   mount_uploader :image, ImageUploader
-
 
 
   translates :message, :title
@@ -18,6 +16,25 @@ class Post < ActiveRecord::Base
 
   before_save{|post| post.title_lv = post.title_lv.titleize unless post.title_lv.blank?}
   before_save{|post| post.title_ru = post.title_ru.titleize unless post.title_ru.blank?}
+
+
+  mapping do
+        indexes :id,         :index    => :not_analyzed
+        indexes :title_lv,   :analyzer => 'snowball', :boost => 100
+        indexes :title_ru,   :analyzer => 'snowball', :boost => 90
+        indexes :message_lv, :analyzer => 'snowball'
+        indexes :message_ru, :analyzer => 'snowball'
+  end
+
+
+  after_save do
+    update_index
+  end
+
+  after_update do
+    update_index
+  end
+
 
 
   def to_param

@@ -53,6 +53,7 @@ class Place < ActiveRecord::Base
         indexes :name,       :analyzer => 'snowball', :boost => 100
         indexes :message_lv, :analyzer => 'snowball'
         indexes :message_ru, :analyzer => 'snowball'
+        indexes :street,     :analyzer => 'snowball'
   end
 
 
