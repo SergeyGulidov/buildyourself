@@ -34,6 +34,7 @@ group :assets do
   gem 'foundation-icons-sass-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3'
+  gem 'angularjs-rails'
 end
 
 group :development, :test do

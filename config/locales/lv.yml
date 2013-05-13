@@ -3,7 +3,7 @@ lv:
 
   new_request:   Iesniedziet lūdzu pieteikumu. Mēs ar jums sazināsimies vienosimies par tikšanos (informācijas un fotoattēlu uzņemšanu un ievietošanu jūsu profilā).<br><br> Kad būsim tikušies un mums būs pietiekami daudz informācījas , tad mēs paši izveidosim jums profilu par jūsu nodarbībām.
   its_free: Mūsu nolūki un darbs ir pilnīgi par baltu velti!
-  request_attention: Uzmanību! Datumu lūdzu norādīt neātrāk, ka nakamo nedēļu. 
+  request_attention: Uzmanību! Datumu lūdzu norādīt ne ātrāk, ka nakamo nedēļu. 
   when: Kad? Datums un Laiks
   nav_request: iesniegt pieteikumu
 
@@ -184,7 +184,7 @@ lv:
 #-------------- Subscribes
   confirmation_email_sended:  "Paldies par e-pasta reģistrācīju, jums tika izsūtīta apstiprinājuma vēstule."
   you_are_subscribed: "Veiksmīgi pabeigts. Par mājaslapas jaunumiem saņemsiet vēstuli e-pasta."
-  subscribe: Parakstīties uz jaunumiem
+  subscribe: Pierakstīties jaunumiem
 
 
 #------------------------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511051421) do
+ActiveRecord::Schema.define(:version => 20130512172122) do
 
   create_table "brains", :force => true do |t|
   end
@@ -119,6 +119,19 @@ ActiveRecord::Schema.define(:version => 20130511051421) do
     t.string   "address"
     t.string   "when"
     t.datetime "created_at", :null => false
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.string   "group"
+    t.string   "mon"
+    t.string   "tue"
+    t.string   "wed"
+    t.string   "thu"
+    t.string   "fri"
+    t.string   "sat"
+    t.string   "sun"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "types", :force => true do |t|
