@@ -1,4 +1,11 @@
-<%= simple_form_for @request, html: { class: 'panel radius right_panel' } do |f| %>
+<%= simple_nested_form_for @request, html: { class: '', multipart: true  } do |f| %>
+<% field_set_tag t(:check_in_your_place) do %>
+
+	    <div class="row">
+    	<div class="large-6 columns">
+    		<%= f.input :email, label: t(:email) %>
+    	</div>
+    </div>
     <div class="row">
     	<div class="large-5 columns">
 	    	<%= f.input :phone, as: :string, label: t(:phone_number), class: 'radius'%>
@@ -7,9 +14,29 @@
 	    	<%= f.input :address, label: t(:street_address)  %>
 	    </div>
     </div>
-    <%= f.input :when, label: t(:when) %>
 
-    <%= f.button :submit, t(:send), class: 'small button success radius'  %>
+    <%= f.input :message, label: t(:message)  %>
+
+    <div class="row photos">
+        <div class="large-10 columns add_photo">
+
+            <% f.fields_for :photos do |photo|  %>
+              <%= photo.file_field :photo %>
+
+              <%= photo.link_to_remove "", 
+                class: "general-enclosed foundicon-remove " %>
+            <% end %>
+
+            <%= f.link_to_add t(:add_photos), :photos, class: "small button" %>
+            <p class="important_text">
+              <%= t :photo_how_to %> <%= link_to t(:contact_with_us), new_contact_path %>
+            </p>
+
+        </div>
+    </div>
+
+    <%= f.button :submit, t(:add_place), class: 'small button radius right'  %>
+    <% end %>
 <% end  %>
 
 

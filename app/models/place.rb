@@ -16,7 +16,7 @@ class Place < ActiveRecord::Base
   acts_as_gmappable :process_geocoding => true
 
   
-  before_save{|place| place.name = place.name.titleize}
+  before_save{|place| place.name = place.name.titleize unless place.name.blank? }
 
 
 
@@ -41,10 +41,9 @@ class Place < ActiveRecord::Base
 
    validates :country, presence: true
    validates :city,    presence: true
-   validates :name,    presence: true
-   validates :street, presence: true
-   validates :age_min, :length => { :minimum => 1, :maximum => 3 }
-   validates :age_max, :length => { :minimum => 1, :maximum => 3 }
+   validates :street,  presence: true
+   validates :age_min, :length => { :minimum => 0, :maximum => 3 }
+   validates :age_max, :length => { :minimum => 0, :maximum => 3 }
 
   
 

@@ -1,23 +1,36 @@
 <div class="row content">
-  <div class="small-8 small-centered columns">
+  <div class="small-12 small-centered columns">
     <%= render 'shared/flasher' %>
     <%= render 'shared/admin/admin_panel' %>
     <table>
       <thead>
         <tr>
+          <th>Email</th>
           <th>Phone</th>
           <th>Address</th>
-          <th>When</th>
-          <th>Created</th>
+          <th>Message</th>
           <th></th>
+          <th>Created</th>
           <th></th>
         </tr>
       </thead>
       <% @requests.each do |request| %>
         <tr>
+          <td><%= request.email %></td>
           <td><%= request.phone %></td>
           <td><%= request.address %></td>
-          <td><%= request.when %></td>
+          <td><%= request.message %></td>
+          <td>
+            <ul class="large-block-grid-3 clearing-thumbs photos_for_roll" data-clearing >
+              <% request.photos.each do |photo| %>
+                <li>
+                  <%= link_to (image_tag photo.photo.url(:thumb), 
+                    height: '60', width: '100', class: "th radius"),
+                   photo.photo.url %>
+                </li>
+              <% end %>
+            </ul>
+          </td>
           <td><%= request.created_at.strftime("%d %b. %Y") %></td>
           <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
         </tr>

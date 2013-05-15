@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 load_and_authorize_resource
 
   def index
-    @requests = Request.all
+    @requests = Request.includes(:photos).all
 
     respond_to do |format|
       format.html
@@ -12,7 +12,11 @@ load_and_authorize_resource
 
   def new
     @request = Request.new
-
+    if current_user
+      @request.email = current_user.email
+      @request.phone = current_user.phone unless current_user.phone.blank?
+    end
+    
     respond_to do |format|
       format.html 
       format.json { render json: @request }
@@ -25,7 +29,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to root_path, notice: 'Request was successfully created.' }
+        format.html { redirect_to root_path, notice: t(:request_sended) }
         format.json { render json: @request, status: :created, location: @request }
       else
         format.html { render action: "new" }

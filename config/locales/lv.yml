@@ -5,7 +5,7 @@ lv:
   its_free: Mūsu nolūki un darbs ir pilnīgi par baltu velti!
   request_attention: Uzmanību! Datumu lūdzu norādīt ne ātrāk, ka nakamo nedēļu. 
   when: Kad? Datums un Laiks
-  nav_request: iesniegt pieteikumu
+  request_sended:  Jūsu pieteikums veiksmīgi nosūtīts, gaida administrācījas apstiprinājumu.
 
   many_types: Vairākas kategorijas.
   forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā?
@@ -13,7 +13,7 @@ lv:
 
   how_to: '<ul class="square how_to"><h4>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h4>
     <h6 class="subheader">Publicēšanas noteikumi</h6><li>Email - tiks izmantots sīkāku detaļu noskaidrošanai.</li>
-    <li>Trīs jebkādas fotogrāfijas ar Jūsu vietu</li><li> Īss apraksts (Lv/Ru). Palīdzēsim pārtulkot.</li>
+    <li> Īss apraksts (Lv/Ru).</li>
     <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
 
   recent_added_places: Nesen pievienoti...
@@ -35,6 +35,7 @@ lv:
   add_place: Piereģistrēt
   message_for_ru: Ziņa priekš lietotājiem krievu valodā
   message_for_lv: Ziņa priekš lietotājiem latviešu valodā
+  message: Ziņa priekš lietotājiem
   check_in_your_place: Piereģistrēt savu vietu
   register_first: 'Jums ir jāpiereģistrējas, lai varētu atjaunot informāciju par Jūsu vietu.'
   min_age: Min. Vecums
