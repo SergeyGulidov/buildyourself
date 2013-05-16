@@ -24,7 +24,7 @@ BuildYourSelf::Application.routes.draw do
     match '/posts/unapproved' => 'posts#unapproved'
     match '/posts/approve' => 'posts#approve'
     resources :photos
-    resources :places# do
+    resources :places # do
       #member { post :vote }
       #collection { post :q, to: 'products#index' }
     #end
@@ -45,6 +45,7 @@ BuildYourSelf::Application.routes.draw do
 
     resources :schedules
 
+    match '/:id' => 'places#show', :via => 'get'
     
   end
 end

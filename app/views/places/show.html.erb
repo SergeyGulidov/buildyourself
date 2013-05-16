@@ -67,6 +67,10 @@
 
 
       <div class="large-3 columns hide-for-small">
+        <% unless @place.slug.blank? %>
+          <% short_link = "yoda.lv/" + @place.slug %>
+          <h5 class="center"><small><%= t(:short_link_show) %><%= link_to short_link, "http://www." + short_link %></small></h5>
+        <% end %>
           <%= render 'shared/right_navigation' %>
           <%= render 'feed_list' %>
           <%= render 'feeds/form' if @feed %>

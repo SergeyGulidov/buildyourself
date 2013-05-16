@@ -1,3 +1,5 @@
+
+<div ng-app="">
 <%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
     <% field_set_tag t(:edit_your_place) do %>
 
@@ -44,11 +46,28 @@
         </div>
       </div>
 
-
-      <div class="row ">
-        <div class="large-12 columns">
-          <p class="important_text"><%= t(:forbidden_category) %></p>
+      <div class="row collapse hightlight">
+        <% if @place.slug.blank? %>
+        <h5 class="subheader"><%= t(:short_link) %> <i class="right">www.yoda.lv/{{data.message}}</i></h5>
+        <div class="small-2 columns">
+          <span class="prefix">www.yoda.lv/</span>
         </div>
+        <div class="small-3 columns">
+           <%= f.text_field :slug, 
+           { :'ng-model' => 'data.message', :'ng:pattern' => '/^[a-zA-Z0-9]+$/', :'ng:minlength' => '3', :'ng:maxlength' => '50' } %>
+
+        </div>
+        <div class="small-1 columns">
+        </div>
+        <div class="small-6 columns">
+          <p class="important_text"><%= t(:change_link) %></p>
+        </div>
+
+        <% else %>
+        <span class="prefix postfix">www.yoda.lv/<%= @place.slug %></span>
+        <br>
+        <% end  %>
+
       </div>
 
 
@@ -108,3 +127,5 @@
     <%= f.button :submit, t(:add_place), class: 'small button'  %>
   <% end %>
 <% end  %>
+</div>
+

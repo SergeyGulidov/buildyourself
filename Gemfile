@@ -26,6 +26,9 @@ gem 'kaminari'
 gem "select2-rails"
 gem 'tire'
 gem 'metamagic'
+gem "friendly_id", "~> 4.0.9"
+
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

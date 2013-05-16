@@ -16,7 +16,11 @@ class Place < ActiveRecord::Base
   acts_as_gmappable :process_geocoding => true
 
   
-  before_save{|place| place.name = place.name.titleize unless place.name.blank? }
+  before_save      {|place| place.name = place.name.titleize unless place.name.blank? }
+  before_validation{|place| place.slug = place.slug.downcase unless place.slug.blank? }
+
+  extend FriendlyId
+  friendly_id :slug
 
 
 
@@ -32,7 +36,7 @@ class Place < ActiveRecord::Base
   attr_accessible :approved, :email, :vip, :sponsor, :age_max, :age_min,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_id, :photos_attributes, :photo, :category_id, :month_price,
-     :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated
+     :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated, :slug
 
   translates :message
 
@@ -44,8 +48,8 @@ class Place < ActiveRecord::Base
    validates :street,  presence: true
    validates :age_min, :length => { :minimum => 0, :maximum => 3 }
    validates :age_max, :length => { :minimum => 0, :maximum => 3 }
-
-  
+   validates :slug, :format => { :with => /^[a-zA-Z0-9]+$/ },
+                    :uniqueness => true
 
   mapping do
         indexes :id,         :index    => :not_analyzed
@@ -65,7 +69,13 @@ class Place < ActiveRecord::Base
    scope :recent,  where(approved: 1).order("updated_at desc").includes(:type).limit(10)
    
 
-
+  def to_param
+    if slug.blank?
+      "#{id}-#{name}".parameterize
+    else
+      "#{slug}"
+    end
+  end
 
 
    def gmaps4rails_address
@@ -83,9 +93,7 @@ class Place < ActiveRecord::Base
     return vote
   end
 
-  def to_param
-    "#{id}-#{name}".parameterize
-  end
+
 
 
 

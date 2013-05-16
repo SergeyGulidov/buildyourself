@@ -40,8 +40,9 @@ lv:
   register_first: 'Jums ir jāpiereģistrējas, lai varētu atjaunot informāciju par Jūsu vietu.'
   min_age: Min. Vecums
   max_age: Maks. Vecums
-
-
+  change_link: Padomā pirms "Publicē" izlabot nevarēs!
+  short_link: "Īsākais links uz jūsu publikāciju:"
+  short_link_show: " Īsākais links :  "
 
 #------------- footer partial
 #------------- top bar partial

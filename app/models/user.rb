@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
     :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
     :presence => true,
     :uniqueness => true
+  validates :name, :uniqueness => true
 
   scope :sponsor, User.where(sponsor: 1).first
 

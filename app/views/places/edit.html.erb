@@ -1,17 +1,16 @@
 <% provide(:title, @place.name) %>
 
-<%= render 'shared/gmap' %>
-
-<div class="row">
+<div class="row content content_bottom_margin">
   <div class="large-12 columns">
-    <%= render 'shared/filter' %>
+  <%= render 'shared/gmap' %>
+    <%= render 'shared/flasher' %>
     <div class="row content">
 
       <div class="small-12 large-9 columns">
           <%= render 'edit_form'  %>
       </div>
 
-      <div class="large-3 columns hide-for-small">
+      <div class="large-3 columns hide-for-small content">
         <%= render 'shared/login' %>
 			</div>
       
