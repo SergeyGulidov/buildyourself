@@ -22,7 +22,8 @@ lv:
   add_photos: Pievienot fotogrāfijas
   country: Valsts
   city: Pilsēta
-  street_address: Adrese
+  address: Adrese
+  street_address: Apmācību vietas adrese
 
 #-----------------------------------------------------------------------------------
 

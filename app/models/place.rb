@@ -33,6 +33,10 @@ class Place < ActiveRecord::Base
     update_index if translated == 1 and approved == 1
   end
 
+  after_destroy do
+    update_index
+  end
+
   attr_accessible :approved, :email, :vip, :sponsor, :age_max, :age_min,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_id, :photos_attributes, :photo, :category_id, :month_price,
@@ -108,6 +112,7 @@ class Place < ActiveRecord::Base
 
       type_vip = nil
       places ||= Place.approved
+
 
       unless params[:category].blank?
         places = places.where( "categories.category_slug = ?", params[:category] ) 

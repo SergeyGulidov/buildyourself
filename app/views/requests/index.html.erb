@@ -19,7 +19,7 @@
           <td><%= request.email %></td>
           <td><%= request.phone %></td>
           <td><%= request.address %></td>
-          <td><%= request.message %></td>
+          <td><%= simple_format(request.message) %></td>
           <td>
             <ul class="large-block-grid-3 clearing-thumbs photos_for_roll" data-clearing >
               <% request.photos.each do |photo| %>

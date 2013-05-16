@@ -1,8 +1,7 @@
 <% provide(:title, @place.name) %>
 
 <% meta :description => "#{truncate( @place.message, :length => 150, :separator => '. ', :omission => '.')}",
-        :keywords => get_keywords(@place)
-%>
+        :keywords => get_keywords(@place) %>
 
 
 
@@ -27,9 +26,13 @@
       
       <div class="small-7 large-6 columns">
 
-            <h2><%= @place.name %>                    
+            <h2>                  
             <% if can? :edit, @place %>
-              <%= link_to " ", edit_place_path(@place), class: "comments general foundicon-edit" %>
+              <%= link_to(edit_place_path(@place)) do %>
+                <%= @place.name %> <i class="comments general foundicon-edit">  </i>
+              <% end %>
+            <% else %>
+              <%= @place.name %>
             <% end %>
             <% if can? :make_approve, Place %>
               <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>

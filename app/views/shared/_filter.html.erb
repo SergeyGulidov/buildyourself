@@ -12,13 +12,15 @@
 
         <div class="large-2 small-3 columns">
           <%= select_tag :category,
-             options_from_collection_for_select( @categories, 'category_slug', 'display_name'), label_method: :category_name,
-             :include_blank => true, :prompt => t(:category) %>
+             options_from_collection_for_select( @categories, 'category_slug', 'display_name'),
+              label_method: :category_name,
+             :include_blank => true, :prompt => t(:category)  %>
         </div>
 
         <div class="large-2 small-3 columns">
           <%= grouped_collection_select(:f, :type,  @categories,
-                :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type)) %>
+                :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type),
+                :onchange => 'this.form.submit();') %>
         </div>
 
         <div class="large-1 small-2 columns">

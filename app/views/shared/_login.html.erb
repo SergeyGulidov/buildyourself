@@ -5,10 +5,18 @@
 				<h5><%= link_to current_user.name.blank? ? current_user.email : current_user.name, current_user %> 
 				<%= link_to t(:logout), destroy_user_session_path, method: :delete, class: "right  button tiny" %></h5>
 			</li>
-			<li><b class="general foundicon-location"></b> <%= link_to t(:add_new_place), new_request_path %></li>
-			<li><b class="social foundicon-torso"></b> <%= link_to t(:user_status), current_user %></li> 
-			<li><b class="general foundicon-add-doc"></b> <%= link_to t(:create_post), new_post_path %></li>
-			<li><b class="general foundicon-settings"></b> <%= link_to t(:profile), edit_user_path(current_user) %></li>
+			<%= link_to(new_request_path) do %>
+				<li><b class="general foundicon-location"></b> <%= t(:add_new_place) %></li>
+			<% end %>
+			<%= link_to(current_user) do %>
+				<li><b class="social foundicon-torso"></b> <%= t(:user_status) %></li>
+			<% end %>
+			<%= link_to(new_post_path) do %>
+				<li><b class="general foundicon-add-doc"></b> <%= t(:create_post) %></li>
+			<% end %>
+			<%= link_to(edit_user_path(current_user)) do %>
+				<li><b class="general foundicon-settings"></b> <%= t(:profile) %></li>
+			<% end %>
 		</ul>
 		<ul class="your_place_list">
 			<% unless @current_user_places.blank? %>

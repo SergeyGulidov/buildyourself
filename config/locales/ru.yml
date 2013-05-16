@@ -20,7 +20,8 @@ ru:
   add_photos: Добавить фотографии
   country: Страна
   city: Город
-  street_address: Адрес
+  address: Адрес
+  street_address: Адрес где проходит обучение
   name_for_place: Название
   min_age: Мин. возраст
   max_age: Макс. возраст

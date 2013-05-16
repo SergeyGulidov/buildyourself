@@ -28,13 +28,16 @@ class Post < ActiveRecord::Base
 
 
   after_save do
-    update_index
+    update_index if approved = 1
   end
 
   after_update do
+    update_index if approved = 1
+  end
+  
+  after_destroy do
     update_index
   end
-
 
 
   def to_param
