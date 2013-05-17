@@ -7,7 +7,6 @@
 //= require angular-resource
 //= require_tree .
 
-
 $(document).foundation();
 
 

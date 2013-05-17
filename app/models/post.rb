@@ -28,11 +28,11 @@ class Post < ActiveRecord::Base
 
 
   after_save do
-    update_index if approved = 1
+    update_index if approved == 1
   end
 
   after_update do
-    update_index if approved = 1
+    update_index if approved == 1
   end
   
   after_destroy do

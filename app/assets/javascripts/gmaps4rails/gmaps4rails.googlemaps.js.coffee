@@ -4,6 +4,8 @@
 
 class @Gmaps4RailsGoogle extends Gmaps4Rails
 
+  
+
   constructor: ->
     super
     #Map settings

@@ -41,6 +41,8 @@ ru:
   change_link: Хорошо подумайте перед отправкой. Изменить нельзя!
   short_link: "Короткая ссылка на вашу публикацию:"
   short_link_show: "Короткая ссылка:  "
+  watch_filter: Отобразить
+  yoda_navigator: Навигация
 
 
 #------------- footer partial

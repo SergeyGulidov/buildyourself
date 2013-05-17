@@ -1,0 +1,17 @@
+<div class="panel radius right_panel ">
+<ul class="recent navigator ">
+  <li class="first"><h5><%= t :yoda_navigator  %></h5></li>
+  <%= form_tag(root_path, :method => 'get', class: 'chzn-select') do %>
+
+          <%= select_tag :category,
+             options_from_collection_for_select( @categories, 'category_slug', 'display_name'),
+              label_method: :category_name,
+             :include_blank => true, :prompt => t(:category) %>
+
+          <%= grouped_collection_select(:f, :type,  @categories,
+                :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type)) %>
+
+          <%= submit_tag "#{t(:watch_filter)}", class: 'button tiny radius', data: { disable_with: "Please wait.." } %>
+    <% end %>
+</ul>
+</div>

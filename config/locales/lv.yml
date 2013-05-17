@@ -44,6 +44,8 @@ lv:
   change_link: Padomā pirms "Publicē" izlabot nevarēs!
   short_link: "Īsākais links uz jūsu publikāciju:"
   short_link_show: " Īsākais links :  "
+  watch_filter: Parādīt
+  yoda_navigator: Navigācija
 
 #------------- footer partial
 #------------- top bar partial

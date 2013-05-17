@@ -7,26 +7,32 @@ $("#close").click ->
 
 jQuery ->
 
-	$("#f_type").select2()
+	$("#f_type").select2({minimumResultsForSearch: 99;})
 	$("#city").select2()
-	$("#category").select2()
+	$("#category").select2({minimumResultsForSearch: 99;})
 	$("#place_type_id").select2()
 	$("#place_country_id").select2()
 	$("#place_city_id").select2()
 	$("#place_category_id").select2()
 
 
+	
 	types = $('#f_type').html()
 	$('#category').change ->
+		
 		category = $('#category :selected').text()
 		options = $(types).filter("optgroup[label='#{category}']").html()
 		if options
 			$('#f_type').html(options)
+			$("#f_type").select2("val", "null")
 		else
 			$('#f_type').empty()
 
+
+
 	types_for_new = $('#place_type_id').html()
 	$('#place_category_id').change ->
+
 		place_category_id = $('#place_category_id :selected').text()
 		options = $(types_for_new).filter("optgroup[label='#{place_category_id}']").html()
 		if options

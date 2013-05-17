@@ -4,7 +4,7 @@ load_and_authorize_resource
 	before_filter :get_filter_collections
 	before_filter :get_recent_added, only: [:create, :new]
 	
-	respond_to :html, :xml, :json
+	respond_to :html, :xml, :json, :js
 
 	def index
 		unless params[:search].blank?
@@ -13,7 +13,7 @@ load_and_authorize_resource
 		else
 			@places, @type_vip = Place.first_step_search(params)
 			@json = get_json_for_map(@places)
-			@places = @places.page(params[:page]).per(10)
+			@places = @places.page(params[:page]).per(5)
 		end
 		@recent_posts = Post.recent
 
