@@ -3,28 +3,25 @@
 <% meta :description => "#{truncate( @place.message, :length => 150, :separator => '. ', :omission => '.')}",
         :keywords => get_keywords(@place) %>
 
-
-
-
-
-<div class="row content show content_bottom_margin">
+<div class="row show content_bottom_margin">
   <div class="large-12 small-12 columns">
-  <%= render 'shared/gmap' %>
+  
   <%# render 'shared/filter' %>
     <%= render 'shared/flasher' %>
 
 
 
 
-    <div class="row content">
+    <div class="row ">
 
 
-      <div class="small-5 large-3 columns content">
+      <div class="small-5 large-3 columns">
         <%= render 'shared/user_box', object: @place %>
+        <%= render 'blog_list' %>
       </div>
 
       
-      <div class="small-7 large-6 columns content">
+      <div class="small-7 large-6 columns">
 
             <h2>                  
             <% if can? :edit, @place %>
@@ -44,12 +41,23 @@
             <%= render 'breadcrumbs', object: @place %>
           </div>
 
-
+        <% unless @place.slug.blank? %>
+          <% short_link = "yoda.lv/" + @place.slug %>
+          <p class="center"><%= t(:short_link_show) %><%= link_to short_link, "http://www." + short_link %></p>
+        <% end %>
           <%= render 'show_contacts', object: @place %> 
+
+
+
           <%= simple_format(@place.message) %>
+          <div class="row">
+          <div class="large-12 columns">
 
 
-        <hr>
+          </div>
+
+        </div>
+
         <div class="row">
           <div class="large-12 columns">
             <ul class="small-block-grid-4 clearing-thumbs" data-clearing>
@@ -61,26 +69,28 @@
                   </li>
                 <% end %>
             </ul>
+
+
           </div>
+
         </div>
 
-        <hr>
-        <div id="disqus_thread"></div>
+        <%= render 'feed_list' %>
+        <%= render 'feeds/form' if @feed %>
+        <%= render 'shared/gmap' %>
+        
       </div>
 
 
-      <div class="large-3 columns hide-for-small content">
-        <% unless @place.slug.blank? %>
-          <% short_link = "yoda.lv/" + @place.slug %>
-          <h5 class="center"><small><%= t(:short_link_show) %><%= link_to short_link, "http://www." + short_link %></small></h5>
-        <% end %>
-          <%= render 'shared/right_navigation' %>
+      <div class="large-3 columns hide-for-small">
 
-          <%= render 'feed_list' %>
-          <%= render 'feeds/form' if @feed %>
-          <hr>
-          <%= render 'blog_list' %>
           <%= render 'shared/navigator' %>
+          <%= render 'shared/login' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-9 small-12 columns">
+        <div id="disqus_thread"></div>
       </div>
     </div>
   </div>

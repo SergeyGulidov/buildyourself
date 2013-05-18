@@ -1,23 +1,16 @@
-<% if @feeds.blank? %>
-	<div class="panel radius right_panel">
-	    <ul class="recent">
-	    <li class="first"><h5><%= t :feed_list  %></h5></li>
-	    <li><%= t :no_feeds  %></li>
-	 	</ul>
-	</div>
-<% else  %>
-	<div class="panel radius right_panel">
-	    <ul class="recent">
-	    <li class="first"><h5><%= t :feed_list   %></h5></li>
-	    <% @feeds.each do |feed| %>
-	      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i>
-	      	<% if can? :destroy, feed %>
-               <%= link_to "", feed, method: :delete, data: { confirm: t(:sure_question) }, class: "comments general foundicon-remove" %>
-            <% end %>
-
-	       </br>
-	      <%= feed.message %></li>
-	    <% end %>
-	   </ul>
-	</div>
-<% end %>
+<div class="feeds">
+	<ul class="recent">
+		<% if @feeds.blank? %>
+			<li><%= t :no_feeds  %></li>
+		<% else  %>
+		    <% @feeds.each do |feed| %>
+		      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i>
+		      	<% if can? :destroy, feed %>
+	               <%= link_to "", feed, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove" %>
+	            <% end %>
+		       </br>
+		      <%= simple_format(feed.message) %></li>
+		    <% end %>
+		<% end %>
+	</ul>
+</div>

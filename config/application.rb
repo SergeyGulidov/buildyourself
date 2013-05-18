@@ -63,3 +63,9 @@ module BuildYourSelf
     config.assets.initialize_on_precompile = false
   end
 end
+
+FriendlyId.defaults do |config|
+  config.use :reserved
+  # Reserve words for English and Spanish URLs
+  config.reserved_words = %w(new edit photos posts places contacts users types feeds schedules requests admin administration moderator)
+end

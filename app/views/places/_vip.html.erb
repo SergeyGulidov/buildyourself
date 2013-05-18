@@ -1,4 +1,4 @@
-	<div class="row height_10"></div>
+
 	<% @type_vip.each do |place| %>
 
 		<% @place = place %>
@@ -6,7 +6,7 @@
 		<div class="vip_zone">	
 			<div class="row">
 				  <div class="small-6 columns">
-					<h5 id="title"><%= link_to place.name, place_path(place)%><%= link_to ">> edit", controller: 'places', action: 'make_approve', id: place.id %></h5>
+					<h5 id="title"><%= link_to place.name, place_path(place)%></h5>
 				  </div>   
 				  <div class="small-6 columns">
 				 	 <%= render 'breadcrumbs', object: @place %>

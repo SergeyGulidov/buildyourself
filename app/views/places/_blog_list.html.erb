@@ -1,32 +1,12 @@
-<% if @user_posts.blank? %>
-	<div class="panel radius right_panel">
-	    <ul class="recent">
-	    <li class="first"><h5><%= t :post_list  %></h5></li>
-	    <li><%= t :no_posts  %></li>
-	    <% if can? :new, Post and current_user.id == @place.user_id %>
-        	<%= link_to t(:create_post), new_post_path, class: "button tiny expand radius" %>
-      	<% end  %>	
-	 	</ul>
-	</div>
-
-
-<% else  %>
+<% unless @user_posts.blank? %>
 	<div class="panel radius right_panel">
 	    <ul class="recent">
 	    <li class="first"><h5><%= t :post_list   %></h5></li>
 	    <% @user_posts.each do |post| %>
 	      <li class="feed"><i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
 	      <%= link_to post.title, post %>
-	      	<% if can? :edit, post %>
-               <%= link_to "", edit_post_path(post), class: "comments general foundicon-edit" %>
-            <% end %>
 	      </li>
 	    <% end %>
-	    <br>
-	  <% if can? :new, Post and current_user.id == @place.user_id %>
-       <%= link_to t(:create_post), new_post_path, class: "button tiny expand radius" %>
-      <% end  %>
 	   </ul>
 	</div>
 <% end %>
-
