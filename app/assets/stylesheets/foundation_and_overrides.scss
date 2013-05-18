@@ -958,7 +958,7 @@ $panel-bg: white;
 //
 
 // Background color for the top bar
-$topbar-bg: rgba(0,0,0,0);
+$topbar-bg: #fff;
 
 // Height and margin
 $topbar-height: 24px;
@@ -978,7 +978,7 @@ $topbar-height: 24px;
  $topbar-link-font-size: emCalc(11px);
 
 // Style the top bar dropdown elements
- $topbar-dropdown-bg: rgba(0,0,0,0);
+ $topbar-dropdown-bg: #fff;
  $topbar-dropdown-link-color: #464A4C;
 // $topbar-dropdown-toggle-size: 5px;
  $topbar-dropdown-toggle-color: #333;

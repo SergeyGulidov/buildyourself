@@ -123,8 +123,6 @@ lv:
   need_info: '<b id="noapprove" data-tooltip class="has-tip" title="Nepieciešams papildināt. Izsūtījām Jums e-pastu ar paskaidrojumu.">N</b>' 
   edit: Rediģēt
 
-
-  or: vai
   add_new_place: Pievienot vietu
   profile: Iestatījumi
   create_post: Pievienot bloga ierakstu
