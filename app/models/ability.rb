@@ -14,11 +14,8 @@ class Ability
         can :edit,   User,    :id => user.id
         can :update, User,    :id => user.id
         can :create, Contact
-        can :create, Place
-        can :show,   Place,   :user_id => user.id
         can :update, Place,   :user_id => user.id
         can :edit,   Place,   :user_id => user.id
-        can :vote,   Place
         can :create, Request
         can :read, Place
         can :read, Post
@@ -26,7 +23,6 @@ class Ability
         can :edit, Post,      :user_id => user.id
         can :update, Post,    :user_id => user.id
         can :destroy, Post,    :user_id => user.id
-
         can :create, Feed
         can :destroy, Feed,    :user_id => user.id
 
@@ -36,12 +32,10 @@ class Ability
         can :edit,       User
         can :update,     User
         can :create,     Contact
-        can :create,     Place
         can :read,       Place
         can :translate,  Place
         can :make_translate, Place
         can :update,     Place
-        can :vote,       Place
         can :show,       User
         can :index,      User
         can :create,     Request
