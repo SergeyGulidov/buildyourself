@@ -26,7 +26,7 @@
                             class: "button alert tiny", data: { confirm: t(:sure_question) }  %>
         </div>
         <div class="large-6 columns">
-            <%= f.button :submit, class: ' button expand tiny' %>
+            <%= f.button :submit, class: ' button expand tiny', :disable_with => "Creating..." %>
         </div>
     </div>
 <% end %>

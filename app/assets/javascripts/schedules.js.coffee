@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+app = angular.module("ST", ["ngResource"])
+
+app.factory "Schedule", ["$resource", ($resource) ->
+	$resource("/schedules/:id", {id: "@id"}, {update: {method: "PUT"}})]
+
+@ScheduleCtrl = ["$scope", "Schedule", ($scope, Schedule) ->
+	$scope.schedules = Schedule.query()
+
+	$scope.addSchedule = ->
+		schedule = Schedule.save($scope.newSchedule)
+		$scope.schedules.push(schedule)
+		$scope.newSchedule = {}
+]

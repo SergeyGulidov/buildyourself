@@ -11,7 +11,7 @@ class Place < ActiveRecord::Base
   has_many :feeds
   has_many :photos, :dependent => :destroy
   has_many :place_votes, :dependent => :destroy
-  
+  has_many :schedules, :dependent => :destroy
 
   acts_as_gmappable :process_geocoding => true
 

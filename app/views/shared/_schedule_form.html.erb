@@ -1,0 +1,17 @@
+<div ng-app="ST">
+	<div ng-controller="ScheduleCtrl">
+		<form ng-submit="addSchedule()">
+			<input type="text"   ng-model="newSchedule.group">
+			<input type="text"   ng-model="newSchedule.mon">
+			<input type="hidden"   ng-model="newSchedule.place_id" ng-init="newSchedule.place_id = <%= "#{@place.id}" %>">
+			<input type="submit" value="Add">
+		</form>
+
+		<ul>
+			<li ng-repeat="schedule in schedules">
+				{{schedule.group}} {{schedule.mon}} {{schedule.place_id}}
+			</li>
+		</ul>
+
+	</div>
+</div>

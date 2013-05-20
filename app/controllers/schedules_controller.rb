@@ -1,8 +1,9 @@
 class SchedulesController < ApplicationController
+
 	respond_to :json
 
 	def index
-		respond_with Schedule.all
+		respond_with Schedule.find(params[:place_id])
 	end
 
 	def show
@@ -10,7 +11,7 @@ class SchedulesController < ApplicationController
 	end
 
 	def create
-		respond_with Schedule.create(params[:id])
+		respond_with Schedule.create(params[:schedule])
 	end
 
 	def update

@@ -2,8 +2,7 @@
 
 class PhotoUploader < CarrierWave::Uploader::Base
 
-   include CarrierWave::RMagick
-   include CarrierWave::ImageOptimizer
+  include CarrierWave::MiniMagick
 
   storage :file
 
@@ -14,7 +13,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
 
   process :resize_to_fill => [700, 700]
-  process :optimize
 
    version :thumb do
      process :resize_to_fill => [100, 60]
