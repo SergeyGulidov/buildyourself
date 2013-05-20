@@ -44,7 +44,7 @@ class Place < ActiveRecord::Base
 
   translates :message
 
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, :allow_destroy => true 
 
 
    validates :country, presence: true

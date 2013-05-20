@@ -10,8 +10,8 @@ gem 'rails', '~> 3.2.11'
 gem 'traco'
 gem 'simple_form'
 gem 'gmaps4rails'
-gem "mini_magick"
 gem "carrierwave"
+gem "mini_magick"
 gem 'nested_form'
 gem 'devise'
 gem "cancan"

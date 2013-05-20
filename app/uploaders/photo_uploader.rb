@@ -12,7 +12,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
 
 
-  process :resize_to_fill => [700, 700]
+  process :resize_to_fit => [700, 700]
 
    version :thumb do
      process :resize_to_fill => [100, 60]
