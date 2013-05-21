@@ -53,7 +53,9 @@ class Place < ActiveRecord::Base
    validates :age_min, :length => { :minimum => 0, :maximum => 3 }
    validates :age_max, :length => { :minimum => 0, :maximum => 3 }
    validates :slug, :format => { :with => /^[a-zA-Z0-9]+$/ },
-                    :uniqueness => true
+                    :uniqueness => true,
+                    :allow_blank => true
+
 
   mapping do
         indexes :id,         :index    => :not_analyzed

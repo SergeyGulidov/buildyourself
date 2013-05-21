@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ImageUploader < CarrierWave::Uploader::Base
 
-  include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
   storage :file
 
   def store_dir
@@ -9,8 +9,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
 
-   process :resize_to_fill => [700, 700]
-
+   process :resize_to_fit => [700, 700]
+   
 
 
    version :thumb do

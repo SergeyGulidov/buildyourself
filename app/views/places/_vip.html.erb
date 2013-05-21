@@ -26,7 +26,7 @@
 						<% place.photos.take(3).each do |photo| %>
 							<li>
 								<%= link_to (image_tag photo.photo_url(:thumb).to_s, 
-									height: '60', width: '100', class: "th radius"),
+									height: '60', width: '100', class: "th"),
 								 photo.photo_url.to_s %>
 							</li>
 						<% end %>

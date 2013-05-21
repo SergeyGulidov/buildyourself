@@ -11,7 +11,7 @@ gem 'traco'
 gem 'simple_form'
 gem 'gmaps4rails'
 gem "carrierwave"
-gem "mini_magick"
+gem 'rmagick', '2.13.2'
 gem 'nested_form'
 gem 'devise'
 gem "cancan"
@@ -27,7 +27,7 @@ gem "select2-rails"
 gem 'tire'
 gem 'metamagic'
 gem "friendly_id", "~> 4.0.9"
-
+gem 'carrierwave-imageoptimizer'
 
 
 group :assets do
