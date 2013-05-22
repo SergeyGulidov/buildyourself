@@ -11,21 +11,23 @@ class Ability
       can :manage, :all if user.role == 1
 
       if user.role == 2
-        can :edit,   User,    :id => user.id
-        can :update, User,    :id => user.id
+        can :edit,   User,     :id => user.id
+        can :update, User,     :id => user.id
         can :create, Contact
-        can :update, Place,   :user_id => user.id
-        can :edit,   Place,   :user_id => user.id
+        can :update, Place,    :user_id => user.id
+        can :edit,   Place,    :user_id => user.id
         can :create, Request
         can :read, Place
         can :read, Post
         can :create,  Post
-        can :edit, Post,      :user_id => user.id
-        can :update, Post,    :user_id => user.id
+        can :edit, Post,       :user_id => user.id
+        can :update, Post,     :user_id => user.id
         can :destroy, Post,    :user_id => user.id
         can :create, Feed
         can :destroy, Feed,    :user_id => user.id
-
+        can :create, Schedule
+        can :edit, Schedule,   :user_id => user.id
+        can :destroy, Schedule,:user_id => user.id
       end
 
       if user.role == 3

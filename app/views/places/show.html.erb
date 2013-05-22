@@ -53,7 +53,11 @@
           <div class="row">
           <div class="large-12 columns">
 
-          <%# render 'shared/schedule_form' %>
+
+          <%= render 'schedules' %>
+          </br>
+          <%= render 'feed_list' %>
+          
           </div>
 
         </div>
@@ -61,7 +65,7 @@
         <div class="row ">
           <div class="large-12 columns photos_block">
             <ul class="small-block-grid-4 clearing-thumbs" data-clearing>
-                <% @photos.each do |photo| %>
+                <% @place.photos.each do |photo| %>
                   <li>
                     <%= link_to (image_tag photo.photo.url(:thumb), 
                       height: '60', width: '100', class: "th"),
@@ -75,8 +79,7 @@
 
         </div>
 
-        <%= render 'feed_list' %>
-        <%= render 'feeds/form' if @feed %>
+        
         <%= render 'shared/gmap' %>
         
       </div>

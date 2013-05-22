@@ -1,0 +1,118 @@
+
+<% unless @place.schedules.blank? %>
+	<div class="schedules">
+		<div class="first">
+			<div class="small-4 columns">
+				<%= t(:group_name) %>
+			</div>
+			<div class="small-4 columns">
+				<%= t(:day_of_week) %>
+			</div>
+			<div class="small-4 columns">
+				<%= t(:time_started) %>
+			</div>
+		</div>
+		
+		<% @place.schedules.each do |schedule|  %>
+
+				<div class="small-4 columns">
+					<div class="row entry">
+						<% if can? :destroy, schedule %>
+						   <%= link_to(edit_schedule_path(schedule)) do %>
+                		   		<%= schedule.group %> <i class="comments general foundicon-edit">  </i>
+                		   <% end %>
+			               <%= link_to "", schedule, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove" %>
+			            <% else %>
+			            	<%= schedule.group %>
+			            <% end %>
+					</div>
+				</div>
+				<div class="small-8 columns">
+					<% unless schedule.mon.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:monday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.mon %>
+							</div>
+						</div>
+					<% end  %>
+					<% unless schedule.tue.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:tuesday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.tue %>
+							</div>
+						</div>
+					<% end  %>
+					<% unless schedule.wed.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:wednesday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.wed %>
+							</div>
+						</div>
+					<% end  %>
+					<% unless schedule.thu.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:thursday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.thu %>
+							</div>
+						</div>
+					<% end  %>
+					<% unless schedule.fri.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:friday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.fri %>
+							</div>
+						</div>
+					<% end  %>
+					<% unless schedule.sat.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:saturday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.sat %>
+							</div>
+						</div>
+					<% end  %>
+					<% unless schedule.sun.blank?  %>
+						<div class="row entry">
+							<div class="small-6 columns">
+								<%= t(:sunday) %>
+							</div>
+							<div class="small-6 columns">
+								<%= schedule.sun %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<div class=" divider_for_schedule">
+				&nbsp;
+			</div>
+
+		<% end %>
+	</div>
+<% end %>
+
+<% unless @schedule.blank? %>
+	<a href="#" data-reveal-id="create_group" class="button tiny secondary right radius"><%= t(:add_new_group) %></a>
+
+	<div id="create_group" class="reveal-modal xlarge">
+	  <h2><%= t(:add_new_group) %></h2>
+		<%= render "schedules/form" %>
+	  <a class="close-reveal-modal">&#215;</a>
+	</div>
+<% end %>

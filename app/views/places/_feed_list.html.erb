@@ -1,16 +1,28 @@
 <div class="feeds">
 	<ul class="recent">
-		<% if @feeds.blank? %>
+		<% if @place.feeds.blank? %>
 			<li><%= t :no_feeds  %></li>
 		<% else  %>
-		    <% @feeds.each do |feed| %>
-		      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i>
-		      	<% if can? :destroy, feed %>
-	               <%= link_to "", feed, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove" %>
-	            <% end %>
-		       </br>
-		      <%= simple_format(feed.message) %></li>
+		    <% @place.feeds.each_with_index do |feed, index| %>
+		    	<i>
+		    		<%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %>
+					<% if can? :destroy, feed %>
+		               <%= link_to "", feed, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove" %>
+		            <% end %>
+		    	</i>
+		        <li class="feed"><%= simple_format(feed.message) %></li>
+		        <% break if index == 2 %>
 		    <% end %>
 		<% end %>
 	</ul>
 </div>
+
+<% unless @feed.blank? %>
+	<a href="#" data-reveal-id="feeds_new" class="button tiny secondary right radius"><%= t(:create_news) %></a>
+	<br>
+	<div id="feeds_new" class="reveal-modal xlarge">
+	  <h2><%= t(:create_news) %></h2>
+		<%= render 'feeds/form' %>
+	  <a class="close-reveal-modal">&#215;</a>
+	</div>
+<% end %>

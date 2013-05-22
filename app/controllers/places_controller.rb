@@ -10,6 +10,7 @@ load_and_authorize_resource
 		unless params[:search].blank?
 			@places = Place.search(params)
 			@json = get_json_for_map(@places)
+
 		else
 			@places, @type_vip = Place.first_step_search(params)
 			@json = get_json_for_map(@places)
@@ -49,13 +50,12 @@ load_and_authorize_resource
 	end
 
 	def show
-		@place = Place.includes(:user, :schedules).find(params[:id])
-		@photos = @place.photos.all
-		@feeds ||= Feed.where(place_id: @place.id, user_id: @place.user_id ).order("created_at desc").limit(5)
+		@place = Place.includes(:user, :schedules, :feeds, :photos).find(params[:id])
 		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
-		@schedule = Schedule.new
+		
 		if current_user and current_user.id == @place.user_id
 		   @feed = Feed.new
+		   @schedule = Schedule.new
 		end
 
 		@json = get_json_for_map(@place)

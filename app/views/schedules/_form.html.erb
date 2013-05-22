@@ -1,0 +1,80 @@
+<%= simple_nested_form_for @schedule, html: { class: '' } do |f| %>
+
+	<div class="schedules">
+		<div class="content new">
+			<div class="small-4 columns first">
+				<%= t(:group_name) %>
+			</div>
+
+			<div class="small-4 columns first">
+				<%= t(:day_of_week) %>
+			</div>
+
+			<div class="small-4 columns first">
+				<%= t(:time_started) %>
+			</div>
+
+
+				<div class="small-4 columns">
+					<div class="row entry">
+						<%= f.input :group_lv, label: t(:group_name_lv) %>
+						<%= f.input :group_ru, label: t(:group_name_ru) %>
+					</div>
+				</div>
+
+				<div class="small-4 columns">
+					<div class="row entry">
+						<%= t(:monday) %>
+					</div>
+					<div class="row entry">
+						<%= t(:tuesday) %>
+					</div>
+					<div class="row entry">
+						<%= t(:wednesday) %>
+					</div>
+					<div class="row entry">
+						<%= t(:thursday) %>
+					</div>
+					<div class="row entry">
+						<%= t(:friday) %>
+					</div>
+					<div class="row entry">
+						<%= t(:saturday) %>
+					</div>
+					<div class="row entry">
+						<%= t(:sunday) %>
+					</div>
+				</div>
+
+				<div class="small-4 columns">
+					<div class="row entry">
+						<%= f.input :mon, label: false %>
+					</div>
+					<div class="row entry">
+						<%= f.input :tue, label: false %>
+					</div>
+					<div class="row entry">
+						<%= f.input :wed, label: false %>
+					</div>
+					<div class="row entry">
+						<%= f.input :thu, label: false %>
+					</div>
+					<div class="row entry">
+						<%= f.input :fri, label: false %>
+					</div>
+					<div class="row entry">
+						<%= f.input :sat, label: false %>
+					</div>
+					<div class="row entry">
+						<%= f.input :sun, label: false %>
+					</div>
+				</div>
+
+				<% if @place %>
+					<%= f.hidden_field :place_id, label: false, :value => @place.id %>
+				<% end %>
+		</div>
+		<br>
+	</div>
+	<%= f.button :submit, t(:add_place), class: 'tiny button radius secondary', :disable_with => "Creating..."  %>
+<% end  %>

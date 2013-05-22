@@ -15,7 +15,7 @@ lv:
     <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
 
   recent_added_places: Nesen pievienoti...
-  photo_how_to: Tikai .jpg, .png, .gif vai .jpeg formāts. Vienas bildes maksimālais izmērs 2 MB. Vajag vairāk?
+  photo_how_to: Tikai .jpg, .gif vai .jpeg formāts. Vienas bildes maksimālais izmērs 2 MB. Vajag vairāk?
   
   add_photos: Pievienot fotogrāfijas
   country: Valsts
@@ -188,6 +188,23 @@ lv:
   subscribe: Pierakstīties jaunumiem
 
 
+#-------------- Schedules
+  group_name_ru: Grupas nosaukums RU
+  group_name_lv: Grupas nosaukums LV
+  create_news: Pievienot ziņu
+  add_new_group: Pievienot grupu
+  group_name: Grupa
+  day_of_week: Diena
+  time_started: Laiks
+  monday: Pirmdiena
+  tuesday: Otrdiena
+  wednesday: Trešdiena
+  thursday: Ceturtdiena
+  friday: Piektdiena
+  saturday: Sestdiena
+  sunday: Svētdiena
+
+
 #------------------------------------------------------------------------------------------------------------
   date:
     abbr_day_names:
@@ -212,14 +229,6 @@ lv:
     - Okt
     - Nov
     - Dec
-    day_names:
-    - svētdiena
-    - pirmdiena
-    - otrdiena
-    - trešdiena
-    - ceturtdiena
-    - piektdiena
-    - sestdiena
     formats:
       default: ! '%d.%m.%Y.'
       long: ! '%Y. gada %e. %B'

@@ -8,7 +8,7 @@ class Place < ActiveRecord::Base
   belongs_to :category
   belongs_to :type
 
-  has_many :feeds
+  has_many :feeds, :dependent => :destroy
   has_many :photos, :dependent => :destroy
   has_many :place_votes, :dependent => :destroy
   has_many :schedules, :dependent => :destroy
@@ -55,7 +55,6 @@ class Place < ActiveRecord::Base
    validates :slug, :format => { :with => /^[a-zA-Z0-9]+$/ },
                     :uniqueness => true,
                     :allow_blank => true
-
 
   mapping do
         indexes :id,         :index    => :not_analyzed
@@ -114,7 +113,6 @@ class Place < ActiveRecord::Base
 
       type_vip = nil
       places ||= Place.approved
-
 
       unless params[:category].blank?
         places = places.where( "categories.category_slug = ?", params[:category] ) 

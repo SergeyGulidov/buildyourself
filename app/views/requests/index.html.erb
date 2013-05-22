@@ -21,11 +21,11 @@
           <td><%= request.address %></td>
           <td><%= simple_format(request.message) %></td>
           <td>
-            <ul class="large-block-grid-3 clearing-thumbs photos_for_roll" data-clearing >
+            <ul class="large-block-grid-3 clearing-thumbs photos_for_roll request_index" data-clearing >
               <% request.photos.each do |photo| %>
                 <li>
                   <%= link_to (image_tag photo.photo.url(:thumb), 
-                    height: '60', width: '100', class: "th radius"),
+                    height: '60', width: '100', class: "th"),
                    photo.photo.url %>
                 </li>
               <% end %>

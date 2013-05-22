@@ -15,7 +15,7 @@ ru:
   how_to: <ul class="square how_to"><h4>Если вы тот, кто несет знания и силу в массы, то вы должны быть в нашем каталоге.</h4><h6><small>Предоставляемые нами услуги совершенно бесплатны.</small></h6></ul>
   recent_added_places: Недавно добавленны...
   comments_text: Вопросы, пожелания, возражения? Пишите в любом случае! Мы ответим всем!
-  photo_how_to: Только .jpg, .png, .gif или .jpeg формат. Максимальный размер одного фото 2 MB. Нужно больше?
+  photo_how_to: Только .jpg, .gif или .jpeg формат. Максимальный размер одного фото 2 MB. Нужно больше?
   
   add_photos: Добавить фотографии
   country: Страна
@@ -189,6 +189,22 @@ ru:
   subscribe: Подписаться на новости
 
 
+#-------------- Schedules
+
+  group_name_ru: Имя группы RU
+  group_name_lv: Имя группы LV
+  create_news: Добавить новость
+  add_new_group: Добавить группу
+  group_name: Группа
+  day_of_week: День
+  time_started: Время
+  monday: Понедельник
+  tuesday: Вторник
+  wednesday: Среда
+  thursday: Четверг
+  friday: Пятница
+  saturday: Суббота
+  sunday: Воскресенье
 
   views:
     pagination:
@@ -218,14 +234,6 @@ ru:
     - окт.
     - нояб.
     - дек.
-    day_names:
-    - воскресенье
-    - понедельник
-    - вторник
-    - среда
-    - четверг
-    - пятница
-    - суббота
     formats:
       default: ! '%d.%m.%Y'
       long: ! '%d %B %Y'
