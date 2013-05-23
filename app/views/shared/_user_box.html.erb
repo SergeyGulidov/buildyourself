@@ -30,6 +30,7 @@
 
 </ul>
 
+<%= render 'blog_list' %>
 
 <% places = Place.approved.where("id != ? AND user_id = ?", @place.id.to_i, @place.user_id )%>
 
