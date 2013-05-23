@@ -3,7 +3,7 @@
 		<% if @place.feeds.blank? %>
 			<li><%= t :no_feeds  %></li>
 		<% else %>
-		    <% @place.feeds.reverse.each do |feed| %>
+		    <% @place.feeds.each do |feed| %>
 		    	<i>
 		    		<%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %>
 					<% if can? :destroy, feed %>
