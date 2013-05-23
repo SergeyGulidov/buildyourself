@@ -1,35 +1,35 @@
+<div class="panel without_border">
+  <ul class="small-block-grid-1 ">
+      <li>
+        <% if @place.user.avatar.blank? %>
+          <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
+        <% else  %>
+          <%= image_tag @place.user.avatar.url, height: '154', width: '254', 
+          	class: "th"  %>
+        <% end  %>
+      </li>
 
-<ul class="small-block-grid-1 ">
-    <li>
-      <% if @place.user.avatar.blank? %>
-        <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
-      <% else  %>
-        <%= image_tag @place.user.avatar.url, height: '154', width: '254', 
-        	class: "radius th"  %>
-      <% end  %>
-    </li>
+      <li><h4 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h4></li>
+      <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr></li>
 
-    <li><h4 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h4></li>
-    <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr></li>
+      <li><p class="contact_info">
 
-    <li><p class="contact_info">
+      <% unless @place.user.email.blank?  %>
+        <%= @place.user.email %><br>
+      <% end %>
 
-    <% unless @place.user.email.blank?  %>
-      <%= @place.user.email %><br>
-    <% end %>
+      <% unless @place.user.web_site.blank?  %>
+        <%= @place.user.web_site  %> <br>
+      <% end %>
 
-    <% unless @place.user.web_site.blank?  %>
-      <%= @place.user.web_site  %> <br>
-    <% end %>
+      <% unless @place.user.phone.blank?  %>
+        <%= "(+371) - #{@place.user.phone}" %><br>
+      <% end %>
+      
+  	</p></li>
 
-    <% unless @place.user.phone.blank?  %>
-      <%= "(+371) - #{@place.user.phone}" %><br>
-    <% end %>
-    
-	</p></li>
-
-</ul>
-
+  </ul>
+</div>
 <%= render 'blog_list' %>
 
 <% places = Place.approved.where("id != ? AND user_id = ?", @place.id.to_i, @place.user_id )%>

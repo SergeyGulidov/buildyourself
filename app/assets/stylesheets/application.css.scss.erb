@@ -16,7 +16,21 @@
  */
 @import 'foundation-icons';
 
+.white{
+  background-color: white;
+  padding: 10px 0 0 0;
+  margin-bottom:20px;
+}
 
+fieldset{
+  background-color: white;
+}
+
+.place_zone{
+  padding: 10px 10px 5px 15px;
+  margin: 0px 0px 30px 0;
+  border: 1px solid #f1f1f1;
+}
 
 .clearing-thumbs li {
   list-style: none;
@@ -24,21 +38,23 @@
 
 
 
-html, body { height: 100%; margin: 0; padding: 0;}
+html, body { height: 100%; margin: 0; padding: 0; 
+background-image: url(<%= asset_path('cream_dust.png')  %>);
+}
 .wrap{
-  background-color: #FFFFFF;
+
   padding-bottom:30px;
 }
 
 
-
 #wrap {
-  border-top: 5px solid #66CBCC;
+  border-top: 5px solid #66CBCC!important;
   min-height: 100%;
 }
 #main {
   overflow:auto;
   padding-bottom: 150px;
+  
 }
 #footer {
   position: relative;

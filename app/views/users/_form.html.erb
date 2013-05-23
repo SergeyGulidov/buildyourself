@@ -28,10 +28,11 @@
             <%= f.input :email, label: t(:your_email) %>
             <%= f.input :web_site, label: t(:website), as: :url %>
             <%= f.input :phone, label: t(:phone_number) %>
-
-            <%= f.label :comments, t(:comments_question), :style => "float:left;" %>
-            <%= f.check_box :comments, options = {}, checked_value = "1", unchecked_value = "0" %>
-            <hr>
+            <div class="panel">
+              <%= f.label :comments, t(:comments_question), :style => "float:left;" %>
+              <%= f.check_box :comments, options = {}, checked_value = "1", unchecked_value = "0" %>
+            </div>
+            
 
             <%= f.input :about_ru, label: t(:about_you) + " (ru):" %>
             <%= f.input :about_lv, label: t(:about_you) + " (lv):" %>

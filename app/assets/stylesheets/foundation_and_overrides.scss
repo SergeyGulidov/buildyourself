@@ -197,7 +197,7 @@
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
 // $fieldset-border-width: 1px;
-// $fieldset-border-color: #ddd;
+ $fieldset-border-color: #E6E6E6;
 // $fieldset-padding: emCalc(20px);
 // $fieldset-margin: emCalc(18px) 0;
 
@@ -664,8 +664,9 @@ $panel-bg: white;
  $panel-border-size: 1px;
 
 // We use this % to control how much we darken things on hover
-// $panel-function-factor: 10%;
+ $panel-function-factor: 10%;
 // $panel-border-color: darken($panel-bg, $panel-function-factor);
+
 
 // We use these to set default inner padding and bottom margin
 // $panel-margin-bottom: emCalc(20px);
@@ -933,16 +934,16 @@ $reveal-default-width: 100%;
 //
 // Tooltip Variables
 //
- $has-tip-border-bottom: dotted 0 #ccc;
+//$has-tip-border-bottom: dotted 0 #ccc;
 // $has-tip-font-weight: bold;
 // $has-tip-font-color: #333;
- $has-tip-border-bottom-hover: dotted 0 darken($primary-color, 20%);
+//$has-tip-border-bottom-hover: dotted 0 darken($primary-color, 20%);
 // $has-tip-font-color-hover: $primary-color;
 // $has-tip-cursor-type: help;
 
 // $tooltip-padding: emCalc(8px);
- $tooltip-bg: #b3e4f4;
- $tooltip-font-size: emCalc(14px);
+$tooltip-bg: #333;
+//$tooltip-font-size: emCalc(14px);
 // $tooltip-font-weight: bold;
 // $tooltip-font-color: #fff;
 // $tooltip-line-height: 1.3;
