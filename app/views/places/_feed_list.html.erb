@@ -20,7 +20,7 @@
 <% unless @feed.blank? %>
 	<a href="#" data-reveal-id="feeds_new" class="button tiny secondary right radius"><%= t(:create_news) %></a>
 	<br>
-	<div id="feeds_new" class="reveal-modal xlarge">
+	<div id="feeds_new" class="reveal-modal medium">
 	  <h2><%= t(:create_news) %></h2>
 		<%= render 'feeds/form' %>
 	  <a class="close-reveal-modal">&#215;</a>

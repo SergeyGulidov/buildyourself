@@ -26,8 +26,9 @@ class Ability
         can :create, Feed
         can :destroy, Feed,    :user_id => user.id
         can :create, Schedule
-        can :edit, Schedule,   :user_id => user.id
-        can :destroy, Schedule,:user_id => user.id
+        can :edit, Schedule,     :user_id => user.id
+        can :update, Schedule,   :user_id => user.id
+        can :destroy, Schedule,  :user_id => user.id
       end
 
       if user.role == 3
