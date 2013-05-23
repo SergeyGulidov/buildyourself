@@ -19,12 +19,13 @@
 					<div class="row entry">
 						<% if can? :destroy, schedule %>
 						   <%= link_to(edit_schedule_path(schedule)) do %>
-                		   		<%= schedule.group %> <i class="comments general foundicon-edit">  </i>
+                		   		<%= simple_format(schedule.group) %><i class="comments general foundicon-edit"></i>
                 		   <% end %>
 			               <%= link_to "", schedule, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove" %>
 			            <% else %>
-			            	<%= schedule.group %>
+			            	<%= simple_format(schedule.group) %>
 			            <% end %>
+			            <br>
 					</div>
 				</div>
 				<div class="small-8 columns">

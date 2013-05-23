@@ -170,7 +170,7 @@ lv:
   posted_by: Autors
   sure_question: Vai tiešām?
   destroy: Izdzēst ierakstu
-  success: Veiksmīgi Publicēts
+  success: Veiksmīgi
   place_list: Vietu saraksts
   publications: Publikācijas
 
@@ -189,11 +189,9 @@ lv:
 
 
 #-------------- Schedules
-  group_name_ru: Grupas nosaukums RU
-  group_name_lv: Grupas nosaukums LV
+  group_name: Grupa
   create_news: Pievienot ziņu
   add_new_group: Pievienot grupu
-  group_name: Grupa
   day_of_week: Diena
   time_started: Laiks
   monday: Pirmdiena

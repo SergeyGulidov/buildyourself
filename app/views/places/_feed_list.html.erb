@@ -2,8 +2,8 @@
 	<ul class="recent">
 		<% if @place.feeds.blank? %>
 			<li><%= t :no_feeds  %></li>
-		<% else  %>
-		    <% @place.feeds.each_with_index do |feed, index| %>
+		<% else %>
+		    <% @place.feeds.last(3).reverse.each do |feed| %>
 		    	<i>
 		    		<%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %>
 					<% if can? :destroy, feed %>
@@ -11,7 +11,7 @@
 		            <% end %>
 		    	</i>
 		        <li class="feed"><%= simple_format(feed.message) %></li>
-		        <% break if index == 2 %>
+
 		    <% end %>
 		<% end %>
 	</ul>

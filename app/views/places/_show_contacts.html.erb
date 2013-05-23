@@ -22,21 +22,13 @@
         <td><%= number_to_currency(@place.month_price, locale: :lv) %></td>
       </tr>
     <% end %>
-    <tr>
-      <td class="td-title">
-        <i class="general foundicon-add-doc"></i><%= t(:published_at) %>
-      </td>
-      <td><%= @place.created_at.strftime("%d.%m.%Y") %></td>
-    </tr>
 
-
-    <% unless @place.created_at.to_i == @place.updated_at.to_i %>
       <tr>
         <td class="td-title">
           <i class="general foundicon-edit"></i><%= t(:updated_at) %>
         </td>
         <td><%= @place.updated_at.strftime("%d.%m.%Y") %></td>
       </tr>
-    <% end %>
+
   </tbody>
 </table>

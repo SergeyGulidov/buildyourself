@@ -179,7 +179,7 @@ ru:
   posted_by: Автор
   sure_question: Вы уверенны?
   destroy: Удалить запись
-  success: Успешно опубликовано
+  success: Успешно
   place_list: Все места пользователя
   publications: Публикации
 
@@ -191,11 +191,9 @@ ru:
 
 #-------------- Schedules
 
-  group_name_ru: Имя группы RU
-  group_name_lv: Имя группы LV
+  group_name: Группа
   create_news: Добавить новость
   add_new_group: Добавить группу
-  group_name: Группа
   day_of_week: День
   time_started: Время
   monday: Понедельник
