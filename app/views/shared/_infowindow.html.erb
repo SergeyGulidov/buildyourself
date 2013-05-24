@@ -1,15 +1,11 @@
 <h6 id="map-title">
 	<%= link_to place.name, place %>
 </h6> 
-
-<p class="map_text"><b><%= place.street %></b><br>
-	
-	<%= link_to place.category.category_name, { controller: :places, action: :index, category: place.category.category_slug} %>
-	
-	&nbsp&raquo&nbsp
-	
-		<%= link_to place.type.type_name, { controller: :places, action: :index, type: place.type.type_slug} %>
-	
+<p class="map_text"><b><%= place.street %></b>
+<br>
+<br>
+	<%= link_to place.type.type_name, { controller: :places, action: :index, type: place.type.type_slug} %> &nbsp&raquo&nbsp
+	<b><%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) }" %></b>
 	<br>
-	<%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) } " %> &nbsp&nbsp
+	<small class="right"><%= link_to t(:read_more), place %></small>
 </p>

@@ -12,6 +12,7 @@
     <div class="row content">
 
     	<div class="large-3  columns">
+    		<div class="panel without_border">
 			<ul class="small-block-grid-1 ">
 			    <li>
 			      <% if @user.avatar.blank? %>
@@ -42,6 +43,7 @@
 				</p></li>
 
 			</ul>
+			</div>
     	</div>
 
     	<div class="large-3 columns">
@@ -106,7 +108,7 @@
 				    <li class="first"><h5><%= t :feed_list   %></h5></li>
 				    <% @user.feeds.each do |feed| %>
 				      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
-				      <%= link_to feed.message, feed.place %>
+				      <%= simple_format(feed.message) %>
 				      </li>
 				    <% end %>
 				    <br>
