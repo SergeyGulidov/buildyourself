@@ -40,7 +40,7 @@ class Place < ActiveRecord::Base
   attr_accessible :approved, :email, :vip, :sponsor, :age_max, :age_min,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_id, :photos_attributes, :photo, :category_id, :month_price,
-     :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated, :slug
+     :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated, :slug, :ru, :lv
 
   translates :message
 
@@ -69,8 +69,10 @@ class Place < ActiveRecord::Base
     to_json(:include => [:type, :category, :city])
   end
 
-
    scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
+   scope :approved_ru, where(approved: 1, ru: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
+   scope :approved_lv, where(approved: 1, lv: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
+
    scope :recent,  where(approved: 1).order("updated_at desc").includes(:type).limit(10)
    
 
@@ -112,7 +114,12 @@ class Place < ActiveRecord::Base
   def self.first_step_search(params)
 
       type_vip = nil
-      places ||= Place.approved
+      # if I18n.locale == :ru
+      #   places = Place.approved_ru
+      # else
+      #   places = Place.approved_lv
+      # end
+      places = Place.approved
 
       unless params[:category].blank?
         places = places.where( "categories.category_slug = ?", params[:category] ) 

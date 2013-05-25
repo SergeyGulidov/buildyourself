@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :image, :message_lv, :message_ru, :title_lv, :title_ru, :approved, :file, :image_cache
+  attr_accessible :image, :message_lv, :message_ru, :title_lv, :title_ru, :approved, :file, :image_cache, :ru, :lv
 
   include Tire::Model::Search
 

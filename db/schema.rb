@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523045550) do
+ActiveRecord::Schema.define(:version => 20130525062952) do
 
   create_table "attachments", :force => true do |t|
     t.string  "file"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(:version => 20130523045550) do
     t.integer  "category_id", :default => 1
     t.integer  "type_id",     :default => 1
     t.string   "slug"
+    t.integer  "ru",          :default => 0
+    t.integer  "lv",          :default => 0
   end
 
   add_index "places", ["age_max"], :name => "index_places_on_age_max"
@@ -118,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20130523045550) do
     t.integer  "user_id"
     t.string   "file"
     t.integer  "approved",   :default => 0
+    t.integer  "ru",         :default => 0
+    t.integer  "lv",         :default => 0
   end
 
   add_index "posts", ["id"], :name => "index_posts_on_id"

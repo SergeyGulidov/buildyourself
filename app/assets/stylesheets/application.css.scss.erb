@@ -339,14 +339,13 @@ section p a{
 .crumbs ul, .crumbs li, .panel li{
   list-style-type:none;
   padding:0;
-  margin:0;
-  line-height:18px;
+
   margin-bottom: 3px;
 }
 
 #crumbs {
   margin-top: 8px;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 #crumbs li {
@@ -355,7 +354,7 @@ section p a{
 
 #crumbs li a {
   display:block;
-  padding: 0 15px 0 10px;
+  padding: 1px 15px 1px 10px;
   background:url(<%= asset_path('crumbs.png') %>) no-repeat right center;
 }
 
@@ -376,6 +375,18 @@ font-weight: bolder;
 
 .infowindow_box { background: white; margin-top:10px; padding: 10px; }
 #map-title a{color: #56B2DF;}
+
+.map_text{
+  font-size: 12px;
+  a{
+    text-decoration: none;
+    border-bottom:none;
+  }
+  small{
+    font-size: 10px;
+    font-weight: bolder;
+  }
+}
 
 .show h6 {
   border-bottom: 1px solid #EBEBEB!important;
@@ -484,3 +495,7 @@ font-weight: bolder;
   position:fixed!important;
   top:40px!important;
 }
+
+
+
+
