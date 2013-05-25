@@ -30,3 +30,59 @@
     </div>
   </div>
 </div>
+
+
+
+<% if I18n.locale == :ru %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+        $('#new_request').validate({
+          rules: {
+            'request[address]': {required : true,
+              minlength: 5, maxlength: 255 },
+            'request[message]': {required : true,
+              minlength: 5, maxlength: 255 },
+            'request[email]': {
+              required : true,
+              email: true },
+          },
+
+          messages: {
+          "request[address]": "Не может быть пустым. Мин.- 5, макс.- 255 символов.",
+          "request[message]": "Не может быть пустым. Минимального описания будет достаточно.",
+          "request[phone]": "Мин.- 8, макс.- 12. Только цифры.",
+          "request[email]": "Введен не корректно.",
+          },
+        });
+    };
+  </script>
+
+<% else %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+        $('#new_request').validate({
+          rules: {
+            'request[address]': {required : true,
+              minlength: 5, maxlength: 255 },
+            'request[message]': {required : true,
+              minlength: 5, maxlength: 255 },
+            'request[email]': {
+              required : true,
+              email: true },
+          },
+
+          messages: {
+          "request[address]": "Не может быть пустым. Мин.- 5, макс.- 255 символов.",
+          "request[message]": "Не может быть пустым. Минимального описания будет достаточно.",
+          "request[phone]": "Мин.- 8, макс.- 12. Только цифры.",
+          "request[email]": "Введен не корректно.",
+          },
+        });
+    };
+  </script>
+
+<% end %>

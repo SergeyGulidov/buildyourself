@@ -5,45 +5,39 @@
 		</div>   
 		<div class="small-12 large-6 columns crumbs">
 			<ul class="right" id="crumbs">
-				<% unless params[:action] == "show" %>
-					<li>
+				   <li>
 						<%= link_to place.city.city_name,{ controller: :places, action: :index, city: place.city.city_slug} %>
-					</li>
-				<% end %>
+				   </li>
 			       <li><%= link_to place.category.category_name, 
 			       		{ controller: :places, action: :index, category: place.category.category_slug} %></li>
 					<li><%= link_to place.type.type_name, 
 						{ controller: :places, action: :index, type: place.type.type_slug} %></li>
 				<li>
-					<a href="#" class="last"><%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) } " %> &nbsp&nbsp </a>
+					<a href="#" class="last"><%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) } " %> &nbsp;&nbsp </a>
 				</li>
 			</ul>
 	 	</div>
 	</div>
-
-
 	<div class="row">
 		<% if place.photos.size > 2 %>
-				
-					<div class="large-6 small-12 columns">
-						<p><%= simple_format(truncate( place.message, :length => 200, :separator => '. ', :omission => '.') )%></p>
+			<div class="large-6 small-12 columns">
+				<p><%= simple_format(truncate( place.message, :length => 200, :separator => '. ', :omission => '.') )%></p>
 
-						<h6><small><%= link_to t(:read_more), place_path(place)%></small></h6>		
-					</div>
-					
-					<div class="large-6 small-12 columns ">
-						<ul class="large-block-grid-3 clearing-thumbs photos_for_roll" data-clearing >
-						  
-							<% place.photos.take(3).each do |photo| %>
-								<li>
-									<%= link_to (image_tag photo.photo.url(:thumb), 
-										height: '60', width: '100', class: "th"),
-									 photo.photo.url %>
-								</li>
-							<% end %>
+				<h6><small><%= link_to t(:read_more), place_path(place)%></small></h6>		
+			</div>
+			<div class="large-6 small-12 columns ">
+				<ul class="large-block-grid-3 clearing-thumbs photos_for_roll" data-clearing >
+				  
+					<% place.photos.take(3).each do |photo| %>
+						<li>
+							<%= link_to (image_tag photo.photo.url(:thumb), 
+								height: '60', width: '100', class: "th"),
+							 photo.photo.url %>
+						</li>
+					<% end %>
 
-						</ul>
-					</div>
+				</ul>
+			</div>
 		<% else %>
 			<div class="large-12 columns">
 				<p><%= simple_format(truncate( place.message, :length => 350, :separator => '. ', :omission => '.') )%></p>

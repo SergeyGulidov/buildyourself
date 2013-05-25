@@ -1,13 +1,10 @@
 <% provide(:title, 'Add new place') %>
 
-<% meta :description => "#{ strip_tags(t(:how_to)) }" %>
-
-
 <div class="row content_bottom_margin" >
   <div class="large-12 columns">
 
     <div class="row">
-      <div class="small-4 small-centered columns">
+      <div class="small-3 small-centered columns">
         <div id="featured">
           <%= image_tag("logo.png", width: '250px', height: '250px') %>
         </div>
@@ -17,18 +14,9 @@
 <%= render 'shared/flasher' %>
  
     <div class="row content ">
-
-
-        
-
-          <div class="small-12 large-9 columns">
+          <div class="small-8 small-centered columns">
               <%= render 'translation_form'  %>
           </div>
-
-          <div class="large-3 columns hide-for-small">
-            <%= raw t (:how_to) %>
-            <hr>
-            <%= render 'shared/recent_added' %>
         </div>
     </div>
   </div>

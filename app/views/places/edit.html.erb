@@ -2,18 +2,101 @@
 
 <div class="row content content_bottom_margin">
   <div class="large-12 columns">
-  <%= render 'shared/gmap' %>
-    <%= render 'shared/flasher' %>
+
+
     <div class="row content">
 
       <div class="small-12 large-9 columns">
+          <%= render 'shared/gmap' %>
+          <br>
+          <%= render 'shared/flasher' %>
           <%= render 'edit_form'  %>
       </div>
 
-      <div class="large-3 columns hide-for-small content">
+      <div class="large-3 columns hide-for-small">
         <%= render 'shared/login' %>
 			</div>
       
     </div>
   </div>
 </div>
+
+<% if I18n.locale == :ru %>
+
+  <script type="text/javascript">
+    window.onload = function() 
+    {
+        $.validator.addMethod("slugRegex", function(value, element) {
+            return this.optional(element) || /^[a-z0-9\-]+$/i.test(value);
+        }, "Name must contain only letters, numbers, or dashes.");
+
+        $('.simple_form').validate({
+          rules: {
+            'place[address]': {
+              required : true,
+              minlength: 5, maxlength: 255 },
+
+            'place[age_min]': {
+              required : true,
+              range: [0, 200] },
+
+            'place[age_max]': {
+              required : true,
+              range: [0, 200] },
+
+            'place[slug]': {
+              required : false,
+              minlength: 3, maxlength: 50,
+              slugRegex: true },
+
+          },
+          messages: {
+          "place[address]": "Не может быть пустым. Мин.- 5, макс.- 255 символов.",
+          "place[age_min]": "Мин.- 0, макс.- 200. Только цифры.",
+          "place[age_max]": "Мин.- 0, макс.- 200. Только цифры.",
+          "place[slug]":  "Неверный формат. Мин.- 3, макс.- 50. Только буквы ( a-z ) и цифры. ",
+          },
+        });
+    };
+  </script>
+
+<% else %>
+
+  <script type="text/javascript">
+    window.onload = function() 
+    {
+        $.validator.addMethod("slugRegex", function(value, element) {
+            return this.optional(element) || /^[a-z0-9\-]+$/i.test(value);
+        }, "Name must contain only letters, numbers, or dashes.");
+
+        $('.simple_form').validate({
+          rules: {
+            'place[address]': {
+              required : true,
+              minlength: 5, maxlength: 255 },
+
+            'place[age_min]': {
+              required : true,
+              range: [0, 200] },
+
+            'place[age_max]': {
+              required : true,
+              range: [0, 200] },
+
+            'place[slug]': {
+              required : false,
+              minlength: 3, maxlength: 50,
+              slugRegex: true },
+
+          },
+          messages: {
+          "place[address]": "Не может быть пустым. Мин.- 5, макс.- 255 символов.",
+          "place[age_min]": "Мин.- 0, макс.- 200. Только цифры.",
+          "place[age_max]": "Мин.- 0, макс.- 200. Только цифры.",
+          "place[slug]":  "Неверный формат. Мин.- 3, макс.- 50. Только буквы ( a-z ) и цифры. ",
+          },
+        });
+    };
+  </script>
+
+<% end %>

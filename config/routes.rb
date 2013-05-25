@@ -32,7 +32,7 @@ BuildYourSelf::Application.routes.draw do
     match '/subscribed' => 'requests#subscribed'
     match '/waitingforactivation' => 'requests#waitingforactivation'
     match '/subscribe' => 'requests#subscribe', as: 'subscribe'
-
+    match 'feeds/news' => 'feeds#news', :defaults => {:format => 'rss'}
     resources :requests, :only => [:index, :new, :create, :destroy]
     resources :contacts, :only => [:index, :new, :create, :destroy]
     resources :categories

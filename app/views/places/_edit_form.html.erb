@@ -1,71 +1,76 @@
-
-<div ng-app="">
 <%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
+    <% if @place.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@place.errors.count, "error")%>
+            prohibited this place from being saved:  
+        </h2>
+        <p>There were problems with the following fields:</p>
+        <ul>
+        <%= @place.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>   
+    </div>
+
+<% end %>
+
     <% field_set_tag t(:edit_your_place) do %>
 
     <%= render 'shared/errors', object: @place %>
 
       <div class="row">
-        <div class="large-6 columns">
+        <div class="large-4 columns">
           <%= f.association :country, collection: @countries, label: t(:country), :label_method => :country_name %>
         </div>
 
-        <div class="large-6 columns">
+        <div class="large-4 columns">
           <%= f.association :city, collection: @cities, label: t(:city), :label_method => :city_name %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.input :street, label: t(:street_address) %>
         </div>
       </div>
 
       <div class="row">
-        <div class="large-4 columns">
-          <%= f.input :street, label: t(:street_address) %>
-        </div>
 
-        <div class="large-4 columns">
-          <%= f.input :name, label: t(:name_for_place) %>
-        </div>
-        <div class="large-4 columns">
-          <%= f.input :month_price, label: t(:month_price) %>
-        </div>
+
+
+
       </div>
 
       <div class="row ">
-        <div class="large-3 columns">
-          <%= f.association :category, collection: @categories, label: t(:place_category),
-            :label_method => :category_name, include_blank: true, :input_html => { :multiple => false } %>
+        <div class="large-4 columns">
+          <%= f.input :name, label: t(:name_for_place) %>
         </div>
-        <div class="large-3 columns">
-          <%= f.association :type, collection: @categories, as: :grouped_select, 
-            group_label_method: :category_name, group_method: :types,
-            label_method: :type_name, value_method: :id, label: t(:type_category), include_blank: true%>
+        <div class="large-2 columns">
+          <%= f.input :month_price, label: t(:month_price), as: :string %>
         </div>
-        <div class="large-3 columns">
-          <%= f.input :age_min, label: t(:min_age) %>
+        <div class="large-2 columns">
+          <%= f.input :age_min, label: t(:min_age), as: :string %>
         </div>
-        <div class="large-3 columns">
-          <%= f.input :age_max, label: t(:max_age) %>
+        <div class="large-2 pull-2 columns">
+          <%= f.input :age_max, label: t(:max_age), as: :string %>
         </div>
       </div>
 
       <div class="row collapse hightlight">
         <% if @place.slug.blank? %>
-        <h5 class="subheader"><%= t(:short_link) %> <i class="right">www.yoda.lv/{{data.message}}</i></h5>
+        <h5 class="subheader"><%= t(:short_link) %></h5>
         <div class="small-2 columns">
           <span class="prefix">www.yoda.lv/</span>
         </div>
         <div class="small-3 columns">
-           <%= f.text_field :slug, 
-           { :'ng-model' => 'data.message', :'ng:pattern' => '/^[a-zA-Z0-9]+$/', :'ng:minlength' => '3', :'ng:maxlength' => '50' } %>
-
+           <%= f.text_field :slug %>
         </div>
         <div class="small-1 columns">
         </div>
         <div class="small-6 columns">
           <p class="important_text"><%= t(:change_link) %></p>
         </div>
-
         <% else %>
-        <span class="prefix postfix">www.yoda.lv/<%= @place.slug %></span>
-        <br>
+          <span class="prefix postfix">www.yoda.lv/<%= @place.slug %></span>
+          <br>
         <% end  %>
 
       </div>
@@ -127,5 +132,4 @@
     <%= f.button :submit, t(:add_place), class: 'small button'  %>
   <% end %>
 <% end  %>
-</div>
 

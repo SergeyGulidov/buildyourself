@@ -35,4 +35,9 @@ load_and_authorize_resource
       format.json { head :no_content }
     end
   end
+
+  def news
+    @news = Feed.order("created_at").includes(:user).limit(15)
+  end
+
 end

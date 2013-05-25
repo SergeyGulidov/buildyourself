@@ -41,6 +41,7 @@
 
 <%= csrf_meta_tags %>
 <%= javascript_include_tag "application" %>
+<%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
 <%= yield :scripts %>
 
 
@@ -62,5 +63,6 @@
   });
 </script>
 <% end  %>
+
 </body>
 </html>

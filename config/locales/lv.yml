@@ -7,10 +7,6 @@ lv:
   when: Kad? Datums un Laiks
   request_sended:  Jūsu pieteikums veiksmīgi nosūtīts, gaida administrācījas apstiprinājumu.
 
-  many_types: Vairākas kategorijas.
-  forbidden_category: 'Jūsu kategorijai, pilsētas vai valstis nav sarakstā?
-    Atstājiet tukšus šos laukumus. Mēs sazināsimies ar Jums caur e-mail sīkāku detaļu noskaidrošanai un aizpildīsim to Jūsu vietā.'
-
   how_to: '<ul class="square how_to"><h4>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h4>
     <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
 

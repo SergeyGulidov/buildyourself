@@ -4,18 +4,19 @@
 <div class="row content content_bottom_margin">
   <div class="large-12 small-12 columns" >
    
-    <%= render 'shared/flasher' %>
-    <%= render 'shared/admin/admin_panel' %>
 
+    <%= render 'shared/admin/admin_panel' %>
     <div class="row content">
       <div  class="large-9 small-12 columns">
+        <%= render 'shared/gmap' %>
+          <br>
+        <%= render 'shared/flasher' %>
         <% unless @type_vip.blank?  %>
           <%= render 'vip'%>
         <% end %>
 
         <div id="places">
-          <%= render 'shared/gmap' %>
-          <br>
+              
           <br>
           <%= render @places %>
        </div>
@@ -26,6 +27,7 @@
       </div>
 
       <div class="large-3 columns hide-for-small">
+        <%= auto_discovery_link_tag(:rss, :controller => 'feeds', :action => 'news') %>
         <%= render 'shared/navigator' %>
         <%= render 'shared/login' %>
         <%= render 'shared/blog_panel'%>
@@ -34,6 +36,8 @@
 
     </div>
   </div>
+
 </div> 
+
 
 

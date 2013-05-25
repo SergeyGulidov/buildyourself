@@ -52,9 +52,10 @@ class Place < ActiveRecord::Base
    validates :street,  presence: true
    validates :age_min, :length => { :minimum => 0, :maximum => 3 }
    validates :age_max, :length => { :minimum => 0, :maximum => 3 }
-   validates :slug, :format => { :with => /^[a-zA-Z0-9]+$/ },
+   validates :slug, :format => { :with => /^[a-zA-Z0-9]+$/, :message => "Only letters and numbers allowed" },
                     :uniqueness => true,
                     :allow_blank => true
+
 
   mapping do
         indexes :id,         :index    => :not_analyzed
@@ -111,15 +112,20 @@ class Place < ActiveRecord::Base
   end
 
 
+  def self.get_places
+      if I18n.locale == :ru
+        places = Place.approved_ru
+      else
+        places = Place.approved_lv
+      end
+      return places
+  end
+
   def self.first_step_search(params)
 
       type_vip = nil
-      # if I18n.locale == :ru
-      #   places = Place.approved_ru
-      # else
-      #   places = Place.approved_lv
-      # end
-      places = Place.approved
+      places = get_places
+
 
       unless params[:category].blank?
         places = places.where( "categories.category_slug = ?", params[:category] ) 

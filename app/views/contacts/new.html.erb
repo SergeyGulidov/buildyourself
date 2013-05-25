@@ -42,3 +42,51 @@
     </div>
   </div>
 </div>
+
+
+<% if I18n.locale == :ru %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+        $('#new_contact').validate({
+          rules: {
+            'contact[body]': {
+              required : true,
+              minlength: 5 },
+            'contact[email]': {
+              required : true,
+              email: true },
+          },
+
+          messages: {
+          "contact[body]": "Напишите хоть что-нибудь. Мин. 5 символов.",
+          "contact[email]": "Введен не корректно.",
+          },
+        });
+    };
+  </script>
+
+<% else %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+        $('#new_contact').validate({
+          rules: {
+            'contact[body]': {
+              required : true,
+              minlength: 5 },
+            'contact[email]': {
+              required : true,
+              email: true },
+          },
+
+          messages: {
+          "contact[body]": "Напишите хоть что-нибудь. Мин. 5 символов.",
+          "contact[email]": "Введен не корректно.",
+          },
+        });
+    };
+  </script>
+<% end %>

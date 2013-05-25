@@ -2,7 +2,6 @@ class PlacesController < ApplicationController
 load_and_authorize_resource
 
 	before_filter :get_filter_collections
-	before_filter :get_recent_added, only: [:create, :new]
 	
 	respond_to :html, :xml, :json, :js
 
@@ -10,11 +9,10 @@ load_and_authorize_resource
 		unless params[:search].blank?
 			@places = Place.search(params)
 			@json = get_json_for_map(@places)
-
 		else
-			@places, @type_vip = Place.first_step_search(params)
-			@json = get_json_for_map(@places)
-			@places = @places.page(params[:page]).per(5)
+			places, @type_vip = Place.first_step_search(params)
+			@json = get_json_for_map(places)
+			@places = places.page(params[:page]).per(5)
 		end
 		@recent_posts = Post.recent
 
@@ -95,15 +93,11 @@ load_and_authorize_resource
 		@json = get_json_for_map(@place)
 	end
 
-
-
-
 	def destroy
 	  	@place = Place.find(params[:id].to_i)
 	    @place.destroy
 	    redirect_to action: "approve", notice: 'Place was successfully destroyed.'
 	end
-
 
 	def translate
 		@places = Place.includes(:photos).where(translated: 0, approved: 1)
@@ -128,10 +122,6 @@ load_and_authorize_resource
 		    marker.title "#{place.name}"
 		end
 		return json
-	end
-
-	def get_recent_added
-		@recent_added ||= Place.recent
 	end
 
 end
