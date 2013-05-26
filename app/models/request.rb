@@ -9,11 +9,12 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :photos
 
 
+
   validates :email,
     :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create },
-    :presence => true,
-    :uniqueness => true
+    :presence => true
 
   validates :message, :presence => true
+
 
 end

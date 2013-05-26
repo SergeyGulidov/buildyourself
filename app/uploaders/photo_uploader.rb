@@ -13,13 +13,20 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
 
   
-  process :resize_to_fit => [700, 700]
-  process :optimize
-   version :thumb do
+  process :resize_to_limit => [700, 700], :if => :request?
+  process :optimize, :if => :request?
+
+   version :thumb, :if => :request? do
      process :resize_to_fill => [100, 60]
+     process :optimize
    end
 
    def extension_white_list
      %w(jpg jpeg gif png)
    end
+
+   def request?(image)
+    return false
+   end
+
 end

@@ -29,7 +29,6 @@ gem 'metamagic'
 gem "friendly_id", "~> 4.0.9"
 gem 'carrierwave-imageoptimizer'
 
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
