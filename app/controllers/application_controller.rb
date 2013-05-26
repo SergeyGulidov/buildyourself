@@ -30,8 +30,11 @@ class ApplicationController < ActionController::Base
     # get user info for login partial 
     def get_current_user_info
       if current_user
-        @current_user_places ||= Place.order("created_at desc").where("user_id = ?", current_user.id).last(5)
-        @current_user_posts  ||= Post.order("created_at desc").where("user_id = ?", current_user.id).last(5)
+          @current_user_places ||= Place.select("name, approved, slug")
+            .order("created_at desc").where("user_id = ?", current_user.id).last(50)
+
+          @current_user_posts  ||= Post.select("title_lv, title_ru, approved")
+            .order("created_at desc").where("user_id = ?", current_user.id).last(5)
       end
     end
 end

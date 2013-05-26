@@ -14,9 +14,6 @@ class Post < ActiveRecord::Base
   scope :recent, where(approved: 1).order("created_at desc").limit(10)
   scope :unapproved, where(approved: 0).order("created_at asc").limit(100)
 
-  before_save{|post| post.title_lv = post.title_lv.titleize unless post.title_lv.blank?}
-  before_save{|post| post.title_ru = post.title_ru.titleize unless post.title_ru.blank?}
-
 
   mapping do
         indexes :id,         :index    => :not_analyzed

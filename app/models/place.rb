@@ -15,8 +15,6 @@ class Place < ActiveRecord::Base
 
   acts_as_gmappable :process_geocoding => true
 
-  
-  before_save      {|place| place.name = place.name.titleize unless place.name.blank? }
   before_validation{|place| place.slug = place.slug.downcase unless place.slug.blank? }
 
   extend FriendlyId
@@ -37,7 +35,7 @@ class Place < ActiveRecord::Base
     update_index
   end
 
-  attr_accessible :approved, :email, :vip, :sponsor, :age_max, :age_min,
+  attr_accessible :approved, :vip, :sponsor, :age_max, :age_min,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_id, :photos_attributes, :photo, :category_id, :month_price,
      :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated, :slug, :ru, :lv
@@ -70,9 +68,9 @@ class Place < ActiveRecord::Base
     to_json(:include => [:type, :category, :city])
   end
 
-   scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
-   scope :approved_ru, where(approved: 1, ru: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
-   scope :approved_lv, where(approved: 1, lv: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(100)
+   scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(50)
+   scope :approved_ru, where(approved: 1, ru: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(50)
+   scope :approved_lv, where(approved: 1, lv: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(50)
 
    scope :recent,  where(approved: 1).order("updated_at desc").includes(:type).limit(10)
    
