@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   translates :message, :title
   
   scope :latest, where(approved: 1).order("created_at desc").includes(:user).limit(100)
-  scope :recent, select("title_lv, title_ru, created_at").where(approved: 1).order("created_at desc").limit(10)
+  scope :recent, select("title_lv, title_ru, created_at, id").where(approved: 1).order("created_at desc").limit(10)
   scope :unapproved, where(approved: 0).order("created_at asc").limit(100)
 
 

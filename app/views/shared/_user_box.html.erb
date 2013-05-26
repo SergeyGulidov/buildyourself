@@ -29,7 +29,7 @@
 </div>
 <%= render 'blog_list' %>
 
-<% if @other_user_places %>
+<% unless @other_user_places.blank? %>
   <div class="panel radius right_panel">
     <ul class="recent">
       <li class="first"><h5> <span class="general foundicon-location"> </span> <%= t (:more_places_from_user)  %></h5></li>

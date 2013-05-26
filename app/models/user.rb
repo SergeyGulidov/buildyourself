@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   validates :name, :uniqueness => true
 
   scope :sponsor, User.where(sponsor: 1).first
+  scope :feed_in, User.select("email, phone, name").includes(:feeds, :posts, :places)
 
   def total_votes
     PlaceVote.joins(:place).where(places: {user_id: self.id}).sum('value')
