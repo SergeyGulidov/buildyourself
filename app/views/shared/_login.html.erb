@@ -2,14 +2,19 @@
 	<% if user_signed_in?  %>
 		<ul class="recent ">
 		  	<li class="first">
-				<h5><%= link_to current_user.name.blank? ? current_user.email : current_user.name, current_user %> 
-				<%= link_to t(:logout), destroy_user_session_path, method: :delete, class: "right  button tiny" %></h5>
+				<h5> <span class="social foundicon-torso"> </span> 
+				<%= link_to current_user.name.blank? ? current_user.email : current_user.name, current_user %> 
+				<%= link_to destroy_user_session_path, method: :delete, class: "right  button  secondary tiny" do %>
+					<%= t(:logout) %>
+					<b class="general foundicon-right-arrow"></b> 
+				<% end %>
+				</h5>
 			</li>
 			<%= link_to(new_request_path) do %>
 				<li><b class="general foundicon-location"></b> <%= t(:add_new_place) %></li>
 			<% end %>
 			<%= link_to(current_user) do %>
-				<li><b class="social foundicon-torso"></b> <%= t(:user_status) %></li>
+				<li><b class="general foundicon-address-book"></b> <%= t(:user_status) %></li>
 			<% end %>
 			<%= link_to(new_post_path) do %>
 				<li><b class="general foundicon-add-doc"></b> <%= t(:create_post) %></li>
@@ -18,6 +23,7 @@
 				<li><b class="general foundicon-settings"></b> <%= t(:profile) %></li>
 			<% end %>
 		</ul>
+		
 		<ul class="your_place_list">
 			<% unless @current_user_places.blank? %>
 				<hr>

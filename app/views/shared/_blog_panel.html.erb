@@ -2,9 +2,14 @@
 <% unless @recent_posts.blank? %>
 	<div class="panel radius right_panel">
 	<ul class="recent">
-		<li class="first"><h5><%= link_to t(:recent_added_blog_posts), posts_path %></h5></li>
+		<li class="first"><h5><span class="general foundicon-page"> </span> <%= link_to t(:recent_added_blog_posts), posts_path %></h5></li>
 	  <% @recent_posts.each do |post| %>
-	    <li class="li_second"><%= link_to post.title, post %></li>
+	    <%= link_to post do %>
+	    	<li class="li_second">
+		    	<i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+		    	<%= post.title %>
+		    </li>
+	    <% end %>
 	  <% end %>
 	</ul>
 	</div>

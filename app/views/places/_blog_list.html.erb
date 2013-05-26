@@ -1,11 +1,14 @@
 <% unless @user_posts.blank? %>
 	<div class="panel radius right_panel">
 	    <ul class="recent">
-	    <li class="first"><h5><%= t :post_list   %></h5></li>
+	    <li class="first"><h5><span class="general foundicon-page"> </span> <%= t :post_list   %></h5></li>
 	    <% @user_posts.each do |post| %>
-	      <li class="feed"><i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
-	      <%= link_to post.title, post %>
-	      </li>
+	      <%= link_to post do %>
+		    <li class="feed">
+		      <i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+		      <%= post.title %>
+	      	</li>
+	      <% end  %>
 	    <% end %>
 	   </ul>
 	</div>

@@ -69,6 +69,9 @@ class Place < ActiveRecord::Base
   end
 
    scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(50)
+
+   scope :other_user_places, select("name, slug").where(approved: 1, translated: 1).order("updated_at desc").limit(50)
+
    scope :approved_ru, where(approved: 1, ru: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(50)
    scope :approved_lv, where(approved: 1, lv: 1).order("updated_at desc").includes(:photos, :type, :category, :city).limit(50)
 

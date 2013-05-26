@@ -1,6 +1,6 @@
 <div class="panel radius right_panel ">
 <ul class="recent navigator ">
-  <li class="first"><h5><%= t :yoda_navigator  %></h5></li>
+  <li class="first"><h5><span class="general foundicon-website"> </span>  <%= t :yoda_navigator  %></h5></li>
     
   <% unless current_page?(root_path) %>
     <li><%= link_to_function raw("&nbsp&laquo;&nbsp") + t(:return_back), "history.go(-1)", class: "button secondary small radius expand" %></li>

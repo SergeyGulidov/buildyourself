@@ -14,10 +14,7 @@
 
       <li><p class="contact_info">
 
-      <% unless @place.user.email.blank?  %>
-        <%= @place.user.email %><br>
-      <% end %>
-
+      <%= @place.user.email %><br>
       <% unless @place.user.web_site.blank?  %>
         <%= @place.user.web_site  %> <br>
       <% end %>
@@ -32,18 +29,16 @@
 </div>
 <%= render 'blog_list' %>
 
-<% places = Place.approved.where("id != ? AND user_id = ?", @place.id.to_i, @place.user_id )%>
-
-<% if places.size >= 1 %>
+<% if @other_user_places %>
   <div class="panel radius right_panel">
     <ul class="recent">
-      <li class="first"><h5><%= t (:more_places_from_user)  %></h5></li>
-      <% places.each do |place| %>
-        <li class="li_second">
-          <%= link_to place.name, place %> 
-            &nbsp&raquo;&nbsp  
-            <%= link_to place.type.type_name,controller: :places, action: :index, type: place.type.type_slug %> 
-        </li>
+      <li class="first"><h5> <span class="general foundicon-location"> </span> <%= t (:more_places_from_user)  %></h5></li>
+      <% @other_user_places.each do |place| %>
+        <%= link_to place do  %>
+          <li class="li_second">
+             <%= place.name %> 
+          </li>
+        <% end  %>
       <% end %>
     </ul>
     </div>

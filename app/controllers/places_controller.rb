@@ -50,7 +50,9 @@ load_and_authorize_resource
 	def show
 		@place = Place.includes(:user, :schedules, :feeds, :photos).order("created_at desc").find(params[:id])
 		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
-		
+
+		@other_user_places = Place.other_user_places.where("id != ? AND user_id = ?", @place.id, @place.user_id )
+
 		if current_user and current_user.id == @place.user_id
 		   @feed = Feed.new
 		   @schedule = Schedule.new
