@@ -26,7 +26,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
    end
 
    def request?(image)
-    return false
+      return false
    end
 
 end
