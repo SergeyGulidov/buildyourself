@@ -6,6 +6,8 @@ class Photo < ActiveRecord::Base
   belongs_to :request
   mount_uploader :photo, PhotoUploader
 
+
+
   validates :photo, 
     #:presence => false, 
     :file_size => { 

@@ -19,18 +19,16 @@
     <%= f.input :message, label: t(:message)  %>
 
     <div class="row photos">
-        <div class="large-10 columns add_photo">
+        <div class="large-6 columns add_photo">
+            <%= f.file_field :source_1, class: "image_field" %>
+            <%= f.file_field :source_2, class: "image_field" %>
+            <%= f.file_field :source_3, class: "image_field" %>
+            <%= f.file_field :source_4, class: "image_field" %>
 
-            <% f.fields_for :photos do |photo|  %>
-              <%= photo.file_field :photo, class: "image_field" %>
-
-              <%= photo.link_to_remove "", 
-                class: "general-enclosed foundicon-remove " %>
-            <% end %>
-
-            <%= f.link_to_add t(:add_photos), :photos, class: "small button" %>
+        </div>
+        <div class="large-6 columns">
             <p class="important_text">
-              <%= t :photo_how_to %> <%= link_to t(:contact_with_us), new_contact_path %>
+              <%= raw(t(:photo_how_to)) %> <%= link_to t(:contact_with_us), new_contact_path %>
             </p>
 
         </div>

@@ -21,14 +21,11 @@
           <td><%= request.address %></td>
           <td><%= simple_format(request.message) %></td>
           <td>
-            <ul class="large-block-grid-3 clearing-thumbs photos_for_roll request_index" data-clearing >
-              <% request.photos.each do |photo| %>
-                <li>
-                  <%= link_to (image_tag photo.photo.url(:thumb), 
-                    height: '60', width: '100', class: "th"),
-                   photo.photo.url %>
-                </li>
-              <% end %>
+            <ul class="large-block-grid-4 clearing-thumbs photos_for_roll request_index" data-clearing >
+                <li><%= link_to (image_tag request.source_1.url(:thumb), height: '60', width: '100', class: "th"), request.source_1.url if request.source_1.present? %></li>
+                <li><%= link_to (image_tag request.source_2.url(:thumb), height: '60', width: '100', class: "th"), request.source_2.url if request.source_2.present? %></li>
+                <li><%= link_to (image_tag request.source_3.url(:thumb), height: '60', width: '100', class: "th"), request.source_3.url if request.source_3.present? %></li>
+                <li><%= link_to (image_tag request.source_4.url(:thumb), height: '60', width: '100', class: "th"), request.source_4.url if request.source_4.present? %></li>
             </ul>
           </td>
           <td><%= request.created_at.strftime("%d %b. %Y") %></td>

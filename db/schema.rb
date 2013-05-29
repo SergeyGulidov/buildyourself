@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525062952) do
+ActiveRecord::Schema.define(:version => 20130529053457) do
 
   create_table "attachments", :force => true do |t|
     t.string  "file"
@@ -133,6 +133,10 @@ ActiveRecord::Schema.define(:version => 20130525062952) do
     t.datetime "created_at", :null => false
     t.text     "message"
     t.string   "email"
+    t.string   "source_1"
+    t.string   "source_2"
+    t.string   "source_3"
+    t.string   "source_4"
   end
 
   create_table "schedules", :force => true do |t|

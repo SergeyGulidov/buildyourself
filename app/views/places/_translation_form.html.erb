@@ -53,20 +53,12 @@
 
       <div class="row photos">
         <div class="large-7 columns add_photo">
-
             <% f.fields_for :photos do |photo|  %>
               <%= photo.file_field :photo %>
               <%= photo.link_to_remove "", 
                 class: "general-enclosed foundicon-remove " %>
             <% end %>
-  
-            
-
             <%= f.link_to_add t(:add_photos), :photos, class: "small button" %>
-            <p class="important_text">
-              <%= t :photo_how_to %> <%= link_to t(:contact_with_us), new_contact_path %>
-            </p>
-
         </div>
     </div>
 

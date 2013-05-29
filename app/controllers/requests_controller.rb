@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 load_and_authorize_resource
 
   def index
-    @requests = Request.includes(:photos).all
+    @requests = Request.all
 
     respond_to do |format|
       format.html

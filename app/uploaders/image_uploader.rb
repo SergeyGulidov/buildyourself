@@ -2,6 +2,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
+  include CarrierWave::ImageOptimizer
   storage :file
 
   def store_dir
@@ -15,6 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
    version :thumb do
      process :resize_to_fill => [250, 150]
+     process :optimize
    end
 
    def extension_white_list

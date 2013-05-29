@@ -31,10 +31,10 @@ class ApplicationController < ActionController::Base
     def get_current_user_info
       if current_user
           @current_user_places ||= Place.select("name, approved, slug, id")
-            .order("created_at desc").where("user_id = ?", current_user.id).last(50)
+            .order("created_at desc").where("user_id = ?", current_user.id).last(10)
 
           @current_user_posts  ||= Post.select("title_lv, title_ru, approved, id")
-            .order("created_at desc").where("user_id = ?", current_user.id).last(5)
+            .order("created_at desc").where("user_id = ?", current_user.id).last(10)
       end
     end
 end
