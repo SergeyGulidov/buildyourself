@@ -8,9 +8,18 @@
     <%= render 'shared/admin/admin_panel' %>
     <div class="row content">
       <div  class="large-9 small-12 columns">
-        <%= render 'shared/gmap' %>
-          <br>
         <%= render 'shared/flasher' %>
+        <% if @json %>
+          <%= render 'shared/gmap' %>
+          <br>
+        <% else %>
+          <%= render 'shared/promotion' %>
+          <br>
+          <br>
+          <div class="label radius success"><%= t(:recent_added_places) %></div>
+        <% end  %>
+          
+        
         <% unless @type_vip.blank?  %>
           <%= render 'vip'%>
         <% end %>

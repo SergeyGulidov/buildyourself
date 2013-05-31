@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :place_votes
   has_many :posts
   has_many :feeds
-  
+  has_many :subscribers, :dependent => :destroy
 
   translates :about
   

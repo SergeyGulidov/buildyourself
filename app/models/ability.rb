@@ -47,6 +47,11 @@ class Ability
       end
 
     end
+      can :about,   Contact
+      can :destroy, Subscriber
+      can :confirm, Subscriber
+      can :create, Subscriber
+      can :destroy, Subscriber
       can :create, Contact
       can :show,   User
       can :create, Request

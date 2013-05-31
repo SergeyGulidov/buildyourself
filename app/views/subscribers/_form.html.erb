@@ -1,0 +1,23 @@
+
+
+
+<%= simple_form_for(@subscriber) do |f| %>
+
+<%= f.hidden_field :user_id, :value => @place.user.id %>
+
+	<div class="panel">
+		<ul class="recent">
+		<li class="first"><h5><span class="general foundicon-inbox"> </span> <%= t(:subscribe) %></h5></li>
+	</ul>
+
+		<p class="small"><%= raw(t(:get_news)) %></p> 
+
+		<p class="small"><%= t(:email_here) %></p>
+
+		<%= f.input :email, placeholder: 'name@domain.com', label: false, class: "" %>
+		<%= f.button :submit, t(:subscribe_in), class: "radius success tiny expand ", :disable_with => "Sending..."  %>
+	</div>
+
+
+
+<% end %>

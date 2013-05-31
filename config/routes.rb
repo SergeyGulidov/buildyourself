@@ -11,6 +11,7 @@ BuildYourSelf::Application.routes.draw do
     
 
     root :to => 'places#index'
+    match '/about' => 'contacts#about'
     devise_for :users, :controllers => {
       :registrations => "registrations", 
       :passwords => "passwords", 
@@ -35,6 +36,9 @@ BuildYourSelf::Application.routes.draw do
     match 'feeds/news' => 'feeds#news', :defaults => {:format => 'rss'}
     resources :requests, :only => [:index, :new, :create, :destroy]
     resources :contacts, :only => [:index, :new, :create, :destroy]
+    resources :subscribers, :only => [:index, :new, :create]
+    match '/subscribers/confirm' => 'subscribers#confirm'
+    match '/subscribers/destroy' => 'subscribers#destroy'
     resources :categories
     resources :cities
     resources :countries

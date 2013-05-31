@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529053457) do
+ActiveRecord::Schema.define(:version => 20130529093227) do
 
   create_table "attachments", :force => true do |t|
     t.string  "file"
@@ -153,6 +153,17 @@ ActiveRecord::Schema.define(:version => 20130529053457) do
     t.integer  "place_id"
     t.string   "group",      :default => "1"
   end
+
+  create_table "subscribers", :force => true do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.integer  "confirmed",     :default => 0
+    t.string   "confirm_token"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "subscribers", ["user_id"], :name => "index_subscribers_on_user_id"
 
   create_table "types", :force => true do |t|
     t.string  "type_name_ru"

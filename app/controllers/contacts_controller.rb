@@ -28,4 +28,7 @@ load_and_authorize_resource
     Contact.find(params[:id]).destroy
     redirect_to :action => 'index'
   end
+
+  def about
+  end
 end

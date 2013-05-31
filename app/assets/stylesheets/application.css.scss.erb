@@ -95,14 +95,11 @@ body:before {
   padding-top: 20px;
   background-color: #BCC8CC;
   color: white;
+  p{
+    font-size: 12px;
+  }
 }
 
-
-
-#footer p, #footer li, #footer i{
-	font-size: 12px;
-  font-weight: bold;
-}
 
 .alert_header{
 	color: #fff;
@@ -483,14 +480,7 @@ font-weight: bolder;
   height: 180px!important;
 }
 
-/***************** ANGULAR ***************/
 
-  input.ng-valid {
-      background-color: #c4ffc4;
-  }  
-  input.ng-invalid {
-       background-color: #ffc4c4;
-   }
 
 
 /***************** REVEAL ***************/
@@ -498,4 +488,39 @@ font-weight: bolder;
 .reveal-modal{
   position:fixed!important;
   top:40px!important;
+}
+
+
+/****************** ORBIT **************/
+
+.orbit-container{
+  min-height: 200px;
+  border: 1px solid #333;
+  background-image: url(<%= asset_path('yoda_lv_start.jpg') %>);
+  background-repeat:no-repeat;
+  background-color:#FFFFFF;
+  .label{
+    border-bottom: none;
+  }
+}
+
+.content_for_promotion{
+  padding: 4% 8% 1% 8%;
+  .more a{
+    float: right;
+    color: #fff;
+    font-weight: bold;
+  }
+  h2{color: white;}
+}
+
+.content li {
+  list-style: none;
+}
+
+
+.panel dt{
+  font-size: 18px;
+  border-bottom: 2px solid grey;
+  margin-bottom: 20px;
 }

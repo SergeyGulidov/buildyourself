@@ -10,9 +10,13 @@ load_and_authorize_resource
 			@places = Place.search(params)
 			@json = get_json_for_map(@places)
 		else
-			places, @type_vip = Place.first_step_search(params)
-			@json = get_json_for_map(places)
-			@places = places.page(params[:page]).per(5)
+			places, @type_vip, watcher = Place.first_step_search(params)
+			if watcher == 0
+				@places = places.page(params[:page]).per(3)
+			else
+				@json = get_json_for_map(places)
+				@places = places.page(params[:page]).per(5)
+			end
 		end
 		@recent_posts = Post.recent
 
@@ -52,6 +56,8 @@ load_and_authorize_resource
 		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
 
 		@other_user_places = Place.other_user_places.where("id != ? AND user_id = ?", @place.id, @place.user_id )
+		
+		@subscriber = Subscriber.new
 
 		if current_user and current_user.id == @place.user_id
 		   @feed = Feed.new

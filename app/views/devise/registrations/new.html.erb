@@ -1,33 +1,31 @@
-<div class="row">
-  <div class="small-12 small-centered columns"></br>
-  	<%= render "shared/flasher" %>
+<div class="row content">
+  <div class="small-8 small-centered columns">
+    <br>
+      <%= render "shared/flasher" %>
+    <br>
   </div>
 </div>
 
-<div class="row">
-  <div class="small-4 small-centered columns">
+<div class="row content">
+  <div class="small-8 small-centered large-3 large-centered columns panel">
 
-<h3 class="subheader"><%= t(:registration) %></h3>
+    <h3 class="subheader"><%= t(:registration) %></h3>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), class: 'custom') do |f| %>
-  
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= f.input :email, :required => true, :autofocus => true %>
 
-    <%= f.input :email, :required => true, :autofocus => true %>
+      <% if f.object.password_required? %>
 
-    <% if f.object.password_required? %>
+        <%= f.input :password, :required => true, label: t(:password) %>
+        <%= f.input :password_confirmation, :required => true, label: t(:password_confirmation) %>
+      <% end %>
 
-	    <%= f.input :password, :required => true, label: t(:password) %>
-	    <%= f.input :password_confirmation, :required => true, label: t(:password_confirmation) %>
+      <br>
+
+      <%= f.button :submit, t(:sign_up), class: 'small success button left radius' %>
+      <br>
+      <p class="small right"><%= link_to t(:login) + " ?", new_session_path(resource_name) %></p>
     <% end %>
-
-    
-
-    <%= f.button :submit, t(:sign_up), class: 'small button' %>
-
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-
-</div>
+    <br>
+  </div>
 </div>

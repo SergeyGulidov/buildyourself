@@ -1,0 +1,30 @@
+<ul id="featured2" data-orbit data-options="bullets: false; slide_number_class: hide; timer_container_class: hide; timer_speed:3500;">
+  <li data-orbit-slide="headline-1">
+    <div class="content_for_promotion">
+      <h2><%= t :promo_first %></h2>
+      <br>
+      <p class="more"><%= link_to t(:find_out_more), about_path, class: "label radius" %></p>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2" class="">
+    <div class="content_for_promotion">
+      <h2><%= t :promo_second %></h2>
+      <br>
+      <p class="more"><%= link_to t(:add_place) + " ...", new_request_path, class: "label radius" %></p>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div class="content_for_promotion">
+      <h2><%= t :promo_third %></h2>
+      <br>
+      <p class="more"><%= link_to t(:find_out_more), about_path, class: "label radius" %></p><br>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-4">
+    <div class="content_for_promotion">
+      <h2><%= t :promo_fifth %></h2>
+      <br>
+      <p class="more"><%= link_to t(:find_out_more), posts_path, class: "label radius" %></p><br>
+    </div>
+  </li>
+</ul>

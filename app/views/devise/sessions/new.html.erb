@@ -1,29 +1,28 @@
-<div class="row">
-  <div class="small-12 small-centered columns"></br>
-  	<%= render "shared/flasher" %>
+<div class="row content">
+  <div class="small-8 small-centered columns">
+  	<br>
+      <%= render "shared/flasher" %>
+    <br>
   </div>
 </div>
 
-<div class="row">
-  <div class="small-4 small-centered columns">
+<div class="row content">
+  <div class="small-8 small-centered large-3 large-centered columns panel">
 
-  
+    <h3 class="subheader"><%= t(:login) %></h3>
 
-<h2 class="subheader"><%= t(:login) %></h2>
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%= f.input :email, :required => false, :autofocus => true %>
+        <%= f.input :password, :required => false, label: t(:password) %>
+        <%= f.input :remember_me, label: t(:remember_me), :as => :boolean if devise_mapping.rememberable? %>
+        <br>
+        <%= f.button :submit, t(:login), class: 'small button left success radius' %>
+        <br>
+        <p class="small right"><%= link_to t(:sign_up) + " ?", new_registration_path(resource_name) %></p>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), class: 'custom') do |f| %>
+        </li>
+    <% end %>
+    <br>
 
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false, label: t(:password) %>
-    <%= f.input :remember_me, label: t(:remember_me), :as => :boolean if devise_mapping.rememberable? %>
-
-
-  <div class="form-actions">
-    <%= f.button :submit, t(:login), class: 'small button' %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
 </div>

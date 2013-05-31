@@ -126,10 +126,12 @@ class Place < ActiveRecord::Base
 
       type_vip = nil
       places = get_places
+      watcher = 0 # to know what page this is 
 
 
       unless params[:category].blank?
         places = places.where( "categories.category_slug = ?", params[:category] ) 
+        watcher = 1
       end
 
 
@@ -137,21 +139,25 @@ class Place < ActiveRecord::Base
       unless f_type.blank?
         type_vip = places.where("types.type_slug = ? AND vip = ?", params[:f][:type], 1 )
         places = places.where( "types.type_slug = ? AND vip = ?", params[:f][:type], 0 )
-        
+        watcher = 1
       end
       unless params[:type].blank?
         type_vip = places.where("types.type_slug = ? AND vip = ?", params[:type], 1 )
         places = places.where( "types.type_slug = ? AND vip = ?", params[:type], 0 )
+        watcher = 1
       end
 
       unless params[:city].blank?
         places = places.where( "cities.city_slug = ?", params[:city] )
-      end
-      unless params[:age].blank?
-        places = places.where( "age_min <= ? AND age_max >= ?", params[:age].to_i,  params[:age].to_i ) 
+        watcher = 1
       end
 
-      return places, type_vip
+      unless params[:age].blank?
+        places = places.where( "age_min <= ? AND age_max >= ?", params[:age].to_i,  params[:age].to_i ) 
+        watcher = 1
+      end
+
+      return places, type_vip, watcher
   end
 
   def hit

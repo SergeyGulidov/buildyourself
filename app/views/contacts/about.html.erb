@@ -1,0 +1,44 @@
+<% provide(:title, t(:about_us)) %>
+
+<div class="row content_bottom_margin" >
+  <div class="large-12 columns">
+
+    <div class="row">
+      <div class="small-3 small-centered columns">
+        <div id="featured">
+          <%= image_tag("logo.png", width: '250px', height: '250px') %>
+        </div>
+      </div>
+    </div>
+    
+<%= render 'shared/flasher' %>
+ 
+    <div class="row content ">
+          <div class="small-12 large-10 large-centered columns">
+              <div class="row">
+                  <div class="small-12 large-4 columns">
+                    <dl class="panel">
+                      <dt><%= t :about_us %></dt>
+                      <dd><%= raw(t :mission) %></dd>
+                    </dl>
+                  </div>
+                  <div class="small-12 large-4 columns">
+                    <dl class="panel">
+                      <dt><%= t :for_owners %></dt>
+                      <%= raw(t :owners_options) %>
+                      <dt><%= t :optional %></dt>
+                      <%= raw(t :owners_optional) %>
+                    </dl>
+                  </div>                  
+                  <div class="small-12 large-4 columns">
+                    <dl class="panel">
+                      <dt><%= t :for_users %></dt>
+                      <%= raw(t :users_options) %>
+                    </dl>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

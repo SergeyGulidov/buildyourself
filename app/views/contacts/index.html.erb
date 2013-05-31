@@ -1,33 +1,26 @@
-<% if @contacts.blank? %>
 <div class="row content">
-  <div class="small-8 small-centered columns">
-     <p> We don't have any contact invoices</p>
+  <div class="small-10 small-centered columns">
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Email</th>
+          <th>Text</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <% @contacts.each do |c| %>
+        <tr>
+          <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
+          <td><%= c.email %></td>
+          <td><%= c.body %></td>
+          <td><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
-<% else %>
-    <div class="row content">
-      <div class="small-8 small-centered columns">
-        <%= render 'shared/flasher' %>
-        <%= render 'shared/admin/admin_panel' %>
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Email</th>
-              <th>Text</th>
-              <th></th>
-            </tr>
-          </thead>
 
-          <% @contacts.each do |c| %>
-            <tr>
-              <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
-              <td><%= c.email %></td>
-              <td><%= c.body %></td>
-              <td><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-<% end %>

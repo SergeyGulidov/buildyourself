@@ -26,7 +26,12 @@
   	</p></li>
 
   </ul>
+
+ 
+
 </div>
+
+
 <%= render 'blog_list' %>
 
 <% unless @other_user_places.blank? %>
@@ -44,6 +49,8 @@
     </div>
 <% end  %> 
 
+<%= render 'subscribers/form'%>
+
 
 <% if @place.user.comments == 1 %>
   <script type="text/javascript">
@@ -57,3 +64,43 @@
 
   <noscript><%= t(:enable_js) %></noscript>
 <% end  %>
+
+
+<% if I18n.locale == :ru %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+        $('#new_subscriber').validate({
+          rules: {
+            'subscriber[email]': {
+              required : true,
+              email: true },
+          },
+
+          messages: {
+          "subscriber[email]": "Введен не корректно."
+          },
+        });
+    };
+  </script>
+
+<% else %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+        $('#new_subscriber').validate({
+          rules: {
+            'subscriber[email]': {
+              required : true,
+              email: true },
+          },
+
+          messages: {
+          "subscriber[email]": "Nekorekti ievadīts.",
+          },
+        });
+    };
+  </script>
+<% end %>

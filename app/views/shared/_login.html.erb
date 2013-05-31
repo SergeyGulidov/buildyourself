@@ -1,5 +1,5 @@
-<div class="panel radius right_panel">
-	<% if user_signed_in?  %>
+<% if user_signed_in?  %>
+	<div class="panel radius right_panel">
 		<ul class="recent ">
 		  	<li class="first">
 				<h5> <span class="social foundicon-torso"> </span> 
@@ -49,38 +49,8 @@
 			      <%= link_to "", edit_post_path(post), class: " general foundicon-edit" %>
 			      </li>
 	            <% end %>
-            <% end %>
+	        <% end %>
 	      </li>
 		</ul>
-	<% else %>
-	  	<ul class="recent ">
-		  	<li class="first">
-		  		<h5>
-			  	<%= link_to t(:login), new_user_session_path, class: "with_border" %> 
-			  	||
-			  	<%= link_to t(:sign_up), new_user_registration_path, class: "with_border" %>
-			  </h5>
-			</li>
-			  <li> &raquo;
-			  	<%= link_to t(:sign_in_with_twitter), user_omniauth_authorize_path(:twitter)  %> 
-			  </li>
-			  <li> &raquo;
-			  	<%= link_to t(:sign_in_with_google), user_omniauth_authorize_path(:google_oauth2)  %>
-			  </li> 
-			  <li> &raquo;
-			  <%= link_to t(:sign_in_with_facebook), user_omniauth_authorize_path(:facebook)  %>
-			</li>
-			<hr>
-			<b data-reveal-id="for_what"><li> <%= link_to t(:for_what), new_user_registration_path, class: "button small right" %></li></b>
-			<br>
-		</ul>
-	<% end  %>
-</div>
-
-<div id="for_what" class="reveal-modal">
-	<h4><%= t(:what_you_get) %></h4>
-	<h6><%= t :get_rating %></small></h6>
-	<h6><%= t :edit_info %></h6>
-	<p class="important_text"><%= t(:our_mission) %></p>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+	</div>
+<% end %>

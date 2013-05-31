@@ -15,7 +15,7 @@
           <%= grouped_collection_select(:f, :type,  @categories,
                 :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type)) %>
 
-          <%= submit_tag "#{t(:watch_filter)}", class: 'button secondary tiny radius', data: { disable_with: "Please wait.." } %>
+          <%= submit_tag "#{t(:watch_filter)}", class: 'button secondary small radius', data: { disable_with: "Please wait.." } %>
     <% end %>
 </ul>
 </div>

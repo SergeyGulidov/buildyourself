@@ -10,7 +10,7 @@ lv:
   how_to: '<ul class="square how_to"><h4>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h4>
     <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
 
-  recent_added_places: Nesen pievienoti...
+  recent_added_places: "Nesen atjaunoti:"
   photo_how_to: Tikai .jpg, .png, .gif vai .jpeg formāts. Vienas bildes maksimālais izmērs 2 MB. Vajag vairāk?
   
   add_photos: Pievienot fotogrāfijas
@@ -182,7 +182,7 @@ lv:
   confirmation_email_sended:  "Paldies par e-pasta reģistrācīju, jums tika izsūtīta apstiprinājuma vēstule."
   you_are_subscribed: "Veiksmīgi pabeigts. Par mājaslapas jaunumiem saņemsiet vēstuli e-pasta."
   subscribe: Pierakstīties jaunumiem
-
+  subscribe_in: Pierakstīties
 
 #-------------- Schedules
   group_name: Grupa
@@ -449,3 +449,59 @@ lv:
       place:
         name: Nosaukums
         street: Adrese
+
+# subscribes
+  get_news: Saņem jaunākās ziņas, treniņu sarakstu un citas izmaiņas no lietotāja uz savu ēpastu.
+  email_here: Lai saņemtu šada veida informācīju ievadi savu e-pasta adresi zemāk.
+
+
+# promotion 
+  promo_first: Šinī projektā atradīsi sev un savam bērnam tīkamo sportaveidu un treneri vienā acu mirklī.
+  promo_second: Piereģistrē savu mācību iestādi pie mums. Un kļūs vieglāk paziņot par izmaiņam vai jaunumiem.
+  promo_third: Saņem paziņojumus par trenera vai pasniedzēja aktivitātēm uz e-pastu.
+  promo_fifth: Apmeklē blogu un lasi interesantus stāstus no dzīves. Piereģistrējies un publicē ari savu stāstu.
+  find_out_more: Uzzināt vairāk...
+
+# about us
+  about_us: Par projektu
+  mission: 
+    "<p>Grūti noticēt, ka mūsdienās ir tik grūti atrast sev un saviem bērniem nodarbības. 
+    Vai tā būtu kāda informācija par futbolu dēla treniņiem, vai klavierstundu pasniedzējs.</p>
+    <p>Bieži saskaramies ar situāciju: ierakstot meklētājā mūs interesējošo informāciju,nevaram vajadzīgo atrast, 
+    bet,ja atrodam, tad jāzvana un jānoskaidro nianses.</p>
+    <p>Vai var vienkārši ierakstot vecumu, saņemt visu iespējamo nodarbību informāciju savā pilsētā ?</p>
+    <p>VAR! Un mēs to jums pierādīsim.</p>
+    <p>Mūsu projektā jūs atradīsiet pašattīstīšanās iespējas visā Latvijā. Savukārt pasniedzējiem piedāvājam 
+    labas iespējas un vienkāršāko veidu, kā jums to piedāvāt.</p>"
+  for_owners: "Pasniedzējiem :"
+  owners_options:
+    "<dd>Jūsu publikācijas piedāvājums.</dd>
+    <dd>Iespēja rediģēt savus ierakstus.</dd>
+    <dd>Liels atbalsts no mūsu puses.</dd>
+    <dd>Jaunumu nosūtīšanas sistēma uz ēpastu.</dd>
+    <dd>Ērts blogs jūsu piedāvājumiem vai stāstiem.</dd>
+    <dd>Palīdzēsim ar teksta sastādīšanu, Tūlkojums no/uz Latviešu/Krievu valodas. 
+    Sazināties varam pa telefonu epastu kā arī tikties un apspriest visu.</dd><br>"
+  optional: "Pieejams un iespējams:"
+  owners_optional:
+    "<dd>Jūsu piedāvājums divās valodās.</dd>
+    <dd>Iespējams komentēt.</dd>
+    <dd>Ērts vadības panelis.</dd>
+    <dd>Personīgo datu publicēšana.</dd>
+    <dd>Vieta nelieliem jaunumiem vai ziņām(Nevairāk ka 255 simboli).</dd>
+    <dd>Īslinks piem : yoda.lv/turulina</dd>"
+  for_users: "Lietotājiem:"
+  users_options:
+    "<dd>Ļoti ātra un ērta meklēšana un navigācija.</dd>
+    <dd>Maksimāli liela informācīja par visiem piedāvājumiem.</dd>
+    <dd>Noderīgi ieraksti bloga.</dd>
+    <dd>Iespēja saņemt uz epastu informācīju, individuāli no interesējošā pasniedzēja.</dd>
+    <dd>Ja piereģistrējaties, tad saņemat atļauju publicēt blogā savus pieredzes stāstus un padomus. Un dalīties ar citiem lietotājiem.</dd>"
+
+#email 
+  send_instructions: 'Pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā apstiprināt Jūsu lietotāju.'
+  your_request: Labdien! Jūs pieteicāties saņemt informācīju uz savu e-pastu par jaunumiem un izmaiņam Yoda.lv mājaslapā.
+  title_for_request: Apstiprinājums par yoda.lv jaunumiem.
+  confirm_request: "Lai apstiprinātu lūdzu nospiediet uz linku:"
+  destroy_request: "Ja nēsat pieteicies un ir atnācis links vai ja gribat ateikties no informācījas saņemšanas uz e-pastu spiežat uz linku:"
+  from_admin: Ar cieņu, projekta Yoda.lv Administrācija.

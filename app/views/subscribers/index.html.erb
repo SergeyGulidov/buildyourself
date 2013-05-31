@@ -1,0 +1,37 @@
+<div class="row content">
+  <div class="small-10 small-centered columns">
+    <%= render 'shared/flasher' %>
+    <%= render 'shared/admin/admin_panel' %>
+    <table>
+      <thead>
+        <tr>
+          <th>For user</th>
+          <th>Created</th>
+          <th>Email</th>
+
+        </tr>
+      </thead>
+
+        <tr><td><b>Activated:</b> </td></tr>
+
+      <% @active.each do |c| %>
+        <tr>
+          <td><%= c.user.name || c.user.email %></td>
+          <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
+          <td><%= c.email %></td>
+        </tr>
+      <% end %>
+
+      <tr><td> <b>Not confirmed:</b> </td></tr>
+
+      <% @not_confirmed.each do |c| %>
+        <tr>
+          <td><%= c.user.name || c.user.email %></td>
+          <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
+          <td><%= c.email %></td>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+</div>
