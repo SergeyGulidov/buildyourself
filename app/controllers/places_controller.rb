@@ -12,7 +12,7 @@ load_and_authorize_resource
 		else
 			places, @type_vip, watcher = Place.first_step_search(params)
 			if watcher == 0
-				@places = places.page(params[:page]).per(3)
+				@places = places.limit(3).page(params[:page]).per(3)
 			else
 				@json = get_json_for_map(places)
 				@places = places.page(params[:page]).per(5)

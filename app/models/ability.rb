@@ -32,18 +32,20 @@ class Ability
       end
 
       if user.role == 3
-        can :edit,       User
-        can :update,     User
-        can :create,     Contact
-        can :read,       Place
+        can :index,      Request
+        can :create,     Place
+        can :edit,       User,  :id => user.id
+        can :update,     User,  :id => user.id
         can :translate,  Place
         can :make_translate, Place
         can :update,     Place
-        can :show,       User
         can :index,      User
-        can :create,     Request
-        can :read,       Post
+        can :unapproved, Post
+        can :approve,    Post
         can :create,     Post
+        can :edit,       Post
+        can :update,     Post
+        can :index,      Contact
       end
 
     end

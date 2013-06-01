@@ -88,6 +88,7 @@ load_and_authorize_resource
     if current_user.role == 1
       @post.approved = 1
       @post.save
+      UserMailer.delay(priority: 60).new_post_notifier(@post)
       redirect_to :back
     end
   end

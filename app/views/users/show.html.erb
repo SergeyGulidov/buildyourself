@@ -10,7 +10,7 @@
     </div>
 
     <div class="row content">
-
+    	<%= render 'shared/flasher' %>
     	<div class="large-3  columns">
     		<div class="panel without_border">
 			<ul class="small-block-grid-1 ">
@@ -43,8 +43,11 @@
 				</p></li>
 
 			</ul>
+
 			</div>
+		<%= render 'subscribers/form'%>
     	</div>
+
 
     	<div class="large-3 columns">
 			<% if @user.places.blank? %>

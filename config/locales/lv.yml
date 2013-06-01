@@ -505,3 +505,5 @@ lv:
   confirm_request: "Lai apstiprinātu lūdzu nospiediet uz linku:"
   destroy_request: "Ja nēsat pieteicies un ir atnācis links vai ja gribat ateikties no informācījas saņemšanas uz e-pastu spiežat uz linku:"
   from_admin: Ar cieņu, projekta Yoda.lv Administrācija.
+  destroy_subs: "Ja gribat ateikties no informācījas saņemšanas uz e-pastu spiežat uz linku:"
+  schedule_changed: "Lietotājs atjaunojis nodarbību laika sarakstu:"

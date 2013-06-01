@@ -25,3 +25,5 @@ pickle-email-*.html
 
 /config/database.yml
 /public/uploads/tmp/*
+# Ignore application configuration
+/config/application.yml

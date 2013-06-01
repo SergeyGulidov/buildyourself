@@ -20,6 +20,7 @@ load_and_authorize_resource
 
   def show
     @user = User.includes(:places, :posts, :feeds).find(params[:id])
+    @subscriber = Subscriber.new
   end
 
   def update

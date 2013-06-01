@@ -1,5 +1,4 @@
-<%= simple_form_for @type, html: { class: 'custom' } do |f| %>
-    <% field_set_tag "Type" do %>
+<%= simple_form_for @type do |f| %>
 
       <div class="row">
         <div class="large-6 columns">
@@ -19,6 +18,6 @@
           label_method: :category_name, include_blank: true  %>
         </div>
       </div>
-    <%= f.button :submit, class: 'small button'  %>
-  <% end %>
+    <%= f.button :submit, class: 'tiny success button'  %>
+
 <% end  %>

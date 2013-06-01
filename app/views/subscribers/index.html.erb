@@ -1,13 +1,15 @@
 <div class="row content">
-  <div class="small-10 small-centered columns">
+  <div class="small-9 columns">
     <%= render 'shared/flasher' %>
-    <%= render 'shared/admin/admin_panel' %>
     <table>
       <thead>
         <tr>
           <th>For user</th>
           <th>Created</th>
           <th>Email</th>
+          <th>Lang</th>
+          <th></th>
+          <th></th>
 
         </tr>
       </thead>
@@ -19,6 +21,9 @@
           <td><%= c.user.name || c.user.email %></td>
           <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
           <td><%= c.email %></td>
+          <td><%= c.lang %></td>
+          <td></td>
+          <td><%= link_to "Destroy", controller: "subscribers", action: "destroy", token: c.confirm_token, remote: true %></td>
         </tr>
       <% end %>
 
@@ -29,9 +34,15 @@
           <td><%= c.user.name || c.user.email %></td>
           <td><%= c.created_at.strftime("%d.%m.%Y - %H:%M") %></td>
           <td><%= c.email %></td>
+          <td><%= c.lang %></td>
+          <td><%= link_to "Confirm", controller: "subscribers", action: "confirm", token: c.confirm_token, remote: true %></td>
+          <td><%= link_to "Destroy", controller: "subscribers", action: "destroy", token: c.confirm_token, remote: true %></td>
         </tr>
       <% end %>
 
     </table>
   </div>
+  <div class="small-3 columns">
+    <%= render 'shared/admin/admin_panel' %>
+  </div>  
 </div>

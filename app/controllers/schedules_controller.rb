@@ -7,6 +7,7 @@ load_and_authorize_resource
     
     respond_to do |format|
       if @schedule.save
+        UserMailer.delay(priority: 85).schedule_notifier(@schedule)
         format.html { redirect_to :back, notice: t(:success) }
         format.json { render json: @schedule, status: :created, location: @schedule }
       else
@@ -25,7 +26,8 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @schedule.update_attributes(params[:schedule])
-        format.html { redirect_to action: "edit", notice: t(:success) }
+        UserMailer.delay(priority: 85).schedule_notifier(@schedule)
+        format.html { redirect_to :back, notice: t(:success) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

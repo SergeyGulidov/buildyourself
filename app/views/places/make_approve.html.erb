@@ -1,11 +1,13 @@
 <% provide(:title, @place.name) %>
 
-<%= render 'shared/gmap' %>
 
 <div class="row content">
-  <div class="small-8 small-centered columns">
+  <div class="small-9 columns">
       <%= render 'shared/flasher' %>
-      <%= render 'shared/admin/admin_panel' %>
+      <%= render 'shared/gmap' %>
       <%= render 'approve_form'  %>
   </div>
+  <div class="small-3 columns">
+    <%= render 'shared/admin/admin_panel' %>
+  </div>  
 </div>

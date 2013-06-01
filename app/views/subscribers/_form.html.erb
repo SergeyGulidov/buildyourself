@@ -1,9 +1,11 @@
 
-
+<% user_id = @user.id if @user %>
+<% user_id = @place.user.id if @place  %>
+	
 
 <%= simple_form_for(@subscriber) do |f| %>
 
-<%= f.hidden_field :user_id, :value => @place.user.id %>
+<%= f.hidden_field :user_id, :value => user_id %>
 
 	<div class="panel">
 		<ul class="recent">

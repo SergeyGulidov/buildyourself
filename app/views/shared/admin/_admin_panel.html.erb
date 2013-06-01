@@ -1,74 +1,91 @@
-
-<% if can? :make_approve, Place %>
-<div class="row">
-	<div class="large-12 columns">
-
-<ul class="button-group radius">
-          <li><a href="#" class="tiny button dropdown " data-dropdown="drop2" >Brains</a></li>
-          <li><a href="#" class="tiny button dropdown " data-dropdown="drop1" >Cities</a></li>
- 
-          <li><a href="#" class="tiny  button dropdown " data-dropdown="drop5">Categories</a></li>
-          <li><a href="#" class="tiny  button dropdown " data-dropdown="drop3">Types</a></li>
+<% if current_user and current_user.role == 1 %>
 
 
+<div class="panel radius">
+    <ul class="recent">
+      <li><b>Content setings:</b>
+        <ul>
+          <% counter = Request.all.size  %>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests", requests_path %></li>
+
+          <li><%= link_to "Add new place", new_place_path %></li>
+
+          <% counter = Place.where(approved: 0).size  %>
+          <li><%= link_to "Places to approve - #{counter}", places_approve_path %></li>
+
+          <% counter = Place.where(translated: 0).size  %>
+          <li><%= link_to "Places to translate - #{counter}", places_translate_path %></li>
+
+          <li><%= link_to "Cities", cities_path %> &raquo; <%= link_to "new", new_city_path %></li>
+          <li><%= link_to "Categories", categories_path %> &raquo; <%= link_to "new", new_category_path %></li>
+          <li><%= link_to "Types", types_path %> &raquo; <%= link_to "new", new_type_path %></li>
+          <li><%= link_to "Recount all", recount_path %></li>
+        </ul>
+      </li>
+
+      <li><b>Users activity :</b>
+        <ul>
+          <li><%= link_to "All users", users_path %></li>
 
           <% counter = Contact.find(:all).size %>
-          <li><%= link_to "Contacts - #{counter}", contacts_path, class: "tiny  button " %></li>
-          <% counter = User.find(:all).size  %>
-          <li><%= link_to "Users - #{counter}", users_path, class: "tiny  button " %></li>
-          <% counter = Place.where(approved: 0).size  %>
-          <li><%= link_to "To approve - #{counter}", places_approve_path, class: "tiny  button " %></li>
-          <% counter = Place.where(translated: 0).size  %>
-          <li><%= link_to "To translate - #{counter}", places_translate_path, class: "tiny  button " %></li>
-          <% counter = Request.all.size  %>
-          <li><%= link_to "Requests - #{counter}", requests_path, class: "tiny  button " %></li>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %><%= link_to "Contacts", contacts_path %></li>
+
           <% counter = Feed.all.size  %>
-          <li><%= link_to "Feeds - #{counter}", feeds_path, class: "tiny  button " %></li>
+          <li><%= link_to "Users feeds - #{counter}", feeds_path %></li>
+
           <% counter = Post.unapproved.size  %>
-          <li><%= link_to "Posts - #{counter}", posts_unapproved_path, class: "tiny  button " %></li>
-</ul>
-
-
-<ul id="drop1" class="f-dropdown " data-dropdown-content>
-  <li><%= link_to "Cities", cities_path %></li>
-  <li><%= link_to "New City", new_city_path %></li>
-</ul>
-<ul id="drop2" class="f-dropdown " data-dropdown-content>
-  <li><%= link_to "Recount", recount_path %></li>
-
-</ul>
-<ul id="drop3" class="f-dropdown " data-dropdown-content>
-  <li><%= link_to "Types", types_path %></li>
-  <li><%= link_to "New type", new_type_path %></li>
-</ul>
-
-<ul id="drop5" class="f-dropdown " data-dropdown-content>
-  <li><%= link_to "Categories", categories_path %></li>
-  <li><%= link_to "New category", new_category_path %></li>
-</ul>
-
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Users posts", posts_unapproved_path %></li>
+          <li><b><%= link_to "Subscribers :", subscribers_path %></b> 
+            <ul>
+              <li><%= "Active - " + "#{Subscriber.active.size}" %></li>
+              <li><%= "Unapproved - " + "#{Subscriber.not_confirmed.size}" %></li>
+              <li><%= link_to "Delayed jobs", delayed_path %></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><b>Statistics :</b>
+        <ul>
+          <li><a href="https://mandrillapp.com/">Sended emails stats</a></li>
+          <li><a href="https://www.google.com/analytics/web/?hl=en&pli=1#report/visitors-overview/a3283376w68970120p71027386/">Audience Overview</a></li>
+          <li><a href="https://www.google.com/analytics/web/?hl=en&pli=1#realtime/rt-overview/a3283376w68970120p71027386/">Real time overview</a></li>
+          <li><a href="https://rpm.newrelic.com/accounts/310918/applications/1731722">New relic overview</a></li>
+          <li><a href="https://manager.linode.com/">Linode panel</a></li>
+        </ul>
+      </li>
+   </ul>
 </div>
-</div>
-<% elsif can? :make_translate, Place %>
 
-<div class="row">
-  <div class="large-12 columns">
-  <ul class="button-group radius">
+<% elsif current_user and current_user.role == 3 %>
 
-          <% counter = User.find(:all).size  %>
-          <li><%= link_to "Users - #{counter}", users_path, class: "tiny  button " %></li>
+<div class="panel radius">
+    <ul class="recent">
+      <li><b>Content setings:</b>
+        <ul>
+          <% counter = Request.all.size  %>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests", requests_path %></li>
+
+          <li><%= link_to "Add new place", new_place_path %></li>
 
           <% counter = Place.where(translated: 0).size  %>
-          <li><%= link_to "To translate - #{counter}", places_translate_path, class: "tiny  button " %></li>
+          <li><%= link_to "Places to translate - #{counter}", places_translate_path %></li>
+        </ul>
+      </li>
 
-          <% counter = Feed.all.size  %>
-          <li><%= link_to "Feeds - #{counter}", feeds_path, class: "tiny  button " %></li>
-  </ul>
+      <li><b>Users activity :</b>
+        <ul>
+          <li><%= link_to "All users", users_path %></li>
 
+          <% counter = Contact.find(:all).size %>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %><%= link_to "Contacts", contacts_path %></li>
+
+          <% counter = Post.unapproved.size  %>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Users posts", posts_unapproved_path %></li>
+
+        </ul>
+      </li>
+   </ul>
 </div>
-</div>
-
-
 <% end %>
 
 

@@ -13,18 +13,17 @@ class SubscribersController < ApplicationController
 
   def create
     @subscriber = Subscriber.new(params[:subscriber])
+    @subscriber.lang = params[:locale]
 
     respond_to do |format|
       if @subscriber.save
-        UserMailer.greating(@subscriber.email, @subscriber.confirm_token).deliver
-
+        UserMailer.delay(priority: 100).greating(@subscriber.email, @subscriber.confirm_token, params[:locale] )
         format.html { redirect_to :back, notice: t(:send_instructions) }
-        format.json { render json: @subscriber, status: :created, location: @subscriber }
       else
         format.html { redirect_to :back, alert: 'Something went wrong.'  }
-        format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   def destroy

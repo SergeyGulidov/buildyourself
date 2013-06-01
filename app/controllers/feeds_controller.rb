@@ -17,11 +17,10 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @feed.save
+        UserMailer.delay(priority: 90).new_feed_notifier(@feed)
         format.html { redirect_to :back, notice: t(:success) }
-        format.json { render json: @feed, status: :created, location: @feed }
       else
         format.html { redirect_to :back, alert: 'Something went wrong.'  }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end
   end

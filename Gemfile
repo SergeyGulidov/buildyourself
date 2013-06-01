@@ -6,7 +6,7 @@ gem 'rails', '~> 3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
+gem 'figaro'
 gem 'traco'
 gem 'simple_form'
 gem 'gmaps4rails'
@@ -28,6 +28,10 @@ gem 'tire'
 gem 'metamagic'
 gem "friendly_id", "~> 4.0.9"
 gem 'carrierwave-imageoptimizer'
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem "delayed_job_web"
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

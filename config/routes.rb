@@ -9,7 +9,7 @@ BuildYourSelf::Application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     
-
+    match "/delayed" => DelayedJobWeb, :anchor => false
     root :to => 'places#index'
     match '/about' => 'contacts#about'
     devise_for :users, :controllers => {

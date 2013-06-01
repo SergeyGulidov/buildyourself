@@ -1,5 +1,4 @@
-<%= simple_form_for @city, html: { class: 'custom' } do |f| %>
-    <% field_set_tag "City" do %>
+<%= simple_form_for @city  do |f| %>
 
       <div class="row">
         <div class="large-6 columns">
@@ -16,8 +15,7 @@
             <%= f.input :city_slug, label: "Slug" %>
         </div>
       </div>
-    <%= f.button :submit, class: 'small button'  %>
-  <% end %>
+    <%= f.button :submit, class: 'tiny success button'  %>
 <% end  %>
 
 

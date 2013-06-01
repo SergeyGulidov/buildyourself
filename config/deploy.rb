@@ -1,7 +1,9 @@
 require "bundler/capistrano"
+require "delayed/recipes"  
 
 server "178.79.184.248", :web, :app, :db, primary: true
 
+set :rails_env, "production" #added for delayed job 
 set :application, "BuildYourSelf"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
@@ -18,6 +20,7 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+after "deploy", "delayed_job:start"
 
 namespace :deploy do
   %w[start stop restart].each do |command|
