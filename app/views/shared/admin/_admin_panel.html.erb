@@ -39,7 +39,7 @@
             <ul>
               <li><%= "Active - " + "#{Subscriber.active.size}" %></li>
               <li><%= "Unapproved - " + "#{Subscriber.not_confirmed.size}" %></li>
-              <li><%# link_to "Delayed jobs", delayed_path %></li>
+              <li><%= link_to "Delayed jobs", delayed_path %></li>
             </ul>
           </li>
         </ul>

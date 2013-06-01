@@ -15,8 +15,6 @@ gem 'rmagick', '2.13.2'
 gem 'nested_form'
 gem 'devise'
 gem "cancan"
-
-
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
@@ -27,9 +25,9 @@ gem 'tire'
 gem 'metamagic'
 gem "friendly_id", "~> 4.0.9"
 gem 'carrierwave-imageoptimizer'
-#gem 'delayed_job_active_record'
-#gem 'daemons'
-#gem "delayed_job_web"
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem "delayed_job_web"
 
 
 group :assets do
@@ -45,7 +43,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails', "~> 2.0"
 	gem "mocha", "~> 0.12.8", :require => false
-  #gem 'bullet'
+  gem 'bullet'
 end
 
 
