@@ -6,7 +6,7 @@ gem 'rails', '~> 3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'figaro'
+
 gem 'traco'
 gem 'simple_form'
 gem 'gmaps4rails'
@@ -21,16 +21,15 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'madmimi'
 gem 'kaminari'
 gem "select2-rails"
 gem 'tire'
 gem 'metamagic'
 gem "friendly_id", "~> 4.0.9"
 gem 'carrierwave-imageoptimizer'
-gem 'delayed_job_active_record'
-gem 'daemons'
-gem "delayed_job_web"
+#gem 'delayed_job_active_record'
+#gem 'daemons'
+#gem "delayed_job_web"
 
 
 group :assets do
@@ -46,7 +45,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails', "~> 2.0"
 	gem "mocha", "~> 0.12.8", :require => false
-  gem 'bullet'
+  #gem 'bullet'
 end
 
 
@@ -56,7 +55,7 @@ group :production do
 	gem 'pg'
   gem 'unicorn'
 end
-
+gem 'figaro'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

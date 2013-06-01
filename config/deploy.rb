@@ -1,9 +1,9 @@
 require "bundler/capistrano"
-require "delayed/recipes"  
+
 
 server "178.79.184.248", :web, :app, :db, primary: true
 
-set :rails_env, "production" #added for delayed job 
+
 set :application, "BuildYourSelf"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
