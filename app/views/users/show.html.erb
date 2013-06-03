@@ -28,13 +28,10 @@
 
 			    <li><p class="contact_info">
 
-			    <% unless @user.email.blank?  %>
-			      <%= @user.email %><br>
-			    <% end %>
-
-			    <% unless @user.web_site.blank?  %>
-			      <%= @user.web_site  %> <br>
-			    <% end %>
+			    <%= mail_to @user.email, nil, :replace_at => "-at-", encode: "hex", class: "no_border" %><br>
+			      <% unless @user.web_site.blank?  %>
+			        <%= link_to @user.web_site, url_with_protocol(@user.web_site), class: "no_border", target: "_blank", rel: 'nofollow' %><br>
+			      <% end %>
 
 			    <% unless @user.phone.blank?  %>
 			      <%= "(+371) - #{@user.phone}" %><br>

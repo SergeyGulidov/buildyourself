@@ -40,6 +40,11 @@
   <script type="text/javascript">
     window.onload = function() {
 
+        var editor = new wysihtml5.Editor("request_message", { // id of textarea element
+          toolbar:      "toolbar", // id of toolbar element
+          parserRules:  wysihtml5ParserRules // defined in parser rules set 
+        });
+
         $('#new_request').validate({
           rules: {
             'request[address]': {required : true,
@@ -66,6 +71,11 @@
   <script type="text/javascript">
     window.onload = function() {
 
+        var editor = new wysihtml5.Editor("request_message", { // id of textarea element
+          toolbar:      "toolbar", // id of toolbar element
+          parserRules:  wysihtml5ParserRules // defined in parser rules set 
+        });
+
         $('#new_request').validate({
           rules: {
             'request[address]': {required : true,
@@ -88,3 +98,7 @@
   </script>
 
 <% end %>
+
+
+
+

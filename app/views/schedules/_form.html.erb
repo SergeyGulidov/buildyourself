@@ -17,7 +17,7 @@
 
 				<div class="small-4 columns">
 					<div class="row entry">
-						<%= f.input :group, label: false, as: :text %>
+						<%= f.input :group, label: false, as: :string %>
 					</div>
 				</div>
 
@@ -75,5 +75,5 @@
 		</div>
 		<br>
 	</div>
-	<%= f.button :submit, t(:add_place), class: 'tiny button radius secondary', :disable_with => "Creating..."  %>
+	<%= f.button :submit, t(:add_place), class: 'tiny button radius success right', :disable_with => "Creating..."  %>
 <% end  %>

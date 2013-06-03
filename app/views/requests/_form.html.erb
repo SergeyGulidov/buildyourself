@@ -16,7 +16,27 @@
 	    </div>
     </div>
 
+
     <%= f.input :message, label: t(:message)  %>
+    <div id="toolbar" style="">
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" href="javascript:;" unselectable="on">h1</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" href="javascript:;" unselectable="on">h2</a> | 
+        <a data-wysihtml5-command="bold" title="CTRL+B" href="javascript:;" unselectable="on">bold</a> |
+        <a data-wysihtml5-command="italic" title="CTRL+I" href="javascript:;" unselectable="on">italic</a> |
+        <a data-wysihtml5-command="createLink" href="javascript:;" unselectable="on">link</a> 
+        <!--  <a data-wysihtml5-command="insertUnorderedList" href="javascript:;" unselectable="on">insertUnorderedList</a> | -->
+
+        <a data-wysihtml5-action="change_view" href="javascript:;" unselectable="on" class="right">html</a>
+        
+        <div data-wysihtml5-dialog="createLink" style="display: none;">
+
+            <input data-wysihtml5-dialog-field="href" value="http://"> 
+            <a data-wysihtml5-dialog-action="save" class="button success tiny">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel" class="button tiny alert">Cancel</a>
+        </div>
+        
+    
+  </div>
+
 
     <div class="row photos">
         <div class="large-6 columns add_photo">

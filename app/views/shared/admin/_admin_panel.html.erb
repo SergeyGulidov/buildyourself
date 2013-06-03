@@ -6,7 +6,7 @@
       <li><b>Content setings:</b>
         <ul>
           <% counter = Request.all.size  %>
-          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests", requests_path %></li>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests - " + counter.to_s, requests_path %></li>
 
           <li><%= link_to "Add new place", new_place_path %></li>
 
@@ -63,7 +63,7 @@
       <li><b>Content setings:</b>
         <ul>
           <% counter = Request.all.size  %>
-          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests", requests_path %></li>
+          <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests - " + counter.to_s, requests_path %></li>
 
           <li><%= link_to "Add new place", new_place_path %></li>
 
