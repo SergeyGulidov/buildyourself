@@ -36,8 +36,9 @@
         
     
   </div>
-
-
+    <dl>
+      <dt><%= t :add_photos%>:</dt>
+    </dl>
     <div class="row photos">
         <div class="large-6 columns add_photo">
             <%= f.file_field :source_1, class: "image_field" %>
@@ -53,7 +54,7 @@
 
         </div>
     </div>
-
+<hr>
     <%= f.button :submit, t(:add_place), class: 'small success button radius right', :disable_with => "Creating..."  %>
     <% end %>
 <% end  %>

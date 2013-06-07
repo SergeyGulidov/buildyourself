@@ -62,7 +62,8 @@ class Ability
       can :subscribe, Request
       can :subscribed, Request
       can :waitingforactivation, Request
-      can :news, Feed
+      can :news, Feed 
+      can :create, User 
   end
 end
 

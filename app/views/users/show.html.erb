@@ -28,7 +28,7 @@
 
 			    <li><p class="contact_info">
 
-			    <%= mail_to @user.email, nil, :replace_at => "-at-", encode: "hex", class: "no_border" %><br>
+			    <%= mail_to @user.email, nil, :replace_at => "(at)", encode: "hex", class: "no_border" %><br>
 			      <% unless @user.web_site.blank?  %>
 			        <%= link_to @user.web_site, url_with_protocol(@user.web_site), class: "no_border", target: "_blank", rel: 'nofollow' %><br>
 			      <% end %>

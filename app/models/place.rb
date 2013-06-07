@@ -8,7 +8,7 @@ class Place < ActiveRecord::Base
   belongs_to :category
   belongs_to :type
 
-  has_many :feeds, :dependent => :destroy
+  has_many :feeds, :order => 'created_at DESC', :dependent => :destroy
   has_many :photos, :dependent => :destroy
   has_many :place_votes, :dependent => :destroy
   has_many :schedules, :dependent => :destroy

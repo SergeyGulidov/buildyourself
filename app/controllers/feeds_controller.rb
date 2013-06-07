@@ -36,12 +36,6 @@ load_and_authorize_resource
   end
 
   def news
-    if params[:user].blank?
-      @news = Feed.order("created_at").includes(:user).limit(15)
-    else
-      @news = Feed.select("message, created_at, place_id").where("user_id = ?", params[:user]).last(10)
-      @user = User.select("name, email").where("id = ?", params[:user]).first
-    end
   end
 
 end

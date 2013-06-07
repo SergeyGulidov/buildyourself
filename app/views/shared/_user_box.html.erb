@@ -14,7 +14,7 @@
 
       <li><p class="contact_info">
 
-      <%= mail_to @place.user.email, nil, :replace_at => "-at-", encode: "hex", class: "no_border" %><br>
+      <%= mail_to @place.user.email, nil, :replace_at => "(at)", encode: "hex", class: "no_border" %><br>
       <% unless @place.user.web_site.blank?  %>
         <%= link_to @place.user.web_site, url_with_protocol(@place.user.web_site), class: "no_border", target: "_blank", rel: 'nofollow' %><br>
       <% end %>
