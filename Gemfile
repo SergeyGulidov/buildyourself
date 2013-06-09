@@ -46,14 +46,12 @@ group :development, :test do
   gem 'bullet'
 end
 
-gem 'unicorn'
-gem 'unicorn-worker-killer'
-gem 'newrelic_rpm'
+
 
 group :production do
-
+  gem 'unicorn'
+  gem 'newrelic_rpm'
 	gem 'pg'
-
 end
 gem 'figaro'
 gem 'jquery-rails'
