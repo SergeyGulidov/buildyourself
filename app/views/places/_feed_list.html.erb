@@ -1,8 +1,6 @@
-<div class="feeds">
-	<ul class="recent">
-		<% if @place.feeds.blank? %>
-			<li><%= t :no_feeds  %></li>
-		<% else %>
+<% unless @place.feeds.blank? %>
+	<div class="feeds">
+		<ul class="recent">
 		    <% @place.feeds.each do |feed| %>
 		    	<i>
 		    		<%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %>
@@ -11,15 +9,14 @@
 		            <% end %>
 		    	</i>
 		        <li class="feed"><%= simple_format(feed.message) %></li>
-
 		    <% end %>
-		<% end %>
-	</ul>
-</div>
+		</ul>
+	</div>
+<% end %>
 
 <% unless @feed.blank? %>
-	<a href="#" data-reveal-id="feeds_new" class="button tiny secondary right radius"><%= t(:create_news) %></a>
 	<br>
+	<a href="#" data-reveal-id="feeds_new" class="button tiny secondary right radius"><%= t(:create_news) %></a>
 	<div id="feeds_new" class="reveal-modal medium">
 	  <h2><%= t(:create_news) %></h2>
 		<%= render 'feeds/form' %>

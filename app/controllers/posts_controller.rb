@@ -20,11 +20,7 @@ load_and_authorize_resource
 
   def show
     @post = Post.includes(:user).find(params[:id])
-
-    respond_to do |format|
-      format.html 
-      format.json { render json: @post }
-    end
+    fresh_when @post
   end
 
   def new
@@ -88,6 +84,7 @@ load_and_authorize_resource
     if current_user.role == 1
       @post.approved = 1
       @post.save
+      expire_fragment('blog_posts')
       UserMailer.delay(priority: 60).new_post_notifier(@post)
       redirect_to :back
     end

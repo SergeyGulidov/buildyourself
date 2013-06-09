@@ -5,11 +5,25 @@
               <p>&copy; Yoda.lv. 2013. All rights reserved.</p>
               <%# render 'shared/add_this' %>
   </div>
-  <div class="large-4 small-6 columns">
-
+  <div class="large-4 small-6 columns share_button">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://yoda.lv" data-via="yoda_lv">Tweet</a>
+	<div class="fb-like" data-href="http://yoda.lv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
   </div>
 
   <div id="footer_logo" class="hide-for-small" ><%= image_tag("logo_small.png", width: '250', height: '199') %></div>
-
 </div>
+	<div id="fb-root"></div>
 
+
+<script>
+
+	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+	
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=547819331904913";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>

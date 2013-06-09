@@ -21,6 +21,9 @@
 </head>
 <body>
 
+
+
+
 <div id="wrap">
 	<div class="row">
 
@@ -28,16 +31,17 @@
 	    <%= render 'shared/topbar'  %>
 	  </div>
 	</div>
-
 	<div class="show_page_navigation"></div>
 	<div id="main" >
 		<%= yield %>
 	</div>
 </div>
 
-<div id="footer">
-	<%= render 'shared/footer'  %>
-</div>
+<% cache('footer') do -%>
+	<div id="footer">
+		<%= render 'shared/footer'  %>
+	</div>
+<% end -%>
 
 <%= csrf_meta_tags %>
 <%= javascript_include_tag "application" %>

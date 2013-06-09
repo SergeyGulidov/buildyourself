@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  
   protect_from_forgery
-  before_filter :set_locale
 
+  before_filter :set_locale
+  before_filter :locale_changed?
   before_filter :get_current_user_info
 
 
@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
 
   private
-
   	def set_locale
       if params[:locale].present? 
   		  I18n.locale = params[:locale] 
@@ -26,6 +25,15 @@ class ApplicationController < ActionController::Base
   	def default_url_options(options = {})
   		{locale: I18n.locale}
   	end
+
+    def locale_changed?
+      if params[:change_locale].present?
+        expire_fragment('footer')
+        expire_fragment('about')
+        expire_fragment('blog_posts')
+        expire_fragment('promotion')
+      end 
+    end
 
     # get user info for login partial 
     def get_current_user_info

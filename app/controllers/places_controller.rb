@@ -19,6 +19,7 @@ load_and_authorize_resource
 			end
 		end
 		@recent_posts = Post.recent
+		
 
 		if @places.blank?
 			flash[:alert] = t(:nothing_found) 
