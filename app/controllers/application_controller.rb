@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :locale_changed?
+
   before_filter :get_current_user_info
 
 
@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
         expire_fragment('footer')
         expire_fragment('about')
         expire_fragment('blog_posts')
-        expire_fragment('promotion')
       end 
     end
 
