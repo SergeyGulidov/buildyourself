@@ -53,6 +53,7 @@ group :production do
   gem 'newrelic_rpm'
 	gem 'pg'
 end
+
 gem 'figaro'
 gem 'jquery-rails'
 

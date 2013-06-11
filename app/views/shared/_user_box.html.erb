@@ -1,15 +1,17 @@
-<div class="panel without_border">
-  <ul class="small-block-grid-1 ">
-      <li>
-        <% if @place.user.avatar.blank? %>
-          <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
-        <% else  %>
-          <%= image_tag @place.user.avatar.url, height: '154', width: '254', 
-          	class: "th"  %>
-        <% end  %>
-      </li>
 
-      <li><h4 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h4></li>
+<% if @place.user.avatar.blank? %>
+  <%= image_tag "blank.png", height: '154', width: '272'  %>
+<% else  %>
+  <%= image_tag @place.user.avatar.url, height: '154', width: '272' %>
+<% end  %>
+
+<div class="panel user_panel_box">
+  <ul>
+
+
+
+
+      <li><h4 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h4></li><br>
       <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr></li>
 
       <li><p class="contact_info">
@@ -32,7 +34,7 @@
 </div>
 
 
-<%= render 'blog_list' %>
+
 
 <% unless @other_user_places.blank? %>
   <div class="panel radius right_panel">
@@ -48,6 +50,8 @@
     </ul>
     </div>
 <% end  %> 
+
+<%= render 'blog_list' %>
 
 <%= render 'subscribers/form'%>
 

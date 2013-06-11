@@ -4,7 +4,7 @@
 	    <li class="first"><h5><span class="general foundicon-page"> </span> <%= t :post_list   %></h5></li>
 	    <% @user_posts.each do |post| %>
 	      <%= link_to post do %>
-		    <li class="feed">
+		    <li class="li_second">
 		      <i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
 		      <%= post.title %>
 	      	</li>
