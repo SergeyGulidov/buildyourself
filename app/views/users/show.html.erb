@@ -12,18 +12,17 @@
     <div class="row content">
     	<%= render 'shared/flasher' %>
     	<div class="large-3  columns">
-    		<div class="panel without_border">
-			<ul class="small-block-grid-1 ">
-			    <li>
-			      <% if @user.avatar.blank? %>
-			        <%= image_tag "blank.png", height: '154', width: '254', class: "th radius"  %>
-			      <% else  %>
-			        <%= image_tag @user.avatar.url, height: '154', width: '254', 
-			        	class: "radius th"  %>
-			      <% end  %>
-			    </li>
+    		<div class="panel">
+			
 
-			    <li><h4 style="text-align: center"><%=  @user.name unless @user.name.blank? %></h4></li>
+			      <% if @user.avatar.blank? %>
+			        <%= image_tag "blank.png", height: '139', width: '230'  %>
+			      <% else  %>
+			        <%= image_tag @user.avatar.url, height: '139', width: '230' %>
+			      <% end  %>
+
+			    <ul>
+			    <li><br><h4 style="text-align: center"><%=  @user.name unless @user.name.blank? %></h4></li><br>
 			    <li class="about_block"><p><%= simple_format(@user.about) unless @user.about.blank? %></p><hr></li>
 
 			    <li><p class="contact_info">
