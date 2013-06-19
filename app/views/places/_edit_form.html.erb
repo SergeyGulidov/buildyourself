@@ -1,3 +1,5 @@
+<div class="panel radius">
+
 <%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
     <% if @place.errors.any? %>
     <div id="error_explanation">
@@ -15,19 +17,15 @@
 
 <% end %>
 
-    <% field_set_tag t(:edit_your_place) do %>
+  
 
     <%= render 'shared/errors', object: @place %>
 
       <div class="row">
         <div class="large-4 columns">
-          <%= f.association :country, collection: @countries, label: t(:country), :label_method => :country_name %>
-        </div>
-
-        <div class="large-4 columns">
           <%= f.association :city, collection: @cities, label: t(:city), :label_method => :city_name %>
         </div>
-        <div class="large-4 columns">
+        <div class="large-4 columns pull-4">
           <%= f.input :street, label: t(:street_address) %>
         </div>
       </div>
@@ -40,16 +38,13 @@
       </div>
 
       <div class="row ">
-        <div class="large-4 columns">
-          <%= f.input :name, label: t(:name_for_place) %>
-        </div>
         <div class="large-2 columns">
           <%= f.input :month_price, label: t(:month_price), as: :string %>
         </div>
         <div class="large-2 columns">
           <%= f.input :age_min, label: t(:min_age), as: :string %>
         </div>
-        <div class="large-2 pull-2 columns">
+        <div class="large-2 pull-6 columns">
           <%= f.input :age_max, label: t(:max_age), as: :string %>
         </div>
       </div>
@@ -131,5 +126,5 @@
 
     <%= f.button :submit, t(:add_place), class: 'small button'  %>
   <% end %>
-<% end  %>
+</div>
 

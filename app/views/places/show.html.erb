@@ -13,21 +13,28 @@
 
     <div class="row ">
 
-    
+    <% if @place.simple_place == 0  %>
+
+      <div class="small-7 large-9 columns panel radius">
+
+    <% else %>
+
       <div class="small-5 large-3 columns">
         <%= render 'shared/user_box', object: @place %>
       </div>
-
       
-      <div class="small-7 large-6 columns white">
+      <div class="small-7 large-6 columns panel radius">
+    <% end %>
 
-            <h2>                  
+
+            <h2>
+            <i class="general foundicon-location"></i>                   
             <% if can? :edit, @place %>
               <%= link_to(edit_place_path(@place)) do %>
-                <%= @place.name %> <i class="comments general foundicon-edit">  </i>
+                <%= @place.street + ", " + @place.city.city_name_lv %> <i class="comments general foundicon-edit">  </i>
               <% end %>
             <% else %>
-              <%= @place.name %>
+              <%= @place.street + ", " + @place.city.city_name_lv %>
             <% end %>
             <% if can? :make_approve, Place %>
               <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>
@@ -35,35 +42,34 @@
           </h2>
 
 
+
+
+
           <div class="show_page_bread">
-            <%= render 'breadcrumbs', object: @place %>
+            <i class="general foundicon-folder"></i>
+            <%= link_to @place.category.category_name, { controller: :places, action: :index, category: @place.category.category_slug} %> &raquo;
+            <%= link_to @place.type.type_name, { controller: :places, action: :index, type: @place.type.type_slug} %> 
+            
+            <% if @place.age_min.present? and @place.age_max.present? %>
+              &raquo;
+              <%= "#{ t(:from) } #{ @place.age_min } #{ t(:to) } #{ @place.age_max } #{ t(:age) } " %>
+            <% end  %>
+            <br><br>
           </div>
 
-        <% unless @place.slug.blank? %>
-          <% short_link = "yoda.lv/" + @place.slug %>
-          <p class="center"><%= t(:short_link_show) %><%= link_to short_link, "http://www." + short_link %></p>
-        <% end %>
+
+
+
           <%= render 'show_contacts', object: @place %> 
 
 
 
-          <%= simple_format(@place.message) %>
+          <span class="place_message_show_page"><%= simple_format(@place.message) %></span>
+          <hr>
           <div class="row">
-          <div class="large-12 columns">
 
-
-          <%= render 'schedules' %>
-          </br>
-          </br>
-          <%= render 'feed_list' %>
-          
-          </div>
-
-        </div>
-
-        <div class="row ">
-          <div class="large-12 columns photos_block">
-            <ul class="small-block-grid-4 clearing-thumbs" data-clearing>
+          <div class="small-11 small-centered columns">
+              <ul class="small-block-grid-4 clearing-thumbs" data-clearing>
                 <% @place.photos.each do |photo| %>
                   <li>
                     <%= link_to (image_tag photo.photo.url(:thumb), 
@@ -72,27 +78,37 @@
                   </li>
                 <% end %>
             </ul>
+            </div>
+          </div>
+          <br>
+        
 
-
+          <div class="row">
+            <div class="small-12 columns">
+              <%= render 'schedules' %>
+              </br>
+              </br>
+              <%= render 'feed_list' %>
+            </div>
           </div>
 
-        </div>
+
+
+
 
         
         <%= render 'shared/gmap' %>
-        
-      </div>
-
-
-      <div class="large-3 columns hide-for-small">
-          <%= render 'shared/admin/admin_panel' %>
-          <%= render 'shared/navigator' %>
-          <%= render 'shared/login' %>
-      </div>
-    </div>
-    <div class="row ">
-      <div class="large-9 small-12 columns white">
+        <br>
         <div id="disqus_thread" ></div>
+      </div>
+
+
+      <div class="small-5 large-3 columns">
+          <%= render 'shared/navigator' %>
+          <%= render 'shared/navigation_panel'%>
+          <%= render 'shared/admin/admin_panel' %>
+
+          <%= render 'shared/login' %>
       </div>
     </div>
   </div>

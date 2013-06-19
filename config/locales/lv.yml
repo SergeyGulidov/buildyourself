@@ -7,12 +7,19 @@ lv:
   when: Kad? Datums un Laiks
   request_sended:  Jūsu pieteikums veiksmīgi nosūtīts, gaida administrācījas apstiprinājumu.
 
-  how_to: '<ul class="square how_to"><h4>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h4>
-    <h6><small>Mūsu sniegtie pakalpojumi ir bezmaksas.</small></h6></ul>'
+  how_to: '<h4>Ja Jūs esat tas, kurš nes zināšanas un spēku tautā, tad Jums jābūt mūsu katalogā.</h4>
+    <p>Mūsu sniegtie pakalpojumi ir bezmaksas.</p>'
 
   recent_added_places: "Nesen atjaunoti:"
-  photo_how_to: Tikai .jpg, .png, .gif vai .jpeg formāts. Vienas bildes maksimālais izmērs 2 MB. Vajag vairāk?
+  photo_how_to: Tikai .jpg, .png, .gif vai .jpeg formāts. Vienas bildes maksimālais izmērs 5 MB. Vajag vairāk?
   
+
+  slogan: "Atrodi sev tīkamāko nodarbību brīvajam laikam. Atīsti savu prātu, esi izturīgāks un skaistāks."
+  do_you_want_panel: "Vai vēlaties saņemt pilnvērtīgu kontrolpaneli (par brīvu) lai kontrolētu jūsu loginu un nodarbības?"
+  yes_s: Jā
+  no_s: Nē
+
+
   add_photos: Pievienot fotogrāfijas
   country: Valsts
   city: Pilsēta
@@ -37,7 +44,7 @@ lv:
   max_age: Maks. Vecums
   change_link: Padomā pirms "Publicē" izlabot nevarēs!
   short_link: "Īsākais links uz jūsu publikāciju:"
-  short_link_show: " Īsākais links :  "
+  short_link_show: " Links :  "
   watch_filter: Parādīt
   yoda_navigator: Navigācija
 
@@ -46,6 +53,7 @@ lv:
   home: Sākums
   
   contact_with_us: Kontakti
+  search_button: мeklēt
   search: Meklēt...
 
 #------------- map filter partial
@@ -465,14 +473,14 @@ lv:
 # about us
   about_us: Par projektu
   mission: 
-    "<p>Grūti noticēt, ka mūsdienās ir tik grūti atrast sev un saviem bērniem nodarbības. 
-    Vai tā būtu kāda informācija par futbolu dēla treniņiem, vai klavierstundu pasniedzējs.</p>
-    <p>Bieži saskaramies ar situāciju: ierakstot meklētājā mūs interesējošo informāciju,nevaram vajadzīgo atrast, 
-    bet,ja atrodam, tad jāzvana un jānoskaidro nianses.</p>
-    <p>Vai var vienkārši ierakstot vecumu, saņemt visu iespējamo nodarbību informāciju savā pilsētā ?</p>
-    <p>VAR! Un mēs to jums pierādīsim.</p>
-    <p>Mūsu projektā jūs atradīsiet pašattīstīšanās iespējas visā Latvijā. Savukārt pasniedzējiem piedāvājam 
-    labas iespējas un vienkāršāko veidu, kā jums to piedāvāt.</p>"
+    "Grūti noticēt, ka mūsdienās ir tik grūti atrast sev un saviem bērniem nodarbības. 
+    Vai tā būtu kāda informācija par futbolu dēla treniņiem, vai klavierstundu pasniedzējs.</br><br>
+    Bieži saskaramies ar situāciju: ierakstot meklētājā mūs interesējošo informāciju,nevaram vajadzīgo atrast, 
+    bet,ja atrodam, tad jāzvana un jānoskaidro nianses.</br><br>
+    Vai var vienkārši ierakstot vecumu, saņemt visu iespējamo nodarbību informāciju savā pilsētā ?</br><br>
+    VAR! Un mēs to jums pierādīsim.</br><br>
+    Mūsu projektā jūs atradīsiet pašattīstīšanās iespējas visā Latvijā. Savukārt pasniedzējiem piedāvājam 
+    labas iespējas un vienkāršāko veidu, kā jums to piedāvāt.</br><br>"
   for_owners: "Pasniedzējiem :"
   owners_options:
     "<dd>Jūsu publikācijas piedāvājums.</dd>

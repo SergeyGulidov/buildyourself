@@ -12,10 +12,10 @@ load_and_authorize_resource
 		else
 			places, @type_vip, watcher = Place.first_step_search(params)
 			if watcher == 0
-				@places = places.page(params[:page]).per(3)
+				@places = places.page(params[:page]).per(10)
 			else
 				@json = get_json_for_map(places)
-				@places = places.page(params[:page]).per(5)
+				@places = places.page(params[:page]).per(10)
 			end
 		end
 		@recent_posts = Post.recent

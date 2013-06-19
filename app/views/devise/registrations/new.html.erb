@@ -7,8 +7,9 @@
 </div>
 
 <div class="row content">
-  <div class="small-8 small-centered large-3 large-centered columns panel">
-
+  <div class="small-8 small-centered large-3 large-centered columns ">
+    <%= render "shared/right_navigation" %>
+    <div class="panel radius">
     <h3 class="subheader"><%= t(:registration) %></h3>
 
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -27,5 +28,6 @@
       <p class="small right"><%= link_to t(:login) + " ?", new_session_path(resource_name) %></p>
     <% end %>
     <br>
+    </div>
   </div>
 </div>

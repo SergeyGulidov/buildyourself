@@ -1,51 +1,65 @@
 <% provide(:title, t(:home) ) %>
 <%= metamagic :description => "#{t(:meta_default_description)}", :keywords => "#{t(:meta_default_keywords)}" %>
+ 
+
+
+
 
 <div class="row content content_bottom_margin">
   <div class="large-12 small-12 columns" >
    
 
-    
-    <div class="row content">
-      <div  class="large-9 small-12 columns">
-        <%= render 'shared/flasher' %>
-        <% if @json %>
-          <%= render 'shared/gmap' %>
-          <br>
-        <% else %>
-          <%= render 'shared/promotion' %>
-          <br>
-          <br>
-          <div class="label radius success"><%= t(:recent_added_places) %></div>
-        <% end  %>
-          
-        
-        <% unless @type_vip.blank?  %>
-          <%= render 'vip'%>
-        <% end %>
+        <div class="row header_box">
+         <div class="small-12 large-9 columns" >
+            
+            <% if @json %>
+              <%= render 'shared/gmap' %>
+            <% else %>
+              <%= render 'shared/promotion' %>
+            <% end  %>
+            <%= render 'shared/flasher' %>
+          </div>
+          <div class="large-3 columns hide-for-small" >
+            <%= render 'shared/navigator' %>
+          </div>
+        </div>
 
-        <div id="places">
-              
-          <br>
-          <%= render @places %>
+              <div class="small-12 columns hide-for-medium-up" >
+                <%= render 'shared/filter' %>
+              </div>
+
+
+
+
+
+    
+    <div class="row">
+      <div class="large-3 small-5 columns place_item">
+        <%= render 'shared/login' %>
+        <%= render 'shared/navigation_panel'%>
+        <%# render 'sponsor' %>
+        <%= render 'shared/admin/admin_panel' %>
        </div>
 
+      <div  class="large-9 small-7 columns">
+
+          
+        
+
+
+        <div id="container">
+          <% unless @type_vip.blank?  %>
+            <%= render 'vip'%>
+          <% end %>
+          <%= render @places %>
+       </div>
+       <hr>
         <div id="paginator">
-          <%= paginate @places %>
+            <%= paginate @places %>
         </div>
       </div>
 
-      <div class="large-3 columns hide-for-small">
 
-
-        <%= render 'shared/admin/admin_panel' %>
-        <%= render 'shared/navigator' %>
-        <%= render 'shared/buttons' %>
-        <%= render 'shared/login' %>
-        <%= render 'shared/blog_panel'%>
-        <%# render 'sponsor' %>
-
-       </div>
 
     </div>
   </div>

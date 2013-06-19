@@ -1,0 +1,53 @@
+<div class="util_footer">
+			<ul class="tumblr_nav hide-for-small">
+				<%= link_to root_path do %>
+					<li><i class="general foundicon-home"></i> 
+					<%= t(:home)  %>
+					</li>
+				<% end %>
+				<% unless current_user %>
+		              <%= link_to new_user_session_path do %>
+		              	<li>
+			              <span class="social foundicon-torso"></span>
+			              <%= t(:login) %>
+			            </li>
+		              <% end  %>
+	            <% end  %>
+				<a href="https://twitter.com/yoda_lv"><li><i class="social foundicon-twitter"></i>twitter</li></a>
+				<!-- <a href="http://blog.yoda.lv/"><li><i class="social foundicon-tumblr"></i>tumblr</li></a> -->
+				<a href="https://www.facebook.com/Yodalv"><li><i class="social foundicon-facebook"></i>facebook</li></a>
+			</ul>
+			<ul class="tumblr_nav show-for-small">
+				<%= link_to root_path do %>
+					<li><i class="general foundicon-home"></i>
+					</li>
+				<% end %>
+				<% unless current_user %>
+		              <%= link_to new_user_session_path do %>
+		              	<li>
+			              <span class="social foundicon-torso"></span>
+			            </li>
+		              <% end  %>
+	            <% end  %>
+				<a href="https://twitter.com/yoda_lv"><li><i class="social foundicon-twitter"></i></li></a>
+				<!-- <a href="http://blog.yoda.lv/"><li><i class="social foundicon-tumblr"></i></li></a> -->
+				<a href="https://www.facebook.com/Yodalv"><li><i class="social foundicon-facebook"></i></li></a>
+			</ul>
+
+			<ul class="page_nav">
+				
+				<li class=<%= "#{current_lang_or_not('lv')}" %> >
+					<%= image_tag("lv.png", height: '11', width: '16') %>
+					<%= link_to "LV", locale: "lv" %> 
+				</li>
+
+			    
+			    <li class=<%= "#{current_lang_or_not('ru')}" %> >
+			    	<%= image_tag("ru.png", height: '11', width: '16') %> 
+			    	<%= link_to "RU", locale: "ru" %>
+			    </li>
+
+
+				<%= render 'shared/search' %>
+			</ul>
+		</div>

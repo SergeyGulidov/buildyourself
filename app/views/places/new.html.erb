@@ -2,21 +2,22 @@
 
 <div class="row content_bottom_margin" >
   <div class="large-12 columns">
-
-    <div class="row">
-      <div class="small-3 small-centered columns">
-        <div id="featured">
-          <%= image_tag("logo.png", width: '250px', height: '250px') %>
-        </div>
-      </div>
-    </div>
     
 <%= render 'shared/flasher' %>
  
     <div class="row content ">
-          <div class="small-8 small-centered columns">
-              <%= render 'translation_form'  %>
+
+          <div class="small-5 large-3 columns">
+              <%= render 'shared/admin/admin_panel' %>
+              <%= render 'shared/navigation_panel'%>
+              <%= render 'shared/login' %>
           </div>
+
+          <div class="small-7 large-9 columns">
+              <%= render 'approve_form'  %>
+          </div>
+
+
         </div>
     </div>
   </div>

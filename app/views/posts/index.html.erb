@@ -3,29 +3,30 @@
 
 
 
-<div class="row post_content_index content content_bottom_margin">
+<div class="row">
   <div class="large-12 small-12 columns">
-
     <%= render 'shared/flasher' %>
-    
-    
-
-    <div class="row content ">
-        <div  class="large-9 small-12 columns ">
-        <div id="places">
-          <%= render @posts %>
-       </div>
-
-        <div id="paginator">
-          <%= paginate @posts %>
-        </div>
-      </div>
-
-      <div class="large-3 columns hide-for-small">
-        <%= render 'shared/admin/admin_panel' %>
-        <%= render 'search' %>
-        <%= render 'shared/login' %>
-     </div>
-    </div>
   </div>
 </div> 
+
+<div class="inline content">
+      <div class="blog_navigation_block">
+          <%= render 'shared/navigation_panel'%>
+          <%= render 'shared/login' %>
+          <%= render 'shared/admin/admin_panel' %>
+          <%= render 'search' %>
+     </div>
+
+    
+    <div id="container" class="blog_posts_space">
+      <div id="places">
+        <%= render @posts %>
+     </div>
+
+      <div id="paginator">
+        <%= paginate @posts %>
+      </div>
+    </div>
+
+</div>
+

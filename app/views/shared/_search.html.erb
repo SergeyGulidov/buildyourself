@@ -1,12 +1,7 @@
-  <div class="row collapse">
-    <%= form_tag(places_path, :class => 'custom', :method => 'get') do %>
 
-        <div class="large-8 small-8 columns">
-          <%= text_field_tag :search, params[:search], placeholder: t(:search) %>
-        </div>
 
-        <div class="large-4 small-4 columns">
-            <%= image_submit_tag("search.png", width: '66', height: '32' ) %>
-        </div>
+    <%= form_tag(places_path, :method => 'get') do %>
+         <li> <%= text_field_tag :search, params[:search], placeholder: t(:search) %> </li>
+         <li><a href=""><i ></i></a></li>
+          <li><%= submit_tag t(:search_button), class: "button tiny secondary" %></li>
     <% end %>
-  </div>

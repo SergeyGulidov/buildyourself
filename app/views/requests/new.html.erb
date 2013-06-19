@@ -2,102 +2,27 @@
 
 <% meta :description => "#{ strip_tags(t(:how_to)) }" %>
 
-    <div class="row">
-      <div class="small-3 small-centered columns">
-        <div id="featured">
-          <%= image_tag("logo.png", width: '250px', height: '250px') %>
-        </div>
-      </div>
-    </div>
 
-<div class="row">
-  <div class="small-9 small-centered columns">
+<div class="row content">
 
-  <%= render 'shared/flasher' %>
-  
-    <div class="row">
-
-      <div class="small-12 large-8 columns">
-          <%= render 'form'  %>
-      </div>
-
-
-      <div class="large-4 columns" >
-        <br>
-	      <%= raw t (:how_to) %>
-        <%= render 'shared/admin/admin_panel' %>
+      <div class="small-5 large-3 columns" >
+        <%= render 'shared/navigation_panel'%>
         <%= render 'shared/login' %>
       </div>
 
-    </div>
-  </div>
+      <div class="small-7 large-5 columns">
+        <%= render 'shared/flasher' %>
+        <%= render 'form'  %>
+      </div>
+
+      <div class="large-4 columns hide-for-small" >
+        <div class="panel radius green"><%= raw t (:how_to) %></div>
+        <%= render 'shared/admin/admin_panel' %>
+      </div>
+
 </div>
 
 
-
-<% if I18n.locale == :ru %>
-
-  <script type="text/javascript">
-    window.onload = function() {
-
-        var editor = new wysihtml5.Editor("request_message", { // id of textarea element
-          toolbar:      "toolbar", // id of toolbar element
-          parserRules:  wysihtml5ParserRules // defined in parser rules set 
-        });
-
-        $('#new_request').validate({
-          rules: {
-            'request[address]': {required : true,
-              minlength: 5, maxlength: 255 },
-            'request[message]': {required : true,
-              minlength: 5, maxlength: 255 },
-            'request[email]': {
-              required : true,
-              email: true },
-          },
-
-          messages: {
-          "request[address]": "Не может быть пустым. Мин.- 5, макс.- 255 символов.",
-          "request[message]": "Не может быть пустым. Минимального описания будет достаточно.",
-          "request[phone]": "Мин.- 8, макс.- 12. Только цифры.",
-          "request[email]": "Введен не корректно.",
-          },
-        });
-    };
-  </script>
-
-<% else %>
-
-  <script type="text/javascript">
-    window.onload = function() {
-
-        var editor = new wysihtml5.Editor("request_message", { // id of textarea element
-          toolbar:      "toolbar", // id of toolbar element
-          parserRules:  wysihtml5ParserRules // defined in parser rules set 
-        });
-
-        $('#new_request').validate({
-          rules: {
-            'request[address]': {required : true,
-              minlength: 5, maxlength: 255 },
-            'request[message]': {required : true,
-              minlength: 5, maxlength: 255 },
-            'request[email]': {
-              required : true,
-              email: true },
-          },
-
-          messages: {
-          "request[address]": "Nevar būt tukš. Min.- 5, Maks.- 255 Simboli.",
-          "request[message]": "Nevar būt tukš. Ar īsu aprakstu pilnīgi pietiks.",
-          "request[phone]": "Min.- 8, Maks.- 12. Tikai cipari.",
-          "request[email]": "Nekorekti ievadīts.",
-          },
-        });
-    };
-  </script>
-
-<% end %>
 
 
 

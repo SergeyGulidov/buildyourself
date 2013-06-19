@@ -1,18 +1,10 @@
-<div class="row">
-  <div class="small-12 large-12 small-centered columns">
 
-  	<div class="row">
-      <div class="small-3 small-centered columns hide-for-small ">
-        <div id="featured">
-          <%= image_tag("logo.png", width: '250px', height: '250px') %>
-        </div>
-      </div>
-    </div>
+
 
     <div class="row content">
     	<%= render 'shared/flasher' %>
-    	<div class="large-3  columns">
-    		<div class="panel">
+    	<div class="large-3 small-6 columns">
+    		<div class="panel radius">
 			
 
 			      <% if @user.avatar.blank? %>
@@ -21,11 +13,11 @@
 			        <%= image_tag @user.avatar.url, height: '139', width: '230' %>
 			      <% end  %>
 
-			    <ul>
-			    <li><br><h4 style="text-align: center"><%=  @user.name unless @user.name.blank? %></h4></li><br>
-			    <li class="about_block"><p><%= simple_format(@user.about) unless @user.about.blank? %></p><hr></li>
+			      <br><br>
+			    <h5 style="text-align: center"><%=  @user.name unless @user.name.blank? %></h5>
+			    <p><%= simple_format(@user.about) unless @user.about.blank? %></p><hr>
 
-			    <li><p class="contact_info">
+			    <p class="contact_info">
 
 			    <%= mail_to @user.email, nil, :replace_at => "(at)", encode: "hex", class: "no_border" %><br>
 			      <% unless @user.web_site.blank?  %>
@@ -36,17 +28,17 @@
 			      <%= "(+371) - #{@user.phone}" %><br>
 			    <% end %>
 			  
-				</p></li>
+				</p>
 
-			</ul>
+
 
 			</div>
 		<%= render 'subscribers/form'%>
     	</div>
 
 
-    	<div class="large-3 columns">
-			<% if @user.places.blank? %>
+    	<div class="large-3 small-6 columns">
+			<% if @user.places.blank?  or @user.role == 1 %>
 				<div class="panel radius right_panel">
 				    <ul class="recent">
 				    <li class="first"><h5><%= t :place_list  %></h5></li>
@@ -58,7 +50,7 @@
 				    <ul class="recent">
 				    <li class="first"><h5><%= t :place_list   %></h5></li>
 				    <% @user.places.each do |place| %>
-				      <li class="feed"><i><%= place.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+				      <li class="feed">
 				      <%= link_to place.name, place %>
 			            &nbsp&raquo;&nbsp <%= link_to place.type.type_name,controller: :places, action: :index, type: place.type.type_slug %>
 				      </li>
@@ -67,34 +59,8 @@
 				   </ul>
 				</div>
 			<% end %>
-    	</div>
-    	<div class="large-3 columns">
-    		<% if @user.posts.blank? %>
-				<div class="panel radius right_panel">
-				    <ul class="recent">
-				    <li class="first"><h5><%= t :post_list  %></h5></li>
-				    <li><%= t :no_posts  %></li>
-				 	</ul>
-				</div>
-			<% else  %>
-				<div class="panel radius right_panel">
-				    <ul class="recent">
-				    <li class="first"><h5><%= t :post_list   %></h5></li>
-				    <% @user.posts.each do |post| %>
-				      <li class="post"><i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
-				      <%= link_to post.title, post %>
-				      </li>
-				    <% end %>
-				    <br>
-				   </ul>
-				</div>
-			<% end %>
 
-    	</div>
-
-    	<div class="large-3 columns">
-    		<%= render 'shared/right_navigation' %>
-    		<% if @user.feeds.blank? %>
+			<% if @user.feeds.blank? %>
 				<div class="panel radius right_panel">
 				    <ul class="recent">
 				    <li class="first"><h5><%= t :feed_list  %></h5></li>
@@ -105,20 +71,55 @@
 				<div class="panel radius right_panel">
 				    <ul class="recent">
 				    <li class="first"><h5><%= t :feed_list   %></h5></li>
-				    <% @user.feeds.each do |feed| %>
-				      <li class="feed"><i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
-				      <%= simple_format(feed.message) %>
-				      </li>
-				    <% end %>
+				    </ul>
+				    <div class="feeds">
+					    <% @user.feeds.each do |feed| %>
+					      <i><%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %></i>
+					      <div class="feed"><%= simple_format(feed.message) %></div>
+					    <% end %>
+					</div>
 				    <br>
-				   </ul>
+				   
 				</div>
 			<% end %>
+
+    	</div>
+    	<div class="large-3 small-6 columns">
+    		<% if @user.posts.blank? %>
+				<div class="panel radius right_panel">
+				    <ul class="recent">
+				    <li class="first"><h5><%= t :post_list  %></h5></li>
+				    <li><%= t :no_posts  %></li>
+				 	</ul>
+				</div>
+			<% else  %>
+				<div class="panel radius right_panel">
+
+					<ul class="recent">
+						<li class="first">
+							<h5><span class="general foundicon-page"> </span> <%= link_to t(:post_list) %></h5>
+						</li>
+					</ul>
+					  <% @user.posts.each do |post| %>
+					    <%= link_to post, class: "blog_post_title" do %>
+						    <i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+						    <p><%= post.title %></p>
+					    <% end %>
+					  <% end %>
+
+
+				</div>
+			<% end %>
+
+    	</div>
+
+    	<div class="large-3 small-6 columns">
+    		<%= render 'shared/right_navigation' %>
+
+              <%= render 'shared/admin/admin_panel' %>
+              <%= render 'shared/navigation_panel'%>
+              <%= render 'shared/login' %>
     	</div>
 
     </div>
 
-
-
-  </div>
-</div>

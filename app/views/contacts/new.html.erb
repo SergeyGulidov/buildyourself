@@ -3,45 +3,32 @@
 <% meta :description => "#{ t(:comments_text) }" %>
 
 
-<div class="row" >
-  <div class="large-12 columns">
- 
+<div class="row content" >
 
-
-    <div class="row">
-      <div class="small-4 small-centered columns">
-        <div id="featured">
-          <%= image_tag("logo.png", width: '250px', height: '250px') %>
-        </div>
-      </div>
-    </div>
-
-  <%= render 'shared/flasher' %>
-  
-  <div class="row">
-
-      <div class="large-2 columns hide-for-small">
-      &nbsp;
-          </div>
-          <div class="small-12 large-5 columns">
-              <%= render 'contact_form'  %>
-          </div>
-
-
-          <div class="small-12 large-3 columns" >
-            <%= render 'shared/admin/admin_panel' %>
-            <h4><%= t (:comments_text) %></h4>
-            <p class="important_text">
-              Email: yodafromlv@gmail.com <br>
-              <%= t (:phone_number) %>: +371 29623611<br>
-              Skype: S.Gulidov<br>
-            </p>
-          </div>
-          <div class="large-2 columns" >
-            &nbsp;
-          </div>
-    </div>
+  <div class="small-5 large-3 columns" >
+    <%= render 'shared/navigation_panel'%>
+    <%= render 'shared/login' %>
   </div>
+
+  <div class="small-7 large-5 columns">
+      <%= render 'shared/flasher' %>
+      <%= render 'contact_form'  %>
+  </div>
+
+  <div class="large-4 columns hide-for-small" >
+
+    <div class="panel radius green">
+      <h4><%= t (:comments_text) %></h4>
+      <p class="important_text">
+        <i class="general foundicon-mail"> </i> yodafromlv@gmail.com <br>
+        <i class="general foundicon-phone"> </i> (+371) 296-23-611<br>
+        <i class="social foundicon-skype"> </i> S.Gulidov<br>
+      </p>
+    </div>
+
+    <%= render 'shared/admin/admin_panel' %>
+  </div>
+
 </div>
 
 
@@ -65,6 +52,8 @@
           "contact[email]": "Введен не корректно.",
           },
         });
+
+
     };
   </script>
 
@@ -88,6 +77,12 @@
           "contact[email]": "Nekorekti ievadīts.",
           },
         });
+
+
+
+
     };
   </script>
 <% end %>
+
+

@@ -5,8 +5,12 @@
 //= require jquery_nested_form
 //= require_tree .
 
-$(document).foundation();
-
+    $(document).foundation('orbit');
+    $(document).foundation('section');
+    $(document).foundation('clearing',
+    	{
+  			close_selectors : '.visible-img, .clearing-close'
+		});
 
 
 

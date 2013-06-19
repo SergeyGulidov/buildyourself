@@ -1,5 +1,5 @@
-<div class="panel radius right_panel ">
-<ul class="recent navigator ">
+<div class="panel radius navigator">
+<ul class="recent  ">
   <li class="first"><h5><span class="general foundicon-website"> </span>  <%= t :yoda_navigator  %></h5></li>
     
   <% unless current_page?(root_path) %>
@@ -14,6 +14,8 @@
 
           <%= grouped_collection_select(:f, :type,  @categories,
                 :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type)) %>
+
+          <%= text_field_tag :age, nil, :placeholder => t(:interval), :maxlength => 3 %>
 
           <%= submit_tag "#{t(:watch_filter)}", class: 'button success tiny radius expand', data: { disable_with: "Please wait.." } %>
     <% end %>

@@ -1,17 +1,8 @@
  <%= simple_form_for @user, html: { :multipart => true } do |f| %>
 
-    <div class="row">
-      <div class="small-4 small-centered columns">
-        <div id="featured">
-          <%= image_tag("logo.png", width: '250px', height: '250px') %>
-        </div>
-      </div>
-    </div>
-
 <%= render 'shared/flasher' %>
 
-<div class="row content">
-  <div class="large-10 large-centered columns">
+
 
 <div class="section-container auto" data-section>
   <section>
@@ -114,8 +105,4 @@
   </section>
 </div>
 
-
-
-</div>
-</div>
 <% end %>

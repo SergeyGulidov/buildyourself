@@ -28,7 +28,8 @@
 	<div class="row">
 
 	  <div class="large-12 columns content ">
-	    <%= render 'shared/topbar'  %>
+	    <%# render 'shared/topbar'  %>
+	    <%= render 'shared/navigation' %>
 	  </div>
 	</div>
 	<div class="show_page_navigation"></div>
@@ -38,14 +39,9 @@
 </div>
 
 
-	<div id="footer">
-		<%= render 'shared/footer'  %>
-	</div>
-
 
 <%= csrf_meta_tags %>
 <%= javascript_include_tag "application" %>
-<%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
 <%= yield :scripts %>
 
 
@@ -58,15 +54,6 @@
   ga('send', 'pageview');
 </script>
 
-<% if current_page?(subscribe_path) %>
-	<script type="text/javascript">
-  $(window).load(function() {
-    $(function(){
-    $('body').addClass('subscribe');
-  });
-  });
-</script>
-<% end  %>
 
 </body>
 </html>

@@ -1,34 +1,26 @@
-<table class="contacts">
-
-  <tbody>
-    <tr>
-      <td class="td-title">
-          <i class="general foundicon-globe"></i><%= t(:city_country) %></td>
-      <td>
-        <%= get_location(@place) %>
-      </td>
-    </tr>
-    <tr>
-      <td class="td-title">
-          <i class="general foundicon-location"></i><%= t(:address) %></td>
-      <td><%= @place.street.titleize %></td>
-    </tr>
-
+<div class="contacts" >
+  <% if @place.simple_place == 1 %>
+    <span class="label radius">
+      <% if @place.updated_at != @place.created_at %>
+        <i class="general foundicon-clock"></i> <%= t(:updated_at) + ": " +  @place.updated_at.strftime("%d.%m.%Y") %></span><br>
+      <% else %>
+        <i class="general foundicon-clock"></i> <%= t(:published_at) + ": " +  @place.created_at.strftime("%d.%m.%Y") %></span><br>
+      <% end  %>
     <% unless @place.month_price.blank?  %>
-      <tr>
-        <td class="td-title">
-          <i class="general foundicon-cart"></i><%= t(:month_price) %>
-        </td>
-        <td><%= number_to_currency(@place.month_price, locale: :lv) %></td>
-      </tr>
+      <span class="label radius"><i class="general foundicon-cart"></i> <%= t(:month_price) + ": " +  number_to_currency(@place.month_price, locale: :lv) %></span><br>
+    <% end %>
+    <% unless @place.slug.blank? %>
+      <span class="label radius"><i class="general foundicon-paper-clip"></i> <%= t(:short_link_show) %> <%= link_to "www.yoda.lv/" + @place.slug,  root_url + "/" + @place.slug %></span>
     <% end %>
 
-      <tr>
-        <td class="td-title">
-          <i class="general foundicon-edit"></i><%= t(:updated_at) %>
-        </td>
-        <td><%= @place.updated_at.strftime("%d.%m.%Y") %></td>
-      </tr>
 
-  </tbody>
-</table>
+  <% else %>
+    <span class="label radius"><i class="general foundicon-mail"></i> <%= mail_to @place.email, nil, :replace_at => "(at)", encode: "hex", class: "no_border" %></span><br>
+    <% unless @place.website.blank?  %>
+      <span class="label radius"><i class="general foundicon-globe"></i> <%= link_to @place.website, url_with_protocol(@place.website), class: "no_border", target: "_blank", rel: 'nofollow' %></span><br>
+    <% end %>
+    <span class="label radius"><i class="general foundicon-phone"></i> <%= "(+371) - " + @place.phone.to_s %></span><br>
+    <span class="label radius"><i class="general foundicon-clock"></i> <%= t(:updated_at) + ": " +  @place.updated_at.strftime("%d.%m.%Y") %></span><br>
+  <% end %>
+  <br>
+</div>

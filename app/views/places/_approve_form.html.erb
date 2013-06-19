@@ -1,5 +1,5 @@
 <%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
-    <% field_set_tag "Admin Edit" do %>
+  <div class="panel radius">
 
     <%= render 'shared/errors', object: @place%>
  
@@ -27,28 +27,29 @@
 
       <div class="row">
         <div class="large-3 columns">
-          <%= f.input :month_price, label: "Month price" %>
+          <%= f.input :month_price, label: "Month price", as: :string %>
         </div>
         <div class="large-3 columns">
-          <%= f.input :latitude, label: "Latitude" %>
+          <%= f.input :latitude, label: "Latitude", as: :string %>
         </div>
 
         <div class="large-3 columns">
-          <%= f.input :longitude, label: "Longitude" %>
+          <%= f.input :longitude, label: "Longitude", as: :string %>
         </div>
         <div class="large-3 columns">
-          <%= f.input :user_id, label: "User id" %>
+          <%= f.input :user_id, label: "User id", as: :string %>
         </div>
       </div>
 
       <div class="row ">
         <div class="large-3 columns">
-          <%= f.input :age_min, label: t(:min_age) %>
+          <%= f.input :age_min, label: t(:min_age), as: :string %>
+          <%= f.input :ru, label: "RU 1-yes", as: :string %>
         </div>
         <div class="large-3 columns">
-          <%= f.input :age_max, label: t(:max_age) %>
+          <%= f.input :age_max, label: t(:max_age), as: :string %>
+          <%= f.input :lv, label: "LV 1-yes", as: :string %>
         </div>
-
 
         <div class="large-6 columns">
           <%= f.input :approved, label: "Approve? 0 - no, 1 - yes, 2 - need info" %>
@@ -58,17 +59,6 @@
                             class: "button alert radius small expand", data: { confirm: 'Are you sure?' }  %>
         </div>
       </div>
-
-      <div class="row ">
-        <div class="large-2 columns">
-          <%= f.input :ru, label: "RU 1-yes" %>
-        </div>
-        <div class="large-2 columns">
-          <%= f.input :lv, label: "LV 1-yes" %>
-        </div>
-      </div>
-
-
       <div class="row ">
         <div class="large-6 columns">
           <%= f.association :category, collection: @categories, label: t(:place_category), 
@@ -81,6 +71,28 @@
           label_method: :type_name, include_blank: true %>
         </div>
       </div>
+
+
+<span class="label radius">If simple place</span>
+
+      <div class="row ">
+        <br>
+        <div class="large-2 columns">
+          <%= f.input :simple_place, label: "SP? 0-yes 1-no", as: :string %>
+        </div>
+        <div class="large-3 columns">
+          <%= f.input :email, label: "Email" %>
+        </div>
+        <div class="large-3 columns">
+          <%= f.input :phone, label: "Phone", as: :string %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.input :website, label: "Website" %>
+        </div>
+      </div>
+
+
+
 
 
       <div class="row add_margin">
@@ -131,5 +143,6 @@
         </div>
       </div>
     <%= f.button :submit, class: 'small button'  %>
-  <% end %>
+
+</div>
 <% end  %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601163729) do
+ActiveRecord::Schema.define(:version => 20130616105255) do
 
   create_table "attachments", :force => true do |t|
     t.string  "file"
@@ -94,28 +94,32 @@ ActiveRecord::Schema.define(:version => 20130601163729) do
     t.string   "street"
     t.string   "name"
     t.text     "message_ru"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.integer  "user_id"
-    t.integer  "approved",    :default => 0
+    t.integer  "approved",     :default => 0
     t.text     "message_lv"
-    t.integer  "vip",         :default => 0
+    t.integer  "vip",          :default => 0
     t.integer  "city_id"
     t.integer  "country_id"
-    t.integer  "hits",        :default => 0
-    t.integer  "translated",  :default => 0
+    t.integer  "hits",         :default => 0
+    t.integer  "translated",   :default => 0
     t.float    "month_price"
     t.integer  "age_min"
     t.integer  "age_max"
-    t.integer  "not_actual",  :default => 0
-    t.integer  "category_id", :default => 1
-    t.integer  "type_id",     :default => 1
+    t.integer  "not_actual",   :default => 0
+    t.integer  "category_id",  :default => 1
+    t.integer  "type_id",      :default => 1
     t.string   "slug"
-    t.integer  "ru",          :default => 0
-    t.integer  "lv",          :default => 0
+    t.integer  "ru",           :default => 0
+    t.integer  "lv",           :default => 0
+    t.integer  "simple_place", :default => 1
+    t.integer  "phone"
+    t.string   "email"
+    t.string   "website"
   end
 
   add_index "places", ["age_max"], :name => "index_places_on_age_max"
@@ -146,13 +150,17 @@ ActiveRecord::Schema.define(:version => 20130601163729) do
     t.string   "phone"
     t.string   "address"
     t.string   "when"
-    t.datetime "created_at", :null => false
+    t.datetime "created_at",   :null => false
     t.text     "message"
     t.string   "email"
     t.string   "source_1"
     t.string   "source_2"
     t.string   "source_3"
     t.string   "source_4"
+    t.integer  "simple_place"
+    t.string   "website"
+    t.integer  "age_max"
+    t.integer  "age_min"
   end
 
   create_table "schedules", :force => true do |t|

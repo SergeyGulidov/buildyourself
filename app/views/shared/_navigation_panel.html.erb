@@ -1,0 +1,69 @@
+<div class="panel radius right_panel">
+		<ul class="recent">
+			<li class="first">
+				<h5><%= link_to "Yoda.lv", root_path %></h5>
+			</li>
+		</ul>
+	<div>
+	 <%= link_to root_path do %>
+     	<%= image_tag("yoda_lv_small_logo.png", width: '60', height: '60', class: "left small_logo") %>
+     	<p><%= t(:slogan) %></p>
+     <% end %>
+    </div>
+<br>
+			<ul class="recent navigation_links">
+				<li class="first">
+					<h5><span class="general foundicon-compass"> </span><%= t(:yoda_navigator) %></h5>
+				</li>
+		
+				<li class="<%= 'active' if current_page?(:controller => 'places', :action => 'index') %> valid">
+				<%= link_to t(:home), root_path %>
+				</li>
+
+				<li class="<%= 'active' if current_page?(:controller => 'posts', :action => 'index') %> valid">
+				<%= link_to t(:blog), posts_path %></li>
+
+
+				<li class="<%= 'active' if current_page?(:controller => 'contacts', :action => 'about') %> valid">
+	              <%= link_to t(:about_us), about_path %>
+	            </li>
+
+				<li class="<%= 'active' if current_page?(:controller => 'contacts', :action => 'new') %> valid">
+	              <%= link_to t(:contact_with_us), :controller => :contacts, :action => :new %>
+	            </li>
+	            <% unless current_user %>
+					<li>
+		              <%= link_to t(:login), new_user_session_path %>
+		              &nbsp; <span class="social foundicon-torso"> </span> 
+		            </li>
+	            <% end  %>
+				<li class="<%= 'active' if current_page?(:controller => 'requests', :action => 'new') %> valid">
+	              <span class="label success radius add_place_button"><%= link_to t(:add_new_place), new_request_path, class: "" %>
+	              &nbsp; <span class="general foundicon-plus"> </span> 
+	            </li>
+
+	          </ul>
+
+
+
+
+
+
+
+
+
+	<% if @recent_posts.present? and current_page?(:controller => 'places', :action => 'index') %>
+		<ul class="recent">
+			<li class="first">
+				<h5><span class="general foundicon-page"> </span> <%= link_to t(:recent_added_blog_posts), posts_path %></h5>
+			</li>
+		</ul>
+		  <% @recent_posts.each do |post| %>
+		    <%= link_to post, class: "blog_post_title" do %>
+			    <i><%= post.created_at.strftime("%d.%m.%Y  %H:%M") %></i> </br>
+			    <p><%= post.title %></p>
+		    <% end %>
+		  <% end %>
+		
+	<% end  %>
+</div>

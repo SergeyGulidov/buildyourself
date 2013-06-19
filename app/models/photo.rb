@@ -11,6 +11,6 @@ class Photo < ActiveRecord::Base
   validates :photo, 
     #:presence => false, 
     :file_size => { 
-      :maximum => 3.megabytes.to_i 
+      :maximum => 20.megabytes.to_i 
     } 
 end

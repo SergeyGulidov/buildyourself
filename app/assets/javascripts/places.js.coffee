@@ -7,6 +7,15 @@ $("#close").click ->
 
 jQuery ->
 
+	$('#container').isotope({
+	  itemSelector : '.item',
+	  layoutMode : 'masonry'
+	});
+
+	$("#type_small_filter select").select2({minimumResultsForSearch: 99;})
+	$("#category_small_filter select").select2({minimumResultsForSearch: 99;})
+
+
 	$("#f_type").select2({minimumResultsForSearch: 99;})
 	$("#city").select2()
 	$("#category").select2({minimumResultsForSearch: 99;})
@@ -41,11 +50,11 @@ jQuery ->
 			$('#place_type_id').empty()
 
 
-$("#feed_message").keyup ->
-  max = 255
-  len = $(this).val().length
-  if len >= max
-    $("#charNum").text " 0 "
-  else
-    char = max - len
-    $("#charNum").text char 
+	$("#feed_message").keyup ->
+	  max = 255
+	  len = $(this).val().length
+	  if len >= max
+	    $("#charNum").text " 0 "
+	  else
+	    char = max - len
+	    $("#charNum").text char 

@@ -1,35 +1,28 @@
-<div class="row collapse stick_to_map">
+<div class="row collapse filter">
 
       <%= form_tag(root_path, :method => 'get', class: 'chzn-select') do %>
 
-        <div class="large-2 small-3 columns large-offset-4">
 
-          <%= select_tag :city, 
-            options_from_collection_for_select( @cities, 'city_slug', 'display_name' ),
-            :include_blank => true, :prompt => t(:city) %>
-        </div>
-
-
-        <div class="large-2 small-3 columns">
+        <div id="category_small_filter" class=" small-4 columns">
           <%= select_tag :category,
              options_from_collection_for_select( @categories, 'category_slug', 'display_name'),
               label_method: :category_name,
              :include_blank => true, :prompt => t(:category)  %>
         </div>
 
-        <div class="large-2 small-3 columns">
+        <div id="type_small_filter" class="small-4 columns">
           <%= grouped_collection_select(:f, :type,  @categories,
-                :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type),
+                :types, :display_name, :type_slug, :display_name, include_blank: true, :prompt => t(:type), 
                 :onchange => 'this.form.submit();') %>
         </div>
 
-        <div class="large-1 small-2 columns">
+        <div class="small-2 columns">
           <%= text_field_tag :age, nil, :placeholder => t(:interval), :maxlength => 3 %>
         </div>
 
 
 
-        <div class="large-1 small-1 columns">
+        <div class="small-2 columns">
           <div class="large-12 columns search ">
             <%= image_submit_tag("search.png") %>
           </div>

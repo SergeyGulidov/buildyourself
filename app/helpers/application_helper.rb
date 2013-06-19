@@ -1,10 +1,12 @@
 module ApplicationHelper
 
 	def current_lang_or_not(lang)
-		if lang == @current_language.to_s
-			return 'hide'
+		if lang == I18n.locale.to_s
+			return 'active'
+		else
+			return 'valid'
 		end
-		return 'valid'
+		
 	end
 
 	  def full_title(page_title)

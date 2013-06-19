@@ -1,18 +1,15 @@
 <% if user_signed_in?  %>
-	<div class="panel radius right_panel">
+	<div class="panel radius login">
 		<ul class="recent ">
 		  	<li class="first">
 				<h5> <span class="social foundicon-torso"> </span> 
 				<%= link_to current_user.name.blank? ? current_user.email : current_user.name, current_user %> 
-				<%= link_to destroy_user_session_path, method: :delete, class: "right  button  secondary tiny" do %>
+				<%= link_to destroy_user_session_path, method: :delete, class: "right label radius secondary" do %>
 					<%= t(:logout) %>
 					<b class="general foundicon-right-arrow"></b> 
 				<% end %>
 				</h5>
 			</li>
-			<%= link_to(new_request_path) do %>
-				<li><b class="general foundicon-location"></b> <%= t(:add_new_place) %></li>
-			<% end %>
 			<%= link_to(current_user) do %>
 				<li><b class="general foundicon-address-book"></b> <%= t(:user_status) %></li>
 			<% end %>
@@ -22,35 +19,6 @@
 			<%= link_to(edit_user_path(current_user)) do %>
 				<li><b class="general foundicon-settings"></b> <%= t(:profile) %></li>
 			<% end %>
-		</ul>
-		
-		<ul class="your_place_list">
-			<% unless @current_user_places.blank? %>
-				<hr>
-		  		<% @current_user_places.each do |place| %>
-				    <li>
-					    <%= raw (t(:published)) if place.approved == 1 %>
-					    <%= raw (t(:waiting)) if place.approved == 0 %>
-					    <%= raw (t(:need_info)) if place.approved == 2 %>
-					    <%= link_to place.name, place %>
-		                <%= link_to "", edit_place_path(place), class: " general foundicon-edit" %>
-		                </li>
-				    </li>
-				<% end %>
-			<% end %>
-			<% unless @current_user_posts.blank? %>
-				<br>
-				<hr>
-				<% @current_user_posts.each do |post| %>
-			      <li>
-			      <%= raw (t(:published)) if post.approved == 1 %>
-			      <%= raw (t(:waiting)) if post.approved == 0 %>
-			      <%= link_to post.title, post %>
-			      <%= link_to "", edit_post_path(post), class: " general foundicon-edit" %>
-			      </li>
-	            <% end %>
-	        <% end %>
-	      </li>
 		</ul>
 	</div>
 <% end %>

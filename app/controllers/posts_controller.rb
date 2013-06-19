@@ -20,7 +20,6 @@ load_and_authorize_resource
 
   def show
     @post = Post.includes(:user).find(params[:id])
-    fresh_when @post
   end
 
   def new

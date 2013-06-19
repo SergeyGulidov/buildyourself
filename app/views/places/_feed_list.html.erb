@@ -1,6 +1,5 @@
 <% unless @place.feeds.blank? %>
 	<div class="feeds">
-		<ul class="recent">
 		    <% @place.feeds.each do |feed| %>
 		    	<i>
 		    		<%= feed.created_at.strftime("%d.%m.%Y  %H:%M") %>
@@ -8,9 +7,9 @@
 		               <%= link_to "", feed, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove" %>
 		            <% end %>
 		    	</i>
-		        <li class="feed"><%= simple_format(feed.message) %></li>
+		        <div class="feed"><%= simple_format(feed.message) %></div>
 		    <% end %>
-		</ul>
+
 	</div>
 <% end %>
 

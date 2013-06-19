@@ -37,7 +37,7 @@
  $success-color: #53c68d;
 
 // We use these to make sure border radius matches unless we want it different.
- $global-radius: 2px;
+ $global-radius: 5px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -53,10 +53,10 @@
 // Grid Variables
 //
 
- $row-width: 75em;
- //$column-gutter: 2 em;
+ $row-width: emCalc(1200px);
+ $column-gutter: emCalc(30px);
 // $column-gutter: 1.875em;
-// $total-columns: 12;
+ $total-columns: 12;
 
 //
 // Block Grid Variables
@@ -105,8 +105,8 @@
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
- $paragraph-font-size: 0.9em;
- $paragraph-line-height: 1.5;
+ $paragraph-font-size: emCalc(12px);
+ $paragraph-line-height: 1.4;
 // $paragraph-margin-bottom: emCalc(20px);
 // $paragraph-aside-font-size: emCalc(14px);
 // $paragraph-aside-line-height: 1.35;
@@ -238,7 +238,7 @@
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
 // $button-font-med: emCalc(16px);
-// $button-font-tny: emCalc(11px);
+ $button-font-tny: emCalc(12px);
 // $button-font-sml: emCalc(13px);
 // $button-font-lrg: emCalc(20px);
 // $button-font-weight: bold;
@@ -419,7 +419,7 @@
 // We use these to make the image and carousel height and style
 // $clearing-active-img-height: 75%;
  $clearing-carousel-height: 65px;
- $clearing-carousel-thumb-width: 105px;
+ $clearing-carousel-thumb-width: 120px;
 // $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
 
 //
@@ -584,12 +584,12 @@
 //
 
 // We use these to style the labels
- $label-padding: emCalc(7px) emCalc(10px) emCalc(7px);
+ $label-padding: emCalc(5px) emCalc(8px) emCalc(5px);
 // $label-radius: $button-radius;
 
 // We use these to style the label text
-// $label-font-size: emCalc(14px);
-//$label-font-weight: bold;
+// $label-font-size: emCalc(10px);
+// $label-font-weight: normal;
 
 //
 // Orbit Settings
@@ -661,7 +661,7 @@
 // We use these to control the background and border styles
 $panel-bg: white;
 // $panel-border-style: solid;
- $panel-border-size: 1px;
+ $panel-border-size: 0;
 
 // We use this % to control how much we darken things on hover
  $panel-function-factor: 10%;

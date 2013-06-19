@@ -1,44 +1,54 @@
 <%= simple_nested_form_for @request, html: { class: '', multipart: true  } do |f| %>
-<% field_set_tag t(:check_in_your_place) do %>
-
-	    <div class="row">
+<div class="panel radius">
+	<div class="row">
     	<div class="large-6 columns">
     		<%= f.input :email, label: t(:email) %>
     	</div>
+        <div class="large-6 columns">
+           <%= f.input :phone, as: :string, label: t(:phone_number), class: 'left radius'%>
+        </div>
     </div>
     <div class="row">
-    	<div class="small-4 columns">
-	       <%= f.input :phone, as: :string, label: t(:phone_number), class: 'left radius'%>
-	    </div>
+        <div class="large-7 columns">
+            <%= f.input :address, label: t(:street_address)  %>
+        </div>
+        <div class="large-5 columns">
+            <%= f.input :website, label: t(:website)  %>
+        </div>
 
-	    <div class="large-8 columns">
-	    	<%= f.input :address, label: t(:street_address)  %>
-	    </div>
+
     </div>
+
+
+
+    <div class="row">
+        <div class="large-4 columns">
+            <%= f.input :age_min, label: t(:min_age), as: :string %>
+        </div>
+        <div class="large-4 columns">
+            <%= f.input :age_max, label: t(:max_age), as: :string %>
+        </div>
+        
+        <div class="large-12 columns ">
+            <hr>
+        <p><%= t(:do_you_want_panel) %> <%= link_to t(:find_out_more), about_path %> </p> 
+
+            <%= f.collection_radio_buttons :simple_place, [[1, t(:yes_s)] ,[0, t(:no_s)]], :first, :last, :item_wrapper_class => 'radio_select' %>
+            <hr>
+        </div>
+        
+
+    </div>
+
+
 
 
     <%= f.input :message, label: t(:message)  %>
-    <div id="toolbar" style="">
-        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" href="javascript:;" unselectable="on">h1</a> |
-        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" href="javascript:;" unselectable="on">h2</a> | 
-        <a data-wysihtml5-command="bold" title="CTRL+B" href="javascript:;" unselectable="on">bold</a> |
-        <a data-wysihtml5-command="italic" title="CTRL+I" href="javascript:;" unselectable="on">italic</a> |
-        <a data-wysihtml5-command="createLink" href="javascript:;" unselectable="on">link</a> 
-        <!--  <a data-wysihtml5-command="insertUnorderedList" href="javascript:;" unselectable="on">insertUnorderedList</a> | -->
-
-        <a data-wysihtml5-action="change_view" href="javascript:;" unselectable="on" class="right">html</a>
-        
-        <div data-wysihtml5-dialog="createLink" style="display: none;">
-
-            <input data-wysihtml5-dialog-field="href" value="http://"> 
-            <a data-wysihtml5-dialog-action="save" class="button success tiny">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel" class="button tiny alert">Cancel</a>
-        </div>
-        
+ 
+        <br>
+      <h5><%= t :add_photos%> (.jpg, .jpeg, .png, .gif):</h5>
+      <hr>
     
-  </div>
-    <dl>
-      <dt><%= t :add_photos%>:</dt>
-    </dl>
     <div class="row photos">
         <div class="large-6 columns add_photo">
             <%= f.file_field :source_1, class: "image_field" %>
@@ -47,16 +57,100 @@
             <%= f.file_field :source_4, class: "image_field" %>
 
         </div>
-        <div class="large-6 columns">
-            <p class="important_text">
-              <%= raw(t(:photo_how_to)) %> <%= link_to t(:contact_with_us), new_contact_path %>
-            </p>
-
-        </div>
     </div>
-<hr>
-    <%= f.button :submit, t(:add_place), class: 'small success button radius right', :disable_with => "Creating..."  %>
-    <% end %>
+    <br>
+    <%= f.button :submit, t(:add_place), class: 'tiny success button radius', :disable_with => "Creating..."  %>
+</div>
 <% end  %>
 
+
+<% if I18n.locale == :ru %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+
+        $('#new_request').validate({
+          rules: {
+            'request[address]': {required : true,
+              minlength: 5, maxlength: 255 },
+            'request[message]': {required : true,
+              minlength: 5 },
+            'request[phone]': {
+              required : true,
+              digits: true,
+              minlength: 8, maxlength: 15,
+               },
+            'request[email]': {
+              required : true,
+              email: true },
+            'request[age_min]': {
+              required : true,
+              min : 0, max : 200 },
+            'request[age_max]': {
+              required : true,
+              min : 0, max : 200 },
+            'request[simple_place]' : {
+              required :true },
+          },
+
+          messages: {
+          "request[address]": "Не может быть пустым. Мин.- 5, макс.- 255 символов.",
+          "request[message]": "Не может быть пустым. Минимального описания будет достаточно.",
+          "request[phone]": "Мин.- 8, макс.- 12. Только цифры.",
+          "request[email]": "Введен не корректно.",
+          "request[age_min]": "Введен не корректно.",
+          "request[age_max]": "Введен не корректно.",
+          "request[simple_place]": "Выберите что-то одно."
+          },
+        });
+    };
+  </script>
+
+<% else %>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+
+
+        $('#new_request').validate({
+          rules: {
+            'request[address]': {required : true,
+              minlength: 5, maxlength: 255 },
+            'request[message]': {required : true,
+              minlength: 5 },
+            'request[email]': {
+              required : true,
+              email: true },
+            'request[age_min]': {
+              required : true,
+              min : 0, max : 200 },
+            'request[age_max]': {
+              required : true,
+              min : 0, max : 200 },
+            'request[phone]': {
+              required : true,
+              digits: true,
+              minlength: 8, maxlength: 15,
+               },
+            'request[simple_place]' : {
+              required :true },
+
+          },
+
+          messages: {
+          "request[address]": "Nevar būt tukš. Min.- 5, Maks.- 255 Simboli.",
+          "request[message]": "Nevar būt tukš. Ar īsu aprakstu pilnīgi pietiks.",
+          "request[phone]": "Min.- 8, Maks.- 12. Tikai cipari.",
+          "request[email]": "Nekorekti ievadīts.",
+          "request[age_min]": "Nekorekti ievadīts.",
+          "request[age_max]": "Nekorekti ievadīts.",
+          "request[simple_place]": "Izvēlieties kaut ko vienu.",
+          },
+        });
+    };
+  </script>
+
+<% end %>
 

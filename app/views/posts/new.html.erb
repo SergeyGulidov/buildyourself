@@ -1,20 +1,16 @@
 <% provide(:title, "New post" )%>
 
-<div class="row content">
-  <div class="small-3 small-centered columns">
-    <div id="featured">
-      <%= image_tag("logo.png", width: '250px', height: '250px') %>
-    </div>
-  </div>
-</div>
-
-
-<div class="row content content_bottom_margin" >
+<div class="row content" >
   <div class="large-12 columns">
   <%= render 'shared/flasher' %>
   
   <div class="row">
-      <div class="large-6 small-12 small-centered columns">
+      <div class="small-5 large-3 columns" >
+        <%= render 'shared/navigation_panel'%>
+        <%= render 'shared/login' %>
+      </div>
+
+      <div class="large-9 small-7 columns">
           <%= render 'form' %>
       </div>
     </div>

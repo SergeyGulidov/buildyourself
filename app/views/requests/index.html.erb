@@ -1,39 +1,33 @@
 <div class="row content">
   <div class="small-9 columns">
     <%= render 'shared/flasher' %>
-    <table>
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Message</th>
-          <th></th>
-          <th>Created</th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @requests.each do |request| %>
-        <tr>
-          <td><%= request.email %></td>
-          <td><%= request.phone %></td>
-          <td><%= request.address %></td>
-          <td><%= simple_format(request.message) %></td>
-          <td>
-            <ul class="large-block-grid-4 clearing-thumbs photos_for_roll request_index" data-clearing >
+    
+    <% @requests.each do |request| %>
+      <div class="panel radius">
+        <p>Email: <%= request.email %> <br>
+           Phone: <%= request.phone %><br>
+           Address: <%= request.address %> <br>
+           Created: <%= request.created_at.strftime("%d.%m.%Y  %H:%M") %><br>
+           <b><%= request.simple_place == 0 ? "Simple place" : "Full place" %></b>
+        </p>
+
+        <%= simple_format(request.message) %>
+
+          <ul class="large-block-grid-4 clearing-thumbs" data-clearing >
                 <li><%= link_to (image_tag request.source_1.url(:thumb), height: '60', width: '100', class: "th"), request.source_1.url if request.source_1.present? %></li>
                 <li><%= link_to (image_tag request.source_2.url(:thumb), height: '60', width: '100', class: "th"), request.source_2.url if request.source_2.present? %></li>
                 <li><%= link_to (image_tag request.source_3.url(:thumb), height: '60', width: '100', class: "th"), request.source_3.url if request.source_3.present? %></li>
                 <li><%= link_to (image_tag request.source_4.url(:thumb), height: '60', width: '100', class: "th"), request.source_4.url if request.source_4.present? %></li>
-            </ul>
-          </td>
-          <td><%= request.created_at.strftime("%d %b. %Y") %></td>
-          <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+          </ul>
+
+          <p class="right"><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == 1 %></p>
+      </div>
+    <% end %>
+
+    </div>
+
   <div class="small-3 columns">
-    <%= render 'shared/admin/admin_panel' %>
+        <%= render 'shared/navigation_panel'%>
+        <%= render 'shared/admin/admin_panel' %>
   </div>
 </div>

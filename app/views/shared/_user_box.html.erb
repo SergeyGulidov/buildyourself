@@ -1,29 +1,27 @@
-<div class="panel">
-<% if @place.user.avatar.blank? %>
-  <%= image_tag "blank.png", height: '139', width: '230'  %>
-<% else  %>
-  <%= image_tag @place.user.avatar.url, height: '139', width: '230' %>
-<% end  %>
+<div class="panel radius">
+  <% if @place.user.avatar.blank? %>
+    <%= image_tag "blank.png", height: '139', width: '230'  %>
+  <% else  %>
+    <%= image_tag @place.user.avatar.url, height: '139', width: '230' %>
+  <% end  %>
 
 
-  <ul>
-      <li><br><h4 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h4></li><br>
-      <li class="about_block"><p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr></li>
 
-      <li><p class="contact_info">
+      <br><br><h5 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h5>
+      <p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr>
 
-      <%= mail_to @place.user.email, nil, :replace_at => "(at)", encode: "hex", class: "no_border" %><br>
-      <% unless @place.user.web_site.blank?  %>
-        <%= link_to @place.user.web_site, url_with_protocol(@place.user.web_site), class: "no_border", target: "_blank", rel: 'nofollow' %><br>
-      <% end %>
+      <p class="contact_info">
 
-      <% unless @place.user.phone.blank?  %>
-        <%= "(+371) - #{@place.user.phone}" %><br>
-      <% end %>
+        <%= mail_to @place.user.email, nil, :replace_at => "(at)", encode: "hex", class: "no_border" %><br>
+        <% unless @place.user.web_site.blank?  %>
+          <%= link_to @place.user.web_site, url_with_protocol(@place.user.web_site), class: "no_border", target: "_blank", rel: 'nofollow' %><br>
+        <% end %>
+
+        <% unless @place.user.phone.blank?  %>
+          <i class="general foundicon-phone"> </i><%= "(+371) - #{@place.user.phone}" %><br>
+        <% end %>
       
-  	</p></li>
-
-  </ul>
+  	</p>
 
  
 

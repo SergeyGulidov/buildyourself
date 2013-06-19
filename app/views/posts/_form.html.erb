@@ -1,18 +1,18 @@
 <%= simple_form_for(@post) do |f| %>
-    <div class="row panel right_panel">
+    <div class="row panel radius">
     		<%= f.input :title_lv, label: t(:title_lv) %>
             <%= f.input :message_lv, label: t(:message_for_lv) %>
     </div>
     <br>
     <hr>
-    <div class="row  panel right_panel">
+    <div class="row  panel radius">
         <%= f.input :title_ru, label: t(:title_ru) %>
         <%= f.input :message_ru, label: t(:message_for_ru) %>
     </div>
 
     <%= f.hidden_field :image_cache %>
-    
-    <div class="row image_box">
+    <br>
+    <div class="row panel radius">
     	<div class="large-4 columns ">
     		<%= f.input :image, label: t(:add_image) %>
     	</div>
@@ -20,7 +20,8 @@
    			<%= image_tag(@post.image_url(:thumb), class: "th right") if @post.image? %>
    		</div>
    	</div>
-    <div class="row image_box">
+    <br>
+    <div class="row panel radius">
         <div class="large-6 columns ">
             <%= link_to t(:destroy), @post, :method => :delete,
                             class: "button alert tiny", data: { confirm: t(:sure_question) }  %>

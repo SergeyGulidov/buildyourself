@@ -1,11 +1,15 @@
-<h6 id="map-title">
-	<%= link_to place.name, place %>
+<h6>
+	<% if place.simple_place == 1 %>
+		<i class="general foundicon-star"></i>
+	<% else %>
+		<i class="general foundicon-location"></i>
+	<% end %>
+
+	<%= link_to place.street + ", " + place.city.city_name_lv, place %>
+
 </h6> 
-<p class="map_text"><b><%= place.street %></b>
-<br>
-<br>
+<p>
 	<%= link_to place.type.type_name, { controller: :places, action: :index, type: place.type.type_slug} %> &nbsp&raquo&nbsp
-	<b><%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) }" %></b>
-	<br>
-	<small class="right"><%= link_to t(:read_more), place %></small>
+	<%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) }" %></br>
+	<em class="right"><%= link_to t(:read_more), place %></em>
 </p>

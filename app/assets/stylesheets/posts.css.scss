@@ -3,18 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.show_posts h1 {
+.content h3 {
 	margin: 0 0 20px 0;
 	padding: 0;
-	font-size: 32px;
-	line-height: 38px;
+	font-size: 22px;
+	line-height: 28px;
 	font-weight: normal;
 	color: #3CB5B5;
-}
-
-
-.top_margin{
-	margin-top: 8px;
 }
 
 
@@ -25,32 +20,31 @@
 	color: #999;
 }
 
-.post img{
-	margin-top: 13px;
-	margin-left: 20px;
+
+.post_message p{
+	font-size: 14px;
 }
 
-.show_posts img{margin-top:40px;}
 
 
-.post  h1 {
-	font-size: 26px;
-	line-height: 32px;
-	font-weight: normal;
-	
-	a{
-		color: #3CB5B5;
-	}
-	a:hover{
-		border-bottom: 1px solid #3CB5B5;
-	}
+
+
+
+
+/************ **************/
+
+.blog_navigation_block{
+	margin-top: 5px;
+	width: 250px;
+	margin-left:20px;
+	float: left;
 }
 
-.place_simple .post h6{
-	margin-right:20px;
-	margin-top: -15px;
-}
-.image_box{
-	padding-top:30px;
+.blog_posts_space {
+	min-height: 100%;
 }
 
+.blog_posts_space .panel{
+	width: 280px;
+	margin: 5px 10px 20px 20px;
+}
