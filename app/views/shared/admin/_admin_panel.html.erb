@@ -10,12 +10,6 @@
 
           <li><%= link_to "Add new place", new_place_path %></li>
 
-          <% counter = Place.where(approved: 0).size  %>
-          <li><%= link_to "Places to approve - #{counter}", places_approve_path %></li>
-
-          <% counter = Place.where(translated: 0).size  %>
-          <li><%= link_to "Places to translate - #{counter}", places_translate_path %></li>
-
           <li><%= link_to "Cities", cities_path %> &raquo; <%= link_to "new", new_city_path %></li>
           <li><%= link_to "Categories", categories_path %> &raquo; <%= link_to "new", new_category_path %></li>
           <li><%= link_to "Types", types_path %> &raquo; <%= link_to "new", new_type_path %></li>

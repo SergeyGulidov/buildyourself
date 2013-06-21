@@ -92,11 +92,6 @@ load_and_authorize_resource
 		end
 	end
 
-	def approve
-		@places = Place.where(approved: 0).order("created_at asc")
-		@places = @places.page(params[:page]).per(10)
-	end
-
 	def make_approve
 		@place = Place.find(params[:id])
 		@json = get_json_for_map(@place)
@@ -108,20 +103,10 @@ load_and_authorize_resource
 	    redirect_to action: "approve", notice: 'Place was successfully destroyed.'
 	end
 
-	def translate
-		@places = Place.includes(:photos).where(translated: 0, approved: 1)
-		@places = @places.page(params[:page]).per(10)
-	end
-
-	def make_translate
-		@place = Place.find(params[:id])
-		@json = get_json_for_map(@place)
-	end
-
 	def get_filter_collections
 		@categories ||= Category.categories_all
-		@cities 	||= City.cities_all
-		@countries  ||= Country.countries_all
+		#@cities 	||= City.cities_all
+		#@countries  ||= Country.countries_all
 		@types      ||= Type.types_all
 	end
 

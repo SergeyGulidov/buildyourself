@@ -24,21 +24,21 @@ class Place < ActiveRecord::Base
 
 
   after_save do
-    update_index if translated == 1 and approved == 1
+    update_index
   end
 
   after_update do
-    update_index if translated == 1 and approved == 1
+    update_index
   end
 
   after_destroy do
     update_index
   end
 
-  attr_accessible :approved, :vip, :sponsor, :age_max, :age_min, :simple_place, :email, :phone, :website,
+  attr_accessible :vip, :sponsor, :age_max, :age_min, :simple_place, :email, :phone, :website,
   	 :name, :phone, :street, :website, :country_id, :city_id,
      :type_id, :photos_attributes, :photo, :category_id, :month_price,
-     :message_ru, :message_lv, :latitude, :longitude, :user_id, :translated, :slug, :ru, :lv
+     :message_ru, :message_lv, :latitude, :longitude, :user_id, :slug, :ru, :lv
 
   translates :message
 
@@ -68,14 +68,14 @@ class Place < ActiveRecord::Base
     to_json(:include => [:type, :category, :city])
   end
 
-   scope :approved, where(approved: 1, translated: 1).order("updated_at desc").includes(:type, :category, :city).limit(50)
+   scope :approved, order("updated_at desc").includes(:type, :category, :city, :user).limit(50)
 
-   scope :other_user_places, select("id, name, street, slug").where(approved: 1, translated: 1).order("updated_at desc").limit(50)
+   scope :other_user_places, select("id, name, street, slug").order("updated_at desc").limit(50)
 
-   scope :approved_ru, where(approved: 1, ru: 1).order("updated_at desc").includes( :type, :category, :city).limit(50)
-   scope :approved_lv, where(approved: 1, lv: 1).order("updated_at desc").includes( :type, :category, :city).limit(50)
+   scope :approved_ru, where( ru: 1).order("updated_at desc").includes( :type, :category, :city).limit(50)
+   scope :approved_lv, where( lv: 1).order("updated_at desc").includes( :type, :category, :city).limit(50)
 
-   scope :recent,  where(approved: 1).order("updated_at desc").includes(:type).limit(10)
+   scope :recent, order("updated_at desc").includes(:type).limit(10)
    
 
   def to_param

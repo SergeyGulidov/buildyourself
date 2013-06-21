@@ -2,15 +2,23 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+$container = $("#container")
+
+# initialize
+$container.masonry
+  itemSelector: ".item"
+
+msnry = $container.data("masonry")
+
+
+
+
+
 $("#close").click ->
   $("#flash").hide()
 
 jQuery ->
 
-	$('#container').isotope({
-	  itemSelector : '.item',
-	  layoutMode : 'masonry'
-	});
 
 	$("#type_small_filter select").select2({minimumResultsForSearch: 99;})
 	$("#category_small_filter select").select2({minimumResultsForSearch: 99;})
