@@ -1,0 +1,25 @@
+<div class="panel radius">
+	<div class="row">
+		<%= simple_form_for @byway do |f| %>
+
+			<%= f.hidden_field :place_id, :value => @place.id %>
+
+			<div class="large-4 columns">
+			  <%= f.input :street, label: "Street address" %>
+			</div>
+			<div class="large-3 columns">
+			  <%= f.association :country, collection: @countries, label: "Country", 
+			            label_method: :country_name, value_method: :id %>
+			</div>
+			<div class="large-3 columns">
+			  <%= f.association :city, collection: @cities, label: "City",
+			          :label_method => :city_name, value_method: :id %>
+			</div>
+			<div class="large-2 columns">
+				<label>&nbsp;</label>
+			  <%= f.button :submit, class: "tiny button radius success" %>
+			</div>
+  
+		<% end %>
+	</div>
+</div>

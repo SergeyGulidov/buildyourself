@@ -6,7 +6,11 @@ BuildYourSelf::Application.routes.draw do
   
 
 
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
+
 
     
     match "/delayed" => DelayedJobWeb, :anchor => false
@@ -46,7 +50,7 @@ BuildYourSelf::Application.routes.draw do
     resources :types
     resources :posts
     resources :feeds, :only => [:index, :create, :destroy]
-
+    resources :byways, :only => [:new, :create, :destroy]
     resources :schedules
 
     match '/:id' => 'places#show', :via => 'get'

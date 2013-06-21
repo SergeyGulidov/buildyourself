@@ -1,6 +1,8 @@
 class City < ActiveRecord::Base
   attr_accessible :city_name_lv, :city_name_ru, :city_slug
   has_many :places
+
+  has_many :byways
   
   translates :city_name
 

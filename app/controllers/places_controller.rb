@@ -93,8 +93,10 @@ load_and_authorize_resource
 	end
 
 	def make_approve
+		@byway = Byway.new
 		@place = Place.find(params[:id])
-		@json = get_json_for_map(@place)
+
+
 	end
 
 	def destroy
@@ -105,8 +107,8 @@ load_and_authorize_resource
 
 	def get_filter_collections
 		@categories ||= Category.categories_all
-		#@cities 	||= City.cities_all
-		#@countries  ||= Country.countries_all
+		@cities 	||= City.cities_all
+		@countries  ||= Country.countries_all
 		@types      ||= Type.types_all
 	end
 

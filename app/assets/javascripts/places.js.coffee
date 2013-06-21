@@ -32,6 +32,9 @@ jQuery ->
 	$("#place_city_id").select2()
 	$("#place_category_id").select2()
 
+	$("#byway_country_id").select2()
+	$("#byway_city_id").select2()
+
 
 	
 	types = $('#f_type').html()

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616105255) do
+ActiveRecord::Schema.define(:version => 20130621181255) do
 
   create_table "attachments", :force => true do |t|
     t.string  "file"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20130616105255) do
   end
 
   create_table "brains", :force => true do |t|
+  end
+
+  create_table "byways", :force => true do |t|
+    t.string  "street"
+    t.integer "place_id"
+    t.integer "city_id"
+    t.integer "country_id"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.boolean "gmaps"
   end
 
   create_table "categories", :force => true do |t|

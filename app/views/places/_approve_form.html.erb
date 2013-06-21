@@ -1,10 +1,10 @@
 <%= simple_nested_form_for @place, html: {class: 'chzn-select', multipart: true  } do |f| %>
   <div class="panel radius">
-
-    <%= render 'shared/errors', object: @place%>
- 
+    <%= render 'shared/errors', object: @place %>
+     
       <div class="row">
         <div class="large-6 columns">
+         
           <%= f.association :country, collection: @countries, label: "Country", 
             label_method: :country_name, value_method: :id %>
         </div>
@@ -52,6 +52,7 @@
         </div>
 
         <div class="large-6 columns">
+
           <%= f.input :vip, label: "Vip? 0 - no, 1 - yes" %>
           <%= link_to "Destroy", @place, :method => :delete,
                             class: "button alert radius small expand", data: { confirm: 'Are you sure?' }  %>
