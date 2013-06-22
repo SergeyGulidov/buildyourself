@@ -1,13 +1,11 @@
-<h6>
+<h6 class="subheader">
 	<% if place.simple_place == 1 %>
 		<i class="general foundicon-star"></i>
 	<% else %>
 		<i class="general foundicon-location"></i>
 	<% end %>
-
-	<%= link_to place.street + ", " + place.city.city_name_lv, place %>
-
-</h6> 
+	<%= link_to marker.street + ", " + marker.city.city_name_lv, place %>
+</h6>
 <p>
 	<%= link_to place.type.type_name, { controller: :places, action: :index, type: place.type.type_slug} %> &nbsp&raquo&nbsp
 	<%= "#{ t(:from) } #{ place.age_min } #{ t(:to) } #{ place.age_max } #{ t(:age) }" %></br>

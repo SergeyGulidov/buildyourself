@@ -7,6 +7,7 @@
 
     $(document).foundation('orbit');
     $(document).foundation('section');
+    $(document).foundation('reveal');
     $(document).foundation('clearing',
     	{
   			close_selectors : '.visible-img, .clearing-close'

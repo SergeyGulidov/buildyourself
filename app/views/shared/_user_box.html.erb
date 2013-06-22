@@ -28,23 +28,6 @@
 </div>
 
 
-
-
-<% unless @other_user_places.blank? %>
-  <div class="panel radius right_panel">
-    <ul class="recent">
-      <li class="first"><h5> <span class="general foundicon-location"> </span> <%= t (:more_places_from_user)  %></h5></li>
-      <% @other_user_places.each do |place| %>
-        <%= link_to place do  %>
-          <li class="li_second">
-             <%= place.name %> 
-          </li>
-        <% end  %>
-      <% end %>
-    </ul>
-    </div>
-<% end  %> 
-
 <%= render 'blog_list' %>
 
 <%= render 'subscribers/form'%>

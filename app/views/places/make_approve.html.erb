@@ -7,7 +7,13 @@
       <%= render 'shared/gmap' %>
       <%= render 'shared/flasher' %>
       <br>
+      <div class="panel radius">
+        <% @byways.each do |byway| %>
+          <%= byway.street + ", " + byway.city.city_name_lv %> <%= link_to "", byway, method: :delete, data: { confirm: t(:sure_question) }, class: "general foundicon-remove"  %> || 
+        <% end  %>
+      </div>
       <%= render 'byways/form'  %>
+
       <%= render 'approve_form'  %>
   </div>
   <div class="small-3 columns">

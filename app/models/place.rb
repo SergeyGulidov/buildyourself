@@ -73,8 +73,8 @@ class Place < ActiveRecord::Base
 
    scope :other_user_places, select("id, name, street, slug").order("updated_at desc").limit(50)
 
-   scope :approved_ru, where( ru: 1).order("updated_at desc").includes( :type, :category, :city).limit(50)
-   scope :approved_lv, where( lv: 1).order("updated_at desc").includes( :type, :category, :city).limit(50)
+   scope :approved_ru, where(ru: 1).order("updated_at desc").includes( :type, :category, :city, :byways ).limit(50)
+   scope :approved_lv, where(lv: 1).order("updated_at desc").includes( :type, :category, :city, :byways ).limit(50)
 
    scope :recent, order("updated_at desc").includes(:type).limit(10)
    
@@ -116,11 +116,10 @@ class Place < ActiveRecord::Base
 
   def self.get_places
       if I18n.locale == :ru
-        places = Place.approved_ru
+        Place.approved_ru
       else
-        places = Place.approved_lv
+        Place.approved_lv
       end
-      return places
   end
 
   def self.first_step_search(params)

@@ -21,21 +21,6 @@
 
     <%= render 'shared/errors', object: @place %>
 
-      <div class="row">
-        <div class="large-4 columns">
-          <%= f.association :city, collection: @cities, label: t(:city), :label_method => :city_name %>
-        </div>
-        <div class="large-4 columns pull-4">
-          <%= f.input :street, label: t(:street_address) %>
-        </div>
-      </div>
-
-      <div class="row">
-
-
-
-
-      </div>
 
       <div class="row ">
         <div class="large-2 columns">
@@ -106,10 +91,10 @@
             
 
             <%= f.link_to_add t(:add_photos), :photos, class: "small button" %>
-            <p class="important_text">
-              <%= t :photo_how_to %> <%= link_to t(:contact_with_us), new_contact_path %>
+            <p>
+              <%= raw(t(:photo_how_to)) %> <%= link_to t(:contact_with_us), new_contact_path %>
             </p>
-
+            <br>
           </div>
       </div>
       <div class="row">

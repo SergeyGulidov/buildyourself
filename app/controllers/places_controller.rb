@@ -8,13 +8,20 @@ load_and_authorize_resource
 	def index
 		unless params[:search].blank?
 			@places = Place.search(params)
-			@json = get_json_for_map(@places)
 		else
 			places, @type_vip, watcher = Place.first_step_search(params)
 			if watcher == 0
 				@places = places.page(params[:page]).per(10)
 			else
-				@json = get_json_for_map(places)
+
+		        @json = Array.new
+		        places.each do |i_place|
+		          @json << JSON.parse(i_place.byways.to_gmaps4rails do |byway, marker|
+		             marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { place: i_place, marker: byway})
+		            end)
+		        end
+
+		        @json =  @json.flatten.to_json
 				@places = places.page(params[:page]).per(10)
 			end
 		end
@@ -53,10 +60,9 @@ load_and_authorize_resource
 	end
 
 	def show
-		@place = Place.includes(:user, :schedules, :feeds, :photos).order("created_at desc").find(params[:id])
+		@place = Place.includes(:user, :schedules, :feeds, :photos, :byways).order("created_at desc").find(params[:id])
 		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
 
-		@other_user_places = Place.other_user_places.where("id != ? AND user_id = ?", @place.id, @place.user_id )
 		
 		@subscriber = Subscriber.new
 
@@ -65,12 +71,16 @@ load_and_authorize_resource
 		   @schedule = Schedule.new
 		end
 
-		@json = get_json_for_map(@place)
+		@json = @place.byways.to_gmaps4rails do |place, marker|
+		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { place: @place, marker: place})
+		end
 	end
 
 	def edit
 		@place = Place.find(params[:id])
-		@json = get_json_for_map(@place)
+		@json = @place.byways.to_gmaps4rails do |place, marker|
+		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { place: @place, marker: place})
+		end
 	end
 
 	  def update
@@ -94,10 +104,13 @@ load_and_authorize_resource
 
 	def make_approve
 		@byway = Byway.new
-		@place = Place.find(params[:id])
-
-
+		@place = Place.includes(:byways).find(params[:id])
+		@byways = Byway.where(place_id: @place.id).all
+		@json = @byways.to_gmaps4rails do |place, marker|
+		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { place: @place, marker: place})
+		end
 	end
+
 
 	def destroy
 	  	@place = Place.find(params[:id].to_i)
@@ -110,14 +123,6 @@ load_and_authorize_resource
 		@cities 	||= City.cities_all
 		@countries  ||= Country.countries_all
 		@types      ||= Type.types_all
-	end
-
-	def get_json_for_map(places)
-		json = places.to_gmaps4rails do |place, marker|
-		    marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :place => place})
-		    marker.title "#{place.name}"
-		end
-		return json
 	end
 
 end

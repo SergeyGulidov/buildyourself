@@ -26,39 +26,39 @@
       <div class="small-7 large-6 columns panel radius">
     <% end %>
 
+            <div class="row">
+              <div class="small-4 columns">
+              <h2>
+              <% @place.byways.each do |byway| %>
+                <span class="general foundicon-location"> </span><%= byway.street + ", " + byway.city.city_name_lv %><br>
+              <% end  %>    
 
-            <h2>
-            <i class="general foundicon-location"></i>                   
-            <% if can? :edit, @place %>
-              <%= link_to(edit_place_path(@place)) do %>
-                <%= @place.street + ", " + @place.city.city_name_lv %> <i class="comments general foundicon-edit">  </i>
+              <% if can? :edit, @place %>
+                <%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %>
               <% end %>
-            <% else %>
-              <%= @place.street + ", " + @place.city.city_name_lv %>
-            <% end %>
-            <% if can? :make_approve, Place %>
-              <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>
-            <% end %>
-          </h2>
+
+              <% if can? :make_approve, Place %>
+                <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>
+              <% end %>
+            </h2>
+            </div>
 
 
 
+            <div class="small-8 columns">
+            <div class="show_page_bread">
+              <i class="general foundicon-folder"></i>
+              <%= link_to @place.category.category_name, { controller: :places, action: :index, category: @place.category.category_slug} %> &raquo;
+              <%= link_to @place.type.type_name, { controller: :places, action: :index, type: @place.type.type_slug} %> 
+              
+              <% if @place.age_min.present? and @place.age_max.present? %>
+                &raquo;
+                <%= "#{ t(:from) } #{ @place.age_min } #{ t(:to) } #{ @place.age_max } #{ t(:age) } " %>
+              <% end  %>
+            </div>
+            </div>
 
-
-          <div class="show_page_bread">
-            <i class="general foundicon-folder"></i>
-            <%= link_to @place.category.category_name, { controller: :places, action: :index, category: @place.category.category_slug} %> &raquo;
-            <%= link_to @place.type.type_name, { controller: :places, action: :index, type: @place.type.type_slug} %> 
-            
-            <% if @place.age_min.present? and @place.age_max.present? %>
-              &raquo;
-              <%= "#{ t(:from) } #{ @place.age_min } #{ t(:to) } #{ @place.age_max } #{ t(:age) } " %>
-            <% end  %>
-            <br><br>
           </div>
-
-
-
 
           <%= render 'show_contacts', object: @place %> 
 
