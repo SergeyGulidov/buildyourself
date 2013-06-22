@@ -3,12 +3,17 @@
 	<div class="panel radius ">
 		<ul class="recent">
 			<li class="first"><h5>
-				<% if place.simple_place == 1 %>
+
+			  <% place.byways.each do |byway| %>
+                
+			  	<% if place.simple_place == 1 %>
 					<i class="general foundicon-star"></i>
 				<% else %>
 					<i class="general foundicon-location"></i>
 				<% end %>
-			<%= link_to place.street + ", " + place.city.city_name_lv, place_path(place) %>
+
+				<%= byway.street + ", " + byway.city.city_name_lv %><br>
+              <% end  %>   
 
 			</h5> 
 			</li>

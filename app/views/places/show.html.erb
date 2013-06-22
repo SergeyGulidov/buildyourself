@@ -27,7 +27,7 @@
     <% end %>
 
             <div class="row">
-              <div class="small-4 columns">
+              <div class="small-5 columns">
               <h2>
               <% @place.byways.each do |byway| %>
                 <span class="general foundicon-location"> </span><%= byway.street + ", " + byway.city.city_name_lv %><br>
@@ -45,7 +45,7 @@
 
 
 
-            <div class="small-8 columns">
+            <div class="small-7 columns">
             <div class="show_page_bread">
               <i class="general foundicon-folder"></i>
               <%= link_to @place.category.category_name, { controller: :places, action: :index, category: @place.category.category_slug} %> &raquo;
