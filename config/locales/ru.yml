@@ -24,7 +24,7 @@ ru:
   country: Страна
   city: Город
   address: Адрес
-  street_address: Адрес где проходит обучение
+  street_address: Адреса где проходит обучение
   name_for_place: Название
   min_age: Мин. возраст
   max_age: Макс. возраст
@@ -71,7 +71,6 @@ ru:
   read_more: читать дальше ...
 
 #------------- subnav partial
-  with_review: Проверенно нами
   sponsor: Спонсор
   comments: 'Комментарии:'
 

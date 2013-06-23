@@ -11,7 +11,8 @@ load_and_authorize_resource
 		else
 			places, @type_vip, watcher = Place.first_step_search(params)
 			if watcher == 0
-				@places = places.page(params[:page]).per(10)
+			    places = places.last(6)
+				@places = Kaminari.paginate_array(places).page(1).per(10)
 			else
 
 		        @json = Array.new

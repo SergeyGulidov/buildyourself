@@ -45,7 +45,6 @@ class Place < ActiveRecord::Base
 
    validates :country, presence: true
    validates :city,    presence: true
-   validates :street,  presence: true
    validates :age_min, :length => { :minimum => 0, :maximum => 3 }
    validates :age_max, :length => { :minimum => 0, :maximum => 3 }
    validates :slug, :format => { :with => /^[a-zA-Z0-9]+$/, :message => "Only letters and numbers allowed" },
@@ -68,8 +67,8 @@ class Place < ActiveRecord::Base
 
    scope :other_user_places, select("id, name, street, slug").order("updated_at desc").limit(50)
 
-   scope :approved_ru, where(ru: 1).order("updated_at desc").includes( :type, :category, :city, :byways ).limit(50)
-   scope :approved_lv, where(lv: 1).order("updated_at desc").includes( :type, :category, :city, :byways ).limit(50)
+   scope :approved_ru, where(ru: 1).includes( :type, :category, :city, :byways, :user ).limit(50)
+   scope :approved_lv, where(lv: 1).includes( :type, :category, :city, :byways, :user ).limit(50)
    scope :recent, order("updated_at desc").includes(:type).limit(10)
    
 

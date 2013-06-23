@@ -39,6 +39,13 @@
                     <%= byway.street + ", " + byway.city.city_name_lv %>
                     <%= raw("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") unless  byways_length == index %>
                  <% end  %> 
+                  <% if can? :edit, @place %>
+                    <%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %>
+                  <% end %>
+
+                  <% if can? :make_approve, Place %>
+                    <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>
+                  <% end %>
             </h2>
             </div>
 
