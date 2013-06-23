@@ -14,14 +14,11 @@ class Place < ActiveRecord::Base
   has_many :place_votes, :dependent => :destroy
   has_many :schedules, :dependent => :destroy
 
-  acts_as_gmappable :process_geocoding => true
 
   before_validation{|place| place.slug = place.slug.downcase unless place.slug.blank? }
 
   extend FriendlyId
   friendly_id :slug
-
-
 
 
   after_save do
@@ -37,9 +34,9 @@ class Place < ActiveRecord::Base
   end
 
   attr_accessible :vip, :sponsor, :age_max, :age_min, :simple_place, :email, :phone, :website,
-  	 :name, :phone, :street, :website, :country_id, :city_id,
+  	 :name, :phone, :website, :country_id, :city_id,
      :type_id, :photos_attributes, :photo, :category_id, :month_price,
-     :message_ru, :message_lv, :latitude, :longitude, :user_id, :slug, :ru, :lv
+     :message_ru, :message_lv, :user_id, :slug, :ru, :lv
 
   translates :message
 
@@ -69,13 +66,10 @@ class Place < ActiveRecord::Base
     to_json(:include => [:type, :category, :city])
   end
 
-   scope :approved, order("updated_at desc").includes(:type, :category, :city, :user).limit(50)
-
    scope :other_user_places, select("id, name, street, slug").order("updated_at desc").limit(50)
 
    scope :approved_ru, where(ru: 1).order("updated_at desc").includes( :type, :category, :city, :byways ).limit(50)
    scope :approved_lv, where(lv: 1).order("updated_at desc").includes( :type, :category, :city, :byways ).limit(50)
-
    scope :recent, order("updated_at desc").includes(:type).limit(10)
    
 
@@ -87,10 +81,6 @@ class Place < ActiveRecord::Base
     end
   end
 
-
-   def gmaps4rails_address
-      return "#{street}, #{city.city_name}, #{country.country_name.to_s}" 
-   end
 
   def self.by_votes
     approved.select('places.*, coalesce(value, 0) as votes').

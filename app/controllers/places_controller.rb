@@ -60,7 +60,7 @@ load_and_authorize_resource
 	end
 
 	def show
-		@place = Place.includes(:user, :schedules, :feeds, :photos, :byways).order("created_at desc").find(params[:id])
+		@place = Place.includes(:user, :schedules, :feeds, :photos, :byways).find(params[:id])
 		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
 
 		

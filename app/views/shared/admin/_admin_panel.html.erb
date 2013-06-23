@@ -60,9 +60,6 @@
           <li><%= raw('<b class="label alert">New</b>  ') if counter > 0 %> <%= link_to "Requests - " + counter.to_s, requests_path %></li>
 
           <li><%= link_to "Add new place", new_place_path %></li>
-
-          <% counter = Place.where(translated: 0).size  %>
-          <li><%= link_to "Places to translate - #{counter}", places_translate_path %></li>
         </ul>
       </li>
 

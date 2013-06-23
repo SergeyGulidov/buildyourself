@@ -99,7 +99,7 @@ end
   end
 
 
-  # approve email addres 
+  # approve email address
   def greating(email, token, locale)
     old_locale = I18n.locale
     I18n.locale = locale
