@@ -2,10 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$("#container").masonry(
-  itemSelector: ".item"
-  gutterWidth: 20
-).masonry "reloadItems"
 
 
 $("#close").click ->
@@ -63,3 +59,5 @@ jQuery ->
 	  else
 	    char = max - len
 	    $("#charNum").text char 
+
+

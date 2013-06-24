@@ -1,38 +1,31 @@
+<div class="panel radius login yellow">
+	<ul class="recent ">
+		<%= link_to edit_place_path(@place) do %>
+			<li><b class="general foundicon-edit"> </b> <%= t(:edit_your_data) %></li>
+		<% end %>
 
-	<div class="panel radius login yellow">
-		<ul class="recent ">
-			<%= link_to edit_place_path(@place) do %>
-				<li><b class="general foundicon-edit"> </b> <%= t(:edit_your_data) %></li>
-			<% end %>
+		<% unless @schedule.blank? %>
+			<a href="#" data-reveal-id="create_group" ><li><b class="general foundicon-calendar"> </b>  <%= t(:add_new_group) %></li></a>
+			
+			<div id="create_group" class="reveal-modal large">
+			  <h2><%= t(:add_new_group) %></h2>
+				<%= render "schedules/form" %>
+			  <a class="close-reveal-modal">&#215;</a>
+			</div>
 
-			<% unless @schedule.blank? %>
-				<a href="#" data-reveal-id="create_group" ><li><b class="general foundicon-calendar"> </b>  <%= t(:add_new_group) %></li></a>
-				
+		<% end %>
 
-			<% end %>
+		<% unless @feed.blank? %>
+			<a href="#" data-reveal-id="feeds_new"><li><b class="general foundicon-mic"> </b> <%= t(:create_news) %></li></a>
 
-			<% unless @feed.blank? %>
-				<a href="#" data-reveal-id="feeds_new"><li><b class="general foundicon-mic"> </b> <%= t(:create_news) %></li></a>
-			<% end %>
+				<div id="feeds_new" class="reveal-modal medium">
+				  <h2><%= t(:create_news) %></h2>
+					<%= render 'feeds/form' %>
+				  <a class="close-reveal-modal">&#215;</a>
+				</div>
 
-			<% if can? :make_approve, Place %>
-                <%= link_to controller: 'places', action: 'make_approve', id: @place.id  do %>
-                	<b class="general foundicon-error"> </b> Admin edit
-                <% end  %> 
-            <% end %>
-
-		</ul>
-	</div>
+		<% end %>
+	</ul>
+</div>
 
 
-	<div id="create_group" class="reveal-modal large">
-	  <h2><%= t(:add_new_group) %></h2>
-		<%= render "schedules/form" %>
-	  <a class="close-reveal-modal">&#215;</a>
-	</div>
-
-	<div id="feeds_new" class="reveal-modal medium">
-	  <h2><%= t(:create_news) %></h2>
-		<%= render 'feeds/form' %>
-	  <a class="close-reveal-modal">&#215;</a>
-	</div>
