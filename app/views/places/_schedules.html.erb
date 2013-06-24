@@ -110,12 +110,3 @@
 	</div>
 <% end %>
 
-<% unless @schedule.blank? %>
-	<a href="#" data-reveal-id="create_group" class="button tiny secondary right radius" ><%= t(:add_new_group) %></a>
-	<div id="create_group" class="reveal-modal large">
-	  <h2><%= t(:add_new_group) %></h2>
-		<%= render "schedules/form" %>
-	  <a class="close-reveal-modal">&#215;</a>
-	</div>
-
-<% end %>

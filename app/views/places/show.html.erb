@@ -39,14 +39,8 @@
                     <%= byway.street + ", " + byway.city.city_name_lv %>
                     <%= raw("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") unless  byways_length == index %>
                  <% end  %> 
-                  <% if can? :edit, @place %>
-                    <%= link_to "", edit_place_path(@place), class: "comments general foundicon-edit" %>
-                  <% end %>
 
-                  <% if can? :make_approve, Place %>
-                    <%= link_to " ",{controller: 'places', action: 'make_approve', id: @place.id},{ class: "comments general foundicon-error" } %>
-                  <% end %>
-            </h2>
+            </h2><br>
             </div>
 
 
@@ -110,7 +104,10 @@
 
 
       <div class="small-5 large-3 columns">
-          <%= render 'shared/navigator' %>
+          <% if user_signed_in? and current_user.id == @place.user_id or current_user.role == 1 %>
+            <%= render 'shared/owner_panel' %>
+          <% end  %>
+          <%= render 'shared/right_navigation' %>
           <%= render 'shared/login' %>
           <%= render 'shared/navigation_panel'%>
           <%= render 'shared/admin/admin_panel' %>

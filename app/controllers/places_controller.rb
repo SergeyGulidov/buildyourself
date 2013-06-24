@@ -11,7 +11,7 @@ load_and_authorize_resource
 		else
 			places, @type_vip, watcher = Place.first_step_search(params)
 			if watcher == 0
-			    places = places.last(6)
+			    places = places.order("updated_at desc").first(6)
 				@places = Kaminari.paginate_array(places).page(1).per(10)
 			else
 
@@ -61,10 +61,11 @@ load_and_authorize_resource
 	end
 
 	def show
-		@place = Place.includes(:user, :schedules, :feeds, :photos, :byways).find(params[:id])
-		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").limit(5)
-
 		
+
+		@place = Place.includes([{:byways => :city}, :type, :category, :user, :schedules, :feeds, :photos]).find(params[:id])
+		@user_posts ||= Post.where(user_id: @place.user_id).order("created_at desc").first(6)
+
 		@subscriber = Subscriber.new
 
 		if current_user and current_user.id == @place.user_id

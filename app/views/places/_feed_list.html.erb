@@ -9,16 +9,6 @@
 		    	</i>
 		        <div class="feed"><%= simple_format(feed.message) %></div>
 		    <% end %>
-
-	</div>
-<% end %>
-
-<% unless @feed.blank? %>
-	<br>
-	<a href="#" data-reveal-id="feeds_new" class="button tiny secondary right radius"><%= t(:create_news) %></a>
-	<div id="feeds_new" class="reveal-modal medium">
-	  <h2><%= t(:create_news) %></h2>
-		<%= render 'feeds/form' %>
-	  <a class="close-reveal-modal">&#215;</a>
+		    <br>
 	</div>
 <% end %>

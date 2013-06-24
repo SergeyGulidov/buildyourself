@@ -57,18 +57,17 @@ class Place < ActiveRecord::Base
         indexes :name,       :analyzer => 'snowball', :boost => 100
         indexes :message_lv, :analyzer => 'snowball'
         indexes :message_ru, :analyzer => 'snowball'
-        indexes :street,     :analyzer => 'snowball'
   end
 
 
   def to_indexed_json
-    to_json(:include => [:type, :category, :city])
+    to_json(:include => [:type, :category, :byways])
   end
 
    scope :other_user_places, select("id, name, street, slug").order("updated_at desc").limit(50)
 
-   scope :approved_ru, where(ru: 1).includes( :type, :category, :city, :byways, :user ).limit(50)
-   scope :approved_lv, where(lv: 1).includes( :type, :category, :city, :byways, :user ).limit(50)
+   scope :approved_ru, where(ru: 1).includes([{:byways => :city}, :type, :category, :user]).limit(50)
+   scope :approved_lv, where(lv: 1).includes([{:byways => :city}, :type, :category, :user]).limit(50)
    scope :recent, order("updated_at desc").includes(:type).limit(10)
    
 

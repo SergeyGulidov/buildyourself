@@ -1,6 +1,6 @@
 <%= simple_nested_form_for @schedule, html: { class: '' } do |f| %>
 
-	<div class="schedules">
+	<div class="schedules row">
 		<div class="content new">
 			<div class="small-4 columns first">
 				<%= t(:group_name) %>
@@ -75,5 +75,5 @@
 		</div>
 		<br>
 	</div>
-	<%= f.button :submit, t(:add_place), class: 'tiny button radius success right', :disable_with => "Creating..."  %>
+	<%= f.button :submit, t(:add_place), class: 'tiny button radius success', :disable_with => "Creating..."  %>
 <% end  %>
