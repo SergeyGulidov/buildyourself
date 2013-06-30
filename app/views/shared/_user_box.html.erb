@@ -1,13 +1,11 @@
 <div class="panel radius">
-  <% if @place.user.avatar.blank? %>
-    <%= image_tag "blank.png", height: '139', width: '230'  %>
-  <% else  %>
-    <%= image_tag @place.user.avatar.url, height: '139', width: '230' %>
+  <% unless @place.user.avatar.blank? %>
+    <%= image_tag @place.user.avatar.url, height: '139', width: '230' %><br><br>
   <% end  %>
 
 
 
-      <br><br><h5 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h5>
+      <h5 style="text-align: center"><%= link_to @place.user.name, @place.user unless @place.user.name.blank? %></h5>
       <p><%= simple_format(@place.user.about) unless @place.user.about.blank? %></p><hr>
 
       <p class="contact_info">

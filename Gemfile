@@ -20,7 +20,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'kaminari'
-gem "select2-rails"
+gem "select2-rails", "3.4.2"
 gem 'tire'
 gem 'metamagic'
 gem "friendly_id", "~> 4.0.9"

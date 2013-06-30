@@ -19,7 +19,9 @@ lv:
   yes_s: Jā
   no_s: Nē
 
-
+  add_new_address: Pievienot / dzēst esošo adresi
+  
+  add: Pievienot
   add_photos: Pievienot fotogrāfijas
   country: Valsts
   city: Pilsēta

@@ -35,11 +35,11 @@ fieldset{
 }
 
 
-
 html, body { height: 100%; margin: 0; padding: 0; 
 min-width: 580px;
 background-image: url(<%= asset_path('ticks.png')  %>);
 background-repeat: repeat;
+
 /*background-repeat:no-repeat;
 background-attachment:fixed;
 background-size: cover;*/
@@ -153,6 +153,9 @@ section p a, .no_border{
 
 /* select2 */
 
+.select2-arrow{
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFF), color-stop(0.6, #FAFAFA))!important;
+}
 
 .select2-container{
   width: 100%!important;
@@ -265,6 +268,17 @@ section p a, .no_border{
 
 /****************************************** NEW STYLE ************************************************************/
 
+.small_search_button{
+  font-size: 11px!important;
+
+}
+
+.info_label{
+
+  margin: 5px 0 20px 12px!important;
+  font-size: 16px!important;
+  width: 97%;
+}
 
 
 .filter{
@@ -391,7 +405,6 @@ section p a, .no_border{
 
 
     ul.page_nav, ul.tumblr_nav {
-      font-family: "Droid Sans", "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
       font-size: 11px;
       font-weight: bold;
       margin: 12px 0 0 0;

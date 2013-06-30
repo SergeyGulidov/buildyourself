@@ -45,9 +45,17 @@
 
           
         
+          <% unless @json %>
+
+              <div class="label success radius info_label">
+            <%= t(:recent_added_places)  %> </div>
+
+            
+          <% end %>
 
 
         <div id="container">
+
           <% unless @type_vip.blank?  %>
             <%= render 'vip'%>
           <% end %>

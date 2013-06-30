@@ -3,5 +3,5 @@
     <%= form_tag(places_path, :method => 'get') do %>
          <li> <%= text_field_tag :search, params[:search], placeholder: t(:search) %> </li>
          <li><a href=""><i ></i></a></li>
-          <li><%= submit_tag t(:search_button), class: "button tiny secondary" %></li>
+          <li><%= submit_tag t(:search_button), class: "button tiny small_search_button" %></li>
     <% end %>

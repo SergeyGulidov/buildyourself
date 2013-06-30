@@ -108,10 +108,11 @@
 
 
       <div class="small-5 large-3 columns">
-          <% if user_signed_in? and current_user.id == @place.user_id %>
+          <% if user_signed_in? and current_user.id == @place.user_id or can? :make_approve, Place %>
             <%= render 'shared/owner_panel' %>
           <% end  %>
           <%= render 'shared/right_navigation' %>
+          <%= render 'shared/navigator' %>
           <%= render 'shared/login' %>
           <%= render 'shared/navigation_panel'%>
           <%= render 'shared/admin/admin_panel' %>

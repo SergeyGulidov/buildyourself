@@ -1,5 +1,5 @@
 class Byway < ActiveRecord::Base
-  attr_accessible :city_id, :country_id, :gmaps, :latitude, :longitude, :place_id, :street
+  attr_accessible :city_id, :country_id, :gmaps, :latitude, :longitude, :place_id, :street, :user_id
   belongs_to :city
   belongs_to :place
   belongs_to :country

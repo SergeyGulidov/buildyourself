@@ -23,6 +23,10 @@ class Ability
         can :edit, Post,       :user_id => user.id
         can :update, Post,     :user_id => user.id
         can :destroy, Post,    :user_id => user.id
+        can :create,  Byway
+        can :edit, Byway,       :user_id => user.id
+        can :update, Byway,     :user_id => user.id
+        can :destroy, Byway,    :user_id => user.id
         can :create, Feed
         can :destroy, Feed,    :user_id => user.id
         can :create, Schedule

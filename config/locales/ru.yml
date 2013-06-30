@@ -25,6 +25,7 @@ ru:
   country: Страна
   city: Город
   address: Адрес
+  add_new_address: Добавить / удалить адрес
   street_address: Адреса где проходит обучение
   name_for_place: Название
   min_age: Мин. возраст
@@ -173,7 +174,7 @@ ru:
   search_button: найти
   blog_search: Поиск по блогу...
   recent_added_blog_posts: Последние записи в блоге
-  
+  add: Добавить
   no_posts: Записей нет.
   post_list: Публикации пользователя
   title_lv: Заголовок на латышском

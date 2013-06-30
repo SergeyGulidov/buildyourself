@@ -3,7 +3,7 @@ load_and_authorize_resource
 
   def create
     @byway = Byway.new(params[:byway])
-
+    @byway.user_id = current_user.id
     respond_to do |format|
       if @byway.save
         format.html { redirect_to :back, notice: t(:success) }

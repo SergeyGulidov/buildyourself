@@ -71,6 +71,8 @@ load_and_authorize_resource
 		if current_user and current_user.id == @place.user_id
 		   @feed = Feed.new
 		   @schedule = Schedule.new
+		   @byway = Byway.new
+		   @byways = Byway.where(place_id: @place.id).includes(:city).all
 		end
 
 		@json = @place.byways.to_gmaps4rails do |place, marker|
